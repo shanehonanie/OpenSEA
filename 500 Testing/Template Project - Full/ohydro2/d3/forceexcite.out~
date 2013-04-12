@@ -1,0 +1,120 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      forceexcite;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+body {
+  name "body1";
+  data {
+    frequency 1;
+    value (
+    );
+  }
+  data {
+    frequency 2;
+    value (
+    );
+  }
+  data {
+    frequency 3;
+    value (
+    );
+  }
+  data {
+    frequency 4;
+    value (
+    );
+  }
+  data {
+    frequency 5;
+    value (
+    );
+  }
+  data {
+    frequency 6;
+    value (
+    );
+  }
+  data {
+    frequency 7;
+    value (
+    );
+  }
+  data {
+    frequency 8;
+    value (
+    );
+  }
+  data {
+    frequency 9;
+    value (
+    );
+  }
+  data {
+    frequency 10;
+    value (
+    );
+  }
+  data {
+    frequency 11;
+    value (
+    );
+  }
+  data {
+    frequency 12;
+    value (
+    );
+  }
+  data {
+    frequency 13;
+    value (
+    );
+  }
+  data {
+    frequency 14;
+    value (
+    );
+  }
+  data {
+    frequency 15;
+    value (
+    );
+  }
+  data {
+    frequency 16;
+    value (
+    );
+  }
+  data {
+    frequency 17;
+    value (
+    );
+  }
+  data {
+    frequency 18;
+    value (
+    );
+  }
+  data {
+    frequency 19;
+    value (
+    );
+  }
+  data {
+    frequency 20;
+    value (
+    );
+  }
+}
+
+
+
+// ************************************************************************* //
