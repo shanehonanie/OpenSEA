@@ -4,7 +4,7 @@
 | E valuation   | Web:      www.opensea.dmsonline.us                            |
 | A nalysis     |                                                               |
 \*-----------------------------------------------------------------------------*/
-SeaFile
+seafile
 {
     version     1.0;
     format      ascii;

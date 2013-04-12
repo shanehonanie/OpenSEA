@@ -17,6 +17,12 @@ seafile
 body {
   //The name of the body.  Outputs will refer to this name
   name "body1";
+
+  //The name of the hydrodynamic data used to refer to the body
+  //If no name is provided, the program first searches for a hydrodynamic
+  //body which matches the current body name.
+  //If that doesn't work, then the program returns an error.
+  hydrobody "body1";
   
   //Mass definition for the body.  Includes all the mass properties.
   //If a property is not defined, it is assumed to be zero.
@@ -82,6 +88,12 @@ body {
 body {
   //The name of the body.  Outputs will refer to this name
   name "body2";
+
+  //The name of the hydrodynamic data used to refer to the body
+  //If no name is provided, the program first searches for a hydrodynamic
+  //body which matches the current body name.
+  //If that doesn't work, then the program returns an error.
+  hydrobody "body2";  
   
   //Mass definition for the body.  Includes all the mass properties.
   //If a property is not defined, it is assumed to be zero.
