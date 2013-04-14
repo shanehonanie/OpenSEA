@@ -29,7 +29,7 @@ physics {
 
   //Amplitude of incident waves. [m]  Used to scale wave coefficients up or
   //down.
-  waveamp 1.00;
+  waveamp 20.00;
 {
 
 
