@@ -135,8 +135,8 @@ force_reactive {
      order 1;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 4.23:3
-     /*C_x4 = */ -5.34:4
+     /*C_x3 = */ 3:4.23
+     /*C_x4 = */ 4:-5.34
      );
    }
 
@@ -144,8 +144,8 @@ force_reactive {
      order 2;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.80:3
-     /*C_x4 = */ -10.0:4
+     /*C_x3 = */ 3:9.80
+     /*C_x4 = */ 4:-10.0
      );
    }    
 
@@ -167,8 +167,8 @@ force_reactive {
      order 1;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.23:3
-     /*C_x4 = */ -34.0:4
+     /*C_x3 = */ 3:9.23
+     /*C_x4 = */ 4:-34.0
      );
    }
 
@@ -176,8 +176,8 @@ force_reactive {
      order 2;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.81:3
-     /*C_x4 = */ -1.0E-2:4
+     /*C_x3 = */ 3:9.81
+     /*C_x4 = */ 4:-1.0E-2
      );
    }    
 }
@@ -211,8 +211,8 @@ force_reactive {
      order 1;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 4.23:3
-     /*C_x4 = */ -5.34:4
+     /*C_x3 = */ 3:4.23
+     /*C_x4 = */ 4:-5.34
      );
    }
 
@@ -220,8 +220,8 @@ force_reactive {
      order 0;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.80:3
-     /*C_x4 = */ -10.0:4
+     /*C_x3 = */ 3:9.80
+     /*C_x4 = */ 4:-10.0
      );
    }    
 
@@ -243,8 +243,8 @@ force_reactive {
      order 0;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.23:3
-     /*C_x4 = */ -34.0:4
+     /*C_x3 = */ 3:9.23
+     /*C_x4 = */ 4:-34.0
      );
    }
 
@@ -252,8 +252,8 @@ force_reactive {
      order 2;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.81:3
-     /*C_x4 = */ -1.0E-2:4
+     /*C_x3 = */ 3:9.81
+     /*C_x4 = */ 4:-1.0E-2
      );
    }    
 }
@@ -294,8 +294,8 @@ force_crossbody {
      order 1;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 4.23:3
-     /*C_x4 = */ -5.34:4
+     /*C_x3 = */ 3:4.23
+     /*C_x4 = */ 4:-5.34
      );
    }
 
@@ -303,8 +303,8 @@ force_crossbody {
      order 2;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.80:3
-     /*C_x4 = */ -10.0:4
+     /*C_x3 = */ 3:.80
+     /*C_x4 = */ 4:-10.2
      );
    }    
 
@@ -326,8 +326,8 @@ force_crossbody {
      order 1;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.23:3
-     /*C_x4 = */ -34.0:4
+     /*C_x3 = */ 3:9.04
+     /*C_x4 = */ 4:-43.0
      );
    }
 
@@ -335,8 +335,8 @@ force_crossbody {
      order 2;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.81:3
-     /*C_x4 = */ -1.0E-2:4
+     /*C_x3 = */ 3:10.0
+     /*C_x4 = */ 4:-1.0E-2
      );
    }  
 }
@@ -370,8 +370,8 @@ force_crossbody {
      order 1;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 4.23:3
-     /*C_x4 = */ -5.34:4
+     /*C_x5 = */ 5:4.23
+     /*C_x6 = */ 6:-5.34
      );
    }
 
@@ -379,8 +379,8 @@ force_crossbody {
      order 0;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.80:3
-     /*C_x4 = */ -10.0:4
+     /*C_x1 = */ 1:9.80
+     /*C_x2 = */ 2:-10.0
      );
    }    
 
@@ -402,8 +402,8 @@ force_crossbody {
      order 0;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.23:3
-     /*C_x4 = */ -34.0:4
+     /*C_x3 = */ 3:9.23
+     /*C_x4 = */ 4:-34.0
      );
    }
 
@@ -411,8 +411,8 @@ force_crossbody {
      order 2;
      //forces refer to specific variables.  All others are assumed 0.
      force (
-     /*C_x3 = */ 9.81:3
-     /*C_x4 = */ -1.0E-2:4
+     /*C_x3 = */ 3:9.81
+     /*C_x4 = */ 4:-1.0E-2
      );
    }    
 }
