@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      dictionary;
+}
+
+//-------------Sequential Template Example
+
+identifier{
+key(
+val1
+val2
+val3
+val4
+);
+}
+
+//-------------Sequential Template Example 2
+
+identifier{
+key1(
+val1
+val2
+val3
+val4
+);
+
+key2(
+val1
+val2
+val3
+val4
+);
+}
+
+//-------------Sequential Example 1 <---Look at this "real" example
+
+wave_directions{
+startdirection 5.23;
+enddirection 2.34;
+numberofdirections 4;
+individual_directions(
+6.234
+8.3334
+9.23
+3.223
+);
+spreadmodel seamode1;
+}
+
+
+//-------------Direct Template Example 1
+
+identifier{
+key(
+0:val2
+5:val3
+22:val4
+);
+}
+
+//-------------Direct Template Example 2
+
+identifier2{
+key1(
+0:val2
+5:val3
+22:val4
+);
+
+key2(
+6:val2
+13:val3
+15:val4
+);
+}
+
+//-------------Direct Example 1 <---Look at this "real" example
+
+wave_directions{
+startdirection 5.23;
+enddirection 2.34;
+numberofdirections 8;
+individual_directions(
+1:6.234
+2:8.3334
+6:9.23
+8:3.223
+);
+spreadmodel seamode1;
+}
+
+// ************************************************************************* //
