@@ -1,0 +1,1 @@
+g++ ofreq.cpp bodiesinput.cpp body.cpp controlinput.cpp datainput.cpp force.cpp forceactive.cpp forcecrossbody.cpp forcederivative.cpp forceequation.cpp forcereactive.cpp forcesinput.cpp hydrodynamicinput.cpp readinputfile.cpp seaenvinput.cpp seaenviroment.cpp system.cpp userforces.cpp wavedirections.cpp wavefrequencies.cpp wavespectrummodel.cpp wavespreadmodel.cpp
