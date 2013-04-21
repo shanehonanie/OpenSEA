@@ -54,6 +54,10 @@ bool ControlInput::keywordHandler(int keyControl, vector<string> theListIn)
 {
 	//vector<double> theList = convertToDouble(theListIn);
 	vector<double> theList;// = theListIn; //Need to write function to convert string to double, this is temp
+	for(int i = 0 ; i < theListIn.size(); i++)
+	{
+		theList.push_back(atof(theListIn[i].c_str()));
+	}
 			
 	switch(keyControl)
 	{
@@ -73,6 +77,7 @@ void ControlInput::testPrint()
 	cout << "System Test Print" << endl;
 	cout << "--------------------------------" << endl;
 	system.testPrint();
+	cout << "--------------------------------" << endl;
 }
 
 vector<double> convertToDouble(vector<string> strVecIn)

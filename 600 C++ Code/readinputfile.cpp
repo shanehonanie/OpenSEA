@@ -61,9 +61,7 @@ void ReadInput::setData(istream& infile)
 				infile >> curString;
 				if (infile.eof()) break;
 			}
-			//infile.ignore(MAX_IGNORE, '*/');
 	
-		//----------------------------------------------------------------------------------------------------------------------//
 		legalKeywordVal = legalKeyword(curString); 
 
 		if(legalKeywordVal > UNDEFINED_KEYWORD)
@@ -80,7 +78,10 @@ void ReadInput::setData(istream& infile)
 						while(curString != LIST_END)
 						{
 							infile >> curString;
-							theList.push_back(curString);
+
+							if(curString != LIST_END)
+								theList.push_back(curString);
+							
 							//infile >> curString; //populate theList with all string args in list
 							if (infile.eof()) 
 							{
@@ -102,7 +103,3 @@ void ReadInput::setData(istream& infile)
 		}
 	}
 }
-
-//virtual void initializeDefaults() = 0;
-//	virtual int legalKeyword(string) = 0;
-//

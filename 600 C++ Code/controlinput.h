@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <stdlib.h>
 using namespace std;
 
 const string LEGAL_KEYWORD_00 = "system";

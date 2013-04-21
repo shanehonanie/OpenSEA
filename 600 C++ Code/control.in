@@ -59,6 +59,6 @@ system {
   );
 
   //Model of incident wave distribution to use
-  wavemodel "wavemodel1"
+  wavemodel "wavemodel1";
 }
 // ************************************************************************* //
