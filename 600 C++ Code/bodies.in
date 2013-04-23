@@ -38,13 +38,13 @@ body {
     //Product of inertia XY (Ixy) [kg-m^2]
     ixy 65.2E8;
     //Product of inertia XZ (Ixz) [kg-m^2]
-    ixy -35.1E8;
+    ixz -35.1E8;
     //Product of inertia YZ (Iyz) [kg-m^2]
     iyz -65.21E8;
   }
 
   //Center of gravity definition. [m]  Center of gravity relative to 
-  //world coordinates.,
+  //world coordinates.
   centroid {
     //Centroid X [m]
     cogx 1.00;
@@ -63,24 +63,22 @@ body {
 
   //Specify user active forces.  Multiple forces can be added with multiple
   //models specified.
-  force_active {
-    model "active force 1";
-  }
+  force_active (
+    "active_force_1"
+  );
 
   //Specify user reactive forces.  Multiple forces can be added with multiple
   //models specified.
-  force_reactive {
-    model "reactive force 1";
-    model "reactive force 2";
-  }
+  force_reactive (
+    "reactive_force_1";
+    "reactive_force_2";
+  );
 
   //Specify cross body forces.  Each cross body force must include the force
   //model used and the body linked to.  
   force_crossbody {
-    model {
-      name "cross-body force 1";
+      cross_body_name "cross-body_force_1";
       linkedbody "body2";
-    }
   }
 }
 
@@ -109,7 +107,7 @@ body {
     //Product of inertia XY (Ixy) [kg-m^2]
     ixy 65.2E8;
     //Product of inertia XZ (Ixz) [kg-m^2]
-    ixy -35.1E8;
+    ixz -35.1E8;
     //Product of inertia YZ (Iyz) [kg-m^2]
     iyz -65.21E8;
   }
@@ -134,24 +132,22 @@ body {
 
   //Specify user active forces.  Multiple forces can be added with multiple
   //models specified.
-  force_active {
-    model "active force 1";
-    model "active force 2";
-  }
+  force_active (
+    "active_force_1";
+    "active_force_2";
+  );
 
   //Specify user reactive forces.  Multiple forces can be added with multiple
   //models specified.
-  force_reactive {
-    model "reactive force 2";
-  }
+  force_reactive (
+    "reactive_force_2";
+  );
 
   //Specify cross body forces.  Each cross body force must include the force
   //model used and the body linked to.  
   force_crossbody {
-    model {
-      name "cross-body force 2";
+      cross_body_name "cross-body_force_2";
       linkedbody "body1";
-    }
   }
 }
 
