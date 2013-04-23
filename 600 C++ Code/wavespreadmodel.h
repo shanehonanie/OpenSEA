@@ -11,15 +11,22 @@ class WaveSpreadModel
 public:
 	WaveSpreadModel();
 	~WaveSpreadModel();
+	void testPrint();
+	void setSpreadModelName(string);
+	void setSelectedpectrumName(string);
+	void setSelectedSpreadModelAngle(double);
+	void setSpectrumScalingFactor(double);
 private:
-	string name;
+	string spreadModelName;
+	int currentSpreadEntry;
+
 	struct SpreadEntry;
 	vector<SpreadEntry> spreadEntries;
 
 	struct SpreadEntry
 	{
-		vector<double> directionAngle;
-		string selectedWaveSpectrum;
+		double directionAngle;
+		string waveSpectrumName;
 		double scalingFactor;
 	};
 };

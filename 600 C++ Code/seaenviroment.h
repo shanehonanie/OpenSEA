@@ -13,8 +13,23 @@ class SeaEnviroment
 public:
 	SeaEnviroment();
 	~SeaEnviroment();
+	void testPrint();
+
+	void setWaveSpectrumName(string);
+	void setWaveSpectrumFrequencies(vector<double>);
+	void setWaveSpectrumWaveEnergy(vector<double>);
+
+	void setSpreadModelName(string);
+	void setSpreadModelDirectionAngle(double);
+	void setSpreadModelWaveSpectrumName(string);
+	void setSpreadModelScalingFactor(double);
+
+	void getCurrentIndex(string);
+
 private:
 	vector<WaveSpectrumModel> specifiedSpectrum;
 	vector<WaveSpreadModel> specifiedSpreadModel;
+	int currentSpectrum;
+	int currentSpreadModel;
 };
 #endif

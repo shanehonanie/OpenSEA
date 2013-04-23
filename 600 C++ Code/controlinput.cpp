@@ -3,6 +3,11 @@
 
 ControlInput::ControlInput() : ReadInput()
 {
+	LEGAL_KEYWORD_00 = "system";
+	LEGAL_KEYWORD_01 = "analysis";
+	LEGAL_KEYWORD_02 = "frequency";
+	LEGAL_KEYWORD_03 = "direction";
+	LEGAL_KEYWORD_04 = "wavemodel";
 	initializeDefaults();
 }
 
@@ -13,7 +18,7 @@ ControlInput::~ControlInput()
 
 void ControlInput::initializeDefaults()
 {
-
+	
 }	
 
 
@@ -30,7 +35,7 @@ int ControlInput::legalKeyword(string stringIn)
 	else if (stringIn == LEGAL_KEYWORD_04)
 		return WAVE_MODEL;
 	else
-		return 0;
+		return -1;
 }
 
 //return false if not done, true if done
@@ -74,19 +79,10 @@ bool ControlInput::keywordHandler(int keyControl, vector<string> theListIn)
 
 void ControlInput::testPrint()
 {
-	cout << "System Test Print" << endl;
+	cout << "System Test Print -- System" << endl;
 	cout << "--------------------------------" << endl;
 	system.testPrint();
 	cout << "--------------------------------" << endl;
 }
 
-vector<double> convertToDouble(vector<string> strVecIn)
-{
-	vector<double> newList;
 
-	/*for(int i = 0; i < strVecIn.size(); i++)
-	{
-		newList.push_back();
-	}*/
-	return newList;
-}

@@ -8,18 +8,32 @@
 #include <vector>
 using namespace std;
 
-class SeaenvInput : ReadInput
+
+
+class SeaenvInput : public ReadInput
 {
 public:
 	SeaenvInput();
 	~SeaenvInput();
-
+	void testPrint();
 protected:
 	void initializeDefaults();
-	void setData(istream& infile);
 	int legalKeyword(string);
+	bool keywordHandler(int, string, string);
+	bool keywordHandler(int, vector<string>);
 
 private:
 	SeaEnviroment seaEnviroment;
+	enum LegalKeywords { WAVE_CUSTOM = 0, NAME = 1, FREQUENCIES = 2, WAVE_ENERGY = 3, SEA_CUSTOM = 4, SPREADPOINT = 5, ANGLE = 6, SPECTRUM = 7, SCALE = 8, SPREADNAME = 9};
+	string LEGAL_KEYWORD_00;
+	string LEGAL_KEYWORD_01;
+	string LEGAL_KEYWORD_02;
+	string LEGAL_KEYWORD_03;
+	string LEGAL_KEYWORD_04;
+	string LEGAL_KEYWORD_05;
+	string LEGAL_KEYWORD_06;
+	string LEGAL_KEYWORD_07;
+	string LEGAL_KEYWORD_08;
+	string LEGAL_KEYWORD_09;
 };
 #endif
