@@ -105,8 +105,8 @@ force_active {
 
 /*Definition sequence for reactive forces
 force set
-  > equation set
-    > derivative 
+  > derivative 
+    > equation set
       > force coefficients (list)
         > coefficient for each variable
 */
@@ -114,13 +114,13 @@ force set
 force_reactive {
   //User defined name of user reactive force.  Other objects refer to this name
   name "reactive force 1";
-  //Define an equation with user coefficients assigned
-  //Each definition contains a derivative followed by coefficients for each
+  //Define a derivative, with an equation with user coefficients assigned.
+  //Each derivative contains an equation followed by coefficients for each
   //variable associated with that derivative.
-  equation {
-    number 1;
-    derivative {
-      order 0;
+  derivative {
+    order 0;
+    equation {
+      number 1;
       force (
       /*C_x1 = */ 1.00
       /*C_x2 = */ 0.00
@@ -131,28 +131,8 @@ force_reactive {
       );
     }
 
-   derivative {
-     order 1;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:4.23
-     /*C_x4 = */ 4:-5.34
-     );
-   }
-
-   derivative {
-     order 2;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.80
-     /*C_x4 = */ 4:-10.0
-     );
-   }    
-
-  equation {
-    number 4;
-    derivative {
-      order 0;
+    equation {
+      number 3;
       force (
       /*C_x1 = */ 2.00
       /*C_x2 = */ 0.00
@@ -162,41 +142,64 @@ force_reactive {
       /*C_x6 = */ 3.00
       );
     }
+  }
 
-   derivative {
-     order 1;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.23
-     /*C_x4 = */ 4:-34.0
-     );
-   }
+  derivative {
+    order 1;
+    equation {
+      number 1;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:4.23
+      /*C_x4 = */ 4:-5.34
+      );
+    }
 
-   derivative {
-     order 2;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.81
-     /*C_x4 = */ 4:-1.0E-2
-     );
-   }    
+    equation {
+      number 5;
+      force (
+      /*C_x3 = */ 3:9.23
+      /*C_x4 = */ 4:-34.0
+      );
+    }
+  }
+
+  derivative {
+    order 2;
+    equation {
+      number 3;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.80
+      /*C_x4 = */ 4:-10.0
+      );
+    }
+
+    equation {
+      number 2;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.81
+      /*C_x4 = */ 4:-1.0E-2
+      );
+    }
+  }
 }
 
 force_reactive {
   //User defined name of user reactive force.  Other objects refer to this name
-  name "reactive force 2";
-  //Define an equation with user coefficients assigned
-  //Each definition contains a derivative followed by coefficients for each
-  //variable associated with that derivative.
-
   //testing note:  this force could have completely different equation
   //definitions.  I just simple swapped a few numbers around to save on
   //typing effort.  The similarity between forces should not imply any
   //restriction on user inputs.
-  equation {
-    number 2;
-    derivative {
-      order 2;
+  name "reactive force 2";
+  //Define a derivative, with an equation with user coefficients assigned.
+  //Each derivative contains an equation followed by coefficients for each
+  //variable associated with that derivative.
+  derivative {
+    order 0;
+    equation {
+      number 1;
       force (
       /*C_x1 = */ 1.00
       /*C_x2 = */ 0.00
@@ -207,28 +210,8 @@ force_reactive {
       );
     }
 
-   derivative {
-     order 1;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:4.23
-     /*C_x4 = */ 4:-5.34
-     );
-   }
-
-   derivative {
-     order 0;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.80
-     /*C_x4 = */ 4:-10.0
-     );
-   }    
-
-  equation {
-    number 5;
-    derivative {
-      order 1;
+    equation {
+      number 3;
       force (
       /*C_x1 = */ 2.00
       /*C_x2 = */ 0.00
@@ -238,26 +221,49 @@ force_reactive {
       /*C_x6 = */ 3.00
       );
     }
+  }
 
-   derivative {
-     order 0;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.23
-     /*C_x4 = */ 4:-34.0
-     );
-   }
+  derivative {
+    order 1;
+    equation {
+      number 1;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:4.23
+      /*C_x4 = */ 4:-5.34
+      );
+    }
 
-   derivative {
-     order 2;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.81
-     /*C_x4 = */ 4:-1.0E-2
-     );
-   }    
+    equation {
+      number 5;
+      force (
+      /*C_x3 = */ 3:9.23
+      /*C_x4 = */ 4:-34.0
+      );
+    }
+  }
+
+  derivative {
+    order 2;
+    equation {
+      number 3;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.80
+      /*C_x4 = */ 4:-10.0
+      );
+    }
+
+    equation {
+      number 2;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.81
+      /*C_x4 = */ 4:-1.0E-2
+      );
+    }
+  }
 }
-
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 //                 C R O S S - B O D Y   F O R C E S                         //
@@ -273,13 +279,13 @@ force_reactive {
 force_crossbody {
   //User defined name of user cross-body force.  Other objects refer to this name
   name "cross-body force 1";
-  //Define an equation with user coefficients assigned
-  //Each definition contains a derivative followed by coefficients for each
+  //Define a derivative, with an equation with user coefficients assigned.
+  //Each derivative contains an equation followed by coefficients for each
   //variable associated with that derivative.
-  equation {
-    number 1;
-    derivative {
-      order 0;
+  derivative {
+    order 0;
+    equation {
+      number 1;
       force (
       /*C_x1 = */ 1.00
       /*C_x2 = */ 0.00
@@ -290,28 +296,8 @@ force_crossbody {
       );
     }
 
-   derivative {
-     order 1;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:4.23
-     /*C_x4 = */ 4:-5.34
-     );
-   }
-
-   derivative {
-     order 2;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:.80
-     /*C_x4 = */ 4:-10.2
-     );
-   }    
-
-  equation {
-    number 4;
-    derivative {
-      order 0;
+    equation {
+      number 3;
       force (
       /*C_x1 = */ 2.00
       /*C_x2 = */ 0.00
@@ -321,41 +307,64 @@ force_crossbody {
       /*C_x6 = */ 3.00
       );
     }
+  }
 
-   derivative {
-     order 1;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.04
-     /*C_x4 = */ 4:-43.0
-     );
-   }
+  derivative {
+    order 1;
+    equation {
+      number 1;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:4.23
+      /*C_x4 = */ 4:-5.34
+      );
+    }
 
-   derivative {
-     order 2;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:10.0
-     /*C_x4 = */ 4:-1.0E-2
-     );
-   }  
+    equation {
+      number 5;
+      force (
+      /*C_x3 = */ 3:9.23
+      /*C_x4 = */ 4:-34.0
+      );
+    }
+  }
+
+  derivative {
+    order 2;
+    equation {
+      number 3;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.80
+      /*C_x4 = */ 4:-10.0
+      );
+    }
+
+    equation {
+      number 2;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.81
+      /*C_x4 = */ 4:-1.0E-2
+      );
+    }
+  }
 }
 
 force_crossbody {
-  //User defined name of user reactive force.  Other objects refer to this name
-  name "cross-body force 2";
-  //Define an equation with user coefficients assigned
-  //Each definition contains a derivative followed by coefficients for each
-  //variable associated with that derivative.
-
+  //User defined name of user cross-body force.  Other objects refer to this name
   //testing note:  this force could have completely different equation
   //definitions.  I just simple swapped a few numbers around to save on
   //typing effort.  The similarity between forces should not imply any
   //restriction on user inputs.
-  equation {
-    number 2;
-    derivative {
-      order 2;
+  name "cross-body force 2";
+  //Define a derivative, with an equation with user coefficients assigned.
+  //Each derivative contains an equation followed by coefficients for each
+  //variable associated with that derivative.
+  derivative {
+    order 0;
+    equation {
+      number 1;
       force (
       /*C_x1 = */ 1.00
       /*C_x2 = */ 0.00
@@ -366,28 +375,8 @@ force_crossbody {
       );
     }
 
-   derivative {
-     order 1;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x5 = */ 5:4.23
-     /*C_x6 = */ 6:-5.34
-     );
-   }
-
-   derivative {
-     order 0;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x1 = */ 1:9.80
-     /*C_x2 = */ 2:-10.0
-     );
-   }    
-
-  equation {
-    number 5;
-    derivative {
-      order 1;
+    equation {
+      number 3;
       force (
       /*C_x1 = */ 2.00
       /*C_x2 = */ 0.00
@@ -397,24 +386,49 @@ force_crossbody {
       /*C_x6 = */ 3.00
       );
     }
+  }
 
-   derivative {
-     order 0;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.23
-     /*C_x4 = */ 4:-34.0
-     );
-   }
+  derivative {
+    order 1;
+    equation {
+      number 1;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:4.23
+      /*C_x4 = */ 4:-5.34
+      );
+    }
 
-   derivative {
-     order 2;
-     //forces refer to specific variables.  All others are assumed 0.
-     force (
-     /*C_x3 = */ 3:9.81
-     /*C_x4 = */ 4:-1.0E-2
-     );
-   }    
+    equation {
+      number 5;
+      force (
+      /*C_x3 = */ 3:9.23
+      /*C_x4 = */ 4:-34.0
+      );
+    }
+  }
+
+  derivative {
+    order 2;
+    equation {
+      number 3;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.80
+      /*C_x4 = */ 4:-10.0
+      );
+    }
+
+    equation {
+      number 2;
+      //forces refer to specific variables.  All others are assumed 0.
+      force (
+      /*C_x3 = */ 3:9.81
+      /*C_x4 = */ 4:-1.0E-2
+      );
+    }
+  }
 }
+
 
 // ************************************************************************* //
