@@ -105,8 +105,8 @@ force_active {
 
 /*Definition sequence for reactive forces
 force set
-  > equation set
-    > derivative 
+  > derivative 
+    > equation set
       > force coefficients (list)
         > coefficient for each variable
 */

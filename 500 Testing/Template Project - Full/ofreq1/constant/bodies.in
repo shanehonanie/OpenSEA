@@ -44,7 +44,7 @@ body {
   }
 
   //Center of gravity definition. [m]  Center of gravity relative to 
-  //world coordinates.,
+  //world coordinates.
   centroid {
     //Centroid X [m]
     cogx 1.00;
