@@ -13,8 +13,9 @@ class Force
 public:
 	Force();
 	~Force();
+	void setForceName(string);
+protected:
 	string forceName;
-	vector<Equation> equation;
 private:
 	
 };

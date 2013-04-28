@@ -37,7 +37,7 @@ bool DataInput::keywordHandler(int keyControl, string identifier, string val)
 	}
 }
 
-bool DataInput::keywordHandler(int keyControl, vector<string> theListIn)
+bool DataInput::keywordHandler(int keyControl, vector<string> theListIn, bool isDirect)
 {
 	switch(keyControl)
 	{

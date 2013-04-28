@@ -55,7 +55,7 @@ bool ControlInput::keywordHandler(int keyControl, string identifier, string val)
 			return true;
 	}
 }
-bool ControlInput::keywordHandler(int keyControl, vector<string> theListIn)
+bool ControlInput::keywordHandler(int keyControl, vector<string> theListIn, bool isDirect)
 {
 	//vector<double> theList = convertToDouble(theListIn);
 	vector<double> theList;// = theListIn; //Need to write function to convert string to double, this is temp

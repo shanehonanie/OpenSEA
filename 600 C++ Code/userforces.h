@@ -14,9 +14,24 @@ class UserForces
 public:
 	UserForces();
 	~UserForces();
+	void addNewForce(string);
+	void setCoeff(vector<string>, bool); ///need to hange to double to handle complex numbers
+	void setOrderDerivative(int);
+	void setEquationNumber(int);
+	void setCurForceAsActive();
+	void setCurForceAsReactive();
+	void setCurForceAsCrossBody();
+	void testPrint();
+
 private:
-	vector<ForceActive> activeForce;
+	vector<ForceActive> activeForces;
 	vector<ForceReactive> reactiveForces;
 	vector<ForceCrossBody> crossBodyForces;
+	int curForceType;
+	//int curOrderDerivative;
+	//int curEquationNum;
+	int ACTIVE_FORCE;
+	int REACTIVE_FORCE;
+	int CROSSBODY_FORCE;
 };
 #endif

@@ -19,7 +19,7 @@ protected:
 	void initializeDefaults();
 	int legalKeyword(string);
 	bool keywordHandler(int, string, string);
-	bool keywordHandler(int, vector<string>);
+	bool keywordHandler(int, vector<string>, bool);
 private:
 	vector<string> fileLocation;
 	enum LegalKeywords {HYDRO_FILES = 0, FILE_LOCATION = 1 };

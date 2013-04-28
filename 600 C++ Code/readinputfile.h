@@ -31,11 +31,10 @@ public:
 	void setData(istream&);
 	
 protected:
-	
 	virtual void initializeDefaults() = 0;
 	virtual int legalKeyword(string) = 0;
-	virtual bool keywordHandler(int, string, string) = 0;
-	virtual bool keywordHandler(int, vector<string>) = 0;
+	virtual bool keywordHandler(int, string, string) = 0;  //single args
+	virtual bool keywordHandler(int, vector<string>, bool) = 0; //sequential list
 
 private:
 };

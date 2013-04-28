@@ -155,7 +155,7 @@ bool Bodiesinput::keywordHandler(int keyControl, string identifier, string val)
 			return false;
 	}
 }
-bool Bodiesinput::keywordHandler(int keyControl, vector<string> theListIn)
+bool Bodiesinput::keywordHandler(int keyControl, vector<string> theListIn, bool isDirect)
 {
 			
 	switch(keyControl)
