@@ -22,6 +22,7 @@ protected:
 	Derivative derivative[MAX_ORDER_DERIVATIVE];
 	int currentDerivative;
 	int currentEquation;
+	
 };
 #endif
 

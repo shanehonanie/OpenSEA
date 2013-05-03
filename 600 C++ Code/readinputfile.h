@@ -4,7 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <sstream>
+#include <cstdlib>
+#include <algorithm>
 using namespace std;
 
 const int HEADER_LENGTH = 6;

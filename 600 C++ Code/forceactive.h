@@ -6,16 +6,21 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <complex>
 using namespace std;
+
+typedef complex<double> complexDouble;
 
 class ForceActive: public Force
 {
 public:
 	ForceActive();
 	~ForceActive();
+	complexDouble convertRectangularFormToComplexNumber(string);
+	complexDouble convertPolarFormToComplexNumber(string);
 	void setCoeff(vector<string>, bool); 
 	void testPrint();
 protected:
-	string coefficients[MAX_COEFFICIENTS];
+	complexDouble coefficients[MAX_COEFFICIENTS];
 };
 #endif

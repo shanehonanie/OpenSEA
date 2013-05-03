@@ -23,7 +23,9 @@ void ReadInput::setData(istream& infile)
 	string curString = "";
 	int legalKeywordVal = -1;
 	bool directList = false;
-
+	char ignoreChars[2];
+	ignoreChars[0] = ';';
+	ignoreChars[1] = '\"';
 
 	for(;;)
 	{
@@ -62,6 +64,9 @@ void ReadInput::setData(istream& infile)
 			infile >> curString;
 			if (infile.eof()) break; 
 
+			for(int i = 0; i < 2; i++)
+				curString.erase(std::remove(curString.begin(), curString.end(), ignoreChars[i]), curString.end());
+
 			bool done = keywordHandler(legalKeywordVal, prevString, curString); //is a legal keyword so pass to handler
 
 			if (curString == LIST_BEGIN) //check if is a list
@@ -71,6 +76,9 @@ void ReadInput::setData(istream& infile)
 					infile >> curString;
 
 					int index = curString.find(KEY_VAL_SEPERATOR);
+
+					//for(int i = 0; i < 2; i++) //crashes program, should take out ignore chars
+					//	curString.erase(std::remove(curString.begin(), curString.end(), ignoreChars[i]), curString.end());
 
 					if ((curString != LIST_END) && (index != std::string::npos))
 					{

@@ -28,14 +28,14 @@ void ForceReactive::setCoeff(vector<string> newList, bool isDirectList)
 		for(int i = 0; i <= newList.size()/2; i+=2)
 		{
 			derivative[currentDerivative].equationList[currentEquation].
-			coefficients[atoi(newList[i].c_str())-1] = newList[i+1];
+			coefficients[atoi(newList[i].c_str())-1] = atof(newList[i+1].c_str());
 		}
 	}
 	else //is sequential
 	{
 		for(int i = 0; i < MAX_COEFFICIENTS; i++)
 			derivative[currentDerivative].equationList[currentEquation].
-			coefficients[i] = newList[i];
+			coefficients[i] = atof(newList[i].c_str());
 	}
 }
 

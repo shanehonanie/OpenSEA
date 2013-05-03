@@ -64,21 +64,21 @@ body {
   //Specify user active forces.  Multiple forces can be added with multiple
   //models specified.
   force_active (
-    "active_force_1"
+    active_force_1
   );
 
   //Specify user reactive forces.  Multiple forces can be added with multiple
   //models specified.
   force_reactive (
-    "reactive_force_1";
-    "reactive_force_2";
+    reactive_force_1
+    reactive_force_2
   );
 
   //Specify cross body forces.  Each cross body force must include the force
   //model used and the body linked to.  
   force_crossbody {
-      cross_body_name "cross-body_force_1";
-      linkedbody "body2";
+      cross_body_name cross-body_force_1
+      linkedbody "body2
   }
 }
 
@@ -133,21 +133,21 @@ body {
   //Specify user active forces.  Multiple forces can be added with multiple
   //models specified.
   force_active (
-    "active_force_1";
-    "active_force_2";
+    active_force_1
+    active_force_2
   );
 
   //Specify user reactive forces.  Multiple forces can be added with multiple
   //models specified.
   force_reactive (
-    "reactive_force_2";
+    reactive_force_2
   );
 
   //Specify cross body forces.  Each cross body force must include the force
   //model used and the body linked to.  
   force_crossbody {
-      cross_body_name "cross-body_force_2";
-      linkedbody "body1";
+      cross_body_name cross-body_force_2
+      linkedbody body1
   }
 }
 
