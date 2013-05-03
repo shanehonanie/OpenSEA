@@ -19,7 +19,7 @@ protected:
 	void initializeDefaults();
 	int legalKeyword(string);
 	bool keywordHandler(int, string, string);
-	bool keywordHandler(int, vector<string>);
+	bool keywordHandler(int, vector<string>, bool);
 	void addNewBody(string);
 private:
 	vector<Body> body;

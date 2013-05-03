@@ -87,7 +87,7 @@ bool SeaenvInput::keywordHandler(int keyControl, string identifier, string val)
 
 //enum LegalKeywords { WAVE_CUSTOM = 0, NAME = 1, FREQUENCIES = 2, WAVE_ENERGY = 3, SEA_CUSTOM = 4, SPREADPOINT = 5, ANGLE = 6, SPECTRUM = 7, SCALE = 8, SPREADNAME = 9};
 
-bool SeaenvInput::keywordHandler(int keyControl, vector<string> theListIn)
+bool SeaenvInput::keywordHandler(int keyControl, vector<string> theListIn, bool isDirect)
 {
 	//vector<double> theList = convertToDouble(theListIn);
 	vector<double> theList;// = theListIn; //Need to write function to convert string to double, this is temp

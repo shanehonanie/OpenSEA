@@ -2,6 +2,7 @@
 #include "seaenvinput.h"
 #include "datainput.h"
 #include "bodiesinput.h"
+#include "forcesinput.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -9,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	//ifstream forces_fileInput("forces.in");
+	ifstream forces_fileInput("forces.in");
 	ifstream bodies_fileInput("bodies.in");
 	ifstream data_fileInput("data.in");
 	ifstream seaenv_fileInput("seaenv.in");
@@ -20,11 +21,11 @@ int main()
 		cerr << "data.in file does not exist." << endl;
 		return 1;
 	}
-	//else if(!forces_fileInput)
-	//{
-	//	cerr << "forces.in file does not exist." << endl;
-	//	return 1;
-	//}
+	if(!forces_fileInput)
+	{
+		cerr << "forces.in file does not exist." << endl;
+		return 1;
+	}
 	if(!bodies_fileInput)
 	{
 		cerr << "bodies.in file does not exist." << endl;
@@ -57,6 +58,10 @@ int main()
 	Bodiesinput bodiesInput;
 	bodiesInput.setData(bodies_fileInput);
 	bodiesInput.testPrint();
+
+	ForcesInput forcesInput;
+	forcesInput.setData(forces_fileInput);
+	forcesInput.testPrint();
 
 	return 0;
 }

@@ -22,6 +22,7 @@ void ReadInput::setData(istream& infile)
 	string prevString = "";
 	string curString = "";
 	int legalKeywordVal = -1;
+	bool directList = false;
 
 
 	for(;;)
@@ -69,7 +70,17 @@ void ReadInput::setData(istream& infile)
 				{
 					infile >> curString;
 
-					if(curString != LIST_END)
+					int index = curString.find(KEY_VAL_SEPERATOR);
+
+					if ((curString != LIST_END) && (index != std::string::npos))
+					{
+						directList = true;
+						string key = curString.substr(0, index);
+						string val = curString.substr((index+1));
+						theList.push_back(key);
+						theList.push_back(val);
+					}
+					else if(curString != LIST_END)
 						theList.push_back(curString);
 							
 					if (infile.eof()) 
@@ -78,7 +89,8 @@ void ReadInput::setData(istream& infile)
 							break;
 					}
 				}
-				done = keywordHandler(legalKeywordVal, theList);
+				done = keywordHandler(legalKeywordVal, theList, directList);
+				directList = false;
 				theList.clear();
 		}
 
