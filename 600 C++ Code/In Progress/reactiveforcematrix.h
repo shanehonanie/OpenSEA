@@ -17,6 +17,8 @@ public:
 	ReactiveForceMatrix(vector<Derivative>);
 	~ReactiveForceMatrix();
 	cx_mat derivativeMatrix[3];
+	
+
 };
 #endif
 

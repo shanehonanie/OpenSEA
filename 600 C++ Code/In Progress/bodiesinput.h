@@ -13,10 +13,11 @@ using namespace std;
 class Bodiesinput : public ReadInput
 {
 public:
-	Bodiesinput(UserForces);
+	Bodiesinput();
 	~Bodiesinput();
 	void testPrint();
-	void createNewBodyForceMatrix();
+	vector<Body> getBodyData();
+	//void createNewBodyForceMatrix();
 	
 protected:
 	void initializeDefaults();
@@ -24,10 +25,11 @@ protected:
 	bool keywordHandler(int, string, string);
 	bool keywordHandler(int, vector<string>, bool);
 	void addNewBody(string);
+	
 private:
 	vector<Body> body;
-	vector<BodyWithForceMatrix> bfm;
-	UserForces theUserForces;
+	//vector<BodyWithForceMatrix> bfm;
+	//UserForces theUserForces;
 	int currentBody;
 	string LEGAL_KEYWORD_00;
 	string LEGAL_KEYWORD_01;

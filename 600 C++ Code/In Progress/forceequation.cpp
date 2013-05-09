@@ -3,12 +3,19 @@
 
 Equation::Equation()
 {
+	initCoeff();
 }
 
 
 Equation::~Equation()
 {
 }
+void Equation::initCoeff()
+{
+	for(int i = 0 ; i < MAX_COEFFICIENTS; i++)
+		coefficients[i] = 0;
+}
+
 
 //void Equation::setCoeff(vector<string> newList, bool isDirectList)
 //{

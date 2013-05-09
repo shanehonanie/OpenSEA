@@ -23,8 +23,7 @@ public:
 	BodyWithForceMatrix();
 	BodyWithForceMatrix(Body, UserForces);
 	~BodyWithForceMatrix();
-	void setData(Body, UserForces);
-
+	
 	cx_mat massMatrix;
 	vector<ReactiveForceMatrix> userReactiveForceMatrix;
 	vector<ReactiveForceMatrix> userCrossBodyForceMatrix;
@@ -32,6 +31,7 @@ public:
 	vector<string> userActiveForce;
 	vector<string> userReactiveForce;
 	vector<string> userCrossBodyForces;
+	//void setData(Body, UserForces);
 private:
 
 };

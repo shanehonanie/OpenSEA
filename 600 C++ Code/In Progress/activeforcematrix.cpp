@@ -1,11 +1,11 @@
 #include "activeforcematrix.h"
 
 
-ActiveForceMatrix::ActiveForceMatrix(void)
+ActiveForceMatrix::ActiveForceMatrix()
 {
 }
 
 
-ActiveForceMatrix::~ActiveForceMatrix(void)
+ActiveForceMatrix::~ActiveForceMatrix()
 {
 }

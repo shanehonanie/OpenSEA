@@ -12,7 +12,6 @@ public:
 	ActiveForceMatrix();
 	~ActiveForceMatrix();
 	cx_mat coefficients;
-
 };
 #endif
 

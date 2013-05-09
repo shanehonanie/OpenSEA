@@ -5,6 +5,10 @@ ReactiveForceMatrix::ReactiveForceMatrix()
 {
 }
 
+ReactiveForceMatrix::~ReactiveForceMatrix()
+{
+}
+
 ReactiveForceMatrix::ReactiveForceMatrix(vector<Derivative> forceListIn)
 {
 	for(int i = 0 ;i < forceListIn.size(); i++) //3 derivative objects (default)
@@ -23,6 +27,4 @@ ReactiveForceMatrix::ReactiveForceMatrix(vector<Derivative> forceListIn)
 }
 
 
-ReactiveForceMatrix::~ReactiveForceMatrix()
-{
-}
+

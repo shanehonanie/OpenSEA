@@ -35,6 +35,7 @@ public:
 	vector<string> userActiveForce;
 	vector<string> userReactiveForce;
 	vector<string> crossBodyForces;
+	Body getBody();
 
 	//should be private
 	string bodyName;

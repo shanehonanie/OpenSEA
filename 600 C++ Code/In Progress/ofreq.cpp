@@ -3,6 +3,7 @@
 #include "datainput.h"
 #include "bodiesinput.h"
 #include "forcesinput.h"
+#include "motionsolver.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -59,10 +60,11 @@ int main()
 	forcesInput.setData(forces_fileInput);
 	//forcesInput.testPrint();
 
-	Bodiesinput bodiesInput(forcesInput.getUserForces());
+	Bodiesinput bodiesInput;
 	bodiesInput.setData(bodies_fileInput);
 	//bodiesInput.testPrint();
-	bodiesInput.createNewBodyForceMatrix();
+
+	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces());
 
 	return 0;
 }
