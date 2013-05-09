@@ -65,6 +65,7 @@ int main()
 	//bodiesInput.testPrint();
 
 	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces());
+	theMotionSolver.CalculateOutputs();
 
 	return 0;
 }
