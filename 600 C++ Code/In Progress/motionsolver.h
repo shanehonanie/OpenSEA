@@ -6,6 +6,9 @@
 #include "userforces.h"
 #include "motionmodel.h"
 #include "bodywithforcematrix.h"
+#pragma comment( lib, "lapack_win32_MT" ) //include lappack
+#pragma comment( lib, "blas_win32_MT" ) //include blas
+
 
 using namespace arma;
 using namespace std;

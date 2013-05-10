@@ -16,35 +16,79 @@ void MotionSolver::CalculateOutputs()
 		theBodyWithForceMatrix.push_back(theMotionModel.setBodyData(theBodyData[i], theForcesData)); 
 	}
 
+	vector<cx_mat> theBodyMassMatrices;
 
-	//Only Solve for 1 Body (temporary, will be expanded to solver for all bodies
-	cx_mat bodyMassMatrix = theBodyWithForceMatrix[0].massMatrix;
+	for(int i = 0; i < theBodyWithForceMatrix.size(); i ++) //get Each Body Mass Matrix
+	{
+		theBodyMassMatrices.push_back(theBodyWithForceMatrix[i].massMatrix);
+	}
 
-	//"Sum Forces for Each Set"
-	vector<cx_mat> userReactiveForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[0].userReactiveForceMatrix);
-	vector<cx_mat> userCrossBodyForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[0].userCrossBodyForceMatrix);
-	cx_mat userActiveForceMatrix = sumActiveForceEachSet(theBodyWithForceMatrix[0].userActiveForceMatrix);
+	vector<cx_mat> solutionPerBodyMatrix; //This is a column matrix
 
-	//"Sum Derivatives"
-	cx_mat userReactiveForceSingleMatrix = sumDerivatives(userReactiveForceMatrix);
-	cx_mat userCrossBodyForceSingleMatrix = sumDerivatives(userCrossBodyForceMatrix);
+	//Create Solution Matrix for each Body
+	for(int i = 0; i < theBodyMassMatrices.size(); i++)
+	{
+		//cx_mat bodyMassMatrix = theBodyWithForceMatrix[i].massMatrix; //<--Delete afer add support for multiple bodies
 
-	//"Sum Force Types"
-	cx_mat reactiveForceMatrix = (userReactiveForceSingleMatrix + bodyMassMatrix);
-	cx_mat crossBodyForceMatrix = userCrossBodyForceSingleMatrix; //Hydro Matrix not supported yet
-	cx_mat activeForceMatrix = userActiveForceMatrix; //Hydro Matrix not supported yet
+		//"Sum Forces for Each Set"
+		vector<cx_mat> userReactiveForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[i].userReactiveForceMatrix);
+		vector<cx_mat> userCrossBodyForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[i].userCrossBodyForceMatrix);
+		cx_mat userActiveForceMatrix = sumActiveForceEachSet(theBodyWithForceMatrix[i].userActiveForceMatrix);
 
-	//Assemble Global Matrix
-	cx_mat reactiveForceMatrixGlobal = reactiveForceMatrix + crossBodyForceMatrix; //A Matrix
-	cx_mat activeForceMatrixGlobal = activeForceMatrix;                                //F Matrix
+		//"Sum Derivatives"
+		cx_mat userReactiveForceSingleMatrix = sumDerivatives(userReactiveForceMatrix);
+		cx_mat userCrossBodyForceSingleMatrix = sumDerivatives(userCrossBodyForceMatrix);
 
-	reactiveForceMatrixGlobal.print("Reactive Matrix");
-	activeForceMatrixGlobal.print("Active Matrix");
+		//"Sum Force Types"
+		cx_mat reactiveForceMatrix = (userReactiveForceSingleMatrix + theBodyMassMatrices[i]);
+		cx_mat crossBodyForceMatrix = userCrossBodyForceSingleMatrix; //Hydro Matrix not supported yet
+		cx_mat activeForceMatrix = userActiveForceMatrix; //Hydro Matrix not supported yet
 
+		//Assemble Global Matrix
+		cx_mat reactiveForceMatrixGlobal = reactiveForceMatrix + crossBodyForceMatrix; //A Matrix
+		cx_mat activeForceMatrixGlobal = activeForceMatrix;                            //F Matrix
+
+		//Test print A & F Matrix
+		cout << "-- Body " << i+1 << " --" << endl;
+		reactiveForceMatrixGlobal.print("Reactive Matrix");
+		activeForceMatrixGlobal.print("Active Matrix");
 	
-	//Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
-	cx_mat unknownMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal);
-	unknownMatrix.print();
+		//Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
+		cx_mat unknownMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal, true); //true arg for more precise calculations
+		solutionPerBodyMatrix.push_back(unknownMatrix);
+		unknownMatrix.print("X Matrix");
+		cout <<endl;
+	}
+
+
+	////Only Solve for 1 Body (temporary, will be expanded to solver for all bodies
+	//cx_mat bodyMassMatrix = theBodyWithForceMatrix[0].massMatrix;
+
+	////"Sum Forces for Each Set"
+	//vector<cx_mat> userReactiveForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[0].userReactiveForceMatrix);
+	//vector<cx_mat> userCrossBodyForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[0].userCrossBodyForceMatrix);
+	//cx_mat userActiveForceMatrix = sumActiveForceEachSet(theBodyWithForceMatrix[0].userActiveForceMatrix);
+
+	////"Sum Derivatives"
+	//cx_mat userReactiveForceSingleMatrix = sumDerivatives(userReactiveForceMatrix);
+	//cx_mat userCrossBodyForceSingleMatrix = sumDerivatives(userCrossBodyForceMatrix);
+
+	////"Sum Force Types"
+	//cx_mat reactiveForceMatrix = (userReactiveForceSingleMatrix + bodyMassMatrix);
+	//cx_mat crossBodyForceMatrix = userCrossBodyForceSingleMatrix; //Hydro Matrix not supported yet
+	//cx_mat activeForceMatrix = userActiveForceMatrix; //Hydro Matrix not supported yet
+
+	////Assemble Global Matrix
+	//cx_mat reactiveForceMatrixGlobal = reactiveForceMatrix + crossBodyForceMatrix; //A Matrix
+	//cx_mat activeForceMatrixGlobal = activeForceMatrix;                            //F Matrix
+
+	////Test print A & F Matrix
+	//reactiveForceMatrixGlobal.print("Reactive Matrix");
+	//activeForceMatrixGlobal.print("Active Matrix");
+	//
+	////Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
+	//cx_mat unknownMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal);
+	//unknownMatrix.print("X Matrix");
 }
 
 
@@ -93,47 +137,4 @@ cx_mat MotionSolver::sumDerivatives(vector<cx_mat> theReactiveForceMatrix)
 
 	return singleReactiveForceMatrix;
 }
-
-////Sum all forces in vector and return single matrix
-//cx_mat MotionSolver::sumReactiveForceEachSet(vector<ReactiveForceMatrix> theReactiveForceMatrix)
-//{
-//	cx_mat singleForceMarix(6,6); // 6x6 matrix
-//
-//	for(int i = 0; i < theReactiveForceMatrix.size(); i++) //each reactive force matrix
-//	{
-//		//Perform matrix addition on all matrices in vector
-//		cx_mat temp = sumReactiveForceEachSetHelper(theReactiveForceMatrix[i].derivativeMatrix);
-//		singleForceMarix += temp;
-//	}
-//	return singleForceMarix;
-//}
-
-//sum each order derivative and return single force type, return single matrix
-//cx_mat MotionSolver::sumReactiveForceEachSetHelper(cx_mat theForceMatrices[])
-//{
-//	cx_mat singleForceMarix(6,6); // 6x6 matrix
-//	for(int i = 0; i < 3; i++) //3 represents number of order derivative
-//	{
-//		for(int j = 0; j < (int)theForceMatrices->n_rows; j++) //iterate through each row
-//		{
-//			for(int k = 0; k < (int)theForceMatrices->n_cols; k++) //iterate through each cell in a row
-//			{
-//				singleForceMarix(j,k) += theForceMatrices[i](j,k);
-//			}
-//		}
-//	}
-//	return singleForceMarix;
-//}
-
-//cx_mat MotionSolver::sumDerivatives(cx_mat theForceMatrix)
-//{
-//	cx_mat sumOfDerivativesMatrix(1,1); //create matrix wih 1 single cell for sum of all derivatives
-//
-//	for(int i = 0 ; i < theForceMatrix.n_cols; i++) //size of theForce Matrix should be 1 x n
-//	{
-//		sumOfDerivativesMatrix(0,0) += theForceMatrix(0,i); //add each cell in column to new matrix
-//	}
-//
-//	return sumOfDerivativesMatrix;
-//}
 

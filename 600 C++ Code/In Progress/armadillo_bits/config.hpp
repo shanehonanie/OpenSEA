@@ -8,14 +8,14 @@
 
 
 #if !defined(ARMA_USE_LAPACK)
-// #define ARMA_USE_LAPACK
+ #define ARMA_USE_LAPACK
 //// Uncomment the above line if you have LAPACK or a high-speed replacement for LAPACK,
 //// such as Intel's MKL, AMD's ACML, or the Accelerate framework.
 //// LAPACK is required for matrix decompositions (eg. SVD) and matrix inverse.
 #endif
 
 #if !defined(ARMA_USE_BLAS)
-// #define ARMA_USE_BLAS
+ #define ARMA_USE_BLAS
 //// Uncomment the above line if you have BLAS or a high-speed replacement for BLAS,
 //// such as OpenBLAS, GotoBLAS, Intel's MKL, AMD's ACML, or the Accelerate framework.
 //// BLAS is used for matrix multiplication.
