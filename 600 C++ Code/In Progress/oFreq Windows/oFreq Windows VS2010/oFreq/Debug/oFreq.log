@@ -1,0 +1,84 @@
+﻿Build started 5/9/2013 8:07:44 PM.
+     1>Project "C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\oFreq\oFreq.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\oFreq.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt motionsolver.cpp
+         motionsolver.cpp
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\motionsolver.cpp(14): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\motionsolver.cpp(21): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\motionsolver.cpp(29): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\motionsolver.cpp(99): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\motionsolver.cpp(120): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\motionsolver.cpp(133): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\armadillo_bits\spmat_meat.hpp(3197): warning C4344: behavior change: use of explicit template arguments results in call to 'vec_type arma::linspace<arma::uvec>(const unsigned int,const unsigned int,const arma::uword,const arma::Col<eT> *)'
+                 with
+                 [
+                     vec_type=arma::uvec,
+                     eT=arma::u32
+                 ]
+                 but the regular function 'arma::mat arma::linspace(const double,const double,const arma::uword)' is a better match
+                 if you expect 'arma::mat arma::linspace(const double,const double,const arma::uword)' to be called then you need to make it an explicit specialization
+                 c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\armadillo_bits\spmat_meat.hpp(3181) : while compiling class template member function 'const arma::SpMat<eT> &arma::SpMat<eT>::sprandu(const arma::uword,const arma::uword,const double)'
+                 with
+                 [
+                     eT=double
+                 ]
+                 c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\armadillo_bits\fn_speye.hpp(36) : see reference to class template instantiation 'arma::SpMat<eT>' being compiled
+                 with
+                 [
+                     eT=double
+                 ]
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\armadillo_bits\spmat_meat.hpp(3274): warning C4344: behavior change: use of explicit template arguments results in call to 'vec_type arma::linspace<arma::uvec>(const unsigned int,const unsigned int,const arma::uword,const arma::Col<eT> *)'
+                 with
+                 [
+                     vec_type=arma::uvec,
+                     eT=arma::u32
+                 ]
+                 but the regular function 'arma::mat arma::linspace(const double,const double,const arma::uword)' is a better match
+                 if you expect 'arma::mat arma::linspace(const double,const double,const arma::uword)' to be called then you need to make it an explicit specialization
+                 c:\users\shane\documents\visual studio 2010\projects\ofreq vs2010 project\ofreq\armadillo_bits\spmat_meat.hpp(3258) : while compiling class template member function 'const arma::SpMat<eT> &arma::SpMat<eT>::sprandn(const arma::uword,const arma::uword,const double)'
+                 with
+                 [
+                     eT=double
+                 ]
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\oFreq.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.lib" /MACHINE:X86 Debug\activeforcematrix.obj
+         Debug\bodiesinput.obj
+         Debug\body.obj
+         Debug\bodywithforcematrix.obj
+         Debug\datainput.obj
+         Debug\forceactive.obj
+         Debug\forcecrossbody.obj
+         Debug\forcederivative.obj
+         Debug\forceequation.obj
+         Debug\forcereactive.obj
+         Debug\force.obj
+         Debug\motionmodel.obj
+         Debug\motionsolver.obj
+         Debug\ofreq.obj
+         Debug\controlInput.obj
+         Debug\forcesinput.obj
+         Debug\reactiveforcematrix.obj
+         Debug\readinputfile.obj
+         Debug\seaenvinput.obj
+         Debug\seaenviroment.obj
+         Debug\system.obj
+         Debug\userforces.obj
+         Debug\wavedirections.obj
+         Debug\wavefrequencies.obj
+         Debug\wavespectrummodel.obj
+         Debug\wavespreadmodel.obj
+         LINK : C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.exe not found or not built by the last incremental link; performing full link
+            Creating library C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.lib and object C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.exp
+         oFreq.vcxproj -> C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\Debug\oFreq.exe;#1" /manifest Debug\oFreq.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\oFreq.unsuccessfulbuild".
+         Touching "Debug\oFreq.lastbuildstate".
+     1>Done Building Project "C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq VS2010 Project\oFreq\oFreq.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.17

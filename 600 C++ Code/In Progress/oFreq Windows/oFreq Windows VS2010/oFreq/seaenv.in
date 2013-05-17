@@ -1,0 +1,116 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      dictionary;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Wave models define individual wave trains
+// Sea models define combinations of waves in multiple directions
+// ************************************************************************* //
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+/* Definition of the sea environment, including wave amplitude and variation
+  with wave directions. At least one wave spectrum must be defined */
+
+//Define wave spectrums.  You may define multiple spectrums
+wave_custom {
+  //Any name you want.  Used to refer to the spectrum
+  name "wavespec1";
+  
+  //Frequencies used to define the spectrum [rad/s].  Not required
+  //to be the same frequencies which govern the oFreq run.
+  frequencies (
+  0.010
+  3.050
+  );
+
+  //Spectrum ordinates of wave energy [m^2 s/rad].  Ordinates correlate
+  //to wave frequencies just entered.
+  waveenergy (
+  0.800
+  1.500
+  );
+}
+
+wave_custom {
+  //Any name you want.  Used to refer to the spectrum
+  name "wavespec2";
+  
+  //Frequencies used to define the spectrum [rad/s].  Not required
+  //to be the same frequencies which govern the oFreq run.
+  frequencies (
+  0.060
+  2.500
+  );
+
+  //Spectrum ordinates of wave energy [m^2 s/rad].  Ordinates correlate
+  //to wave frequencies just entered.
+  waveenergy (
+  10.00
+  5.00
+  );
+}
+
+
+/* Definition of sea models.  At least one sea model must be
+   defined */
+
+sea_custom {
+  //Any name you want.  Used to refer to the sea model
+  spreadname "seamodel1";
+
+  spreadpoint {
+  //Spectrum = name of one of the previously defined wave spectrums
+    spectrum "wavespec1";
+    //Angle = angle of wave travel direction [rad] with 0 = True North
+    angle 0.000;
+    //Scale = Scale factor applied to the wave spectrum
+    scale 1.00;
+    
+  spreadpoint {
+	spectrum "wavespec1";
+    angle 1.571;
+    scale 0.50;
+
+  spreadpoint {
+	spectrum "wavespec1";
+    angle 3.142;
+    scale 1.00;
+}
+
+sea_custom {
+  //Any name you want.  Used to refer to the sea model
+  spreadname "seamodel2";
+
+  spreadpoint {
+  //Spectrum = name of one of the previously defined wave spectrums
+    spectrum "wavespec1";
+    //Angle = angle of wave travel direction [rad] with 0 = True North
+    angle 0.000;
+    //Scale = Scale factor applied to the wave spectrum
+    scale 1.00;
+    
+  spreadpoint {
+  spectrum "wavespec2";
+    angle 1.571;
+    scale 0.50;
+
+  spreadpoint {
+	spectrum "wavespec1";
+    angle 3.142;
+    scale 2.00;
+}
+
+
+// ************************************************************************* //
+

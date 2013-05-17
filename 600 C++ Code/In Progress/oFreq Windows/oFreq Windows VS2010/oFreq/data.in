@@ -1,0 +1,31 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      Dictionary;
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//Locations of reference files for hydrodynamic databases
+//Only need to specify location of directory for databases
+//File paths can be absolute or relative to the root directory for this 
+//run of oFreq
+hydrofiles {
+  filelocation (
+  "../ohydro1/"
+  "../ohydro2/"
+  "../ohydro3/"
+  );
+}
+
+
+// ************************************************************************* //
+

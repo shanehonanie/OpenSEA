@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\User Forces">
+      <UniqueIdentifier>{43add4c5-177a-4afc-b2eb-cd8a20a7de11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System">
+      <UniqueIdentifier>{c29e6220-819d-4be1-9e61-1fb8c2aed0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sea Enviroment">
+      <UniqueIdentifier>{972624cc-5aba-4724-b11f-39424223c394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Body">
+      <UniqueIdentifier>{770c4f0b-a588-4a58-9769-20dd6320ebe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{39f16391-72de-4394-be8e-47348f00462c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sea Envrioment">
+      <UniqueIdentifier>{52ebc390-46e2-4a92-910a-c747bca7f9f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{78c3d295-18dc-4f01-baad-92dfc7301ef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\User Forces">
+      <UniqueIdentifier>{5527074d-d206-4caf-8eff-4defeabba29e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{24303a05-fcd2-4ee4-9e3f-53e873f8f50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Body">
+      <UniqueIdentifier>{a64855e3-8900-43f4-a44c-d203f5a58f8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Solver">
+      <UniqueIdentifier>{a6ae47a1-7eae-44b4-a91f-6fe391694e7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Solver">
+      <UniqueIdentifier>{b862f7ed-a64b-432e-9f19-559c5823f050}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ofreq.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bodiesinput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="controlInput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="datainput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="readinputfile.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="seaenvinput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="body.cpp">
+      <Filter>Source Files\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="forceactive.cpp">
+      <Filter>Source Files\User Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="forcecrossbody.cpp">
+      <Filter>Source Files\User Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="forcederivative.cpp">
+      <Filter>Source Files\User Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="forceequation.cpp">
+      <Filter>Source Files\User Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="forcereactive.cpp">
+      <Filter>Source Files\User Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="force.cpp">
+      <Filter>Source Files\User Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="userforces.cpp">
+      <Filter>Source Files\User Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="wavefrequencies.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="wavedirections.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="system.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="seaenviroment.cpp">
+      <Filter>Source Files\Sea Envrioment</Filter>
+    </ClCompile>
+    <ClCompile Include="wavespectrummodel.cpp">
+      <Filter>Source Files\Sea Envrioment</Filter>
+    </ClCompile>
+    <ClCompile Include="wavespreadmodel.cpp">
+      <Filter>Source Files\Sea Envrioment</Filter>
+    </ClCompile>
+    <ClCompile Include="forcesinput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="motionsolver.cpp">
+      <Filter>Source Files\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="activeforcematrix.cpp">
+      <Filter>Source Files\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="bodywithforcematrix.cpp">
+      <Filter>Source Files\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="reactiveforcematrix.cpp">
+      <Filter>Source Files\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="motionmodel.cpp">
+      <Filter>Source Files\Solver</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bodiesinput.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="controlinput.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="datainput.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="forceactive.h">
+      <Filter>Header Files\User Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="forcecrossbody.h">
+      <Filter>Header Files\User Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="forcederivative.h">
+      <Filter>Header Files\User Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="forceequation.h">
+      <Filter>Header Files\User Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="forcereactive.h">
+      <Filter>Header Files\User Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="force.h">
+      <Filter>Header Files\User Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="forcesinput.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="readinputfile.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="system.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="wavefrequencies.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="wavedirections.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="seaenvinput.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="userforces.h">
+      <Filter>Header Files\User Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="wavespreadmodel.h">
+      <Filter>Header Files\Sea Enviroment</Filter>
+    </ClInclude>
+    <ClInclude Include="wavespectrummodel.h">
+      <Filter>Header Files\Sea Enviroment</Filter>
+    </ClInclude>
+    <ClInclude Include="seaenviroment.h">
+      <Filter>Header Files\Sea Enviroment</Filter>
+    </ClInclude>
+    <ClInclude Include="body.h">
+      <Filter>Header Files\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="motionsolver.h">
+      <Filter>Header Files\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="reactiveforcematrix.h">
+      <Filter>Header Files\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="bodywithforcematrix.h">
+      <Filter>Header Files\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="activeforcematrix.h">
+      <Filter>Header Files\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="motionmodel.h">
+      <Filter>Header Files\Solver</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="control.in">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="seaenv.in">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="data.in">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="bodies.in">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="forces.in">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
