@@ -25,3 +25,9 @@ void WaveFrequencies::setFrequencies(vector<double> theListIn)
 		frequencies.push_back(theListIn[i]);
 	}
 }
+
+vector<double> WaveFrequencies::getWaveFrequencies()
+{
+	return frequencies;
+}
+

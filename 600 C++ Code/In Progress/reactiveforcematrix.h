@@ -16,7 +16,8 @@ public:
 	ReactiveForceMatrix();
 	ReactiveForceMatrix(vector<Derivative>);
 	~ReactiveForceMatrix();
-	cx_mat derivativeMatrix[3];
+	vector<cx_mat> derivativeMatrix;
+	int getSize();
 	
 
 };

@@ -24,14 +24,14 @@ public:
 	void setCurForceAsReactive();
 	void setCurForceAsCrossBody();
 	void testPrint();
-	vector<complexDouble> getActiveForce(string);
-	vector<Derivative> getReactiveForce(string);
-	vector<Derivative> getCrossBodyForce(string);
+	vector<complexDouble> getUserActiveForce(string);
+	vector<Derivative> getUserReactiveForce(string);
+	vector<Derivative> getUserCrossBodyForce(string);
 
 private:
-	vector<ForceActive> activeForces;
-	vector<ForceReactive> reactiveForces;
-	vector<ForceCrossBody> crossBodyForces;
+	vector<ForceActive> userActiveForces;
+	vector<ForceReactive> userReactiveForces;
+	vector<ForceCrossBody> userCrossBodyForces;
 	int curForceType;
 	//int curOrderDerivative;
 	//int curEquationNum;

@@ -24,14 +24,22 @@ public:
 	BodyWithForceMatrix(Body, UserForces);
 	~BodyWithForceMatrix();
 	
+	//Force Coefficient Matrices
 	cx_mat massMatrix;
 	vector<ReactiveForceMatrix> userReactiveForceMatrix;
 	vector<ReactiveForceMatrix> userCrossBodyForceMatrix;
 	vector<cx_mat> userActiveForceMatrix;
+	vector<ReactiveForceMatrix> hydroReactiveForceMatrix;
+	vector<ReactiveForceMatrix> hydrpCrossBodyForceMatrix;
+	vector<cx_mat> hydroActiveForceMatrix;
+
+	//Hold the names of the Force Matrices which correspond to the above data structures
 	vector<string> userActiveForce;
 	vector<string> userReactiveForce;
 	vector<string> userCrossBodyForces;
-	//void setData(Body, UserForces);
+	vector<string> hydroActiveForce;
+	vector<string> hydroReactiveForce;
+	vector<string> hydroCrossBodyForces;
 private:
 
 };

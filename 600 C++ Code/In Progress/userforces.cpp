@@ -36,13 +36,13 @@ void UserForces::setOrderDerivative(int newOrder)
 	}
 	else if(curForceType == REACTIVE_FORCE)
 	{
-		int curIndex = reactiveForces.size() - 1;
-		reactiveForces[curIndex].setCurDerivative(newOrder);
+		int curIndex = userReactiveForces.size() - 1;
+		userReactiveForces[curIndex].setCurDerivative(newOrder);
 	}
 	else //curForceType == CROSSBODY_FORCE
 	{
-		int curIndex = crossBodyForces.size() - 1;
-		crossBodyForces[curIndex].setCurDerivative(newOrder);
+		int curIndex = userCrossBodyForces.size() - 1;
+		userCrossBodyForces[curIndex].setCurDerivative(newOrder);
 	}
 }
 
@@ -54,13 +54,13 @@ void UserForces::setEquationNumber(int newEquationNum)
 	}
 	else if(curForceType == REACTIVE_FORCE)
 	{
-		int curIndex = reactiveForces.size() - 1;
-		reactiveForces[curIndex].setCurEquationNum(newEquationNum);
+		int curIndex = userReactiveForces.size() - 1;
+		userReactiveForces[curIndex].setCurEquationNum(newEquationNum);
 	}
 	else //curForceType == CROSSBODY_FORCE
 	{
-		int curIndex = crossBodyForces.size() - 1;
-		crossBodyForces[curIndex].setCurEquationNum(newEquationNum);
+		int curIndex = userCrossBodyForces.size() - 1;
+		userCrossBodyForces[curIndex].setCurEquationNum(newEquationNum);
 	}
 }
 
@@ -69,18 +69,18 @@ void UserForces::setCoeff(vector<string> newList, bool isDirectList)
 
 	if(curForceType == ACTIVE_FORCE)
 	{
-		int curIndex = activeForces.size() - 1;
-		activeForces[curIndex].setCoeff(newList, isDirectList);
+		int curIndex = userActiveForces.size() - 1;
+		userActiveForces[curIndex].setCoeff(newList, isDirectList);
 	}
 	else if(curForceType == REACTIVE_FORCE)
 	{
-		int curIndex = reactiveForces.size() - 1;
-		reactiveForces[curIndex].setCoeff(newList, isDirectList);
+		int curIndex = userReactiveForces.size() - 1;
+		userReactiveForces[curIndex].setCoeff(newList, isDirectList);
 	}
 	else //curForceType == CROSSBODY_FORCE
 	{
-		int curIndex = crossBodyForces.size() - 1;
-		crossBodyForces[curIndex].setCoeff(newList, isDirectList);
+		int curIndex = userCrossBodyForces.size() - 1;
+		userCrossBodyForces[curIndex].setCoeff(newList, isDirectList);
 	}
 }
 
@@ -90,75 +90,75 @@ void UserForces::addNewForce(string newForceName)
 	{
 		ForceActive newForce;
 		newForce.setForceName(newForceName);
-		activeForces.push_back(newForce);
+		userActiveForces.push_back(newForce);
 	}
 	else if (curForceType == REACTIVE_FORCE)
 	{
 		ForceReactive newForce;
 		newForce.setForceName(newForceName);
-		reactiveForces.push_back(newForce);
+		userReactiveForces.push_back(newForce);
 	}
 	else //curForceType == CROSSBODY_FORCE
 	{
 		ForceCrossBody newForce;
 		newForce.setForceName(newForceName);
-		crossBodyForces.push_back(newForce);
+		userCrossBodyForces.push_back(newForce);
 	}
 }
 
 void UserForces::testPrint()
 {
-	for(int i = 0; i < reactiveForces.size(); i++)
+	for(int i = 0; i < userReactiveForces.size(); i++)
 	{
-		reactiveForces[i].testPrint();
+		userReactiveForces[i].testPrint();
 	}
 
-	for(int i = 0; i < crossBodyForces.size(); i++)
+	for(int i = 0; i < userCrossBodyForces.size(); i++)
 	{
-		crossBodyForces[i].testPrint();
+		userCrossBodyForces[i].testPrint();
 	}
 
-	for(int i = 0; i < activeForces.size(); i++)
+	for(int i = 0; i < userActiveForces.size(); i++)
 	{
-		activeForces[i].testPrint();
+		userActiveForces[i].testPrint();
 	}
 
 }
 
-vector<complexDouble> UserForces::getActiveForce(string activeForceName)
+vector<complexDouble> UserForces::getUserActiveForce(string activeForceName)
 {
 	vector<complexDouble> coefficientsFound;
 
-	for(int i = 0; i < activeForces.size(); i++)
+	for(int i = 0; i < userActiveForces.size(); i++)
 	{
-		if(activeForceName == activeForces[i].getForceName())
-			coefficientsFound = activeForces[i].getCoefficients();
+		if(activeForceName == userActiveForces[i].getForceName())
+			coefficientsFound = userActiveForces[i].getCoefficients();
 	}
 
 	return coefficientsFound;
 }
 
-vector<Derivative> UserForces::getReactiveForce(string reactiveForceName)
+vector<Derivative> UserForces::getUserReactiveForce(string reactiveForceName)
 {
 	vector<Derivative> derivativeListFound;
 
-	for(int i = 0; i < reactiveForces.size(); i++)
+	for(int i = 0; i < userReactiveForces.size(); i++)
 	{
-		if(reactiveForceName == reactiveForces[i].getForceName())
-			derivativeListFound = reactiveForces[i].getDerivatives();
+		if(reactiveForceName == userReactiveForces[i].getForceName())
+			derivativeListFound = userReactiveForces[i].getDerivatives();
 	}
 
 	return derivativeListFound;
 }
 
-vector<Derivative> UserForces::getCrossBodyForce(string crossBodyForceName)
+vector<Derivative> UserForces::getUserCrossBodyForce(string crossBodyForceName)
 {
 	vector<Derivative> derivativeListFound;
 
-	for(int i = 0; i < crossBodyForces.size(); i++)
+	for(int i = 0; i < userCrossBodyForces.size(); i++)
 	{
-		if(crossBodyForceName == crossBodyForces[i].getForceName())
-			derivativeListFound = crossBodyForces[i].getDerivatives();
+		if(crossBodyForceName == userCrossBodyForces[i].getForceName())
+			derivativeListFound = userCrossBodyForces[i].getDerivatives();
 	}
 
 	return derivativeListFound;

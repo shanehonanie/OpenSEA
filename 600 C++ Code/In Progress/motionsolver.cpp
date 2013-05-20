@@ -1,8 +1,11 @@
 #include "motionsolver.h"
 
-MotionSolver::MotionSolver(vector<Body> bodyDataIn, UserForces userForcesIn) 
-	: theBodyData(bodyDataIn), theForcesData(userForcesIn)
-{}
+MotionSolver::MotionSolver(vector<Body> bodyDataIn, UserForces userForcesIn, vector<double> newWaveFreq) 
+	: theBodyData(bodyDataIn), theForcesData(userForcesIn), waveFrequencies(newWaveFreq)
+{
+	theMotionModel.setWaveFrequencies(waveFrequencies);
+	maxMatrixSize = theMotionModel.getMatrixSize(theBodyData[0].getMotionModel());
+}
 
 
 MotionSolver::~MotionSolver()
@@ -25,6 +28,8 @@ void MotionSolver::CalculateOutputs()
 
 	vector<cx_mat> solutionPerBodyMatrix; //This is a column matrix
 
+	ofstream myfile;
+	myfile.open("motionsolverResults.txt");
 	//Create Solution Matrix for each Body
 	for(int i = 0; i < theBodyMassMatrices.size(); i++)
 	{
@@ -48,53 +53,30 @@ void MotionSolver::CalculateOutputs()
 		cx_mat reactiveForceMatrixGlobal = reactiveForceMatrix + crossBodyForceMatrix; //A Matrix
 		cx_mat activeForceMatrixGlobal = activeForceMatrix;                            //F Matrix
 
-		//Test print A & F Matrix
-		cout << "-- Body " << i+1 << " --" << endl;
-		reactiveForceMatrixGlobal.print("Reactive Matrix");
-		activeForceMatrixGlobal.print("Active Matrix");
+		////Test print A & F Matrix
+		//cout << "-- Body " << i+1 << " --" << endl;
+		//reactiveForceMatrixGlobal.print("Reactive Matrix");
+		//activeForceMatrixGlobal.print("Active Matrix");
+
+		//Test print A & F Matrix to myfile
+		myfile << "-- Body " << i+1 << " --" << endl;
+		reactiveForceMatrixGlobal.raw_print(myfile, "Reactive Matrix");
+		activeForceMatrixGlobal.raw_print(myfile, "Active Matrix");
 	
 		//Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
 		cx_mat unknownMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal, true); //true arg for more precise calculations
 		solutionPerBodyMatrix.push_back(unknownMatrix);
-		unknownMatrix.print("X Matrix");
-		cout <<endl;
+		//unknownMatrix.print("X Matrix");
+		//cout <<endl;
+		unknownMatrix.raw_print(myfile,"X Matrix");
+		myfile <<endl;
 	}
-
-
-	////Only Solve for 1 Body (temporary, will be expanded to solver for all bodies
-	//cx_mat bodyMassMatrix = theBodyWithForceMatrix[0].massMatrix;
-
-	////"Sum Forces for Each Set"
-	//vector<cx_mat> userReactiveForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[0].userReactiveForceMatrix);
-	//vector<cx_mat> userCrossBodyForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[0].userCrossBodyForceMatrix);
-	//cx_mat userActiveForceMatrix = sumActiveForceEachSet(theBodyWithForceMatrix[0].userActiveForceMatrix);
-
-	////"Sum Derivatives"
-	//cx_mat userReactiveForceSingleMatrix = sumDerivatives(userReactiveForceMatrix);
-	//cx_mat userCrossBodyForceSingleMatrix = sumDerivatives(userCrossBodyForceMatrix);
-
-	////"Sum Force Types"
-	//cx_mat reactiveForceMatrix = (userReactiveForceSingleMatrix + bodyMassMatrix);
-	//cx_mat crossBodyForceMatrix = userCrossBodyForceSingleMatrix; //Hydro Matrix not supported yet
-	//cx_mat activeForceMatrix = userActiveForceMatrix; //Hydro Matrix not supported yet
-
-	////Assemble Global Matrix
-	//cx_mat reactiveForceMatrixGlobal = reactiveForceMatrix + crossBodyForceMatrix; //A Matrix
-	//cx_mat activeForceMatrixGlobal = activeForceMatrix;                            //F Matrix
-
-	////Test print A & F Matrix
-	//reactiveForceMatrixGlobal.print("Reactive Matrix");
-	//activeForceMatrixGlobal.print("Active Matrix");
-	//
-	////Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
-	//cx_mat unknownMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal);
-	//unknownMatrix.print("X Matrix");
+	myfile.close();
 }
-
 
 cx_mat MotionSolver::sumActiveForceEachSet(vector<cx_mat> theActiveForceMatrix)
 {
-	cx_mat singleForceMarix(6,1); //6x1 column matrix
+	cx_mat singleForceMarix(maxMatrixSize,1); //6x1 column matrix
 
 	for(int i = 0; i < theActiveForceMatrix.size(); i++)
 	{
@@ -111,7 +93,7 @@ vector<cx_mat> MotionSolver::sumReactiveForceEachSet(vector<ReactiveForceMatrix>
 
 	for(int i = 0; i < MAX_ORDER_DERIVATIVE; i++) //create a 6x6 matrix for each order derivative (0-2)
 	{
-		cx_mat temp(6,6);
+		cx_mat temp(maxMatrixSize, maxMatrixSize);
 		theSingleMatrix.push_back(temp);
 	}
 
@@ -128,7 +110,7 @@ vector<cx_mat> MotionSolver::sumReactiveForceEachSet(vector<ReactiveForceMatrix>
 
 cx_mat MotionSolver::sumDerivatives(vector<cx_mat> theReactiveForceMatrix)
 {
-	cx_mat singleReactiveForceMatrix(6,6);
+	cx_mat singleReactiveForceMatrix(maxMatrixSize, maxMatrixSize);
 
 	for(int i = 0 ; i < theReactiveForceMatrix.size(); i++) //size should be 3 for derivative order (0-2)
 	{

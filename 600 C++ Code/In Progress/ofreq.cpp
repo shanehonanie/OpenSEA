@@ -64,7 +64,7 @@ int main()
 	bodiesInput.setData(bodies_fileInput);
 	//bodiesInput.testPrint();
 
-	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces());
+	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
 	theMotionSolver.CalculateOutputs();
 
 	return 0;

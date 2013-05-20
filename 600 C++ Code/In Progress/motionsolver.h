@@ -16,7 +16,7 @@ using namespace std;
 class MotionSolver
 {
 public:
-	MotionSolver(vector<Body>, UserForces);
+	MotionSolver(vector<Body>, UserForces, vector<double>);
 	~MotionSolver();
 	vector<Body> theBodyData; //original body data from input files
 	UserForces theForcesData; //original force data from input files
@@ -33,6 +33,8 @@ public:
 	//void createNewBodyForceMatrix();
 
 	MotionModel theMotionModel;
+	vector<double> waveFrequencies;
+	int maxMatrixSize;
 
 
 };

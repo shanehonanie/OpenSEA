@@ -3,6 +3,13 @@
 
 ReactiveForceMatrix::ReactiveForceMatrix()
 {
+	//Add 3 matrices to derivative matrix
+	for(int i = 0; i < 3; i++) //<---Fix, change to const
+	{
+		cx_mat temp(6,6);
+		derivativeMatrix.push_back(temp);
+	}
+
 }
 
 ReactiveForceMatrix::~ReactiveForceMatrix()
@@ -22,9 +29,13 @@ ReactiveForceMatrix::ReactiveForceMatrix(vector<Derivative> forceListIn)
 				tempMatrix(j,k) = tempComplex; //j is equation #, k is coefficient
 			}
 		}
-		derivativeMatrix[i] = tempMatrix; //assign derivative order matrix to proper index
+		//derivativeMatrix[i] = tempMatrix; //assign derivative order matrix to proper index
+		derivativeMatrix.push_back(tempMatrix);
 	}
 }
 
-
+int ReactiveForceMatrix::getSize()
+{
+	return 3; //<-----Fix, change to const
+}
 
