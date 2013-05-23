@@ -18,6 +18,7 @@ public:
 	void setCurDerivative(int);
 	void setCurEquationNum(int);
 	void testPrint();
+	vector<Derivative> getDerivatives();
 protected:
 	Derivative derivative[MAX_ORDER_DERIVATIVE];
 	int currentDerivative;

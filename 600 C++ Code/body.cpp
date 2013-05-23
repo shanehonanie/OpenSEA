@@ -16,7 +16,6 @@ void Body::testPrint()
 	cout << "hydrobody: " << hydroBody << endl;
 	cout << "heading: " << heading << endl;
 	cout << "motionModel: " << motionModel << endl;
-	
 	cout << "mass: " << mass << endl;
 	cout << "ixx: " << momentOfInertiaXX << endl; //Ixx
 	cout << "iyy: " << momentOfInertiaYY << endl; //Iyy
@@ -69,7 +68,22 @@ void Body::setUserReactiveForces(vector<string> newForceList)
 
 void Body::setUserCrossBodyForces(vector<string> newForceList)
 {
-	crossBodyForces = newForceList;
+	userCrossBodyForces = newForceList;
+}
+
+void Body::setHydroActiveForces(vector<string> newForceList)
+{
+	hydroActiveForce = newForceList;
+}
+
+void Body::setHydroReactiveForces(vector<string> newForceList)
+{
+	hydroReactiveForce = newForceList;
+}
+
+void Body::setHydroCrossBodyForces(vector<string> newForceList)
+{
+	hydroCrossBodyForces = newForceList;
 }
 
 void Body::setLinkedBody(string newLinkedBody)
@@ -132,3 +146,7 @@ void Body::setCrossBodyName(string newName)
 	crossBodyName = newName;
 }
 
+string Body::getMotionModel()
+{
+	return motionModel;
+}

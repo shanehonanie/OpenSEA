@@ -3,6 +3,7 @@
 #include "datainput.h"
 #include "bodiesinput.h"
 #include "forcesinput.h"
+#include "motionsolver.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -45,23 +46,26 @@ int main()
 
 	ControlInput controlInput;
 	controlInput.setData(control_fileInput);
-	controlInput.testPrint();
+	//controlInput.testPrint();
 
 	SeaenvInput seaInput;
 	seaInput.setData(seaenv_fileInput);
-	seaInput.testPrint();
+	//seaInput.testPrint();
 
 	DataInput dataInput;
 	dataInput.setData(data_fileInput);
-	dataInput.testPrint();
-
-	Bodiesinput bodiesInput;
-	bodiesInput.setData(bodies_fileInput);
-	bodiesInput.testPrint();
+	//dataInput.testPrint();
 
 	ForcesInput forcesInput;
 	forcesInput.setData(forces_fileInput);
-	forcesInput.testPrint();
+	//forcesInput.testPrint();
+
+	Bodiesinput bodiesInput;
+	bodiesInput.setData(bodies_fileInput);
+	//bodiesInput.testPrint();
+
+	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
+	theMotionSolver.CalculateOutputs();
 
 	return 0;
 }

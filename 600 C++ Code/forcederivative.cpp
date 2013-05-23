@@ -20,3 +20,8 @@ void Derivative::testPrint()
 		equationList[i].testPrint();
 	}
 }
+
+int Derivative::getEquationListSize()
+{
+	return MAX_EQUATIONS;
+}

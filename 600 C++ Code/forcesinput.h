@@ -15,11 +15,13 @@ public:
 	ForcesInput();
 	~ForcesInput();
 	void testPrint();
+	UserForces getUserForces();
 protected:
 	void initializeDefaults();
 	int legalKeyword(string);
 	bool keywordHandler(int, string, string);
 	bool keywordHandler(int, vector<string>, bool);
+	
 private:
 	UserForces userForces;
 	string LEGAL_KEYWORD_00;

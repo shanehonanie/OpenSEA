@@ -14,3 +14,9 @@ void Force::setForceName(string newName)
 {
 	forceName = newName;
 }
+
+string Force::getForceName()
+{
+	return forceName;
+}
+

@@ -14,6 +14,7 @@ public:
 	Force();
 	~Force();
 	void setForceName(string);
+	string getForceName();
 protected:
 	string forceName;
 private:

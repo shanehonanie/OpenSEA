@@ -16,7 +16,9 @@ public:
 	void testPrint();
 	//void setCoeff(vector<string>, bool);
 	double coefficients[MAX_COEFFICIENTS];
+	int getCoefficientListSize();
 private:
+	void initCoeff();
 	//int equationNumber;
 };
 #endif

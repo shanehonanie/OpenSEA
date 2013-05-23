@@ -15,6 +15,7 @@ public:
 	~Derivative();
 	void testPrint();
 	Equation equationList[MAX_EQUATIONS];
+	int getEquationListSize();
 private:
 
 };

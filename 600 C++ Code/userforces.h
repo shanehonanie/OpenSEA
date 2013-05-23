@@ -9,6 +9,8 @@
 #include <vector>
 using namespace std;
 
+typedef complex<double> complexDouble;
+
 class UserForces
 {
 public:
@@ -22,11 +24,14 @@ public:
 	void setCurForceAsReactive();
 	void setCurForceAsCrossBody();
 	void testPrint();
+	vector<complexDouble> getUserActiveForce(string);
+	vector<Derivative> getUserReactiveForce(string);
+	vector<Derivative> getUserCrossBodyForce(string);
 
 private:
-	vector<ForceActive> activeForces;
-	vector<ForceReactive> reactiveForces;
-	vector<ForceCrossBody> crossBodyForces;
+	vector<ForceActive> userActiveForces;
+	vector<ForceReactive> userReactiveForces;
+	vector<ForceCrossBody> userCrossBodyForces;
 	int curForceType;
 	//int curOrderDerivative;
 	//int curEquationNum;

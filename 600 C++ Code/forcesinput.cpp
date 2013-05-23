@@ -111,3 +111,8 @@ void ForcesInput::testPrint()
 	userForces.testPrint();
 }
 
+UserForces ForcesInput::getUserForces()
+{
+	return userForces;
+}
+

@@ -39,3 +39,8 @@ void System::setSpreadModel(string spreadIn)
 {
 	waveDirections.setSpreadModel(spreadIn);
 }
+
+vector<double> System::getWaveFrequencies()
+{
+	return waveFrequencies.getWaveFrequencies();
+}

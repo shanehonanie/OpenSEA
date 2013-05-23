@@ -51,3 +51,17 @@ void ForceReactive::testPrint()
 	}
 	cout<< endl;
 }
+
+vector<Derivative> ForceReactive::getDerivatives()
+{
+	vector<Derivative> theDerivatives;
+
+	for(int i = 0; i < MAX_ORDER_DERIVATIVE; i++)
+	{
+		Derivative temp = derivative[i];
+		theDerivatives.push_back(temp);
+	}
+
+	return theDerivatives;
+}
+

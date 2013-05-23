@@ -14,6 +14,7 @@ public:
 	void addFrequency(double);
 	void testPrint();
 	void setFrequencies(vector<double>);
+	vector<double> getWaveFrequencies();
 private:
 	vector<double> frequencies;
 };

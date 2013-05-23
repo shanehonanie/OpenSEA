@@ -85,4 +85,7 @@ void ControlInput::testPrint()
 	cout << "--------------------------------" << endl;
 }
 
-
+vector<double> ControlInput::getWaveFrequencies()
+{
+	return system.getWaveFrequencies();
+}

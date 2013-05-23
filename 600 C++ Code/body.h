@@ -20,6 +20,9 @@ public:
 	void setUserActiveForces(vector<string>);
 	void setUserReactiveForces(vector<string>);
 	void setUserCrossBodyForces(vector<string>);
+	void setHydroActiveForces(vector<string>);
+	void setHydroReactiveForces(vector<string>);
+	void setHydroCrossBodyForces(vector<string>);
 	void setLinkedBody(string);
 	void setMass(double);
 	void setMomentXX(double);
@@ -32,15 +35,21 @@ public:
 	void setCentroidY(double);
 	void setCentroidZ(double);
 	void setCrossBodyName(string);
+	vector<string> userActiveForce;
+	vector<string> userReactiveForce;
+	vector<string> userCrossBodyForces;
+	vector<string> hydroActiveForce;
+	vector<string> hydroReactiveForce;
+	vector<string> hydroCrossBodyForces;
+	string getMotionModel();
+	Body getBody();
 
-private:
+	//should be private
 	string bodyName;
 	string hydroBody;
 	double heading;
 	string motionModel;
-	vector<string> userActiveForce;
-	vector<string> userReactiveForce;
-	vector<string> crossBodyForces;
+	
 	string linkedBody;
 	string crossBodyName;
 	double mass;
@@ -53,5 +62,8 @@ private:
 	double centroidX;
 	double centroidY;
 	double centroidZ;
+
+private:
+	
 };
 #endif

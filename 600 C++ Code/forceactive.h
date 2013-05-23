@@ -20,6 +20,7 @@ public:
 	complexDouble convertPolarFormToComplexNumber(string);
 	void setCoeff(vector<string>, bool); 
 	void testPrint();
+	vector<complexDouble> getCoefficients();
 protected:
 	complexDouble coefficients[MAX_COEFFICIENTS];
 };

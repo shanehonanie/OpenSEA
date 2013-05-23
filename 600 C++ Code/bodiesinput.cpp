@@ -3,6 +3,7 @@
 
 Bodiesinput::Bodiesinput() : ReadInput()
 {
+	//theUserForces = userForcesIn; //<--delete this after make changes for motion solver
 	LEGAL_KEYWORD_00 = "body";
 	LEGAL_KEYWORD_01 = "name";
 	LEGAL_KEYWORD_02 = "hydrobody";
@@ -195,3 +196,14 @@ void Bodiesinput::testPrint()
 	cout << "--------------------------------" << endl;
 }
 
+vector<Body> Bodiesinput::getBodyData()
+{
+	return body;
+}
+
+//void Bodiesinput::createNewBodyForceMatrix()
+//{
+//	BodyWithForceMatrix temp;
+//	bfm.push_back(temp);
+//	bfm[0].setData(body[0], theUserForces);
+//}

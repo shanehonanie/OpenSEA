@@ -77,3 +77,14 @@ complexDouble ForceActive::convertPolarFormToComplexNumber(string expression)
 	return newComplexDouble;
 }
 
+vector<complexDouble> ForceActive::getCoefficients()
+{
+	vector<complexDouble> coefficientsVector;
+	for(int i = 0; i < MAX_COEFFICIENTS; i++)
+		coefficientsVector.push_back(coefficients[i]);
+
+	return coefficientsVector;
+}
+
+
+

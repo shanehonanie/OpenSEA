@@ -2,10 +2,12 @@
 #define BODIESINPUT_H
 #include "readinputfile.h"
 #include "body.h"
+#include "bodywithforcematrix.h"
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "userforces.h"
 using namespace std;
 
 class Bodiesinput : public ReadInput
@@ -14,6 +16,8 @@ public:
 	Bodiesinput();
 	~Bodiesinput();
 	void testPrint();
+	vector<Body> getBodyData();
+	//void createNewBodyForceMatrix();
 	
 protected:
 	void initializeDefaults();
@@ -21,8 +25,11 @@ protected:
 	bool keywordHandler(int, string, string);
 	bool keywordHandler(int, vector<string>, bool);
 	void addNewBody(string);
+	
 private:
 	vector<Body> body;
+	//vector<BodyWithForceMatrix> bfm;
+	//UserForces theUserForces;
 	int currentBody;
 	string LEGAL_KEYWORD_00;
 	string LEGAL_KEYWORD_01;
