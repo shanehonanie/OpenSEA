@@ -1,0 +1,48 @@
+﻿Build started 5/24/2013 2:00:20 PM.
+     1>Project "C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\oFreq\oFreq.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\oFreq.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\oFreq.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.lib" /MACHINE:X86 Debug\activeforcematrix.obj
+         Debug\bodiesinput.obj
+         Debug\body.obj
+         Debug\bodywithforcematrix.obj
+         Debug\datainput.obj
+         Debug\equationofmotion.obj
+         Debug\equationofmotion_01.obj
+         Debug\forceactive.obj
+         Debug\forcecrossbody.obj
+         Debug\forcederivative.obj
+         Debug\forceequation.obj
+         Debug\forcereactive.obj
+         Debug\force.obj
+         Debug\motionmodel.obj
+         Debug\motionsolver.obj
+         Debug\ofreq.obj
+         Debug\controlInput.obj
+         Debug\forcesinput.obj
+         Debug\reactiveforcematrix.obj
+         Debug\readinputfile.obj
+         Debug\seaenvinput.obj
+         Debug\seaenviroment.obj
+         Debug\system.obj
+         Debug\userforces.obj
+         Debug\wavedirections.obj
+         Debug\wavefrequencies.obj
+         Debug\wavespectrummodel.obj
+         Debug\wavespreadmodel.obj
+         LINK : C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.exe not found or not built by the last incremental link; performing full link
+            Creating library C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.lib and object C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.exp
+         oFreq.vcxproj -> C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.exe;#1" /manifest Debug\oFreq.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\oFreq.unsuccessfulbuild".
+         Touching "Debug\oFreq.lastbuildstate".
+     1>Done Building Project "C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\oFreq\oFreq.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.54
