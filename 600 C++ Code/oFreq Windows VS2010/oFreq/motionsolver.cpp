@@ -13,29 +13,6 @@ MotionSolver::~MotionSolver()
 
 void MotionSolver::CalculateOutputs()
 {
-	//Testing submat, resize functions
-	//cx_mat A(5,5);
-	//A.zeros();
-	//A.raw_print("A before");
-
-	//cout << endl;
-
-	//cx_mat B(3,3);
-	//complexDouble tempVal(1.0,1.0);
-	//B.fill(tempVal);
-	//B.raw_print("B");
-	//
-	//A.submat(0,0,2,2) = B;
-
-	//cout << endl;
-
-	//A.raw_print("A after submat");
-
-	//A.resize(10,10);
-	//A.raw_print("A after resize");
-	//End Test
-
-
 	//Convert Input Coefficients to Force Coefficients for each body, add new object to theBodyWithForceMatrix vector
 	for(int i = 0; i < theBodyData.size(); i++)
 	{
@@ -96,7 +73,6 @@ void MotionSolver::CalculateOutputs()
 
 		setMatrixIndexPositions(theBodyMassMatrices.size(), maxMatrixSize); //sets the index for variables used to place the submatrixes in global matrix
 
-
 		//Calculate the Reactive Matrix & Acives Matrix depedong on number of bodies
 		switch(theBodyMassMatrices.size())
 		{
@@ -145,21 +121,34 @@ void MotionSolver::CalculateOutputs()
 		}	
 	}
 
-		//Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
-		solutionColumnMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal, true); //true arg for more precise calculations
+	//Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
+	solutionColumnMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal, true); //true arg for more precise calculations
 
-		////Test print A & F Matrix
-		//cout << "-- Body " << i+1 << " --" << endl;
-		//reactiveForceMatrixGlobal.raw_print("Reactive Matrix");
-		//activeForceMatrixGlobal.raw_print("Active Matrix");
+	//Assign solutions to each bodys solutionMatrix
+	for(int i = 0; i < theBodyData.size(); i++)
+	{
+		cx_mat perBodySolution = solutionColumnMatrix.submat((i*maxMatrixSize),0, ((i+1)*maxMatrixSize-1),0);
+		theBodyData[i].solutionMatrix = perBodySolution;
+	}
 
-		//Test print A & F & X Matrix to myfile
-		ofstream myfile;
-		myfile.open("motionsolverResults.txt");
-		reactiveForceMatrixGlobal.raw_print(myfile, "Reactive Matrix"); myfile <<endl;
-		activeForceMatrixGlobal.raw_print(myfile, "Active Matrix"); myfile <<endl;
-		solutionColumnMatrix.raw_print(myfile, "Solution Matrix"); myfile <<endl;
-		myfile.close();
+	////Test print A & F Matrix
+	//cout << "-- Body " << i+1 << " --" << endl;
+	//reactiveForceMatrixGlobal.raw_print("Reactive Matrix");
+	//activeForceMatrixGlobal.raw_print("Active Matrix");
+
+	//Test print A & F & X Matrix to myfile
+	ofstream myfile;
+	myfile.open("motionsolverResults.txt");
+	reactiveForceMatrixGlobal.raw_print(myfile, "Reactive Matrix"); myfile <<endl;
+	activeForceMatrixGlobal.raw_print(myfile, "Active Matrix"); myfile <<endl;
+	solutionColumnMatrix.raw_print(myfile, "Solution Matrix"); myfile <<endl;
+
+	//cx_mat solutionColumnMatrix2(6,1);
+	//myfile << "Column Size " << solutionColumnMatrix2.n_cols << endl;
+	//myfile << "Row Size " << solutionColumnMatrix2.n_rows << endl;
+	//solutionColumnMatrix2.raw_print(myfile, "Solution Matrix2"); myfile <<endl;
+
+	myfile.close();
 }
 
 cx_mat MotionSolver::sumActiveForceEachSet(vector<cx_mat> theActiveForceMatrix)
@@ -200,20 +189,18 @@ cx_mat MotionSolver::sumDerivatives(vector<cx_mat> theReactiveForceMatrix)
 
 	for(int i = 0 ; i < theReactiveForceMatrix.size(); i++) //size should be 3 for derivative order (0-2)
 	{
-		singleReactiveForceMatrix += theReactiveForceMatrix[i];
-
 		//This code below returns a 0x0 solution matrix, uncomment below and comment single line above
-		//complexDouble curWaveFrequency(waveFrequencies[0], 0.0); //<---FIX, only uses 1 wave frequency for now
-		//complexDouble complexImaginary(0.0,1.0);
-		//complexDouble scalarMultiplier = pow(curWaveFrequency, i) * pow(complexImaginary, i);
+		complexDouble curWaveFrequency(waveFrequencies[0], 0.0); //<---FIX, only uses 1 wave frequency for now
+		complexDouble complexImaginary(0.0,1.0);
+		complexDouble scalarMultiplier = pow(curWaveFrequency, i) * pow(complexImaginary, i);
 
-		//for(int col = 0; col < theReactiveForceMatrix[i].n_cols; col++)
-		//{
-		//	for(int row = 0; row < theReactiveForceMatrix[i].n_rows; row++)
-		//	{
-		//		singleReactiveForceMatrix.at(col,row) += scalarMultiplier * theReactiveForceMatrix[i].at(col,row);
-		//	}
-		//}
+		for(int col = 0; col < theReactiveForceMatrix[i].n_cols; col++)
+		{
+			for(int row = 0; row < theReactiveForceMatrix[i].n_rows; row++)
+			{
+				singleReactiveForceMatrix.at(col,row) += scalarMultiplier * theReactiveForceMatrix[i].at(col,row);
+			}
+		}
 	}
 	return singleReactiveForceMatrix;
 }

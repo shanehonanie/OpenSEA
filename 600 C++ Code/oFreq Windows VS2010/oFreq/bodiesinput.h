@@ -16,7 +16,7 @@ public:
 	Bodiesinput();
 	~Bodiesinput();
 	void testPrint();
-	vector<Body> getBodyData();
+	vector<Body>& getBodyData();
 	//void createNewBodyForceMatrix();
 	
 protected:
@@ -27,7 +27,7 @@ protected:
 	void addNewBody(string);
 	
 private:
-	vector<Body> body;
+	vector<Body> theBodyList;
 	//vector<BodyWithForceMatrix> bfm;
 	//UserForces theUserForces;
 	int currentBody;

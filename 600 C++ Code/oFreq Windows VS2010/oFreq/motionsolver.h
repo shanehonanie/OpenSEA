@@ -24,14 +24,9 @@ public:
 	void setMatrixIndexPositions(int,int);
 
 	vector<cx_mat> sumReactiveForceEachSet(vector<ReactiveForceMatrix>); 
-	//cx_mat sumReactiveForceEachSetHelper(cx_mat[]); 
-
 	cx_mat sumActiveForceEachSet(vector<cx_mat>);
-	//cx_mat sumActiveForceEachSetHelper();
-
 	cx_mat sumDerivatives(vector<cx_mat>); //sum derivatives order 0-2 into 1 value
 	void CalculateOutputs();
-	//void createNewBodyForceMatrix();
 
 	MotionModel theMotionModel;
 	vector<double> waveFrequencies;

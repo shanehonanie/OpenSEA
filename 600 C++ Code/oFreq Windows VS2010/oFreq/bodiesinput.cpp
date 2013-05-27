@@ -104,53 +104,53 @@ bool Bodiesinput::keywordHandler(int keyControl, string identifier, string val)
 			addNewBody(val);
 			return true;
 		case HYDRO_BODY:
-			body[currentBody].setHydroBodyName(val);
+			theBodyList[currentBody].setHydroBodyName(val);
 			return true;
 		case MASSPROP:
 			return true;
 		case MASS:
-			body[currentBody].setMass(doubleVal);
+			theBodyList[currentBody].setMass(doubleVal);
 			return false;
 		case IXX:
-			body[currentBody].setMomentXX(doubleVal);
+			theBodyList[currentBody].setMomentXX(doubleVal);
 			return false;
 		case IYY:
-			body[currentBody].setMomentYY(doubleVal);
+			theBodyList[currentBody].setMomentYY(doubleVal);
 			return true;
 		case IZZ:
-			body[currentBody].setMomentZZ(doubleVal);
+			theBodyList[currentBody].setMomentZZ(doubleVal);
 			return true;
 		case IXY:
-			body[currentBody].setCrossMomentXY(doubleVal);
+			theBodyList[currentBody].setCrossMomentXY(doubleVal);
 			return false;
 		case IXZ:
-			body[currentBody].setCrossMomentXZ(doubleVal);
+			theBodyList[currentBody].setCrossMomentXZ(doubleVal);
 			return false;
 		case IYZ:
-			body[currentBody].setCrossMomentYZ(doubleVal);
+			theBodyList[currentBody].setCrossMomentYZ(doubleVal);
 			return false;
 		case CENTROID:
 			return false;
 		case COG_X:
-			body[currentBody].setCentroidX(doubleVal);
+			theBodyList[currentBody].setCentroidX(doubleVal);
 			return false;
 		case COG_Y:
-			body[currentBody].setCentroidY(doubleVal);
+			theBodyList[currentBody].setCentroidY(doubleVal);
 			return false;
 		case COG_Z:
-			body[currentBody].setCentroidZ(doubleVal);
+			theBodyList[currentBody].setCentroidZ(doubleVal);
 			return false;
 		case HEADING:
-			body[currentBody].setHeading(doubleVal);
+			theBodyList[currentBody].setHeading(doubleVal);
 			return false;
 		case MOTION:
-			body[currentBody].setMotionModel(val);
+			theBodyList[currentBody].setMotionModel(val);
 			return false;
 		case CROSSBODY_NAME:
-			body[currentBody].setCrossBodyName(val);
+			theBodyList[currentBody].setCrossBodyName(val);
 			return false;
 		case LINKED_BODY:
-			body[currentBody].addLinkedBody(val);
+			theBodyList[currentBody].addLinkedBody(val);
 			return false;
 		default:
 			return false;
@@ -162,13 +162,13 @@ bool Bodiesinput::keywordHandler(int keyControl, vector<string> theListIn, bool 
 	switch(keyControl)
 	{
 		case FORCE_ACIVE:
-			body[currentBody].setUserActiveForces(theListIn);
+			theBodyList[currentBody].setUserActiveForces(theListIn);
 			return true;
 		case FORCE_REACTIVE:
-			body[currentBody].setUserReactiveForces(theListIn);
+			theBodyList[currentBody].setUserReactiveForces(theListIn);
 			return true;
 		case FORCE_CROSSBODY:
-			body[currentBody].setUserCrossBodyForces(theListIn);
+			theBodyList[currentBody].setUserCrossBodyForces(theListIn);
 			return true;
 		default:
 			return false;
@@ -179,26 +179,26 @@ void Bodiesinput::addNewBody(string newName)
 {
 	Body newBody;
 	newBody.setBodyName(newName);
-	body.push_back(newBody);
-	currentBody = body.size() - 1;
+	theBodyList.push_back(newBody);
+	currentBody = theBodyList.size() - 1;
 }
 
 void Bodiesinput::testPrint()
 {
 	cout << "System Test Print -- Body" << endl;
 	cout << "--------------------------------" << endl;
-	for(int i = 0; i < body.size(); i ++)
+	for(int i = 0; i < theBodyList.size(); i ++)
 	{
 		cout << "--Body Object " << (i + 1) << "--" << endl;
-		body[i].testPrint();
+		theBodyList[i].testPrint();
 		cout << endl;
 	}
 	cout << "--------------------------------" << endl;
 }
 
-vector<Body> Bodiesinput::getBodyData()
+vector<Body>& Bodiesinput::getBodyData()
 {
-	return body;
+	return theBodyList;
 }
 
 //void Bodiesinput::createNewBodyForceMatrix()

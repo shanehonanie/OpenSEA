@@ -166,3 +166,8 @@ void Body::setCrossBodyName(string newName)
 {
 	userCrossBodyForces.push_back(newName);
 }
+
+cx_mat Body::getSolutionMatrix() const
+{
+	return solutionMatrix;
+}

@@ -4,6 +4,7 @@
 #include "bodiesinput.h"
 #include "forcesinput.h"
 #include "motionsolver.h"
+#include "outputslist.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -66,6 +67,12 @@ int main()
 
 	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
 	theMotionSolver.CalculateOutputs();
+
+	//for(int i = 0; i < bodiesInput.getBodyData().size(); i++)
+	//{
+	//	bodiesInput.getBodyData()[i].solutionMatrix.raw_print("solution");
+	//}
+	//OutputsList theOutputsList(bodiesInput.getBodyData(),controlInput.getWaveFrequencies());
 
 	return 0;
 }

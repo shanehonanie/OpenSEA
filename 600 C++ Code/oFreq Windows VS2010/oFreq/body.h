@@ -4,7 +4,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "armadillo"
+
 using namespace std;
+using namespace arma;
 
 class Body
 {
@@ -61,6 +64,9 @@ public:
 	double centroidX;
 	double centroidY;
 	double centroidZ;
+
+	cx_mat getSolutionMatrix() const;
+	cx_mat solutionMatrix;
 
 private:
 	

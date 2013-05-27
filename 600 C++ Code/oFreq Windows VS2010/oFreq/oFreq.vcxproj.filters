@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Solver">
       <UniqueIdentifier>{b862f7ed-a64b-432e-9f19-559c5823f050}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Dervied Outputs">
+      <UniqueIdentifier>{052d69a3-3bc5-4ec7-a791-52d542d51f12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Derived Outputs">
+      <UniqueIdentifier>{4a9ff898-8b15-4bb3-bd15-12ac2ef65829}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ofreq.cpp">
@@ -135,6 +141,27 @@
     <ClCompile Include="equationofmotion.cpp">
       <Filter>Source Files\Solver</Filter>
     </ClCompile>
+    <ClCompile Include="outputslist.cpp">
+      <Filter>Source Files\Derived Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="outputsbody.cpp">
+      <Filter>Source Files\Derived Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="globalsolution.cpp">
+      <Filter>Source Files\Derived Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="globalacceleration.cpp">
+      <Filter>Source Files\Derived Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="globalmotion.cpp">
+      <Filter>Source Files\Derived Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="globalvelocity.cpp">
+      <Filter>Source Files\Derived Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="outputderived.cpp">
+      <Filter>Source Files\Derived Outputs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bodiesinput.h">
@@ -217,6 +244,27 @@
     </ClInclude>
     <ClInclude Include="equationofmotion.h">
       <Filter>Header Files\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="outputslist.h">
+      <Filter>Header Files\Dervied Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="outputsbody.h">
+      <Filter>Header Files\Dervied Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="globalsolution.h">
+      <Filter>Header Files\Dervied Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="globalacceleration.h">
+      <Filter>Header Files\Dervied Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="globalmotion.h">
+      <Filter>Header Files\Dervied Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="globalvelocity.h">
+      <Filter>Header Files\Dervied Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="outputderived.h">
+      <Filter>Header Files\Dervied Outputs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
