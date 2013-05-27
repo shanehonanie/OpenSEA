@@ -23,12 +23,15 @@ public:
 
 	Body theBody;
 	vector<double> frequencies;
-	vector<cx_mat> outputType; //Each index is a cx_mat which reps, 0- Mot, 1 - acc, 2 - vel
-	cx_mat outputList; //FIX< need to implement, this holds a single cx_mat from the outputType
+	
+	vector<cx_mat> getOutputType(int); //index specified which class type want to retrieve
+	vector<cx_mat> getOutputList(); //returns the outputList
 
 	//void calculateOutputs(int);
 	void calculateOutputs();
 	OutputsBody getOutputsBody();//FIX, probably dont need this
 	//outputs here
+private:
+	vector<cx_mat> outputList; //Each index is a cx_mat, each column matrix is a different global type, 0- Mot, 1 - acc, 2 - vel
 };
 #endif

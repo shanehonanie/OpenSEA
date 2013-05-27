@@ -1,8 +1,9 @@
 #include "motionsolver.h"
 
-MotionSolver::MotionSolver(vector<Body> bodyDataIn, UserForces userForcesIn, vector<double> newWaveFreq) 
+MotionSolver::MotionSolver(vector<Body>& bodyDataIn, UserForces userForcesIn, vector<double> newWaveFreq) 
 	: theBodyData(bodyDataIn), theForcesData(userForcesIn), waveFrequencies(newWaveFreq)
 {
+	
 	theMotionModel.setWaveFrequencies(waveFrequencies);
 	maxMatrixSize = theMotionModel.getMatrixSize(theBodyData[0].getMotionModel());
 }
@@ -11,7 +12,7 @@ MotionSolver::MotionSolver(vector<Body> bodyDataIn, UserForces userForcesIn, vec
 MotionSolver::~MotionSolver()
 {}
 
-void MotionSolver::CalculateOutputs()
+vector<Body> MotionSolver::CalculateOutputs()
 {
 	//Convert Input Coefficients to Force Coefficients for each body, add new object to theBodyWithForceMatrix vector
 	for(int i = 0; i < theBodyData.size(); i++)
@@ -149,6 +150,7 @@ void MotionSolver::CalculateOutputs()
 	//solutionColumnMatrix2.raw_print(myfile, "Solution Matrix2"); myfile <<endl;
 
 	myfile.close();
+	return theBodyData;
 }
 
 cx_mat MotionSolver::sumActiveForceEachSet(vector<cx_mat> theActiveForceMatrix)

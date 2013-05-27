@@ -66,13 +66,14 @@ int main()
 	//bodiesInput.testPrint();
 
 	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
-	theMotionSolver.CalculateOutputs();
+	vector<Body> bodyListWithSolution = theMotionSolver.CalculateOutputs();
 
 	//for(int i = 0; i < bodiesInput.getBodyData().size(); i++)
 	//{
 	//	bodiesInput.getBodyData()[i].solutionMatrix.raw_print("solution");
 	//}
-	//OutputsList theOutputsList(bodiesInput.getBodyData(),controlInput.getWaveFrequencies());
+	OutputsList theOutputsList(bodyListWithSolution,controlInput.getWaveFrequencies());
+	theOutputsList.calculateOutputs();
 
 	return 0;
 }

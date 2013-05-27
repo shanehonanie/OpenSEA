@@ -22,11 +22,24 @@ void OutputsBody::calculateOutputs()
 		temp.submat(0,0, (theBody.solutionMatrix.n_rows-1), 0) = theGlobalMotion.calculateOutput(theBody.solutionMatrix, frequencies[i]); //calculate motion
 		temp.submat(0,1, (theBody.solutionMatrix.n_rows-1), 1) = theGlobalVelocity.calculateOutput(theBody.solutionMatrix, frequencies[i]);  //calculate acceleration
 		temp.submat(0,2, (theBody.solutionMatrix.n_rows-1), 2) = theGlobalAcceleration.calculateOutput(theBody.solutionMatrix, frequencies[i]); //calculate velocity
-		outputType.push_back(temp); //put the 6x3 matrix into outputype vector
+		outputList.push_back(temp); //put the 6x3 matrix into outputList vector
 	}
 }
 
-OutputsBody OutputsBody::getOutputsBody()
+vector<cx_mat> OutputsBody::getOutputType(int classType)
 {
-	return *this;
+	vector<cx_mat> newOutputsBody;
+
+	for(int i = 0; i < outputList.size(); i++)
+	{
+		cx_mat singleClassInstance = outputList[i].submat(0, classType, (outputList[i].n_rows-1), classType);
+		newOutputsBody.push_back(singleClassInstance);
+	}
+
+	return newOutputsBody;
+}
+
+vector<cx_mat> OutputsBody::getOutputList()
+{
+	return outputList;
 }

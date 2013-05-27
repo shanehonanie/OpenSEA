@@ -16,7 +16,7 @@ using namespace std;
 class MotionSolver
 {
 public:
-	MotionSolver(vector<Body>, UserForces, vector<double>);
+	MotionSolver(vector<Body>&, UserForces, vector<double>);
 	~MotionSolver();
 	vector<Body> theBodyData; //original body data from input files
 	UserForces theForcesData; //original force data from input files
@@ -26,7 +26,7 @@ public:
 	vector<cx_mat> sumReactiveForceEachSet(vector<ReactiveForceMatrix>); 
 	cx_mat sumActiveForceEachSet(vector<cx_mat>);
 	cx_mat sumDerivatives(vector<cx_mat>); //sum derivatives order 0-2 into 1 value
-	void CalculateOutputs();
+	vector<Body> CalculateOutputs();
 
 	MotionModel theMotionModel;
 	vector<double> waveFrequencies;
