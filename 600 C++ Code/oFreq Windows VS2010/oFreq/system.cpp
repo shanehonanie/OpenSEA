@@ -44,3 +44,8 @@ vector<double> System::getWaveFrequencies()
 {
 	return waveFrequencies.getWaveFrequencies();
 }
+
+vector<double> System::getWaveDirections()
+{
+	return waveDirections.getWaveDirections();
+}

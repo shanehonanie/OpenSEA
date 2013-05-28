@@ -1,8 +1,10 @@
 #include "globalacceleration.h"
 
 
-GlobalAcceleration::GlobalAcceleration() : GlobalSolution()
+GlobalAcceleration::GlobalAcceleration() 
+	: GlobalSolution()
 {
+	name = ACCELERATION_NAME;
 	orderDerivative = GLOBAL_ACCELERATION_DERIVATIVE;
 }
 

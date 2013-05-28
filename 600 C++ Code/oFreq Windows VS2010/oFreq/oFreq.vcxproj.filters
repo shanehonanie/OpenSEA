@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Derived Outputs">
       <UniqueIdentifier>{4a9ff898-8b15-4bb3-bd15-12ac2ef65829}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Output">
+      <UniqueIdentifier>{8ca2f8a5-b069-4147-979c-64fc3e825819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Output">
+      <UniqueIdentifier>{fe7c11b2-769d-4396-983a-555190e3e2e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ofreq.cpp">
@@ -162,6 +168,18 @@
     <ClCompile Include="outputderived.cpp">
       <Filter>Source Files\Derived Outputs</Filter>
     </ClCompile>
+    <ClCompile Include="filelist.cpp">
+      <Filter>Source Files\Output</Filter>
+    </ClCompile>
+    <ClCompile Include="filewavefrequencies.cpp">
+      <Filter>Source Files\Output</Filter>
+    </ClCompile>
+    <ClCompile Include="filewavedirections.cpp">
+      <Filter>Source Files\Output</Filter>
+    </ClCompile>
+    <ClCompile Include="filewriter.cpp">
+      <Filter>Source Files\Output</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bodiesinput.h">
@@ -265,6 +283,18 @@
     </ClInclude>
     <ClInclude Include="outputderived.h">
       <Filter>Header Files\Dervied Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="filelist.h">
+      <Filter>Header Files\Output</Filter>
+    </ClInclude>
+    <ClInclude Include="filewavefrequencies.h">
+      <Filter>Header Files\Output</Filter>
+    </ClInclude>
+    <ClInclude Include="filewavedirections.h">
+      <Filter>Header Files\Output</Filter>
+    </ClInclude>
+    <ClInclude Include="filewriter.h">
+      <Filter>Header Files\Output</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

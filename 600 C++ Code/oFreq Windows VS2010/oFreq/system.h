@@ -19,6 +19,7 @@ public:
 	void setWaveDirections(vector<double>);
 	void setSpreadModel(string);
 	vector<double> getWaveFrequencies();
+	vector<double> getWaveDirections();
 private:
 	string analysisType;
 	WaveDirections waveDirections;

@@ -15,6 +15,7 @@ public:
 	void setDirections(vector<double>);
 	void setSpreadModel(string);
 	void testPrint();
+	vector<double> getWaveDirections();
 private:
 	vector<double> directions;
 	string spreadModel;

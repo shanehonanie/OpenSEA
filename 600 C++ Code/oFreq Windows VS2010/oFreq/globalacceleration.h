@@ -3,6 +3,8 @@
 #include "globalsolution.h"
 using namespace std;
 
+const string ACCELERATION_NAME = "accglobal";
+
 class GlobalAcceleration : public GlobalSolution
 {
 public:

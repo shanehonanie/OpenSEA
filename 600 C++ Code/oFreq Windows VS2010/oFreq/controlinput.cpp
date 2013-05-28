@@ -89,3 +89,8 @@ vector<double> ControlInput::getWaveFrequencies()
 {
 	return system.getWaveFrequencies();
 }
+
+vector<double> ControlInput::getWaveDirections()
+{
+	return system.getWaveDirections();
+}

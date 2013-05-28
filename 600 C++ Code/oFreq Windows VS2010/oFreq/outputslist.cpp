@@ -1,6 +1,7 @@
 #include "outputslist.h"
 
-OutputsList::OutputsList(vector<Body> bodyIn, vector<double> frequenciesIn) : theBodyList(bodyIn), theFrequencyList(frequenciesIn)
+OutputsList::OutputsList(vector<Body> bodyIn, vector<double> frequenciesIn, vector<double> directionsIn) 
+	: theBodyList(bodyIn), theFrequencyList(frequenciesIn), theDirectionList(directionsIn)
 {}
 
 

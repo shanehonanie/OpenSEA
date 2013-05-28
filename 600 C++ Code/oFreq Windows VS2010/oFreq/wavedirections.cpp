@@ -31,3 +31,8 @@ void WaveDirections::setSpreadModel(string spreadModelIn)
 {
 	spreadModel = spreadModelIn;
 }
+
+vector<double> WaveDirections::getWaveDirections()
+{
+	return directions;
+}

@@ -3,6 +3,8 @@
 #include "globalsolution.h"
 using namespace std;
 
+const string VELOCITY_NAME = "velglobal";
+
 class GlobalVelocity : public GlobalSolution
 {
 public:

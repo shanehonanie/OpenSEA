@@ -1,0 +1,6 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite            		|
+| S eakeeping   | Version:  0.20                                                |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/

@@ -16,6 +16,7 @@ public:
 	~ControlInput();
 	void testPrint();
 	vector<double> getWaveFrequencies();
+	vector<double> getWaveDirections();
 	
 protected:
 	void initializeDefaults();

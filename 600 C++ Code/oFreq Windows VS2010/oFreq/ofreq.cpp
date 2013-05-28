@@ -1,3 +1,9 @@
+//#ifdef _WIN32
+//#define OS_TYPE "WINDOWS"
+//#else
+//#define OS_TYPE "LINUX"
+//#endif
+
 #include "controlinput.h"
 #include "seaenvinput.h"
 #include "datainput.h"
@@ -5,18 +11,23 @@
 #include "forcesinput.h"
 #include "motionsolver.h"
 #include "outputslist.h"
+#include "filewriter.h"
 #include <string>
 #include <iostream>
 #include <fstream>
 using namespace std;
 
+const string CONST_DIR = "constant";
+const string SYS_DIR = "system";
+string seperator = "/";
+
 int main()
 {
-	ifstream forces_fileInput("forces.in");
-	ifstream bodies_fileInput("bodies.in");
-	ifstream data_fileInput("data.in");
-	ifstream seaenv_fileInput("seaenv.in");
-	ifstream control_fileInput("control.in");
+	ifstream forces_fileInput(CONST_DIR + seperator + "forces.in");
+	ifstream bodies_fileInput(CONST_DIR + seperator + "bodies.in");
+	ifstream data_fileInput(CONST_DIR + seperator + "data.in");
+	ifstream seaenv_fileInput(CONST_DIR + seperator + "seaenv.in");
+	ifstream control_fileInput(SYS_DIR + seperator + "control.in");
 
 	if (!data_fileInput)
 	{
@@ -68,12 +79,10 @@ int main()
 	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
 	vector<Body> bodyListWithSolution = theMotionSolver.CalculateOutputs();
 
-	//for(int i = 0; i < bodiesInput.getBodyData().size(); i++)
-	//{
-	//	bodiesInput.getBodyData()[i].solutionMatrix.raw_print("solution");
-	//}
-	OutputsList theOutputsList(bodyListWithSolution,controlInput.getWaveFrequencies());
+	OutputsList theOutputsList(bodyListWithSolution,controlInput.getWaveFrequencies(), controlInput.getWaveDirections());
 	theOutputsList.calculateOutputs();
+
+	FileWriter theFileWriter(theOutputsList);
 
 	return 0;
 }
