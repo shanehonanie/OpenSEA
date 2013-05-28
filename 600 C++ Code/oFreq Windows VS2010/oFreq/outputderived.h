@@ -10,8 +10,6 @@ public:
 	~OutputDerived();
 	Body theBody;
 	int curWaveDirection;
-	//vector<OutputDerived> outputList;
-	//vector<OutputDerived> outputType;
 	string name;
 	virtual cx_mat calculateOutput(cx_mat,double) = 0;
 };

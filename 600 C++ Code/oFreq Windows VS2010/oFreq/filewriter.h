@@ -14,6 +14,9 @@ const string FREQUENCIES_FILENAME = "frequencies.out";
 const string GLOBAL_ACCELERATION_FILENAME = "accglobal.out";
 const string GLOBAL_MOTION_FILENAME = "motglobal.out";
 const string GLOBAL_VELOCITY_FILENAME = "velglobal.out";
+const string GLOBAL_ACCELERATION_OBJECT = "accglobal";
+const string GLOBAL_MOTION_OBJECT = "motglobal";
+const string GLOBAL_VELOCITY_OBJECT = "velglobal";
 const string LIST_BEGIN2 = "(";
 const string LIST_END2 = ");";
 const string OBJECT_BEGIN2 = "{";
@@ -48,7 +51,7 @@ public:
 	vector<double> thefrequenciesList;
 	vector<double> theWaveDirectionsList;
 
-	int writeToFile();
+	int writeToFile(int);
 	int writeDirectionsToFile(vector<double>);
 	int writeFrequenciesToFile(vector<double>);
 	void setHeader();

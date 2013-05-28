@@ -83,6 +83,7 @@ int main()
 	theOutputsList.calculateOutputs();
 
 	FileWriter theFileWriter(theOutputsList);
+	theFileWriter.writeToFile(0); //FIX< <----This will be a loop wih all wave directions, not just 0
 
 	return 0;
 }

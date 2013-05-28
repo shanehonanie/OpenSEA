@@ -7,7 +7,6 @@ FileWriter::FileWriter(OutputsList outputListIn)
 	setHeader();	
 	writeDirectionsToFile(thefrequenciesList);
 	writeFrequenciesToFile(thefrequenciesList);
-	writeToFile();
 }
 
 void FileWriter::setHeader()
@@ -27,67 +26,111 @@ void FileWriter::setHeader()
 
 void FileWriter::setFileInfo(string objectIn)
 {
-	fileInfo = SEAFILE2 + "\n" + OBJECT_BEGIN2 + "\n    " + VERSION + "   " + VERSION_INFO + END + "\n    " + FORMAT + "    " + FORMAT_INFO + END + "\n    " + OBJECT + "    " + objectIn + END + "\n" + OBJECT_END2 + "\n";
+	fileInfo = SEAFILE2 + "\n" + OBJECT_BEGIN2 + "\n    " + VERSION + "   " + VERSION_INFO + END + "\n    " + FORMAT + "    " 
+		+ FORMAT_INFO + END + "\n    " + OBJECT + "    " + objectIn + END + "\n" + OBJECT_END2 + "\n";
 }
 
 FileWriter::~FileWriter()
 {
 }
 
-int FileWriter::writeToFile()
+int FileWriter::writeToFile(int curWaveDirection)
 {
-	int curWaveDirection;
-	int curFrequency;
+	ofstream myFileMotion;
+	ofstream myFileVelocity;
+	ofstream myFileAcceleration;
+	
+	//Convert int to string
+	stringstream ss;
+	ss << curWaveDirection;
+	string dirNum = ss.str();
 
-	vector<double> temp;
-	temp.push_back(1.00);
+	string directory = "d" + dirNum;
 
-	for(int i = 0; i < temp.size(); i++)//iterate through all of the wave directions
-	//for(int i = 0; i < theWaveDirectionsList.size(); i++)//iterate through all of the wave directions
+	myFileMotion.open(directory + GLOBAL_MOTION_FILENAME); //Create the Motion file
+	myFileVelocity.open(directory + GLOBAL_VELOCITY_FILENAME); //Create the Velocity file
+	myFileAcceleration.open(directory + GLOBAL_ACCELERATION_FILENAME); //Create the Acceleration file
+
+	setFileInfo(GLOBAL_ACCELERATION_OBJECT);
+	myFileMotion << header << fileInfo << BREAK_TOP;
+	setFileInfo(GLOBAL_VELOCITY_OBJECT);
+	myFileVelocity << header << fileInfo << BREAK_TOP;
+	setFileInfo(GLOBAL_ACCELERATION_OBJECT);
+	myFileAcceleration << header << fileInfo << BREAK_TOP;
+
+	for(int j = 0; j < theOutputsList.theBodyList.size(); j++) //iterate through all of the bodies
 	{
-		curWaveDirection = i;
-		ofstream myFile;
-		string directory = "d" + curWaveDirection + '/';
-		myFile.open(directory + GLOBAL_ACCELERATION_FILENAME); //Create the file
+		vector<cx_mat> globalMotSolutionList = theOutputsList.theOutputsBodyList[j].getOutputType(0);
+		vector<cx_mat> globalVelSolutionList = theOutputsList.theOutputsBodyList[j].getOutputType(1);
+		vector<cx_mat> globalAccSolutionList = theOutputsList.theOutputsBodyList[j].getOutputType(2);
 
-		for(int j = 0; theOutputsList.theBodyList.size(); j++) //iterate through all of the bodies
+		myFileMotion << BODY << " " << OBJECT_BEGIN2 
+				<< "\n  " << NAME << " " << theOutputsList.theBodyList[j].bodyName << END << "\n";
+
+		myFileVelocity << BODY << " " << OBJECT_BEGIN2 
+				<< "\n  " << NAME << " " << theOutputsList.theBodyList[j].bodyName << END << "\n";
+
+		myFileAcceleration << BODY << " " << OBJECT_BEGIN2 
+				<< "\n  " << NAME << " " << theOutputsList.theBodyList[j].bodyName << END << "\n";
+			
+		for(int k = 0; k < thefrequenciesList.size(); k++) //iterate through all of the frequencies
 		{
-			for(int k = 0; k < thefrequenciesList.size(); k++) //iterate through all of the frequencies
-			{
-				curFrequency = k+1;
-				vector<cx_mat> globalAccSolutionList = theOutputsList.theOutputsBodyList[j].getOutputType(2);
-
-				//Write Global Acceleration Files
-				setFileInfo("accglobal");
-
+			//Write Global Motion Files *******************************************************************************************
+			setFileInfo(GLOBAL_MOTION_OBJECT);
+			myFileMotion << "  " << FREQUENCY << " " << (k+1) << "\n  "<< VALUE << " " << LIST_BEGIN2 << "\n";
 				
-				myFile << header << fileInfo << BREAK_TOP << BODY << " " << OBJECT_BEGIN2 
-					<< "\n  " << NAME << " " << theOutputsList.theBodyList[i].bodyName << END << "\n  "
-					<< FREQUENCY << " " << curFrequency << "\n  "
-					<< VALUE << " " << LIST_BEGIN2 << "\n  ";
+			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
+			{
+				myFileMotion.precision(15);
+				myFileMotion <<  "  " << globalMotSolutionList[k].at(a,0).real(); 
 
-				for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
-				{
-					myFile << globalAccSolutionList[j].at(a,1) << "\n";
-				}
-
-				myFile << LIST_END2 << "\n" << OBJECT_END2 << "\n";
-
-
-
-				//Write GLobal Motion Files
-
-
-
-				//Write Global Velocity Files
-
-
-
+				if(globalMotSolutionList[j].at(a,0).imag() < 0.0)
+					myFileMotion <<   globalMotSolutionList[j].at(a,0).imag()<< "i\n";
+				else
+					myFileMotion <<  "+" << globalMotSolutionList[j].at(a,0).imag()<< "i\n";
 			}
+			myFileMotion << LIST_END2 << "\n" << OBJECT_END2 << "\n";
+
+			//Write Global Velocity Files *****************************************************************************************
+			setFileInfo(GLOBAL_VELOCITY_OBJECT);
+			myFileVelocity << "  " << FREQUENCY << " " << (k+1) << "\n  "<< VALUE << " " << LIST_BEGIN2 << "\n";
+				
+			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
+			{
+				myFileVelocity.precision(15);
+				myFileVelocity <<  "  " << globalVelSolutionList[k].at(a,0).real(); 
+
+				if(globalVelSolutionList[j].at(a,0).imag() < 0.0)
+					myFileVelocity <<   globalVelSolutionList[j].at(a,0).imag()<< "i\n";
+				else
+					myFileVelocity <<  "+" << globalVelSolutionList[j].at(a,0).imag()<< "i\n";
+			}
+			myFileVelocity << LIST_END2 << "\n" << OBJECT_END2 << "\n";
+
+			//Write Global Acceleration Files *************************************************************************************
+			setFileInfo(GLOBAL_ACCELERATION_OBJECT);
+			myFileAcceleration << "  " << FREQUENCY << " " << (k+1) << "\n  "<< VALUE << " " << LIST_BEGIN2 << "\n";
+				
+			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
+			{
+				myFileAcceleration.precision(15);
+				myFileAcceleration <<  "  " << globalAccSolutionList[k].at(a,0).real(); 
+
+				if(globalAccSolutionList[j].at(a,0).imag() < 0.0)
+					myFileAcceleration <<   globalAccSolutionList[j].at(a,0).imag()<< "i\n";
+				else
+					myFileAcceleration <<  "+" << globalAccSolutionList[j].at(a,0).imag()<< "i\n";
+			}
+			myFileAcceleration << LIST_END2 << "\n" << OBJECT_END2 << "\n";
 		}
-		myFile << BREAK_BOTTOM;
-		myFile.close();
 	}
+	myFileMotion << BREAK_BOTTOM;
+	myFileVelocity << BREAK_BOTTOM;
+	myFileAcceleration << BREAK_BOTTOM;
+
+	myFileMotion.close();
+	myFileVelocity.close();
+	myFileAcceleration.close();
 
 	return 0;
 }
@@ -96,18 +139,18 @@ int FileWriter::writeDirectionsToFile(vector<double> directionList)
 {
 	setFileInfo(DIRECTION);
 
-	ofstream myFile;
-	myFile.open(DIRECTIONS_FILENAME);
+	ofstream myFileAcceleration;
+	myFileAcceleration.open(DIRECTIONS_FILENAME);
 
-	myFile << header << fileInfo << BREAK_TOP << DIRECTION << " " << LIST_BEGIN2 << "\n";
+	myFileAcceleration << header << fileInfo << BREAK_TOP << DIRECTION << " " << LIST_BEGIN2 << "\n";
 
 	for(int i = 0; i < directionList.size(); i ++)
 	{
-		myFile  << directionList[i] << "\n";
+		myFileAcceleration  << directionList[i] << "\n";
 	}
 
-	myFile << LIST_END2  << "\n\n" << BREAK_BOTTOM;
-	myFile.close();
+	myFileAcceleration << LIST_END2  << "\n\n" << BREAK_BOTTOM;
+	myFileAcceleration.close();
 
 	return 0;
 }
@@ -116,18 +159,18 @@ int FileWriter::writeFrequenciesToFile(vector<double> frequencyList)
 {
 	setFileInfo(FREQUENCY);
 
-	ofstream myFile;
-	myFile.open(FREQUENCIES_FILENAME);
+	ofstream myFileAcceleration;
+	myFileAcceleration.open(FREQUENCIES_FILENAME);
 
-	myFile << header << fileInfo << BREAK_TOP << FREQUENCY << " " << LIST_BEGIN2 << "\n";
+	myFileAcceleration << header << fileInfo << BREAK_TOP << FREQUENCY << " " << LIST_BEGIN2 << "\n";
 
 	for(int i = 0; i < frequencyList.size(); i ++)
 	{
-		myFile << frequencyList[i] << "\n";
+		myFileAcceleration << frequencyList[i] << "\n";
 	}
 
-	myFile << LIST_END2  << "\n\n" << BREAK_BOTTOM;
-	myFile.close();
+	myFileAcceleration << LIST_END2  << "\n\n" << BREAK_BOTTOM;
+	myFileAcceleration.close();
 
 	return 0;
 }
