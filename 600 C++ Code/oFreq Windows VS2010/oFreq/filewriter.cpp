@@ -77,52 +77,56 @@ int FileWriter::writeToFile(int curWaveDirection)
 		{
 			//Write Global Motion Files *******************************************************************************************
 			setFileInfo(GLOBAL_MOTION_OBJECT);
-			myFileMotion << "  " << FREQUENCY << " " << (k+1) << "\n  "<< VALUE << " " << LIST_BEGIN2 << "\n";
+			myFileMotion << "  " << DATA << " " << OBJECT_BEGIN2 << "\n" << "    " << FREQUENCY << " " << (k+1) << "\n    "<< VALUE << " " << LIST_BEGIN2 << "\n";
 				
 			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
 			{
 				myFileMotion.precision(15);
-				myFileMotion <<  "  " << globalMotSolutionList[k].at(a,0).real(); 
+				myFileMotion <<  "    " << globalMotSolutionList[k].at(a,0).real(); 
 
 				if(globalMotSolutionList[j].at(a,0).imag() < 0.0)
 					myFileMotion <<   globalMotSolutionList[j].at(a,0).imag()<< "i\n";
 				else
 					myFileMotion <<  "+" << globalMotSolutionList[j].at(a,0).imag()<< "i\n";
 			}
-			myFileMotion << LIST_END2 << "\n" << OBJECT_END2 << "\n";
+			myFileMotion << "    " << LIST_END2 << "\n  " << OBJECT_END2 << "\n";
 
 			//Write Global Velocity Files *****************************************************************************************
 			setFileInfo(GLOBAL_VELOCITY_OBJECT);
-			myFileVelocity << "  " << FREQUENCY << " " << (k+1) << "\n  "<< VALUE << " " << LIST_BEGIN2 << "\n";
+			myFileVelocity << "  " << DATA << " " << OBJECT_BEGIN2 << "\n" << "    " << FREQUENCY << " " << (k+1) << "\n    "<< VALUE << " " << LIST_BEGIN2 << "\n";
 				
 			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
 			{
 				myFileVelocity.precision(15);
-				myFileVelocity <<  "  " << globalVelSolutionList[k].at(a,0).real(); 
+				myFileVelocity <<  "    " << globalVelSolutionList[k].at(a,0).real(); 
 
 				if(globalVelSolutionList[j].at(a,0).imag() < 0.0)
 					myFileVelocity <<   globalVelSolutionList[j].at(a,0).imag()<< "i\n";
 				else
 					myFileVelocity <<  "+" << globalVelSolutionList[j].at(a,0).imag()<< "i\n";
 			}
-			myFileVelocity << LIST_END2 << "\n" << OBJECT_END2 << "\n";
+			myFileVelocity << "    " << LIST_END2 << "\n  " << OBJECT_END2 << "\n";
 
 			//Write Global Acceleration Files *************************************************************************************
 			setFileInfo(GLOBAL_ACCELERATION_OBJECT);
-			myFileAcceleration << "  " << FREQUENCY << " " << (k+1) << "\n  "<< VALUE << " " << LIST_BEGIN2 << "\n";
+			myFileAcceleration << "  " << DATA << " " << OBJECT_BEGIN2 << "\n" << "    " << FREQUENCY << " " << (k+1) << "\n    "<< VALUE << " " << LIST_BEGIN2 << "\n";
 				
 			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
 			{
 				myFileAcceleration.precision(15);
-				myFileAcceleration <<  "  " << globalAccSolutionList[k].at(a,0).real(); 
+				myFileAcceleration <<  "    " << globalAccSolutionList[k].at(a,0).real(); 
 
 				if(globalAccSolutionList[j].at(a,0).imag() < 0.0)
 					myFileAcceleration <<   globalAccSolutionList[j].at(a,0).imag()<< "i\n";
 				else
 					myFileAcceleration <<  "+" << globalAccSolutionList[j].at(a,0).imag()<< "i\n";
 			}
-			myFileAcceleration << LIST_END2 << "\n" << OBJECT_END2 << "\n";
+			myFileAcceleration << "    " << LIST_END2 << "\n  " << OBJECT_END2 << "\n";
 		}
+
+		myFileMotion << OBJECT_END2 << "\n";
+		myFileVelocity << OBJECT_END2 << "\n";
+		myFileAcceleration << OBJECT_END2 << "\n";
 	}
 	myFileMotion << BREAK_BOTTOM;
 	myFileVelocity << BREAK_BOTTOM;
