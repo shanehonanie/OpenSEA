@@ -1,14 +1,14 @@
-﻿Build started 5/27/2013 9:57:54 PM.
+﻿Build started 5/30/2013 4:32:09 PM.
      1>Project "C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\oFreq\oFreq.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\oFreq.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt filewriter.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt filelist.cpp filewriter.cpp ofreq.cpp
          filewriter.cpp
-     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(61): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(76): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(147): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(167): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(69): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(84): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(159): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\filewriter.cpp(179): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\shane\documents\visual studio 2010\projects\ofreq windows vs2010\ofreq\armadillo_bits\spmat_meat.hpp(3197): warning C4344: behavior change: use of explicit template arguments results in call to 'vec_type arma::linspace<arma::uvec>(const unsigned int,const unsigned int,const arma::uword,const arma::Col<eT> *)'
                  with
                  [
@@ -40,6 +40,10 @@
                  [
                      eT=double
                  ]
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         ofreq.cpp
+         filelist.cpp
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\oFreq.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Shane\Documents\Visual Studio 2010\Projects\oFreq Windows VS2010\Debug\oFreq.lib" /MACHINE:X86 Debug\activeforcematrix.obj
          Debug\bodiesinput.obj
@@ -92,4 +96,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.61
+Time Elapsed 00:00:05.53

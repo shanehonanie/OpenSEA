@@ -5,8 +5,11 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>  
+#include <boost/filesystem.hpp>
+#include <boost/lexical_cast.hpp>
 
 using namespace std;
+using namespace boost::filesystem; //for using boost file system
 
 const string HEADER_FILENAME = "OpenSeaHeader.txt";
 const string DIRECTIONS_FILENAME = "directions.out";
@@ -34,6 +37,7 @@ const string VERSION_INFO = "1.0";
 const string FORMAT_INFO = "ascii";
 const string SEAFILE2 = "seafile";
 const string BODY = "body";
+const string DIR_NAME = "d";
 
 const string BREAK_TOP = "// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //\n";
 const string BREAK_BOTTOM = "// ************************************************************************* //";
@@ -56,6 +60,7 @@ public:
 	int writeFrequenciesToFile(vector<double>);
 	void setHeader();
 	void setFileInfo(string);
+	bool removeOldDirectories();
 };
 #endif
 

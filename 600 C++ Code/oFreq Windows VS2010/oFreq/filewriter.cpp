@@ -7,6 +7,11 @@ FileWriter::FileWriter(OutputsList outputListIn)
 	setHeader();	
 	writeDirectionsToFile(thefrequenciesList);
 	writeFrequenciesToFile(thefrequenciesList);
+
+	if(!removeOldDirectories())
+	{
+		cerr << "Failed to Remove All directories" << endl;
+	}
 }
 
 void FileWriter::setHeader()
@@ -40,16 +45,19 @@ int FileWriter::writeToFile(int curWaveDirection)
 	ofstream myFileVelocity;
 	ofstream myFileAcceleration;
 	
-	//Convert int to string
-	stringstream ss;
-	ss << curWaveDirection;
-	string dirNum = ss.str();
+	string dirNum = boost::lexical_cast<string>(curWaveDirection); //cast int to string for comparison
+	string currentDirectory = DIR_NAME + dirNum;
 
-	string directory = "d" + dirNum;
+	//Create the current directory
+	if (!create_directory(currentDirectory))
+	{
+		cerr << "Failed to create " + currentDirectory << endl; //This needs to be handled
+		return 0;
+	}
 
-	myFileMotion.open(directory + GLOBAL_MOTION_FILENAME); //Create the Motion file
-	myFileVelocity.open(directory + GLOBAL_VELOCITY_FILENAME); //Create the Velocity file
-	myFileAcceleration.open(directory + GLOBAL_ACCELERATION_FILENAME); //Create the Acceleration file
+	myFileMotion.open(currentDirectory + "/" + GLOBAL_MOTION_FILENAME); //Create the Motion file
+	myFileVelocity.open(currentDirectory + "/" + GLOBAL_VELOCITY_FILENAME); //Create the Velocity file
+	myFileAcceleration.open(currentDirectory + "/" +  GLOBAL_ACCELERATION_FILENAME); //Create the Acceleration file
 
 	setFileInfo(GLOBAL_ACCELERATION_OBJECT);
 	myFileMotion << header << fileInfo << BREAK_TOP;
@@ -177,4 +185,27 @@ int FileWriter::writeFrequenciesToFile(vector<double> frequencyList)
 	myFileAcceleration.close();
 
 	return 0;
+}
+
+bool FileWriter::removeOldDirectories()
+{
+	string numToDelete = "0";
+	string curDirectoryPath = DIR_NAME + numToDelete; //start at directory "d0"
+	
+	while(exists(curDirectoryPath)) //check if current directory exists
+	{
+		if(!remove_all(curDirectoryPath))
+		{
+			cerr << "Failed to delete " + curDirectoryPath << endl;
+			return false;
+		}
+		else //increment to next directory
+		{
+			int numToDeleteHelper = boost::lexical_cast<int>(numToDelete);
+			++numToDeleteHelper;
+			numToDelete = boost::lexical_cast<string>(numToDeleteHelper);
+			curDirectoryPath = DIR_NAME + numToDelete;
+		}
+	}
+	return true; //all directories deleted successfully
 }
