@@ -3,12 +3,12 @@
 #include <complex>
 #include "armadillo"
 #include "body.h"
+#include "bodywithsolution.h"
 #include "userforces.h"
 #include "motionmodel.h"
 #include "bodywithforcematrix.h"
 #pragma comment( lib, "lapack_win32_MT" ) //include lappack
 #pragma comment( lib, "blas_win32_MT" ) //include blas
-
 
 using namespace arma;
 using namespace std;
@@ -16,7 +16,7 @@ using namespace std;
 class MotionSolver
 {
 public:
-	MotionSolver(vector<Body>&, UserForces, vector<double>);
+	MotionSolver(vector<Body>, UserForces, double);
 	~MotionSolver();
 	vector<Body> theBodyData; //original body data from input files
 	UserForces theForcesData; //original force data from input files
@@ -26,10 +26,10 @@ public:
 	vector<cx_mat> sumReactiveForceEachSet(vector<ReactiveForceMatrix>); 
 	cx_mat sumActiveForceEachSet(vector<cx_mat>);
 	cx_mat sumDerivatives(vector<cx_mat>); //sum derivatives order 0-2 into 1 value
-	vector<Body> CalculateOutputs();
+	vector<cx_mat> CalculateOutputs();
 
 	MotionModel theMotionModel;
-	vector<double> waveFrequencies;
+	double curWaveFrequency;
 	int maxMatrixSize;
 
 	//Global Matrices
@@ -47,6 +47,5 @@ private:
 	int body3ReactivePos[2];
 	int body3CrossPos1[2];
 	int body3CrossPos2[2];
-
 };
 #endif

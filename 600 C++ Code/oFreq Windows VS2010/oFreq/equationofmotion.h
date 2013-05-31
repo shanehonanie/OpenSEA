@@ -15,11 +15,13 @@ class EquationOfMotion
 public:
 	EquationOfMotion();
 	~EquationOfMotion();
+	void setWaveFreq(double);
 	virtual void setBodyData(Body, UserForces) = 0;
 	BodyWithForceMatrix getBodyForceData();
 	double kroneckerDelta(int, int);
 	complexDouble timeDifferentiation(complexDouble, int); 
 	BodyWithForceMatrix newBodyMatrix; 
+private:
 	double curWaveFreq;
 };
 #endif

@@ -12,6 +12,8 @@
 #include "motionsolver.h"
 #include "outputslist.h"
 #include "filewriter.h"
+#include "outputsbody.h"
+#include "bodywithsolution.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -76,14 +78,53 @@ int main()
 	bodiesInput.setData(bodies_fileInput);
 	//bodiesInput.testPrint();
 
-	MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
-	vector<Body> bodyListWithSolution = theMotionSolver.CalculateOutputs();
+	//MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
+	//vector<Body> bodyListWithSolution = theMotionSolver.CalculateOutputs();
 
-	OutputsList theOutputsList(bodyListWithSolution,controlInput.getWaveFrequencies(), controlInput.getWaveDirections());
-	theOutputsList.calculateOutputs();
+	//OutputsList theOutputsList(bodyListWithSolution,controlInput.getWaveFrequencies());
+	//theOutputsList.calculateOutputs();
 
-	FileWriter theFileWriter(theOutputsList);
-	theFileWriter.writeToFile(0); //FIX< <----This will be a loop wih all wave directions, not just 0
+	//FileWriter theFileWriter(theOutputsList);
+	//theFileWriter.writeToFile(0); //FIX< <----This will be a loop wih all wave directions, not just 0
+
+	vector<double> waveDirectionList = controlInput.getWaveDirections();
+	vector<double> waveFrequencyList = controlInput.getWaveFrequencies();
+	
+
+	FileWriter theFileWriter(waveDirectionList, waveFrequencyList);
+	//vector<OutputsList> theWaveOutputList; //FIX, change name
+
+	vector<Body> theBodiesList = bodiesInput.getBodyData();
+	vector<BodyWithSolution> bodyListWithSolution;
+
+	//Create BodyWithSolution Object for each Body Object
+	for(int i = 0; i < theBodiesList.size(); i++)
+	{
+		BodyWithSolution newBodySolution(theBodiesList[i].bodyName);
+		bodyListWithSolution.push_back(newBodySolution);
+	}
+
+	for(int i = 0; i < waveDirectionList.size(); i++)
+	{
+		for(int j = 0; j < waveFrequencyList.size(); j++)
+		{
+			MotionSolver theMotionSolver(theBodiesList,forcesInput.getUserForces(), waveFrequencyList[j]);
+			vector<cx_mat> theSolutionsPerFrequency = theMotionSolver.CalculateOutputs();
+
+			//asign each solution per frequency to a body
+			for(int k = 0; k < theSolutionsPerFrequency.size(); k++)
+			{
+				bodyListWithSolution[k].solutionMatrix.push_back(theSolutionsPerFrequency[k]);
+			}
+		}
+
+		OutputsList theOutputsList(bodyListWithSolution,waveDirectionList, waveFrequencyList);
+		theOutputsList.calculateOutputs();
+
+		theFileWriter.setOutputs(theOutputsList);
+		theFileWriter.writeToFile(i); 
+	}
+
 
 	return 0;
 }

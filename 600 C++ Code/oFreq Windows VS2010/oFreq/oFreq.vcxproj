@@ -64,6 +64,7 @@
     <ClCompile Include="bodiesinput.cpp" />
     <ClCompile Include="body.cpp" />
     <ClCompile Include="bodywithforcematrix.cpp" />
+    <ClCompile Include="bodywithsolution.cpp" />
     <ClCompile Include="datainput.cpp" />
     <ClCompile Include="equationofmotion.cpp" />
     <ClCompile Include="equationofmotion_01.cpp" />
@@ -105,6 +106,7 @@
     <ClInclude Include="bodiesinput.h" />
     <ClInclude Include="body.h" />
     <ClInclude Include="bodywithforcematrix.h" />
+    <ClInclude Include="bodywithsolution.h" />
     <ClInclude Include="controlinput.h" />
     <ClInclude Include="datainput.h" />
     <ClInclude Include="equationofmotion.h" />
@@ -139,13 +141,6 @@
     <ClInclude Include="wavefrequencies.h" />
     <ClInclude Include="wavespectrummodel.h" />
     <ClInclude Include="wavespreadmodel.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bodies.in" />
-    <None Include="control.in" />
-    <None Include="data.in" />
-    <None Include="forces.in" />
-    <None Include="seaenv.in" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

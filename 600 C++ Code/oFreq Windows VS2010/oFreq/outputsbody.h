@@ -2,7 +2,7 @@
 #define OUTPUTSBODY_H
 #include <vector>
 #include "armadillo"
-#include "body.h"
+#include "bodywithsolution.h"
 #include "globalacceleration.h"
 #include "globalmotion.h"
 #include "globalvelocity.h"
@@ -18,12 +18,12 @@ const int GLOBAL_SIZE = 3; //# of global types to include in vector
 class OutputsBody
 {
 public:
-	OutputsBody(Body, vector<double>);
+	OutputsBody(BodyWithSolution, vector<double>);
 	~OutputsBody();
 
-	Body theBody;
+	BodyWithSolution theBody;
 	vector<double> frequencies;
-	
+
 	vector<cx_mat> getOutputType(int); //index specified which class type want to retrieve
 	vector<cx_mat> getOutputList(); //returns the outputList
 

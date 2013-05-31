@@ -1,17 +1,21 @@
 #include "filewriter.h"
 
-
-FileWriter::FileWriter(OutputsList outputListIn) 
-	: theOutputsList(outputListIn), theWaveDirectionsList(outputListIn.theDirectionList), thefrequenciesList(outputListIn.theFrequencyList)
+FileWriter::FileWriter(vector<double> theDirectionsListIn, vector<double> theFrequenciesListIn) 
+	: theDirectionsList(theDirectionsListIn), thefrequenciesList(theFrequenciesListIn)
 {
 	setHeader();	
-	writeDirectionsToFile(thefrequenciesList);
+	writeDirectionsToFile(theDirectionsList);
 	writeFrequenciesToFile(thefrequenciesList);
 
 	if(!removeOldDirectories())
 	{
 		cerr << "Failed to Remove All directories" << endl;
 	}
+}
+
+void FileWriter::setOutputs(OutputsList theOutputsListIn)
+{
+	theOutputsList = theOutputsListIn;
 }
 
 void FileWriter::setHeader()
@@ -191,6 +195,13 @@ bool FileWriter::removeOldDirectories()
 {
 	string numToDelete = "0";
 	string curDirectoryPath = DIR_NAME + numToDelete; //start at directory "d0"
+
+	//Remove the direcions & frequencies file outputs if they exist
+	if(exists(DIRECTIONS_FILENAME))
+		remove(DIRECTIONS_FILENAME);
+
+	if(exists(FREQUENCIES_FILENAME))
+		remove(FREQUENCIES_FILENAME);
 	
 	while(exists(curDirectoryPath)) //check if current directory exists
 	{

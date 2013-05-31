@@ -20,11 +20,9 @@ public:
 	MotionModel();
 	BodyWithForceMatrix setBodyData(Body, UserForces);
 	~MotionModel();
-	void setWaveFrequencies(vector<double>);
+	void setWaveFrequencies(double);
 	static int getMatrixSize(string);
-
-	vector<double> theWaveFreq;
-	
+	double curWaveFreq;	
 };
 #endif
 

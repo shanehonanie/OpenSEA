@@ -48,7 +48,6 @@ public:
 	EquationOfMotion_01();
 	~EquationOfMotion_01();
 	void setBodyData(Body, UserForces);	
-//	void calculateEquations(ReactiveForceMatrix); //calculate equtaions 0-5
 	void calculateEquations(BodyWithForceMatrix); //calculate equtaions 0-5
 	complexDouble getBodyMassVal(int, int); //first int implies row, second int selects the cell
 	void setBodyMassIndexs(int);

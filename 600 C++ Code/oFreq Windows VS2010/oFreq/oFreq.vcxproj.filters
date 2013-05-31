@@ -180,6 +180,9 @@
     <ClCompile Include="filewriter.cpp">
       <Filter>Source Files\Output</Filter>
     </ClCompile>
+    <ClCompile Include="bodywithsolution.cpp">
+      <Filter>Source Files\Body</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bodiesinput.h">
@@ -296,22 +299,8 @@
     <ClInclude Include="filewriter.h">
       <Filter>Header Files\Output</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="control.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="seaenv.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="data.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="bodies.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="forces.in">
-      <Filter>Source Files</Filter>
-    </None>
+    <ClInclude Include="bodywithsolution.h">
+      <Filter>Header Files\Body</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

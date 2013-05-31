@@ -1,19 +1,19 @@
 #include "motionsolver.h"
 
-MotionSolver::MotionSolver(vector<Body>& bodyDataIn, UserForces userForcesIn, vector<double> newWaveFreq) 
-	: theBodyData(bodyDataIn), theForcesData(userForcesIn), waveFrequencies(newWaveFreq)
+MotionSolver::MotionSolver(vector<Body> bodyDataIn, UserForces userForcesIn, double newWaveFreq) 
+	: theBodyData(bodyDataIn), theForcesData(userForcesIn), curWaveFrequency(newWaveFreq)
 {
 	
-	theMotionModel.setWaveFrequencies(waveFrequencies);
+	theMotionModel.setWaveFrequencies(curWaveFrequency);
 	maxMatrixSize = theMotionModel.getMatrixSize(theBodyData[0].getMotionModel());
 }
 
-
 MotionSolver::~MotionSolver()
 {}
-
-vector<Body> MotionSolver::CalculateOutputs()
+vector<cx_mat> MotionSolver::CalculateOutputs()
 {
+	vector<cx_mat> solutionsPerBody;
+
 	//Convert Input Coefficients to Force Coefficients for each body, add new object to theBodyWithForceMatrix vector
 	for(int i = 0; i < theBodyData.size(); i++)
 	{
@@ -125,11 +125,18 @@ vector<Body> MotionSolver::CalculateOutputs()
 	//Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
 	solutionColumnMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal, true); //true arg for more precise calculations
 
-	//Assign solutions to each bodys solutionMatrix
+	////Assign solutions to each bodys solutionMatrix
+	//for(int i = 0; i < theBodyData.size(); i++)
+	//{
+	//	cx_mat perBodySolution = solutionColumnMatrix.submat((i*maxMatrixSize),0, ((i+1)*maxMatrixSize-1),0);
+	//	theBodyData[i].solutionMatrix = perBodySolution;
+	//}
+
+	//Split into vector of solutions, each represents per body
 	for(int i = 0; i < theBodyData.size(); i++)
 	{
 		cx_mat perBodySolution = solutionColumnMatrix.submat((i*maxMatrixSize),0, ((i+1)*maxMatrixSize-1),0);
-		theBodyData[i].solutionMatrix = perBodySolution;
+		solutionsPerBody.push_back(perBodySolution); //Might want to rename
 	}
 
 	////Test print A & F Matrix
@@ -150,7 +157,8 @@ vector<Body> MotionSolver::CalculateOutputs()
 	//solutionColumnMatrix2.raw_print(myfile, "Solution Matrix2"); myfile <<endl;
 
 	myfile.close();
-	return theBodyData;
+	//return theBodyData;
+	return solutionsPerBody;
 }
 
 cx_mat MotionSolver::sumActiveForceEachSet(vector<cx_mat> theActiveForceMatrix)
@@ -192,9 +200,9 @@ cx_mat MotionSolver::sumDerivatives(vector<cx_mat> theReactiveForceMatrix)
 	for(int i = 0 ; i < theReactiveForceMatrix.size(); i++) //size should be 3 for derivative order (0-2)
 	{
 		//This code below returns a 0x0 solution matrix, uncomment below and comment single line above
-		complexDouble curWaveFrequency(waveFrequencies[0], 0.0); //<---FIX, only uses 1 wave frequency for now
+		complexDouble curWaveFrequencyComplex(curWaveFrequency, 0.0); //Complex version of current wave frequency
 		complexDouble complexImaginary(0.0,1.0);
-		complexDouble scalarMultiplier = pow(curWaveFrequency, i) * pow(complexImaginary, i);
+		complexDouble scalarMultiplier = pow(curWaveFrequencyComplex, i) * pow(complexImaginary, i);
 
 		for(int col = 0; col < theReactiveForceMatrix[i].n_cols; col++)
 		{

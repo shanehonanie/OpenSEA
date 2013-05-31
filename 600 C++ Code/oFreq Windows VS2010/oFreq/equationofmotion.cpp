@@ -33,3 +33,8 @@ complexDouble EquationOfMotion::timeDifferentiation(complexDouble variable, int 
 		return variable* pow(temp, order) * pow(curWaveFreq, order); //need to verify this
 	}
 }
+
+void EquationOfMotion::setWaveFreq(double newFreqIn)
+{
+	curWaveFreq = newFreqIn;
+}

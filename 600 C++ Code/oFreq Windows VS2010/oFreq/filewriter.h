@@ -45,15 +45,16 @@ const string BREAK_BOTTOM = "// ************************************************
 class FileWriter
 {
 public:
-	FileWriter(OutputsList);
+	FileWriter(vector<double>, vector<double>);
 	~FileWriter();
+	void setOutputs(OutputsList);
 
 	string className;
 	string header;
 	string fileInfo;
 	OutputsList theOutputsList;
 	vector<double> thefrequenciesList;
-	vector<double> theWaveDirectionsList;
+	vector<double> theDirectionsList;
 
 	int writeToFile(int);
 	int writeDirectionsToFile(vector<double>);
