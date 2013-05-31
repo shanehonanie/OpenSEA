@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      velglobal;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+body {
+  name "body 1";
+  data {
+    frequency 1
+    value (
+    0.0+0.0i
+    0.0+1.0i
+    0.0+0.0i
+    0.0+0.0i
+    0.0+1.0i
+    0.0+0.0i
+    );
+  }
+}
+
+body {
+  name "body 2";
+  data {
+    frequency 1
+    value (
+    0.0+0.0i
+    0.0+1.0i
+    0.0+0.0i
+    0.0+0.0i
+    0.0+1.0i
+    0.0+0.0i
+    );
+  }
+}
+// ************************************************************************* //
