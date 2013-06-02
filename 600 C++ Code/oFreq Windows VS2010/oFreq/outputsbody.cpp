@@ -2,13 +2,11 @@
 
 
 OutputsBody::OutputsBody(BodyWithSolution bodyIn, vector<double> frequenciesIn) : theBody(bodyIn), frequencies(frequenciesIn)
-{
-}
+{}
 
 
 OutputsBody::~OutputsBody()
-{
-}
+{}
 
 void OutputsBody::calculateOutputs()
 {

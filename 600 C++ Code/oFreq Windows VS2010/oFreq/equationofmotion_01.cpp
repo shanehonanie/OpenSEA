@@ -20,13 +20,13 @@ EquationOfMotion_01::~EquationOfMotion_01()
 void EquationOfMotion_01::setBodyData(Body bodyDataIn, UserForces userForcesIn) //Assume 6DOF only
 {
 	//User Force Matrices Names stored in vector of strings
-	newBodyMatrix.userReactiveForce = bodyDataIn.userReactiveForce;
-	newBodyMatrix.userActiveForce = bodyDataIn.userActiveForce;
+	newBodyMatrix.userReactiveForce = bodyDataIn.userReactiveForces;
+	newBodyMatrix.userActiveForce = bodyDataIn.userActiveForces;
 	newBodyMatrix.userCrossBodyForces = bodyDataIn.userCrossBodyForces;
 
 	//Hydro Force Matrices Names stored in vector of strings
-	newBodyMatrix.hydroReactiveForce = bodyDataIn.hydroReactiveForce;
-	newBodyMatrix.hydroActiveForce = bodyDataIn.hydroActiveForce;
+	newBodyMatrix.hydroReactiveForce = bodyDataIn.hydroReactiveForces;
+	newBodyMatrix.hydroActiveForce = bodyDataIn.hydroActiveForces;
 	newBodyMatrix.hydroCrossBodyForces = bodyDataIn.hydroCrossBodyForces;
 
 	//Body Mass Matrix

@@ -26,10 +26,10 @@ void Body::testPrint()
 	cout << "centroidX: " << centroidX << endl;
 	cout << "centroidY: " << centroidY << endl;
 	cout << "centroidZ: " << centroidZ << endl;
-	for(int i = 0 ;i < userActiveForce.size(); i++)
-		cout << "activeForce[" << i << "]: " << userActiveForce[i] << endl;
-	for(int i = 0 ;i < userReactiveForce.size(); i++)
-		cout << "reactiveForce[" << i << "]: " << userReactiveForce[i] << endl;
+	for(int i = 0 ;i < userActiveForces.size(); i++)
+		cout << "activeForce[" << i << "]: " << userActiveForces[i] << endl;
+	for(int i = 0 ;i < userReactiveForces.size(); i++)
+		cout << "reactiveForce[" << i << "]: " << userReactiveForces[i] << endl;
 	//cout << "linkedBody: " << linkedBody << endl;
 	//cout << "crossBodyForceName: " << crossBodyName << endl;
 	//for(int i = 0 ;i < crossBodyForces.size(); i++)
@@ -58,12 +58,12 @@ void Body::setMotionModel(string newMotionModel)
 
 void Body::setUserActiveForces(vector<string> newForceList)
 {
-	userActiveForce = newForceList;
+	userActiveForces = newForceList;
 }
 
 void Body::setUserReactiveForces(vector<string> newForceList)
 {
-	userReactiveForce = newForceList;
+	userReactiveForces = newForceList;
 }
 
 
@@ -89,12 +89,12 @@ void Body::setUserCrossBodyForces(vector<string> newCrossBodyList)
 
 void Body::setHydroActiveForces(vector<string> newForceList)
 {
-	hydroActiveForce = newForceList;
+	hydroActiveForces = newForceList;
 }
 
 void Body::setHydroReactiveForces(vector<string> newForceList)
 {
-	hydroReactiveForce = newForceList;
+	hydroReactiveForces = newForceList;
 }
 
 void Body::setHydroCrossBodyForces(vector<string> newForceList)
@@ -167,7 +167,7 @@ void Body::setCrossBodyName(string newName)
 	userCrossBodyForces.push_back(newName);
 }
 
-cx_mat Body::getSolutionMatrix() const
+string Body::getBodyName()
 {
-	return solutionMatrix;
+	return bodyName;
 }

@@ -100,7 +100,7 @@ int main()
 	//Create BodyWithSolution Object for each Body Object
 	for(int i = 0; i < theBodiesList.size(); i++)
 	{
-		BodyWithSolution newBodySolution(theBodiesList[i].bodyName);
+		BodyWithSolution newBodySolution(theBodiesList[i].getBodyName());
 		bodyListWithSolution.push_back(newBodySolution);
 	}
 
@@ -122,9 +122,12 @@ int main()
 		theOutputsList.calculateOutputs();
 
 		theFileWriter.setOutputs(theOutputsList);
-		theFileWriter.writeToFile(i); 
-	}
 
+		if(!theFileWriter.writeToFile(i))
+		{
+			cerr << "Failed to write outputs to file" << endl;
+		}
+	}
 
 	return 0;
 }

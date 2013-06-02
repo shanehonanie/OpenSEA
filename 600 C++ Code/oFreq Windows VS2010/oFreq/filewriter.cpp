@@ -3,13 +3,21 @@
 FileWriter::FileWriter(vector<double> theDirectionsListIn, vector<double> theFrequenciesListIn) 
 	: theDirectionsList(theDirectionsListIn), thefrequenciesList(theFrequenciesListIn)
 {
-	setHeader();	
-	writeDirectionsToFile(theDirectionsList);
-	writeFrequenciesToFile(thefrequenciesList);
+	setHeader();
 
 	if(!removeOldDirectories())
 	{
-		cerr << "Failed to Remove All directories" << endl;
+		cerr << "Failed to Remove All directories." << endl;
+	}
+
+	if(!writeDirectionsToFile(theDirectionsList))
+	{
+		cerr << "Failed to write direction list to file." << endl;
+	}
+
+	if(!writeFrequenciesToFile(thefrequenciesList))
+	{
+		cerr << "Failed to write frequencies to file." << endl;
 	}
 }
 
@@ -43,7 +51,7 @@ FileWriter::~FileWriter()
 {
 }
 
-int FileWriter::writeToFile(int curWaveDirection)
+bool FileWriter::writeToFile(int curWaveDirection)
 {
 	ofstream myFileMotion;
 	ofstream myFileVelocity;
@@ -56,7 +64,7 @@ int FileWriter::writeToFile(int curWaveDirection)
 	if (!create_directory(currentDirectory))
 	{
 		cerr << "Failed to create " + currentDirectory << endl; //This needs to be handled
-		return 0;
+		return false;
 	}
 
 	myFileMotion.open(currentDirectory + "/" + GLOBAL_MOTION_FILENAME); //Create the Motion file
@@ -148,10 +156,10 @@ int FileWriter::writeToFile(int curWaveDirection)
 	myFileVelocity.close();
 	myFileAcceleration.close();
 
-	return 0;
+	return true;
 }
 
-int FileWriter::writeDirectionsToFile(vector<double> directionList)
+bool FileWriter::writeDirectionsToFile(vector<double> directionList)
 {
 	setFileInfo(DIRECTION);
 
@@ -168,10 +176,10 @@ int FileWriter::writeDirectionsToFile(vector<double> directionList)
 	myFileAcceleration << LIST_END2  << "\n\n" << BREAK_BOTTOM;
 	myFileAcceleration.close();
 
-	return 0;
+	return true;
 }
 
-int FileWriter::writeFrequenciesToFile(vector<double> frequencyList)
+bool FileWriter::writeFrequenciesToFile(vector<double> frequencyList)
 {
 	setFileInfo(FREQUENCY);
 
@@ -188,7 +196,7 @@ int FileWriter::writeFrequenciesToFile(vector<double> frequencyList)
 	myFileAcceleration << LIST_END2  << "\n\n" << BREAK_BOTTOM;
 	myFileAcceleration.close();
 
-	return 0;
+	return true;
 }
 
 bool FileWriter::removeOldDirectories()

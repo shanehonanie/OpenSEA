@@ -68,9 +68,6 @@
     <ClCompile Include="datainput.cpp" />
     <ClCompile Include="equationofmotion.cpp" />
     <ClCompile Include="equationofmotion_01.cpp" />
-    <ClCompile Include="filelist.cpp" />
-    <ClCompile Include="filewavedirections.cpp" />
-    <ClCompile Include="filewavefrequencies.cpp" />
     <ClCompile Include="filewriter.cpp" />
     <ClCompile Include="forceactive.cpp" />
     <ClCompile Include="forcecrossbody.cpp" />
@@ -111,9 +108,6 @@
     <ClInclude Include="datainput.h" />
     <ClInclude Include="equationofmotion.h" />
     <ClInclude Include="equationofmotion_01.h" />
-    <ClInclude Include="filelist.h" />
-    <ClInclude Include="filewavedirections.h" />
-    <ClInclude Include="filewavefrequencies.h" />
     <ClInclude Include="filewriter.h" />
     <ClInclude Include="forceactive.h" />
     <ClInclude Include="forcecrossbody.h" />

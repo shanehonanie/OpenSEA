@@ -38,30 +38,49 @@ const string FORMAT_INFO = "ascii";
 const string SEAFILE2 = "seafile";
 const string BODY = "body";
 const string DIR_NAME = "d";
-
 const string BREAK_TOP = "// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //\n";
 const string BREAK_BOTTOM = "// ************************************************************************* //";
+
+/**
+ * This class write all outputs to files.
+ */
 
 class FileWriter
 {
 public:
+	/**
+	 * Constructor on creation sets header, write wave directions & frequencies to file, and removes old directories
+	 * @param theDirectionsListIn The list of wave directions.
+	 * @param theFrequenciesListIn The list of wave frequncies
+	 */
 	FileWriter(vector<double>, vector<double>);
-	~FileWriter();
+	~FileWriter(); /**< The default destructor, nothing happens here. */
+
+	/**
+	 * Sets the outputs that will be written to file later.
+	 * @param theOutputsListIn The list of outputs.
+	 */
 	void setOutputs(OutputsList);
 
+	/**
+	 * Writes the outputs list file.
+	 * @param curWaveDirection The current wave direction.
+	 * @return true if write successful.
+	 */
+	bool writeToFile(int);
+	bool writeDirectionsToFile(vector<double>);
+	bool writeFrequenciesToFile(vector<double>);
+	void setHeader();
+	void setFileInfo(string);
+	bool removeOldDirectories();
+
+private:
 	string className;
 	string header;
 	string fileInfo;
 	OutputsList theOutputsList;
 	vector<double> thefrequenciesList;
 	vector<double> theDirectionsList;
-
-	int writeToFile(int);
-	int writeDirectionsToFile(vector<double>);
-	int writeFrequenciesToFile(vector<double>);
-	void setHeader();
-	void setFileInfo(string);
-	bool removeOldDirectories();
 };
 #endif
 
