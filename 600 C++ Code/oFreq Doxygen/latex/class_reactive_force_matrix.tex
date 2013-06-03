@@ -1,0 +1,77 @@
+\hypertarget{class_reactive_force_matrix}{\section{Reactive\-Force\-Matrix Class Reference}
+\label{class_reactive_force_matrix}\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}}
+}
+
+
+{\ttfamily \#include $<$reactiveforcematrix.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_reactive_force_matrix_aea5a7bd4e681f113e33b163636da4da3}{Reactive\-Force\-Matrix} ()
+\item 
+\hyperlink{class_reactive_force_matrix_aeb1efffa867375a0e9a08b29ef0a5dd7}{Reactive\-Force\-Matrix} (vector$<$ \hyperlink{class_derivative}{Derivative} $>$)
+\item 
+\hyperlink{class_reactive_force_matrix_a720e6d74747ee2eb9a8891271c336c1f}{$\sim$\-Reactive\-Force\-Matrix} ()
+\item 
+int \hyperlink{class_reactive_force_matrix_abb1779e0cb13c2ff1a8d5c0fade96f0d}{get\-Size} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ cx\-\_\-mat $>$ \hyperlink{class_reactive_force_matrix_ad135b340ce06171b13a5573fef714707}{derivative\-Matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds data for reactive force matrix whch includes force coefficients. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_reactive_force_matrix_aea5a7bd4e681f113e33b163636da4da3}{\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}!Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}}
+\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}!ReactiveForceMatrix@{Reactive\-Force\-Matrix}}
+\subsubsection[{Reactive\-Force\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Reactive\-Force\-Matrix\-::\-Reactive\-Force\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_reactive_force_matrix_aea5a7bd4e681f113e33b163636da4da3}
+The default constructor. \hypertarget{class_reactive_force_matrix_aeb1efffa867375a0e9a08b29ef0a5dd7}{\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}!Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}}
+\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}!ReactiveForceMatrix@{Reactive\-Force\-Matrix}}
+\subsubsection[{Reactive\-Force\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Reactive\-Force\-Matrix\-::\-Reactive\-Force\-Matrix (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Derivative} $>$}]{force\-List\-In}
+\end{DoxyParamCaption}
+)}}\label{class_reactive_force_matrix_aeb1efffa867375a0e9a08b29ef0a5dd7}
+The constructor, converts input coefficients to force coefficients. 
+\begin{DoxyParams}{Parameters}
+{\em force\-List\-In} & The list of forces. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_reactive_force_matrix_a720e6d74747ee2eb9a8891271c336c1f}{\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}!$\sim$\-Reactive\-Force\-Matrix@{$\sim$\-Reactive\-Force\-Matrix}}
+\index{$\sim$\-Reactive\-Force\-Matrix@{$\sim$\-Reactive\-Force\-Matrix}!ReactiveForceMatrix@{Reactive\-Force\-Matrix}}
+\subsubsection[{$\sim$\-Reactive\-Force\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Reactive\-Force\-Matrix\-::$\sim$\-Reactive\-Force\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_reactive_force_matrix_a720e6d74747ee2eb9a8891271c336c1f}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_reactive_force_matrix_abb1779e0cb13c2ff1a8d5c0fade96f0d}{\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!ReactiveForceMatrix@{Reactive\-Force\-Matrix}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Reactive\-Force\-Matrix\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_reactive_force_matrix_abb1779e0cb13c2ff1a8d5c0fade96f0d}
+Return the size of the max derivative. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_reactive_force_matrix_ad135b340ce06171b13a5573fef714707}{\index{Reactive\-Force\-Matrix@{Reactive\-Force\-Matrix}!derivative\-Matrix@{derivative\-Matrix}}
+\index{derivative\-Matrix@{derivative\-Matrix}!ReactiveForceMatrix@{Reactive\-Force\-Matrix}}
+\subsubsection[{derivative\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$cx\-\_\-mat$>$ Reactive\-Force\-Matrix\-::derivative\-Matrix}}\label{class_reactive_force_matrix_ad135b340ce06171b13a5573fef714707}
+\hyperlink{class_derivative}{Derivative} matrix in force coefficient form. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/reactiveforcematrix.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/reactiveforcematrix.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,98 @@
+\hypertarget{class_outputs_list}{\section{Outputs\-List Class Reference}
+\label{class_outputs_list}\index{Outputs\-List@{Outputs\-List}}
+}
+
+
+{\ttfamily \#include $<$outputslist.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_outputs_list_a5f3ea650f5c9ae5e29ad34f2d051e915}{Outputs\-List} ()
+\item 
+\hyperlink{class_outputs_list_a3a7ab0f85a9874b5563ad3a650219429}{Outputs\-List} (vector$<$ \hyperlink{class_body_with_solution}{Body\-With\-Solution} $>$, vector$<$ double $>$, vector$<$ double $>$)
+\item 
+\hyperlink{class_outputs_list_ae3e4bc9bece0fd81594fd42576831c0b}{$\sim$\-Outputs\-List} ()
+\item 
+void \hyperlink{class_outputs_list_a31dd7270ed3468e78168bb1bf85fd79d}{calculate\-Outputs} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{class_outputs_body}{Outputs\-Body} $>$ \hyperlink{class_outputs_list_a060736f6168b7a7ff22480c59ab1cae1}{the\-Outputs\-Body\-List}
+\item 
+vector$<$ \hyperlink{class_body_with_solution}{Body\-With\-Solution} $>$ \hyperlink{class_outputs_list_a641a2087534a39ba07e5dcc373c3e993}{the\-Body\-List}
+\item 
+vector$<$ double $>$ \hyperlink{class_outputs_list_afb577c627b76bd4734a450af611313e7}{the\-Frequency\-List}
+\item 
+vector$<$ double $>$ \hyperlink{class_outputs_list_a2378aea897a70d83842b4aabe3d3c3c2}{the\-Direction\-List}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds the global solutions for all frequncies for all body object(s). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_outputs_list_a5f3ea650f5c9ae5e29ad34f2d051e915}{\index{Outputs\-List@{Outputs\-List}!Outputs\-List@{Outputs\-List}}
+\index{Outputs\-List@{Outputs\-List}!OutputsList@{Outputs\-List}}
+\subsubsection[{Outputs\-List}]{\setlength{\rightskip}{0pt plus 5cm}Outputs\-List\-::\-Outputs\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_list_a5f3ea650f5c9ae5e29ad34f2d051e915}
+This default constructor creates a \hyperlink{class_outputs_list}{Outputs\-List} object. \hypertarget{class_outputs_list_a3a7ab0f85a9874b5563ad3a650219429}{\index{Outputs\-List@{Outputs\-List}!Outputs\-List@{Outputs\-List}}
+\index{Outputs\-List@{Outputs\-List}!OutputsList@{Outputs\-List}}
+\subsubsection[{Outputs\-List}]{\setlength{\rightskip}{0pt plus 5cm}Outputs\-List\-::\-Outputs\-List (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Body\-With\-Solution} $>$}]{body\-In, }
+\item[{vector$<$ double $>$}]{directions\-In, }
+\item[{vector$<$ double $>$}]{frequencies\-In}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_list_a3a7ab0f85a9874b5563ad3a650219429}
+Overloaded constructor 
+\begin{DoxyParams}{Parameters}
+{\em the\-Body\-List\-In} & All bodies with calculated solutions. \\
+\hline
+{\em direction\-In} & List of all wave directions. \\
+\hline
+{\em frequencies\-In} & List of all frequencies. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_outputs_list_ae3e4bc9bece0fd81594fd42576831c0b}{\index{Outputs\-List@{Outputs\-List}!$\sim$\-Outputs\-List@{$\sim$\-Outputs\-List}}
+\index{$\sim$\-Outputs\-List@{$\sim$\-Outputs\-List}!OutputsList@{Outputs\-List}}
+\subsubsection[{$\sim$\-Outputs\-List}]{\setlength{\rightskip}{0pt plus 5cm}Outputs\-List\-::$\sim$\-Outputs\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_list_ae3e4bc9bece0fd81594fd42576831c0b}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_outputs_list_a31dd7270ed3468e78168bb1bf85fd79d}{\index{Outputs\-List@{Outputs\-List}!calculate\-Outputs@{calculate\-Outputs}}
+\index{calculate\-Outputs@{calculate\-Outputs}!OutputsList@{Outputs\-List}}
+\subsubsection[{calculate\-Outputs}]{\setlength{\rightskip}{0pt plus 5cm}void Outputs\-List\-::calculate\-Outputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_list_a31dd7270ed3468e78168bb1bf85fd79d}
+Calculate the Global Solutions for each body 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_outputs_list_a641a2087534a39ba07e5dcc373c3e993}{\index{Outputs\-List@{Outputs\-List}!the\-Body\-List@{the\-Body\-List}}
+\index{the\-Body\-List@{the\-Body\-List}!OutputsList@{Outputs\-List}}
+\subsubsection[{the\-Body\-List}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Body\-With\-Solution}$>$ Outputs\-List\-::the\-Body\-List}}\label{class_outputs_list_a641a2087534a39ba07e5dcc373c3e993}
+List of all bodies with soluions computed by motion solver \hypertarget{class_outputs_list_a2378aea897a70d83842b4aabe3d3c3c2}{\index{Outputs\-List@{Outputs\-List}!the\-Direction\-List@{the\-Direction\-List}}
+\index{the\-Direction\-List@{the\-Direction\-List}!OutputsList@{Outputs\-List}}
+\subsubsection[{the\-Direction\-List}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ Outputs\-List\-::the\-Direction\-List}}\label{class_outputs_list_a2378aea897a70d83842b4aabe3d3c3c2}
+List of directions used. \hypertarget{class_outputs_list_afb577c627b76bd4734a450af611313e7}{\index{Outputs\-List@{Outputs\-List}!the\-Frequency\-List@{the\-Frequency\-List}}
+\index{the\-Frequency\-List@{the\-Frequency\-List}!OutputsList@{Outputs\-List}}
+\subsubsection[{the\-Frequency\-List}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ Outputs\-List\-::the\-Frequency\-List}}\label{class_outputs_list_afb577c627b76bd4734a450af611313e7}
+List of frequencies used. \hypertarget{class_outputs_list_a060736f6168b7a7ff22480c59ab1cae1}{\index{Outputs\-List@{Outputs\-List}!the\-Outputs\-Body\-List@{the\-Outputs\-Body\-List}}
+\index{the\-Outputs\-Body\-List@{the\-Outputs\-Body\-List}!OutputsList@{Outputs\-List}}
+\subsubsection[{the\-Outputs\-Body\-List}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Outputs\-Body}$>$ Outputs\-List\-::the\-Outputs\-Body\-List}}\label{class_outputs_list_a060736f6168b7a7ff22480c59ab1cae1}
+List of each body with computed globlal matrices 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/outputslist.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/outputslist.\-cpp\end{DoxyCompactItemize}

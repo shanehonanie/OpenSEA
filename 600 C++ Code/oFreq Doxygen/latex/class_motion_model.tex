@@ -1,0 +1,105 @@
+\hypertarget{class_motion_model}{\section{Motion\-Model Class Reference}
+\label{class_motion_model}\index{Motion\-Model@{Motion\-Model}}
+}
+
+
+{\ttfamily \#include $<$motionmodel.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_motion_model_a5a5e4bba0f6ca24e1fdd316458f4f824}{Motion\-Model} ()
+\item 
+\hyperlink{class_motion_model_ac48a359c77d9efe39d4ec8c9e862a1cd}{$\sim$\-Motion\-Model} ()
+\item 
+\hyperlink{class_body_with_force_matrix}{Body\-With\-Force\-Matrix} \hyperlink{class_motion_model_ad70067e7f0e5b12978f1dc7f1722c2e1}{set\-Body\-Data} (\hyperlink{class_body}{Body}, \hyperlink{class_user_forces}{User\-Forces})
+\item 
+void \hyperlink{class_motion_model_ae57d6c22a960aa559bfdc16ca4737a0b}{set\-Wave\-Frequencies} (double)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{class_motion_model_a6eb1d5de348da32ae03936030eba4f2b}{get\-Matrix\-Size} (string)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{class_motion_model_af8980ee05f544c75ec1ebe551045c261}{cur\-Wave\-Freq}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds data for the motion model and calculates the specified equation of motion. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_motion_model_a5a5e4bba0f6ca24e1fdd316458f4f824}{\index{Motion\-Model@{Motion\-Model}!Motion\-Model@{Motion\-Model}}
+\index{Motion\-Model@{Motion\-Model}!MotionModel@{Motion\-Model}}
+\subsubsection[{Motion\-Model}]{\setlength{\rightskip}{0pt plus 5cm}Motion\-Model\-::\-Motion\-Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_motion_model_a5a5e4bba0f6ca24e1fdd316458f4f824}
+The default constructor. \hypertarget{class_motion_model_ac48a359c77d9efe39d4ec8c9e862a1cd}{\index{Motion\-Model@{Motion\-Model}!$\sim$\-Motion\-Model@{$\sim$\-Motion\-Model}}
+\index{$\sim$\-Motion\-Model@{$\sim$\-Motion\-Model}!MotionModel@{Motion\-Model}}
+\subsubsection[{$\sim$\-Motion\-Model}]{\setlength{\rightskip}{0pt plus 5cm}Motion\-Model\-::$\sim$\-Motion\-Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_motion_model_ac48a359c77d9efe39d4ec8c9e862a1cd}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_motion_model_a6eb1d5de348da32ae03936030eba4f2b}{\index{Motion\-Model@{Motion\-Model}!get\-Matrix\-Size@{get\-Matrix\-Size}}
+\index{get\-Matrix\-Size@{get\-Matrix\-Size}!MotionModel@{Motion\-Model}}
+\subsubsection[{get\-Matrix\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Motion\-Model\-::get\-Matrix\-Size (
+\begin{DoxyParamCaption}
+\item[{string}]{motion\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_motion_model_a6eb1d5de348da32ae03936030eba4f2b}
+Get the matrix size which depends on which equation of motion is used. 
+\begin{DoxyParams}{Parameters}
+{\em motion\-Type} & The motion model. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_motion_model_ad70067e7f0e5b12978f1dc7f1722c2e1}{\index{Motion\-Model@{Motion\-Model}!set\-Body\-Data@{set\-Body\-Data}}
+\index{set\-Body\-Data@{set\-Body\-Data}!MotionModel@{Motion\-Model}}
+\subsubsection[{set\-Body\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Body\-With\-Force\-Matrix} Motion\-Model\-::set\-Body\-Data (
+\begin{DoxyParamCaption}
+\item[{{\bf Body}}]{body\-Data\-In, }
+\item[{{\bf User\-Forces}}]{user\-Forces\-In}
+\end{DoxyParamCaption}
+)}}\label{class_motion_model_ad70067e7f0e5b12978f1dc7f1722c2e1}
+Retrieve and calculate the equation of motion body with force matrix object. 
+\begin{DoxyParams}{Parameters}
+{\em body\-Data\-In} & The body. \\
+\hline
+{\em user\-Forces\-In} & The User Forces. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{class_body}{Body} with \hyperlink{class_force}{Force} Matrix after specified equation of motion is calculated. 
+\end{DoxyReturn}
+\hypertarget{class_motion_model_ae57d6c22a960aa559bfdc16ca4737a0b}{\index{Motion\-Model@{Motion\-Model}!set\-Wave\-Frequencies@{set\-Wave\-Frequencies}}
+\index{set\-Wave\-Frequencies@{set\-Wave\-Frequencies}!MotionModel@{Motion\-Model}}
+\subsubsection[{set\-Wave\-Frequencies}]{\setlength{\rightskip}{0pt plus 5cm}void Motion\-Model\-::set\-Wave\-Frequencies (
+\begin{DoxyParamCaption}
+\item[{double}]{new\-Wave\-Freq}
+\end{DoxyParamCaption}
+)}}\label{class_motion_model_ae57d6c22a960aa559bfdc16ca4737a0b}
+Set the wave frequencies list. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Wave\-Freq} & The list of wave frequencies. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_motion_model_af8980ee05f544c75ec1ebe551045c261}{\index{Motion\-Model@{Motion\-Model}!cur\-Wave\-Freq@{cur\-Wave\-Freq}}
+\index{cur\-Wave\-Freq@{cur\-Wave\-Freq}!MotionModel@{Motion\-Model}}
+\subsubsection[{cur\-Wave\-Freq}]{\setlength{\rightskip}{0pt plus 5cm}double Motion\-Model\-::cur\-Wave\-Freq}}\label{class_motion_model_af8980ee05f544c75ec1ebe551045c261}
+The current wave frequency. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/motionmodel.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/motionmodel.\-cpp\end{DoxyCompactItemize}

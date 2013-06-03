@@ -17,9 +17,8 @@ class Body
 {
 public:
 
-	Body(); /**< This default constructor creates a Body object. */
+	Body(); /**< The default constructor */
 	~Body(); /**< The default destructor, nothing happens here. */
-
 	void testPrint(); /**< Test print to console the values of all data members. */
 
 	/**

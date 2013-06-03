@@ -1,0 +1,105 @@
+\hypertarget{class_outputs_body}{\section{Outputs\-Body Class Reference}
+\label{class_outputs_body}\index{Outputs\-Body@{Outputs\-Body}}
+}
+
+
+{\ttfamily \#include $<$outputsbody.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_outputs_body_a0eac4499cabfe665627c5ae248d716fb}{Outputs\-Body} (\hyperlink{class_body_with_solution}{Body\-With\-Solution}, vector$<$ double $>$)
+\item 
+\hyperlink{class_outputs_body_a9ec0c3721f511168c425b792bdaf2d62}{$\sim$\-Outputs\-Body} ()
+\item 
+vector$<$ cx\-\_\-mat $>$ \hyperlink{class_outputs_body_a648ab9c3d60a0570d20265ec3a8a7e74}{get\-Output\-Type} (int)
+\item 
+vector$<$ cx\-\_\-mat $>$ \hyperlink{class_outputs_body_ad3930dfef26bd650ab09c8f0e05315b3}{get\-Output\-List} ()
+\item 
+void \hyperlink{class_outputs_body_a410ed10a395c4d1a598edfdd0f791e0a}{calculate\-Outputs} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_body_with_solution}{Body\-With\-Solution} \hyperlink{class_outputs_body_aa03c8f557f55a5e8b806f4fc62397198}{the\-Body}
+\item 
+vector$<$ double $>$ \hyperlink{class_outputs_body_a625ad12a75ab02375ec369c47bfa4b52}{frequencies}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds the global solutions for all frequncies for a single body object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_outputs_body_a0eac4499cabfe665627c5ae248d716fb}{\index{Outputs\-Body@{Outputs\-Body}!Outputs\-Body@{Outputs\-Body}}
+\index{Outputs\-Body@{Outputs\-Body}!OutputsBody@{Outputs\-Body}}
+\subsubsection[{Outputs\-Body}]{\setlength{\rightskip}{0pt plus 5cm}Outputs\-Body\-::\-Outputs\-Body (
+\begin{DoxyParamCaption}
+\item[{{\bf Body\-With\-Solution}}]{body\-In, }
+\item[{vector$<$ double $>$}]{frequencies\-In}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_body_a0eac4499cabfe665627c5ae248d716fb}
+Constructor Creates a new Outputs\-Body\-Object and sets the \hyperlink{class_body_with_solution}{Body\-With\-Solution} and wave\-Frequencies. 
+\begin{DoxyParams}{Parameters}
+{\em body\-In} & Sets Body\-With\-Solution\-Object. \\
+\hline
+{\em Sets} & the List of wave frequencies. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_outputs_body_a9ec0c3721f511168c425b792bdaf2d62}{\index{Outputs\-Body@{Outputs\-Body}!$\sim$\-Outputs\-Body@{$\sim$\-Outputs\-Body}}
+\index{$\sim$\-Outputs\-Body@{$\sim$\-Outputs\-Body}!OutputsBody@{Outputs\-Body}}
+\subsubsection[{$\sim$\-Outputs\-Body}]{\setlength{\rightskip}{0pt plus 5cm}Outputs\-Body\-::$\sim$\-Outputs\-Body (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_body_a9ec0c3721f511168c425b792bdaf2d62}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_outputs_body_a410ed10a395c4d1a598edfdd0f791e0a}{\index{Outputs\-Body@{Outputs\-Body}!calculate\-Outputs@{calculate\-Outputs}}
+\index{calculate\-Outputs@{calculate\-Outputs}!OutputsBody@{Outputs\-Body}}
+\subsubsection[{calculate\-Outputs}]{\setlength{\rightskip}{0pt plus 5cm}void Outputs\-Body\-::calculate\-Outputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_body_a410ed10a395c4d1a598edfdd0f791e0a}
+Calculate S\-Olutions for eahc class type and frequency \hypertarget{class_outputs_body_ad3930dfef26bd650ab09c8f0e05315b3}{\index{Outputs\-Body@{Outputs\-Body}!get\-Output\-List@{get\-Output\-List}}
+\index{get\-Output\-List@{get\-Output\-List}!OutputsBody@{Outputs\-Body}}
+\subsubsection[{get\-Output\-List}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cx\-\_\-mat $>$ Outputs\-Body\-::get\-Output\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_body_ad3930dfef26bd650ab09c8f0e05315b3}
+Retrieve a matrix of all types of Global Solution types. \begin{DoxyReturn}{Returns}
+Matrix that has all Global solution types, each column is seperate class type, each index seperate frequency. 
+\end{DoxyReturn}
+\hypertarget{class_outputs_body_a648ab9c3d60a0570d20265ec3a8a7e74}{\index{Outputs\-Body@{Outputs\-Body}!get\-Output\-Type@{get\-Output\-Type}}
+\index{get\-Output\-Type@{get\-Output\-Type}!OutputsBody@{Outputs\-Body}}
+\subsubsection[{get\-Output\-Type}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cx\-\_\-mat $>$ Outputs\-Body\-::get\-Output\-Type (
+\begin{DoxyParamCaption}
+\item[{int}]{class\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_outputs_body_a648ab9c3d60a0570d20265ec3a8a7e74}
+Retrieve a matrix of only one type of Global Solution. 
+\begin{DoxyParams}{Parameters}
+{\em classype} & This specifies the index used to retrieve one of the Global Solutions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix of one type Global Solutions, each index represents different frquency. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_outputs_body_a625ad12a75ab02375ec369c47bfa4b52}{\index{Outputs\-Body@{Outputs\-Body}!frequencies@{frequencies}}
+\index{frequencies@{frequencies}!OutputsBody@{Outputs\-Body}}
+\subsubsection[{frequencies}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ Outputs\-Body\-::frequencies}}\label{class_outputs_body_a625ad12a75ab02375ec369c47bfa4b52}
+The list of wave frequencies to be used. \hypertarget{class_outputs_body_aa03c8f557f55a5e8b806f4fc62397198}{\index{Outputs\-Body@{Outputs\-Body}!the\-Body@{the\-Body}}
+\index{the\-Body@{the\-Body}!OutputsBody@{Outputs\-Body}}
+\subsubsection[{the\-Body}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Body\-With\-Solution} Outputs\-Body\-::the\-Body}}\label{class_outputs_body_aa03c8f557f55a5e8b806f4fc62397198}
+Holds object that has body name and solutions. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/outputsbody.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/outputsbody.\-cpp\end{DoxyCompactItemize}

@@ -8,13 +8,22 @@
 using namespace std;
 const int MAX_EQUATIONS = 6;
 
+/**
+ * This class holds data for a derivative.
+ */
+
 class Derivative
 {
 public:
-	Derivative();
-	~Derivative();
-	void testPrint();
-	Equation equationList[MAX_EQUATIONS];
+	Derivative(); /**< This default constructor creates a Body object. */
+	~Derivative(); /**< The default destructor, nothing happens here. */
+	void testPrint(); /**< Test print to console the values of all data members. */
+	Equation equationList[MAX_EQUATIONS]; /**< The list of equations. */
+
+	/**
+	 * Retrieve the size of the equation list.
+	 * @return The size of the equation list.
+	 */
 	int getEquationListSize();
 private:
 

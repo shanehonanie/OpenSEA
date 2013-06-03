@@ -1,0 +1,94 @@
+\hypertarget{class_output_derived}{\section{Output\-Derived Class Reference}
+\label{class_output_derived}\index{Output\-Derived@{Output\-Derived}}
+}
+
+
+{\ttfamily \#include $<$outputderived.\-h$>$}
+
+Inheritance diagram for Output\-Derived\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_output_derived}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_output_derived_af8b70b70b8a5089f2b673da8b59a7b6a}{Output\-Derived} ()
+\item 
+\hyperlink{class_output_derived_a4dde733443e52964c74d8bb6477f85f7}{$\sim$\-Output\-Derived} ()
+\item 
+virtual cx\-\_\-mat \hyperlink{class_output_derived_a1e0052dd24822806481976e42a2f5f30}{calculate\-Output} (cx\-\_\-mat, double)=0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_body}{Body} \hyperlink{class_output_derived_aa326f34bcce8fa06e67016bb57069e16}{the\-Body}
+\item 
+int \hyperlink{class_output_derived_af0bf64d22f81f60368cd01a448596fe9}{cur\-Wave\-Direction}
+\item 
+string \hyperlink{class_output_derived_ae2ee713862294ab274c78a604ee962b4}{name}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This abstract class represents the Derived Outputs. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_output_derived_af8b70b70b8a5089f2b673da8b59a7b6a}{\index{Output\-Derived@{Output\-Derived}!Output\-Derived@{Output\-Derived}}
+\index{Output\-Derived@{Output\-Derived}!OutputDerived@{Output\-Derived}}
+\subsubsection[{Output\-Derived}]{\setlength{\rightskip}{0pt plus 5cm}Output\-Derived\-::\-Output\-Derived (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_output_derived_af8b70b70b8a5089f2b673da8b59a7b6a}
+This default constructor creates a Output Derived object. \hypertarget{class_output_derived_a4dde733443e52964c74d8bb6477f85f7}{\index{Output\-Derived@{Output\-Derived}!$\sim$\-Output\-Derived@{$\sim$\-Output\-Derived}}
+\index{$\sim$\-Output\-Derived@{$\sim$\-Output\-Derived}!OutputDerived@{Output\-Derived}}
+\subsubsection[{$\sim$\-Output\-Derived}]{\setlength{\rightskip}{0pt plus 5cm}Output\-Derived\-::$\sim$\-Output\-Derived (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_output_derived_a4dde733443e52964c74d8bb6477f85f7}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_output_derived_a1e0052dd24822806481976e42a2f5f30}{\index{Output\-Derived@{Output\-Derived}!calculate\-Output@{calculate\-Output}}
+\index{calculate\-Output@{calculate\-Output}!OutputDerived@{Output\-Derived}}
+\subsubsection[{calculate\-Output}]{\setlength{\rightskip}{0pt plus 5cm}virtual cx\-\_\-mat Output\-Derived\-::calculate\-Output (
+\begin{DoxyParamCaption}
+\item[{cx\-\_\-mat}]{, }
+\item[{double}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_output_derived_a1e0052dd24822806481976e42a2f5f30}
+Child class mus implement \char`\"{}\-Calculates the outputs\char`\"{}. 
+\begin{DoxyParams}{Parameters}
+{\em matrix\-In} & The original Matrix that is used for calculations. \\
+\hline
+{\em cur\-Wave\-Freq} & The current wave frequency. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new matrix with calculations on each index. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_global_solution_a15634073f63559cbfd65b32b79cd7fbd}{Global\-Solution}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_output_derived_af0bf64d22f81f60368cd01a448596fe9}{\index{Output\-Derived@{Output\-Derived}!cur\-Wave\-Direction@{cur\-Wave\-Direction}}
+\index{cur\-Wave\-Direction@{cur\-Wave\-Direction}!OutputDerived@{Output\-Derived}}
+\subsubsection[{cur\-Wave\-Direction}]{\setlength{\rightskip}{0pt plus 5cm}int Output\-Derived\-::cur\-Wave\-Direction}}\label{class_output_derived_af0bf64d22f81f60368cd01a448596fe9}
+The current wave direction. \hypertarget{class_output_derived_ae2ee713862294ab274c78a604ee962b4}{\index{Output\-Derived@{Output\-Derived}!name@{name}}
+\index{name@{name}!OutputDerived@{Output\-Derived}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}string Output\-Derived\-::name}}\label{class_output_derived_ae2ee713862294ab274c78a604ee962b4}
+The name.?? N\-E\-E\-D\-S T\-O B\-E F\-I\-X\-E\-D \hypertarget{class_output_derived_aa326f34bcce8fa06e67016bb57069e16}{\index{Output\-Derived@{Output\-Derived}!the\-Body@{the\-Body}}
+\index{the\-Body@{the\-Body}!OutputDerived@{Output\-Derived}}
+\subsubsection[{the\-Body}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Body} Output\-Derived\-::the\-Body}}\label{class_output_derived_aa326f34bcce8fa06e67016bb57069e16}
+Holds a reference to the body for outputs. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/outputderived.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/outputderived.\-cpp\end{DoxyCompactItemize}

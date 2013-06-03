@@ -2,13 +2,11 @@
 
 
 ForceReactive::ForceReactive() : Force()
-{
-}
+{}
 
 
 ForceReactive::~ForceReactive()
-{
-}
+{}
 
 void ForceReactive::setCurDerivative(int newOrder)
 {
