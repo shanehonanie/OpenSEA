@@ -63,24 +63,44 @@ public:
 	void setOutputs(OutputsList);
 
 	/**
-	 * Writes the outputs list file.
+	 * Writes the outputs list to file.
 	 * @param curWaveDirection The current wave direction.
 	 * @return true if write successful.
 	 */
 	bool writeToFile(int);
+
+	/**
+	 * Writes the directions list to file.
+	 * @param directionList The list of directions.
+	 * @return true if write successful.
+	 */
 	bool writeDirectionsToFile(vector<double>);
+
+	/**
+	 * Writes the frequencies list to file.
+	 * @param frequencyList The list of frequencies.
+	 * @return true if write successful.
+	 */
 	bool writeFrequenciesToFile(vector<double>);
-	void setHeader();
-	void setFileInfo(string);
+	void setHeader(); /**< Reads in from input file the header to be used in all files. */
+
+	/**
+	 * Set information about the file to be written after header and above data, included in the seafile block.
+	 * @param objectIn The name of the object.
+	 */
+	void setFileInfo(string); 
+
+	/**
+	 * Remove all old directiories & files written by oFreq previous run.
+	 * @return Return true if all files & directories were successfully deleted.
+	 */
 	bool removeOldDirectories();
 
 private:
-	string className;
-	string header;
-	string fileInfo;
-	OutputsList theOutputsList;
-	vector<double> thefrequenciesList;
-	vector<double> theDirectionsList;
+	string header; /**< The header to be included in all files */
+	string fileInfo; /**< The seafile block information. */
+	OutputsList theOutputsList; /**< List of outputs to be written to files. */
+	vector<double> thefrequenciesList; /**< List of all wave frequencies. */
+	vector<double> theDirectionsList; /**< List of of wave directions. */
 };
 #endif
-

@@ -6,12 +6,16 @@
 using namespace arma;
 using namespace std;
 
+/**
+ * This class holds all data for an active force matrix.
+ */
+
 class ActiveForceMatrix
 {
 public:
-	ActiveForceMatrix();
-	~ActiveForceMatrix();
-	cx_mat coefficients;
+	ActiveForceMatrix(); /**< The default constructor. */
+	~ActiveForceMatrix(); /**< The default destructor, nothing happens here. */
+	cx_mat coefficients; /**< Matrix of force coefficients. */
 };
 #endif
 

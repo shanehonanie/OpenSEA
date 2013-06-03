@@ -42,20 +42,53 @@ const int EQ_5_BM3 = 3;
 const int EQ_5_BM4 = 4;
 const int EQ_5_BM5 = 5;
 
+/**
+ * This class holds data and functions to calculate the 6DOF Equation of Motion.
+ */
+
 class EquationOfMotion_01 : public EquationOfMotion
 {
 public:
-	EquationOfMotion_01();
-	~EquationOfMotion_01();
-	void setBodyData(Body, UserForces);	
-	void calculateEquations(BodyWithForceMatrix); //calculate equtaions 0-5
-	complexDouble getBodyMassVal(int, int); //first int implies row, second int selects the cell
-	void setBodyMassIndexs(int);
-	bool isCurrentBodyMassIndex(int curIndex);
+	EquationOfMotion_01(); /**< The default constructor. */
+	~EquationOfMotion_01(); /**< The default destructor, nothing happens here. */
 
-	int bodyMassIndexs[bodyEquationSize];
+	/**
+	 * Sets the body and forces data for this object.
+	 * @param bodyDataIn The Body.
+	 * @param userForcesIn The user forces.
+	 */
+	void setBodyData(Body, UserForces);	
+
+	/**
+	 * Perform the calculations for the 6DOF Motion Model.
+	 * @param theBodyWithForceMatrices The Body with force matrices.
+	 */
+	void calculateEquations(BodyWithForceMatrix); //calculate equtaions 0-5
+
+	/**
+	 * Retrieve a variable in the equaion from the mass matrix.
+	 * @param equationNum The equation number (row in mass matrix).
+	 * @param var The variable in the equation (column in mass matrix).
+	 * @return The variable in the specified equation from the mass matrix.
+	 */
+	complexDouble getBodyMassVal(int, int); //first int implies row, second int selects the cell
+
+	/**
+	 * Sets the Indexs in solution matrix, This Needs to be fixed, only supports 2 bodies max.
+	 * @param curIndex The current index in the matrix.
+	 */
+	void setBodyMassIndexs(int);
+
+	/**
+	 * Check if current index is valid in the mass matrix.
+	 * @param curIndex The current index in mass matrix.
+	 * return True if a valid entry in mass matrix.
+	 */
+	bool isCurrentBodyMassIndex(int);
+
+	int bodyMassIndexs[bodyEquationSize]; /**< The indexs in solution matrix for all sub matrices. */
 	
-	cx_mat solutionMatrix; //<--FIX, This is temp, needs to be actual solutions values
+	cx_mat solutionMatrix; /**< The solution matirx. */
 
 private:
 	

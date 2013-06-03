@@ -13,16 +13,35 @@ using namespace std;
 const string EQUATION_01 = "6dof"; //Equation Of Motion 01
 const int EQUATION_01_SIZE = 6;
 
+/**
+ * This class holds data for the motion model and calculates the specified equation of motion.
+ */
 
 class MotionModel
 {
 public:
-	MotionModel();
+	MotionModel(); /**< The default constructor. */
+	~MotionModel(); /**< The default destructor, nothing happens here. */
+
+	/**
+	 * Retrieve and calculate the equation of motion body with force matrix object.
+	 * @param bodyDataIn The body.
+	 * @param userForcesIn The User Forces.
+	 * @return The Body with Force Matrix after specified equation of motion is calculated.
+	 */
 	BodyWithForceMatrix setBodyData(Body, UserForces);
-	~MotionModel();
-	void setWaveFrequencies(double);
+
+	/**
+	 * Set the wave frequencies list.
+	 * @param newWaveFreq The list of wave frequencies.
+	 */
+	void setWaveFrequencies(double); 
+
+	/**
+	 * Get the matrix size which depends on which equation of motion is used.
+	 * @param motionType The motion model.
+	 */
 	static int getMatrixSize(string);
-	double curWaveFreq;	
+	double curWaveFreq;	/**< The current wave frequency. */
 };
 #endif
-

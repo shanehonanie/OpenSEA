@@ -84,16 +84,7 @@ void SeaEnviroment::setSpreadModelDirectionAngle(double val)
 }
 
 
-
 void SeaEnviroment::setSpreadModelScalingFactor(double val)
 {
 	specifiedSpreadModel[currentSpreadModel].setSpectrumScalingFactor(val);
 }
-
-//private:
-//	vector<WaveSpectrumModel> specifiedSpectrum;
-//	vector<WaveSpreadModel> specifiedSpreadModel;
-//	int currentSpectrum;
-//	int currentSpreadModel;
-
-

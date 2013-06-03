@@ -34,6 +34,7 @@ ReactiveForceMatrix::ReactiveForceMatrix(vector<Derivative> forceListIn)
 	}
 }
 
+//TO DO : FIX so const
 int ReactiveForceMatrix::getSize()
 {
 	return 3; //<-----Fix, change to const
