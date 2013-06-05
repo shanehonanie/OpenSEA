@@ -26,6 +26,6 @@ public:
 	 */
 	int getCoefficientListSize();
 private:
-	void initCoeff() /**< Initialize all coefficients to default values. */
+	void initCoeff(); /**< Initialize all coefficients to default values. */
 };
 #endif

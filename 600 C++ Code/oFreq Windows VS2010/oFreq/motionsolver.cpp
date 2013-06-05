@@ -145,18 +145,18 @@ vector<cx_mat> MotionSolver::CalculateOutputs()
 	//activeForceMatrixGlobal.raw_print("Active Matrix");
 
 	//Test print A & F & X Matrix to myfile
-	ofstream myfile;
-	myfile.open("motionsolverResults.txt");
-	reactiveForceMatrixGlobal.raw_print(myfile, "Reactive Matrix"); myfile <<endl;
-	activeForceMatrixGlobal.raw_print(myfile, "Active Matrix"); myfile <<endl;
-	solutionColumnMatrix.raw_print(myfile, "Solution Matrix"); myfile <<endl;
+	//ofstream myfile;
+	//myfile.open("motionsolverResults.txt");
+	//reactiveForceMatrixGlobal.raw_print(myfile, "Reactive Matrix"); myfile <<endl;
+	//activeForceMatrixGlobal.raw_print(myfile, "Active Matrix"); myfile <<endl;
+	//solutionColumnMatrix.raw_print(myfile, "Solution Matrix"); myfile <<endl;
 
 	//cx_mat solutionColumnMatrix2(6,1);
 	//myfile << "Column Size " << solutionColumnMatrix2.n_cols << endl;
 	//myfile << "Row Size " << solutionColumnMatrix2.n_rows << endl;
 	//solutionColumnMatrix2.raw_print(myfile, "Solution Matrix2"); myfile <<endl;
 
-	myfile.close();
+	//myfile.close();
 	//return theBodyData;
 	return solutionsPerBody;
 }

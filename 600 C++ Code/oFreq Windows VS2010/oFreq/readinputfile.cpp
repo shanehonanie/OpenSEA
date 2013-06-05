@@ -2,20 +2,15 @@
 
 
 ReadInput::ReadInput()
-{
-
-}
+{}
 
 
 ReadInput::~ReadInput()
-{
-
-}
+{}
 
 
 void ReadInput::setData(istream& infile)
 {
-	
 	int encloseBracketCount = 0;
 	vector<string> theList;
 	string discard;
@@ -37,7 +32,7 @@ void ReadInput::setData(istream& infile)
 
 		if (curString == SEAFILE) //ignore the seafile object
 		{
-			infile.ignore(MAX_IGNORE, '}');
+			infile.ignore(MAX_IGNORE, '}'); //need to make const
 			if (infile.eof()) break; 
 		}
 		else if (curString.find(COMMENT_LINE) != std::string::npos)
@@ -54,10 +49,15 @@ void ReadInput::setData(istream& infile)
 
 				if(curString == COMMENT_BLOCK_END)
 				{
-				break;
+					break;
 				}
 			}
 		}
+		//else if(curString == QUOTE)
+		//{
+		//	infile.ignore(MAX_IGNORE, '\"'); //Need to make const
+		//	if (infile.eof()) break;
+		//}
 		else if(legalKeywordVal > UNDEFINED_KEYWORD)
 		{
 			prevString = curString;
@@ -76,9 +76,6 @@ void ReadInput::setData(istream& infile)
 					infile >> curString;
 
 					int index = curString.find(KEY_VAL_SEPERATOR);
-
-					//for(int i = 0; i < 2; i++) //crashes program, should take out ignore chars
-					//	curString.erase(std::remove(curString.begin(), curString.end(), ignoreChars[i]), curString.end());
 
 					if ((curString != LIST_END) && (index != std::string::npos))
 					{
@@ -104,10 +101,5 @@ void ReadInput::setData(istream& infile)
 
 		if (infile.eof()) break; //End of File, end parsing
 		}
-		//else
-		//{
-		//	cerr << "ERROR: UNDEFINED KEYWORD VALUE" << endl;
-		//	//break;
-		//}
 	}
 }

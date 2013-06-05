@@ -22,14 +22,20 @@ using namespace std;
 const string CONST_DIR = "constant";
 const string SYS_DIR = "system";
 string seperator = "/";
+string oFreq_Directory = "";
 
-int main()
+int main( int argc, char *argv[] )
 {
-	ifstream forces_fileInput(CONST_DIR + seperator + "forces.in");
-	ifstream bodies_fileInput(CONST_DIR + seperator + "bodies.in");
-	ifstream data_fileInput(CONST_DIR + seperator + "data.in");
-	ifstream seaenv_fileInput(CONST_DIR + seperator + "seaenv.in");
-	ifstream control_fileInput(SYS_DIR + seperator + "control.in");
+	//if command line arg supplied, use that directory
+	//or assume the current working directory
+	if(argc == 2)
+		oFreq_Directory = argv[1];
+	
+	ifstream forces_fileInput(oFreq_Directory + CONST_DIR + seperator + "forces.in");
+	ifstream bodies_fileInput(oFreq_Directory + CONST_DIR + seperator + "bodies.in");
+	ifstream data_fileInput(oFreq_Directory + CONST_DIR + seperator + "data.in");
+	ifstream seaenv_fileInput(oFreq_Directory + CONST_DIR + seperator + "seaenv.in");
+	ifstream control_fileInput(oFreq_Directory + SYS_DIR + seperator + "control.in");
 
 	if (!data_fileInput)
 	{
@@ -78,20 +84,11 @@ int main()
 	bodiesInput.setData(bodies_fileInput);
 	//bodiesInput.testPrint();
 
-	//MotionSolver theMotionSolver(bodiesInput.getBodyData(),forcesInput.getUserForces(), controlInput.getWaveFrequencies());
-	//vector<Body> bodyListWithSolution = theMotionSolver.CalculateOutputs();
-
-	//OutputsList theOutputsList(bodyListWithSolution,controlInput.getWaveFrequencies());
-	//theOutputsList.calculateOutputs();
-
-	//FileWriter theFileWriter(theOutputsList);
-	//theFileWriter.writeToFile(0); //FIX< <----This will be a loop wih all wave directions, not just 0
-
 	vector<double> waveDirectionList = controlInput.getWaveDirections();
 	vector<double> waveFrequencyList = controlInput.getWaveFrequencies();
 	
 
-	FileWriter theFileWriter(waveDirectionList, waveFrequencyList);
+	FileWriter theFileWriter(oFreq_Directory, waveDirectionList, waveFrequencyList);
 	//vector<OutputsList> theWaveOutputList; //FIX, change name
 
 	vector<Body> theBodiesList = bodiesInput.getBodyData();

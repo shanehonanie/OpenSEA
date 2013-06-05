@@ -1,7 +1,7 @@
 #include "filewriter.h"
 
-FileWriter::FileWriter(vector<double> theDirectionsListIn, vector<double> theFrequenciesListIn) 
-	: theDirectionsList(theDirectionsListIn), thefrequenciesList(theFrequenciesListIn)
+FileWriter::FileWriter(string fileDirIn, vector<double> theDirectionsListIn, vector<double> theFrequenciesListIn) 
+	: oFreq_Directory(fileDirIn), theDirectionsList(theDirectionsListIn), thefrequenciesList(theFrequenciesListIn)
 {
 	setHeader();
 
@@ -20,6 +20,9 @@ FileWriter::FileWriter(vector<double> theDirectionsListIn, vector<double> theFre
 		cerr << "Failed to write frequencies to file." << endl;
 	}
 }
+
+FileWriter::~FileWriter()
+{}
 
 void FileWriter::setOutputs(OutputsList theOutputsListIn)
 {
@@ -47,10 +50,6 @@ void FileWriter::setFileInfo(string objectIn)
 		+ FORMAT_INFO + END + "\n    " + OBJECT + "    " + objectIn + END + "\n" + OBJECT_END2 + "\n";
 }
 
-FileWriter::~FileWriter()
-{
-}
-
 bool FileWriter::writeToFile(int curWaveDirection)
 {
 	ofstream myFileMotion;
@@ -61,15 +60,15 @@ bool FileWriter::writeToFile(int curWaveDirection)
 	string currentDirectory = DIR_NAME + dirNum;
 
 	//Create the current directory
-	if (!create_directory(currentDirectory))
+	if (!create_directory(oFreq_Directory + currentDirectory))
 	{
 		cerr << "Failed to create " + currentDirectory << endl; //This needs to be handled
 		return false;
 	}
 
-	myFileMotion.open(currentDirectory + "/" + GLOBAL_MOTION_FILENAME); //Create the Motion file
-	myFileVelocity.open(currentDirectory + "/" + GLOBAL_VELOCITY_FILENAME); //Create the Velocity file
-	myFileAcceleration.open(currentDirectory + "/" +  GLOBAL_ACCELERATION_FILENAME); //Create the Acceleration file
+	myFileMotion.open(oFreq_Directory + currentDirectory + "/" + GLOBAL_MOTION_FILENAME); //Create the Motion file
+	myFileVelocity.open(oFreq_Directory + currentDirectory + "/" + GLOBAL_VELOCITY_FILENAME); //Create the Velocity file
+	myFileAcceleration.open(oFreq_Directory + currentDirectory + "/" +  GLOBAL_ACCELERATION_FILENAME); //Create the Acceleration file
 
 	setFileInfo(GLOBAL_ACCELERATION_OBJECT);
 	myFileMotion << header << fileInfo << BREAK_TOP;
@@ -164,7 +163,7 @@ bool FileWriter::writeDirectionsToFile(vector<double> directionList)
 	setFileInfo(DIRECTION);
 
 	ofstream myFileAcceleration;
-	myFileAcceleration.open(DIRECTIONS_FILENAME);
+	myFileAcceleration.open(oFreq_Directory + DIRECTIONS_FILENAME);
 
 	myFileAcceleration << header << fileInfo << BREAK_TOP << DIRECTION << " " << LIST_BEGIN2 << "\n";
 
@@ -184,7 +183,7 @@ bool FileWriter::writeFrequenciesToFile(vector<double> frequencyList)
 	setFileInfo(FREQUENCY);
 
 	ofstream myFileAcceleration;
-	myFileAcceleration.open(FREQUENCIES_FILENAME);
+	myFileAcceleration.open(oFreq_Directory + FREQUENCIES_FILENAME);
 
 	myFileAcceleration << header << fileInfo << BREAK_TOP << FREQUENCY << " " << LIST_BEGIN2 << "\n";
 
@@ -205,17 +204,17 @@ bool FileWriter::removeOldDirectories()
 	string curDirectoryPath = DIR_NAME + numToDelete; //start at directory "d0"
 
 	//Remove the direcions & frequencies file outputs if they exist
-	if(exists(DIRECTIONS_FILENAME))
-		remove(DIRECTIONS_FILENAME);
+	if(exists(oFreq_Directory + DIRECTIONS_FILENAME))
+		remove(oFreq_Directory + DIRECTIONS_FILENAME);
 
-	if(exists(FREQUENCIES_FILENAME))
-		remove(FREQUENCIES_FILENAME);
+	if(exists(oFreq_Directory + FREQUENCIES_FILENAME))
+		remove(oFreq_Directory + FREQUENCIES_FILENAME);
 	
-	while(exists(curDirectoryPath)) //check if current directory exists
+	while(exists(oFreq_Directory + curDirectoryPath)) //check if current directory exists
 	{
-		if(!remove_all(curDirectoryPath))
+		if(!remove_all(oFreq_Directory + curDirectoryPath))
 		{
-			cerr << "Failed to delete " + curDirectoryPath << endl;
+			cerr << "Failed to delete " + oFreq_Directory + curDirectoryPath << endl;
 			return false;
 		}
 		else //increment to next directory

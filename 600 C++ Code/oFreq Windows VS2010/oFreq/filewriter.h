@@ -50,10 +50,11 @@ class FileWriter
 public:
 	/**
 	 * Constructor on creation sets header, write wave directions & frequencies to file, and removes old directories
+	 * @param fileDirIn The directory to write outputs.
 	 * @param theDirectionsListIn The list of wave directions.
 	 * @param theFrequenciesListIn The list of wave frequncies
 	 */
-	FileWriter(vector<double>, vector<double>);
+	FileWriter(string, vector<double>, vector<double>);
 	~FileWriter(); /**< The default destructor, nothing happens here. */
 
 	/**
@@ -97,6 +98,7 @@ public:
 	bool removeOldDirectories();
 
 private:
+	string oFreq_Directory; /**< The oFreq directory */
 	string header; /**< The header to be included in all files */
 	string fileInfo; /**< The seafile block information. */
 	OutputsList theOutputsList; /**< List of outputs to be written to files. */

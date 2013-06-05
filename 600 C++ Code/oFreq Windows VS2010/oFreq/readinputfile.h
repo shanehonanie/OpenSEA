@@ -19,9 +19,10 @@ const string LIST_BEGIN = "("; /**< List scope begin. */
 const string LIST_END = ");"; /**< List scope end. */
 const string KEY_VAL_SEPERATOR= ":"; /**< Key/Val pair seperator. */
 const char EOL = '\n'; /**< newline. */
-const int MAX_IGNORE = 5000; /**< Max # of chars to ignore. */
+const int MAX_IGNORE = 15000; /**< Max # of chars to ignore. */
 const int UNDEFINED_KEYWORD = -1; /**< Invalid/Undefined keyword. */
 const string SEAFILE = "seafile"; /**< seafile object name, used to ignore seafile block. */
+const string QUOTE = "\"";
 
 /**
  * This absract class parses input from file and has functions that must be implemented to handle the data.
