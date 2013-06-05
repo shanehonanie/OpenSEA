@@ -1,0 +1,185 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      dictionary;
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//                     A C T I V E   F O R C E S                             //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Defines user active forces
+
+force_active {
+  //User defined name of user active force.  Other objects refer to this name
+  name "active force 1";
+
+  //Coefficients for user defined active forces.
+  //Entered as complex numbers in one of the following formats
+  //R<tht
+  //a+ib
+  //a-ib
+  //a+bi
+  //a-bi
+
+  force {
+    equation 1;
+    coeff /*F1 = */ 0.00+1.00i;
+  }
+
+  force {
+    equation 2;
+    coeff /*F2 = */ 0.00+1.00i;
+  }
+
+  force {
+    equation 3;
+    coeff /*F3 = */ 0.00+1.00i;
+  }
+
+  force {
+    equation 4;
+    coeff /*F4 = */ 0.00+1.00i;
+  }
+
+  force {
+    equation 5;
+    coeff /*F5 = */ 0.00+1.00i;
+
+  force {
+    equation 6;
+    coeff /*F6 = */ 0.00+1.00i;
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//                   R E A C T I V E   F O R C E S                           //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Defines user reactive forces
+
+/*Definition sequence for reactive forces
+force set
+  > derivative 
+    > equation set
+      > force coefficients (list)
+        > coefficient for each variable
+*/
+
+force_reactive {
+  //User defined name of user reactive force.  Other objects refer to this name
+  name "reactive force 1";
+  //Define a derivative, with an equation with user coefficients assigned.
+  //Each derivative contains an equation followed by coefficients for each
+  //variable associated with that derivative.
+  derivative {
+    order 0;
+    equation {
+      number 1;
+      force (
+      /*C_x1 = */ 1:0.00
+      );
+    }
+
+    equation {
+      number 2;
+      force (
+      /*C_x1 = */ 2:0.00      
+      );
+    }
+    equation {
+      number 3;
+      force (
+      /*C_x1 = */ 3:0.00      
+      );
+    }
+    equation {
+      number 4;
+      force (
+      /*C_x1 = */ 4:0.00      
+      );
+    }
+    equation {
+      number 5;
+      force (
+      /*C_x1 = */ 5:0.00      
+      );
+    }
+    equation {
+      number 6;
+      force (
+      /*C_x1 = */ 6:0.00      
+      );
+    }
+  }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//                 C R O S S - B O D Y   F O R C E S                         //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Defines user cross body forces
+
+// The cross-body forces are defined in the exact same format as a reactive
+// force.  What goes unsaid though is that all force coefficients in the
+// cross-body force are referring to the variables of motion from the 
+// OTHER BODY.  Which other body specifically gets assigned in the body 
+// definitions later.
+
+force_crossbody {
+  //User defined name of user reactive force.  Other objects refer to this name
+  name "crossbody force 1";
+  //Define a derivative, with an equation with user coefficients assigned.
+  //Each derivative contains an equation followed by coefficients for each
+  //variable associated with that derivative.
+  derivative {
+    order 2;
+    equation {
+      number 1;
+      force (
+      /*C_x1 = */ 1:1.00
+      );
+    }
+
+    equation {
+      number 2;
+      force (
+      /*C_x1 = */ 2:1.00      
+      );
+    }
+    equation {
+      number 3;
+      force (
+      /*C_x1 = */ 3:1.00      
+      );
+    }
+    equation {
+      number 4;
+      force (
+      /*C_x1 = */ 4:1.00      
+      );
+    }
+    equation {
+      number 5;
+      force (
+      /*C_x1 = */ 5:1.00      
+      );
+    }
+    equation {
+      number 6;
+      force (
+      /*C_x1 = */ 6:1.00      
+      );
+    }
+  }
+}
+
+
+// ************************************************************************* //

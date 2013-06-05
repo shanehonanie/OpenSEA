@@ -1,0 +1,77 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      dictionary;
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+body {
+  //The name of the body.  Outputs will refer to this name
+  name "body1";
+
+  //The name of the hydrodynamic data used to refer to the body
+  //If no name is provided, the program first searches for a hydrodynamic
+  //body which matches the current body name.
+  //If that doesn't work, then the program returns an error.
+  hydrobody "body1";
+  
+  //Mass definition for the body.  Includes all the mass properties.
+  //If a property is not defined, it is assumed to be zero.
+  massprop {
+    //Mass [kg]
+    mass 1.0;
+    ixx 1.0;
+    iyy 1.0;
+    izz 1.0;
+  }
+
+  //Center of gravity definition. [m]  Center of gravity relative to 
+  //world coordinates.
+  centroid {
+    cogx 0.00;
+    cogy 0.00;
+    cogz 0.00;
+  }
+
+  //Heading of the body [rad], relative to True North, positive counter-clockwise
+  //Heading used for interpolation of wave forces
+  //WARNING:  wave cross-body forces are not interpolated with heading.
+
+
+  //Specify motion model to use
+  motion "6dof";
+
+  //Specify user active forces.  Multiple forces can be added with multiple
+  //models specified.
+  force_active {
+    model "active force 1";
+  }
+
+
+  //Specify user reactive forces.  Multiple forces can be added with multiple
+  //models specified.
+  force_reactive {
+    model "reactive force 1";
+  }
+
+
+  //Specify cross body forces.  Each cross body force must include the force
+  //model used and the body linked to.  
+  /*force_crossbody {
+    model {
+      name "cross-body force 2";
+      linkedbody "body1";
+    }
+  }*/
+}
+
+// ************************************************************************* //
