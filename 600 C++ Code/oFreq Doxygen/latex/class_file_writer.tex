@@ -8,7 +8,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_file_writer_a709e25c5a60904cb5ab6e756f8580adb}{File\-Writer} (vector$<$ double $>$, vector$<$ double $>$)
+\hyperlink{class_file_writer_a570c654285dedf2eed41794698488268}{File\-Writer} (string, vector$<$ double $>$, vector$<$ double $>$)
 \item 
 \hyperlink{class_file_writer_ae5490307dcaf9237f4c1b8b8df433e03}{$\sim$\-File\-Writer} ()
 \item 
@@ -32,16 +32,19 @@ bool \hyperlink{class_file_writer_a3c651fa84b2cce465f2ec0fce8be2464}{remove\-Old
 This class write all outputs to files. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_file_writer_a709e25c5a60904cb5ab6e756f8580adb}{\index{File\-Writer@{File\-Writer}!File\-Writer@{File\-Writer}}
+\hypertarget{class_file_writer_a570c654285dedf2eed41794698488268}{\index{File\-Writer@{File\-Writer}!File\-Writer@{File\-Writer}}
 \index{File\-Writer@{File\-Writer}!FileWriter@{File\-Writer}}
 \subsubsection[{File\-Writer}]{\setlength{\rightskip}{0pt plus 5cm}File\-Writer\-::\-File\-Writer (
 \begin{DoxyParamCaption}
+\item[{string}]{file\-Dir\-In, }
 \item[{vector$<$ double $>$}]{the\-Directions\-List\-In, }
 \item[{vector$<$ double $>$}]{the\-Frequencies\-List\-In}
 \end{DoxyParamCaption}
-)}}\label{class_file_writer_a709e25c5a60904cb5ab6e756f8580adb}
+)}}\label{class_file_writer_a570c654285dedf2eed41794698488268}
 Constructor on creation sets header, write wave directions \& frequencies to file, and removes old directories 
 \begin{DoxyParams}{Parameters}
+{\em file\-Dir\-In} & The directory to write outputs. \\
+\hline
 {\em the\-Directions\-List\-In} & The list of wave directions. \\
 \hline
 {\em the\-Frequencies\-List\-In} & The list of wave frequncies \\
