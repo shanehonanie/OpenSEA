@@ -63,9 +63,26 @@ void ReadInput::setData(istream& infile)
 			prevString = curString;
 			infile >> curString;
 			if (infile.eof()) break; 
+			
+			if(curString[0] == '\"') //the string will be enclosed in quotes
+			{
+				int quoteCount = count(curString.begin(), curString.end(), '\"');//the count of quotes in this string
+
+				if(quoteCount == 1) //if only 1 then need to get the rest of string enclosed in end quote
+				{
+					string tempInput;
+					infile >> tempInput;
+					while((tempInput.at(tempInput.length() - 1) != ';')) //keep going until find ";"
+					{
+						curString += " " + tempInput; //add to curString the rest of string
+						infile >> tempInput;
+					}
+					curString += " " + tempInput; //add the last part
+				}
+			}
 
 			for(int i = 0; i < 2; i++)
-				curString.erase(std::remove(curString.begin(), curString.end(), ignoreChars[i]), curString.end());
+				curString.erase(std::remove(curString.begin(), curString.end(), ignoreChars[i]), curString.end()); //remove ignore chars from string
 
 			bool done = keywordHandler(legalKeywordVal, prevString, curString); //is a legal keyword so pass to handler
 

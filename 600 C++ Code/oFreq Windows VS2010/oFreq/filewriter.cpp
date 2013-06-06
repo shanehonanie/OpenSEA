@@ -84,13 +84,13 @@ bool FileWriter::writeToFile(int curWaveDirection)
 		vector<cx_mat> globalAccSolutionList = theOutputsList.theOutputsBodyList[j].getOutputType(2);
 
 		myFileMotion << BODY << " " << OBJECT_BEGIN2 
-				<< "\n  " << NAME << " " << theOutputsList.theBodyList[j].bodyName << END << "\n";
+				<< "\n  " << NAME << " " << "\"" << theOutputsList.theBodyList[j].bodyName << "\"" << END << "\n";
 
 		myFileVelocity << BODY << " " << OBJECT_BEGIN2 
-				<< "\n  " << NAME << " " << theOutputsList.theBodyList[j].bodyName << END << "\n";
+				<< "\n  " << NAME << " " << "\"" << theOutputsList.theBodyList[j].bodyName << "\"" << END << "\n";
 
 		myFileAcceleration << BODY << " " << OBJECT_BEGIN2 
-				<< "\n  " << NAME << " " << theOutputsList.theBodyList[j].bodyName << END << "\n";
+				<< "\n  " << NAME << " " << "\"" << theOutputsList.theBodyList[j].bodyName << "\"" << END << "\n";
 			
 		for(int k = 0; k < thefrequenciesList.size(); k++) //iterate through all of the frequencies
 		{
