@@ -1,0 +1,149 @@
+\hypertarget{class_data_input}{\section{Data\-Input Class Reference}
+\label{class_data_input}\index{Data\-Input@{Data\-Input}}
+}
+
+
+{\ttfamily \#include $<$datainput.\-h$>$}
+
+Inheritance diagram for Data\-Input\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_data_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_data_input_af2e87fe631ff367c6ef8fa428f3367c4}{Data\-Input} ()
+\item 
+\hyperlink{class_data_input_a526be3b7b6daeb510ababe0da5222cca}{$\sim$\-Data\-Input} ()
+\item 
+void \hyperlink{class_data_input_aab1accef9d6147402c2426300656dd3b}{test\-Print} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_data_input_a991d4d493aaeaff9d631565b9a49d2ce}{initialize\-Defaults} ()
+\item 
+int \hyperlink{class_data_input_ae3ca24179103da6e38b99842b9fc1000}{legal\-Keyword} (string)
+\item 
+bool \hyperlink{class_data_input_a80075c8e86436e00c89d891ce0be57a8}{keyword\-Handler} (int, string, string)
+\item 
+bool \hyperlink{class_data_input_a70d0380171a30a659a6c7868f2573c92}{keyword\-Handler} (int, vector$<$ string $>$, bool)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class parses input from file and stores the data as a list for hyddro file locations. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_data_input_af2e87fe631ff367c6ef8fa428f3367c4}{\index{Data\-Input@{Data\-Input}!Data\-Input@{Data\-Input}}
+\index{Data\-Input@{Data\-Input}!DataInput@{Data\-Input}}
+\subsubsection[{Data\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Data\-Input\-::\-Data\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_data_input_af2e87fe631ff367c6ef8fa428f3367c4}
+The default constructor. \hypertarget{class_data_input_a526be3b7b6daeb510ababe0da5222cca}{\index{Data\-Input@{Data\-Input}!$\sim$\-Data\-Input@{$\sim$\-Data\-Input}}
+\index{$\sim$\-Data\-Input@{$\sim$\-Data\-Input}!DataInput@{Data\-Input}}
+\subsubsection[{$\sim$\-Data\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Data\-Input\-::$\sim$\-Data\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_data_input_a526be3b7b6daeb510ababe0da5222cca}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_data_input_a991d4d493aaeaff9d631565b9a49d2ce}{\index{Data\-Input@{Data\-Input}!initialize\-Defaults@{initialize\-Defaults}}
+\index{initialize\-Defaults@{initialize\-Defaults}!DataInput@{Data\-Input}}
+\subsubsection[{initialize\-Defaults}]{\setlength{\rightskip}{0pt plus 5cm}void Data\-Input\-::initialize\-Defaults (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_data_input_a991d4d493aaeaff9d631565b9a49d2ce}
+For future use, does nothing as of now. 
+
+Implements \hyperlink{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}{Read\-Input}.
+
+\hypertarget{class_data_input_a80075c8e86436e00c89d891ce0be57a8}{\index{Data\-Input@{Data\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!DataInput@{Data\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{string}]{identifier, }
+\item[{string}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_data_input_a80075c8e86436e00c89d891ce0be57a8}
+Stores the data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em identifier} & The keyword. \\
+\hline
+{\em val} & The value associated with the keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a1d8cb0ef59f265300b682de97513f48d}{Read\-Input}.
+
+\hypertarget{class_data_input_a70d0380171a30a659a6c7868f2573c92}{\index{Data\-Input@{Data\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!DataInput@{Data\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Data\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{vector$<$ string $>$}]{the\-List\-In, }
+\item[{bool}]{is\-Direct}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_data_input_a70d0380171a30a659a6c7868f2573c92}
+Stores the list data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em the\-List\-In} & List of Values. \\
+\hline
+{\em is\-Direct} & True if Direct Access List, False if Sequenctial List. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}{Read\-Input}.
+
+\hypertarget{class_data_input_ae3ca24179103da6e38b99842b9fc1000}{\index{Data\-Input@{Data\-Input}!legal\-Keyword@{legal\-Keyword}}
+\index{legal\-Keyword@{legal\-Keyword}!DataInput@{Data\-Input}}
+\subsubsection[{legal\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}int Data\-Input\-::legal\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string}]{string\-In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_data_input_ae3ca24179103da6e38b99842b9fc1000}
+Returns int greater than 0 if the keyword is legal, the int returned specifies how to handle data in keyword\-Handler. 
+\begin{DoxyParams}{Parameters}
+{\em string\-In} & Check if a valid keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int value which tells keyword\-Handler how to handle the data. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}{Read\-Input}.
+
+\hypertarget{class_data_input_aab1accef9d6147402c2426300656dd3b}{\index{Data\-Input@{Data\-Input}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!DataInput@{Data\-Input}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void Data\-Input\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_data_input_aab1accef9d6147402c2426300656dd3b}
+Print to console all data members. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/datainput.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/datainput.\-cpp\end{DoxyCompactItemize}

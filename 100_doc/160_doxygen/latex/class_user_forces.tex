@@ -1,0 +1,189 @@
+\hypertarget{class_user_forces}{\section{User\-Forces Class Reference}
+\label{class_user_forces}\index{User\-Forces@{User\-Forces}}
+}
+
+
+{\ttfamily \#include $<$userforces.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_forces_a642cb07c929ac7431ba9b9bd1cf62487}{User\-Forces} ()
+\item 
+\hyperlink{class_user_forces_aae54a625e8d3a753b108c47e543a9b3c}{$\sim$\-User\-Forces} ()
+\item 
+void \hyperlink{class_user_forces_af4543aab611d78a96c2c3ccd8a182c43}{add\-New\-Force} (string)
+\item 
+void \hyperlink{class_user_forces_a5e91ea4efcb7bfea69fac4707b0f7523}{set\-Coeff} (vector$<$ string $>$, bool)
+\item 
+void \hyperlink{class_user_forces_ac9af0ed1756485df7f1c20434a419430}{set\-Order\-Derivative} (int)
+\item 
+void \hyperlink{class_user_forces_a701bdb1ef5b9b9d323a3064d57009073}{set\-Equation\-Number} (int)
+\item 
+void \hyperlink{class_user_forces_acf637eb58f211a30292a56579523c8b6}{set\-Cur\-Force\-As\-Active} ()
+\item 
+void \hyperlink{class_user_forces_a9ef4176430e8ac2f087277f4fe359a85}{set\-Cur\-Force\-As\-Reactive} ()
+\item 
+void \hyperlink{class_user_forces_aeee89b5918595cdc8e573e634bc48e29}{set\-Cur\-Force\-As\-Cross\-Body} ()
+\item 
+void \hyperlink{class_user_forces_ab5af72b01b05992885c2f32f924103dc}{test\-Print} ()
+\item 
+vector$<$ complex\-Double $>$ \hyperlink{class_user_forces_a972c3378118f3ebce036a5be3914657b}{get\-User\-Active\-Force} (string)
+\item 
+vector$<$ \hyperlink{class_derivative}{Derivative} $>$ \hyperlink{class_user_forces_adb47c57e211381745905ad88831a30ac}{get\-User\-Reactive\-Force} (string)
+\item 
+vector$<$ \hyperlink{class_derivative}{Derivative} $>$ \hyperlink{class_user_forces_a234c94ba061fcfff579fb1dd8bc1a47d}{get\-User\-Cross\-Body\-Force} (string)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds all of the data for the forces objects. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_user_forces_a642cb07c929ac7431ba9b9bd1cf62487}{\index{User\-Forces@{User\-Forces}!User\-Forces@{User\-Forces}}
+\index{User\-Forces@{User\-Forces}!UserForces@{User\-Forces}}
+\subsubsection[{User\-Forces}]{\setlength{\rightskip}{0pt plus 5cm}User\-Forces\-::\-User\-Forces (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_a642cb07c929ac7431ba9b9bd1cf62487}
+The default constructor \hypertarget{class_user_forces_aae54a625e8d3a753b108c47e543a9b3c}{\index{User\-Forces@{User\-Forces}!$\sim$\-User\-Forces@{$\sim$\-User\-Forces}}
+\index{$\sim$\-User\-Forces@{$\sim$\-User\-Forces}!UserForces@{User\-Forces}}
+\subsubsection[{$\sim$\-User\-Forces}]{\setlength{\rightskip}{0pt plus 5cm}User\-Forces\-::$\sim$\-User\-Forces (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_aae54a625e8d3a753b108c47e543a9b3c}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_user_forces_af4543aab611d78a96c2c3ccd8a182c43}{\index{User\-Forces@{User\-Forces}!add\-New\-Force@{add\-New\-Force}}
+\index{add\-New\-Force@{add\-New\-Force}!UserForces@{User\-Forces}}
+\subsubsection[{add\-New\-Force}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::add\-New\-Force (
+\begin{DoxyParamCaption}
+\item[{string}]{new\-Force\-Name}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_af4543aab611d78a96c2c3ccd8a182c43}
+Adds a new force to the list. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Force\-Name} & The name of the force. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_user_forces_a972c3378118f3ebce036a5be3914657b}{\index{User\-Forces@{User\-Forces}!get\-User\-Active\-Force@{get\-User\-Active\-Force}}
+\index{get\-User\-Active\-Force@{get\-User\-Active\-Force}!UserForces@{User\-Forces}}
+\subsubsection[{get\-User\-Active\-Force}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ complex\-Double $>$ User\-Forces\-::get\-User\-Active\-Force (
+\begin{DoxyParamCaption}
+\item[{string}]{active\-Force\-Name}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_a972c3378118f3ebce036a5be3914657b}
+Retrieve the active force by name. 
+\begin{DoxyParams}{Parameters}
+{\em active\-Force\-Name} & The name of the active force. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return the active force if found. 
+\end{DoxyReturn}
+\hypertarget{class_user_forces_a234c94ba061fcfff579fb1dd8bc1a47d}{\index{User\-Forces@{User\-Forces}!get\-User\-Cross\-Body\-Force@{get\-User\-Cross\-Body\-Force}}
+\index{get\-User\-Cross\-Body\-Force@{get\-User\-Cross\-Body\-Force}!UserForces@{User\-Forces}}
+\subsubsection[{get\-User\-Cross\-Body\-Force}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Derivative} $>$ User\-Forces\-::get\-User\-Cross\-Body\-Force (
+\begin{DoxyParamCaption}
+\item[{string}]{cross\-Body\-Force\-Name}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_a234c94ba061fcfff579fb1dd8bc1a47d}
+Retrieve the cross body force by name. 
+\begin{DoxyParams}{Parameters}
+{\em cross\-Body\-Force\-Name} & The name of the cross body force. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return the cross body force if found. 
+\end{DoxyReturn}
+\hypertarget{class_user_forces_adb47c57e211381745905ad88831a30ac}{\index{User\-Forces@{User\-Forces}!get\-User\-Reactive\-Force@{get\-User\-Reactive\-Force}}
+\index{get\-User\-Reactive\-Force@{get\-User\-Reactive\-Force}!UserForces@{User\-Forces}}
+\subsubsection[{get\-User\-Reactive\-Force}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Derivative} $>$ User\-Forces\-::get\-User\-Reactive\-Force (
+\begin{DoxyParamCaption}
+\item[{string}]{reactive\-Force\-Name}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_adb47c57e211381745905ad88831a30ac}
+Retrieve the reactive force by name. 
+\begin{DoxyParams}{Parameters}
+{\em reactive\-Force\-Name} & The name of the reactive force. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return the reactive force if found. 
+\end{DoxyReturn}
+\hypertarget{class_user_forces_a5e91ea4efcb7bfea69fac4707b0f7523}{\index{User\-Forces@{User\-Forces}!set\-Coeff@{set\-Coeff}}
+\index{set\-Coeff@{set\-Coeff}!UserForces@{User\-Forces}}
+\subsubsection[{set\-Coeff}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::set\-Coeff (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$}]{new\-List, }
+\item[{bool}]{is\-Direct\-List}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_a5e91ea4efcb7bfea69fac4707b0f7523}
+Sets the coefficients. 
+\begin{DoxyParams}{Parameters}
+{\em the\-List\-In} & The list of coefficients. \\
+\hline
+{\em is\-Direct\-List} & Specifies whether the list is direct or sequential. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_user_forces_acf637eb58f211a30292a56579523c8b6}{\index{User\-Forces@{User\-Forces}!set\-Cur\-Force\-As\-Active@{set\-Cur\-Force\-As\-Active}}
+\index{set\-Cur\-Force\-As\-Active@{set\-Cur\-Force\-As\-Active}!UserForces@{User\-Forces}}
+\subsubsection[{set\-Cur\-Force\-As\-Active}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::set\-Cur\-Force\-As\-Active (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_acf637eb58f211a30292a56579523c8b6}
+Set the current force as an active force. \hypertarget{class_user_forces_aeee89b5918595cdc8e573e634bc48e29}{\index{User\-Forces@{User\-Forces}!set\-Cur\-Force\-As\-Cross\-Body@{set\-Cur\-Force\-As\-Cross\-Body}}
+\index{set\-Cur\-Force\-As\-Cross\-Body@{set\-Cur\-Force\-As\-Cross\-Body}!UserForces@{User\-Forces}}
+\subsubsection[{set\-Cur\-Force\-As\-Cross\-Body}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::set\-Cur\-Force\-As\-Cross\-Body (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_aeee89b5918595cdc8e573e634bc48e29}
+Set the current force as a cross body force force. \hypertarget{class_user_forces_a9ef4176430e8ac2f087277f4fe359a85}{\index{User\-Forces@{User\-Forces}!set\-Cur\-Force\-As\-Reactive@{set\-Cur\-Force\-As\-Reactive}}
+\index{set\-Cur\-Force\-As\-Reactive@{set\-Cur\-Force\-As\-Reactive}!UserForces@{User\-Forces}}
+\subsubsection[{set\-Cur\-Force\-As\-Reactive}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::set\-Cur\-Force\-As\-Reactive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_a9ef4176430e8ac2f087277f4fe359a85}
+Set the current force as a reactive force. \hypertarget{class_user_forces_a701bdb1ef5b9b9d323a3064d57009073}{\index{User\-Forces@{User\-Forces}!set\-Equation\-Number@{set\-Equation\-Number}}
+\index{set\-Equation\-Number@{set\-Equation\-Number}!UserForces@{User\-Forces}}
+\subsubsection[{set\-Equation\-Number}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::set\-Equation\-Number (
+\begin{DoxyParamCaption}
+\item[{int}]{new\-Equation\-Num}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_a701bdb1ef5b9b9d323a3064d57009073}
+Sets the current equation number. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Equation\-Num} & The number if the equation. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_user_forces_ac9af0ed1756485df7f1c20434a419430}{\index{User\-Forces@{User\-Forces}!set\-Order\-Derivative@{set\-Order\-Derivative}}
+\index{set\-Order\-Derivative@{set\-Order\-Derivative}!UserForces@{User\-Forces}}
+\subsubsection[{set\-Order\-Derivative}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::set\-Order\-Derivative (
+\begin{DoxyParamCaption}
+\item[{int}]{new\-Order}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_ac9af0ed1756485df7f1c20434a419430}
+Sets the current order derivative. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Order} & The order derivative. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_user_forces_ab5af72b01b05992885c2f32f924103dc}{\index{User\-Forces@{User\-Forces}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!UserForces@{User\-Forces}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void User\-Forces\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_user_forces_ab5af72b01b05992885c2f32f924103dc}
+Test print to console the values of all data members. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/userforces.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/userforces.\-cpp\end{DoxyCompactItemize}

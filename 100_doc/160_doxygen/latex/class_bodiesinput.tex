@@ -1,0 +1,172 @@
+\hypertarget{class_bodiesinput}{\section{Bodiesinput Class Reference}
+\label{class_bodiesinput}\index{Bodiesinput@{Bodiesinput}}
+}
+
+
+{\ttfamily \#include $<$bodiesinput.\-h$>$}
+
+Inheritance diagram for Bodiesinput\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bodiesinput}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bodiesinput_a978009fcccf310bddf3ecb2261f7b9ed}{Bodiesinput} ()
+\item 
+\hyperlink{class_bodiesinput_ab478797f356b2d02c7be5a04c5e08d69}{$\sim$\-Bodiesinput} ()
+\item 
+void \hyperlink{class_bodiesinput_ab4dda6e4b858b9e349b5cc9ba155b4cd}{test\-Print} ()
+\item 
+vector$<$ \hyperlink{class_body}{Body} $>$ \& \hyperlink{class_bodiesinput_a0526664103347cd11e2b6fc15e8f8e61}{get\-Body\-Data} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_bodiesinput_ae7c0a7ee2c02e1ed63658a7d06f257e5}{initialize\-Defaults} ()
+\item 
+int \hyperlink{class_bodiesinput_abe777be6f9181f1d0f8c5ad523eff6e3}{legal\-Keyword} (string)
+\item 
+bool \hyperlink{class_bodiesinput_a2bf5785740ebd6e397477e667af16a05}{keyword\-Handler} (int, string, string)
+\item 
+bool \hyperlink{class_bodiesinput_af735a952cbd5b1a0c5db67c7209ba847}{keyword\-Handler} (int, vector$<$ string $>$, bool)
+\item 
+void \hyperlink{class_bodiesinput_a752cc5feeefe16345651b8133a132411}{add\-New\-Body} (string)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class parses input from file and stores the data appropriately in the \hyperlink{class_body}{Body} object(s). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_bodiesinput_a978009fcccf310bddf3ecb2261f7b9ed}{\index{Bodiesinput@{Bodiesinput}!Bodiesinput@{Bodiesinput}}
+\index{Bodiesinput@{Bodiesinput}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{Bodiesinput}]{\setlength{\rightskip}{0pt plus 5cm}Bodiesinput\-::\-Bodiesinput (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bodiesinput_a978009fcccf310bddf3ecb2261f7b9ed}
+The default constructor. \hypertarget{class_bodiesinput_ab478797f356b2d02c7be5a04c5e08d69}{\index{Bodiesinput@{Bodiesinput}!$\sim$\-Bodiesinput@{$\sim$\-Bodiesinput}}
+\index{$\sim$\-Bodiesinput@{$\sim$\-Bodiesinput}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{$\sim$\-Bodiesinput}]{\setlength{\rightskip}{0pt plus 5cm}Bodiesinput\-::$\sim$\-Bodiesinput (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bodiesinput_ab478797f356b2d02c7be5a04c5e08d69}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bodiesinput_a752cc5feeefe16345651b8133a132411}{\index{Bodiesinput@{Bodiesinput}!add\-New\-Body@{add\-New\-Body}}
+\index{add\-New\-Body@{add\-New\-Body}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{add\-New\-Body}]{\setlength{\rightskip}{0pt plus 5cm}void Bodiesinput\-::add\-New\-Body (
+\begin{DoxyParamCaption}
+\item[{string}]{new\-Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_bodiesinput_a752cc5feeefe16345651b8133a132411}
+Adds a new body to the list. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Name} & The name of the body to be added to the list. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bodiesinput_a0526664103347cd11e2b6fc15e8f8e61}{\index{Bodiesinput@{Bodiesinput}!get\-Body\-Data@{get\-Body\-Data}}
+\index{get\-Body\-Data@{get\-Body\-Data}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{get\-Body\-Data}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Body} $>$ \& Bodiesinput\-::get\-Body\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bodiesinput_a0526664103347cd11e2b6fc15e8f8e61}
+Returns all bodies. \hypertarget{class_bodiesinput_ae7c0a7ee2c02e1ed63658a7d06f257e5}{\index{Bodiesinput@{Bodiesinput}!initialize\-Defaults@{initialize\-Defaults}}
+\index{initialize\-Defaults@{initialize\-Defaults}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{initialize\-Defaults}]{\setlength{\rightskip}{0pt plus 5cm}void Bodiesinput\-::initialize\-Defaults (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_bodiesinput_ae7c0a7ee2c02e1ed63658a7d06f257e5}
+For future use, does nothing as of now. 
+
+Implements \hyperlink{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}{Read\-Input}.
+
+\hypertarget{class_bodiesinput_a2bf5785740ebd6e397477e667af16a05}{\index{Bodiesinput@{Bodiesinput}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Bodiesinput\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{string}]{identifier, }
+\item[{string}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_bodiesinput_a2bf5785740ebd6e397477e667af16a05}
+Stores the data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em identifier} & The keyword. \\
+\hline
+{\em val} & The value associated with the keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a1d8cb0ef59f265300b682de97513f48d}{Read\-Input}.
+
+\hypertarget{class_bodiesinput_af735a952cbd5b1a0c5db67c7209ba847}{\index{Bodiesinput@{Bodiesinput}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Bodiesinput\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{vector$<$ string $>$}]{the\-List\-In, }
+\item[{bool}]{is\-Direct}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_bodiesinput_af735a952cbd5b1a0c5db67c7209ba847}
+Stores the list data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em the\-List\-In} & List of Values. \\
+\hline
+{\em is\-Direct} & True if Direct Access List, False if Sequenctial List. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}{Read\-Input}.
+
+\hypertarget{class_bodiesinput_abe777be6f9181f1d0f8c5ad523eff6e3}{\index{Bodiesinput@{Bodiesinput}!legal\-Keyword@{legal\-Keyword}}
+\index{legal\-Keyword@{legal\-Keyword}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{legal\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}int Bodiesinput\-::legal\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string}]{string\-In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_bodiesinput_abe777be6f9181f1d0f8c5ad523eff6e3}
+Returns int greater than 0 if the keyword is legal, the int returned specifies how to handle data in keyword\-Handler. 
+\begin{DoxyParams}{Parameters}
+{\em string\-In} & Check if a valid keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int value which tells keyword\-Handler how to handle the data. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}{Read\-Input}.
+
+\hypertarget{class_bodiesinput_ab4dda6e4b858b9e349b5cc9ba155b4cd}{\index{Bodiesinput@{Bodiesinput}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!Bodiesinput@{Bodiesinput}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void Bodiesinput\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bodiesinput_ab4dda6e4b858b9e349b5cc9ba155b4cd}
+Print to console all data members. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/bodiesinput.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/bodiesinput.\-cpp\end{DoxyCompactItemize}

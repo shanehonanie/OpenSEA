@@ -1,0 +1,148 @@
+\hypertarget{class_equation_of_motion__01}{\section{Equation\-Of\-Motion\-\_\-01 Class Reference}
+\label{class_equation_of_motion__01}\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}}
+}
+
+
+{\ttfamily \#include $<$equationofmotion\-\_\-01.\-h$>$}
+
+Inheritance diagram for Equation\-Of\-Motion\-\_\-01\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_equation_of_motion__01}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_equation_of_motion__01_aeb61f23820f4598eece331449e34643f}{Equation\-Of\-Motion\-\_\-01} ()
+\item 
+\hyperlink{class_equation_of_motion__01_ae771afba4d9d3b258008493413d0a3a2}{$\sim$\-Equation\-Of\-Motion\-\_\-01} ()
+\item 
+void \hyperlink{class_equation_of_motion__01_a97581ef832e495feda5c7f91a30bb8c8}{set\-Body\-Data} (\hyperlink{class_body}{Body}, \hyperlink{class_user_forces}{User\-Forces})
+\item 
+void \hyperlink{class_equation_of_motion__01_a5f38bbfdb6fde4267260216d49b01416}{calculate\-Equations} (\hyperlink{class_body_with_force_matrix}{Body\-With\-Force\-Matrix})
+\item 
+complex\-Double \hyperlink{class_equation_of_motion__01_a8d21abea0294b0631e5bcbb025a1912d}{get\-Body\-Mass\-Val} (int, int)
+\item 
+void \hyperlink{class_equation_of_motion__01_a2bd0fd9e562d494c9481f538f7661b1e}{set\-Body\-Mass\-Indexs} (int)
+\item 
+bool \hyperlink{class_equation_of_motion__01_a69f34f20a208c4b180e24a8aea815fd4}{is\-Current\-Body\-Mass\-Index} (int)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_equation_of_motion__01_a6f5e508b6824154b02267d7088ec6ba1}{body\-Mass\-Indexs} \mbox{[}body\-Equation\-Size\mbox{]}
+\item 
+cx\-\_\-mat \hyperlink{class_equation_of_motion__01_a735773656f31e5510aec14d72356801c}{solution\-Matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds data and functions to calculate the 6\-D\-O\-F \hyperlink{class_equation}{Equation} of Motion. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_equation_of_motion__01_aeb61f23820f4598eece331449e34643f}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}}
+\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{Equation\-Of\-Motion\-\_\-01}]{\setlength{\rightskip}{0pt plus 5cm}Equation\-Of\-Motion\-\_\-01\-::\-Equation\-Of\-Motion\-\_\-01 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion__01_aeb61f23820f4598eece331449e34643f}
+The default constructor. \hypertarget{class_equation_of_motion__01_ae771afba4d9d3b258008493413d0a3a2}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!$\sim$\-Equation\-Of\-Motion\-\_\-01@{$\sim$\-Equation\-Of\-Motion\-\_\-01}}
+\index{$\sim$\-Equation\-Of\-Motion\-\_\-01@{$\sim$\-Equation\-Of\-Motion\-\_\-01}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{$\sim$\-Equation\-Of\-Motion\-\_\-01}]{\setlength{\rightskip}{0pt plus 5cm}Equation\-Of\-Motion\-\_\-01\-::$\sim$\-Equation\-Of\-Motion\-\_\-01 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion__01_ae771afba4d9d3b258008493413d0a3a2}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_equation_of_motion__01_a5f38bbfdb6fde4267260216d49b01416}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!calculate\-Equations@{calculate\-Equations}}
+\index{calculate\-Equations@{calculate\-Equations}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{calculate\-Equations}]{\setlength{\rightskip}{0pt plus 5cm}void Equation\-Of\-Motion\-\_\-01\-::calculate\-Equations (
+\begin{DoxyParamCaption}
+\item[{{\bf Body\-With\-Force\-Matrix}}]{the\-Body\-With\-Force\-Matrices}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion__01_a5f38bbfdb6fde4267260216d49b01416}
+Perform the calculations for the 6\-D\-O\-F Motion Model. 
+\begin{DoxyParams}{Parameters}
+{\em the\-Body\-With\-Force\-Matrices} & The \hyperlink{class_body}{Body} with force matrices. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equation_of_motion__01_a8d21abea0294b0631e5bcbb025a1912d}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!get\-Body\-Mass\-Val@{get\-Body\-Mass\-Val}}
+\index{get\-Body\-Mass\-Val@{get\-Body\-Mass\-Val}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{get\-Body\-Mass\-Val}]{\setlength{\rightskip}{0pt plus 5cm}complex\-Double Equation\-Of\-Motion\-\_\-01\-::get\-Body\-Mass\-Val (
+\begin{DoxyParamCaption}
+\item[{int}]{equation\-Num, }
+\item[{int}]{var}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion__01_a8d21abea0294b0631e5bcbb025a1912d}
+Retrieve a variable in the equaion from the mass matrix. 
+\begin{DoxyParams}{Parameters}
+{\em equation\-Num} & The equation number (row in mass matrix). \\
+\hline
+{\em var} & The variable in the equation (column in mass matrix). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The variable in the specified equation from the mass matrix. 
+\end{DoxyReturn}
+\hypertarget{class_equation_of_motion__01_a69f34f20a208c4b180e24a8aea815fd4}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!is\-Current\-Body\-Mass\-Index@{is\-Current\-Body\-Mass\-Index}}
+\index{is\-Current\-Body\-Mass\-Index@{is\-Current\-Body\-Mass\-Index}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{is\-Current\-Body\-Mass\-Index}]{\setlength{\rightskip}{0pt plus 5cm}bool Equation\-Of\-Motion\-\_\-01\-::is\-Current\-Body\-Mass\-Index (
+\begin{DoxyParamCaption}
+\item[{int}]{cur\-Index}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion__01_a69f34f20a208c4b180e24a8aea815fd4}
+Check if current index is valid in the mass matrix. 
+\begin{DoxyParams}{Parameters}
+{\em cur\-Index} & The current index in mass matrix. return True if a valid entry in mass matrix. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equation_of_motion__01_a97581ef832e495feda5c7f91a30bb8c8}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!set\-Body\-Data@{set\-Body\-Data}}
+\index{set\-Body\-Data@{set\-Body\-Data}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{set\-Body\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Equation\-Of\-Motion\-\_\-01\-::set\-Body\-Data (
+\begin{DoxyParamCaption}
+\item[{{\bf Body}}]{body\-Data\-In, }
+\item[{{\bf User\-Forces}}]{user\-Forces\-In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_equation_of_motion__01_a97581ef832e495feda5c7f91a30bb8c8}
+Sets the body and forces data for this object. 
+\begin{DoxyParams}{Parameters}
+{\em body\-Data\-In} & The \hyperlink{class_body}{Body}. \\
+\hline
+{\em user\-Forces\-In} & The user forces. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_equation_of_motion_a340c67ae539fb20634e7b5bb8edf65f0}{Equation\-Of\-Motion}.
+
+\hypertarget{class_equation_of_motion__01_a2bd0fd9e562d494c9481f538f7661b1e}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!set\-Body\-Mass\-Indexs@{set\-Body\-Mass\-Indexs}}
+\index{set\-Body\-Mass\-Indexs@{set\-Body\-Mass\-Indexs}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{set\-Body\-Mass\-Indexs}]{\setlength{\rightskip}{0pt plus 5cm}void Equation\-Of\-Motion\-\_\-01\-::set\-Body\-Mass\-Indexs (
+\begin{DoxyParamCaption}
+\item[{int}]{cur\-Index}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion__01_a2bd0fd9e562d494c9481f538f7661b1e}
+Sets the Indexs in solution matrix, This Needs to be fixed, only supports 2 bodies max. 
+\begin{DoxyParams}{Parameters}
+{\em cur\-Index} & The current index in the matrix. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_equation_of_motion__01_a6f5e508b6824154b02267d7088ec6ba1}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!body\-Mass\-Indexs@{body\-Mass\-Indexs}}
+\index{body\-Mass\-Indexs@{body\-Mass\-Indexs}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{body\-Mass\-Indexs}]{\setlength{\rightskip}{0pt plus 5cm}int Equation\-Of\-Motion\-\_\-01\-::body\-Mass\-Indexs\mbox{[}body\-Equation\-Size\mbox{]}}}\label{class_equation_of_motion__01_a6f5e508b6824154b02267d7088ec6ba1}
+The indexs in solution matrix for all sub matrices. \hypertarget{class_equation_of_motion__01_a735773656f31e5510aec14d72356801c}{\index{Equation\-Of\-Motion\-\_\-01@{Equation\-Of\-Motion\-\_\-01}!solution\-Matrix@{solution\-Matrix}}
+\index{solution\-Matrix@{solution\-Matrix}!EquationOfMotion_01@{Equation\-Of\-Motion\-\_\-01}}
+\subsubsection[{solution\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}cx\-\_\-mat Equation\-Of\-Motion\-\_\-01\-::solution\-Matrix}}\label{class_equation_of_motion__01_a735773656f31e5510aec14d72356801c}
+The solution matirx. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/equationofmotion\-\_\-01.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/equationofmotion\-\_\-01.\-cpp\end{DoxyCompactItemize}

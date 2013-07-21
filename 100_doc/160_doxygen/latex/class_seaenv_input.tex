@@ -1,0 +1,149 @@
+\hypertarget{class_seaenv_input}{\section{Seaenv\-Input Class Reference}
+\label{class_seaenv_input}\index{Seaenv\-Input@{Seaenv\-Input}}
+}
+
+
+{\ttfamily \#include $<$seaenvinput.\-h$>$}
+
+Inheritance diagram for Seaenv\-Input\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_seaenv_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_seaenv_input_a1d4cf4bbf2effd0d558b7b97b02a092a}{Seaenv\-Input} ()
+\item 
+\hyperlink{class_seaenv_input_a1211270b8f35af72156e623852ce85a7}{$\sim$\-Seaenv\-Input} ()
+\item 
+void \hyperlink{class_seaenv_input_af215cdefc653fb335dc68de34962201f}{test\-Print} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_seaenv_input_a47a254de1906fcbea59ed961c9a1fc0a}{initialize\-Defaults} ()
+\item 
+int \hyperlink{class_seaenv_input_af0e063c0b66093ed993c79a62c8c092f}{legal\-Keyword} (string)
+\item 
+bool \hyperlink{class_seaenv_input_a79edff5224cca5323f679478c09b1c25}{keyword\-Handler} (int, string, string)
+\item 
+bool \hyperlink{class_seaenv_input_a3e8d24eadb9f83b1f0ff59cb8de1276e}{keyword\-Handler} (int, vector$<$ string $>$, bool)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class parses input from file and stores the data appropriately in the \hyperlink{class_sea_enviroment}{Sea\-Enviroment} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_seaenv_input_a1d4cf4bbf2effd0d558b7b97b02a092a}{\index{Seaenv\-Input@{Seaenv\-Input}!Seaenv\-Input@{Seaenv\-Input}}
+\index{Seaenv\-Input@{Seaenv\-Input}!SeaenvInput@{Seaenv\-Input}}
+\subsubsection[{Seaenv\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Seaenv\-Input\-::\-Seaenv\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_seaenv_input_a1d4cf4bbf2effd0d558b7b97b02a092a}
+The default constructor. \hypertarget{class_seaenv_input_a1211270b8f35af72156e623852ce85a7}{\index{Seaenv\-Input@{Seaenv\-Input}!$\sim$\-Seaenv\-Input@{$\sim$\-Seaenv\-Input}}
+\index{$\sim$\-Seaenv\-Input@{$\sim$\-Seaenv\-Input}!SeaenvInput@{Seaenv\-Input}}
+\subsubsection[{$\sim$\-Seaenv\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Seaenv\-Input\-::$\sim$\-Seaenv\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_seaenv_input_a1211270b8f35af72156e623852ce85a7}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_seaenv_input_a47a254de1906fcbea59ed961c9a1fc0a}{\index{Seaenv\-Input@{Seaenv\-Input}!initialize\-Defaults@{initialize\-Defaults}}
+\index{initialize\-Defaults@{initialize\-Defaults}!SeaenvInput@{Seaenv\-Input}}
+\subsubsection[{initialize\-Defaults}]{\setlength{\rightskip}{0pt plus 5cm}void Seaenv\-Input\-::initialize\-Defaults (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_seaenv_input_a47a254de1906fcbea59ed961c9a1fc0a}
+For future use, does nothing as of now. 
+
+Implements \hyperlink{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}{Read\-Input}.
+
+\hypertarget{class_seaenv_input_a79edff5224cca5323f679478c09b1c25}{\index{Seaenv\-Input@{Seaenv\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!SeaenvInput@{Seaenv\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Seaenv\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{string}]{identifier, }
+\item[{string}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_seaenv_input_a79edff5224cca5323f679478c09b1c25}
+Stores the data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em identifier} & The keyword. \\
+\hline
+{\em val} & The value associated with the keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a1d8cb0ef59f265300b682de97513f48d}{Read\-Input}.
+
+\hypertarget{class_seaenv_input_a3e8d24eadb9f83b1f0ff59cb8de1276e}{\index{Seaenv\-Input@{Seaenv\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!SeaenvInput@{Seaenv\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Seaenv\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{vector$<$ string $>$}]{the\-List\-In, }
+\item[{bool}]{is\-Direct}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_seaenv_input_a3e8d24eadb9f83b1f0ff59cb8de1276e}
+Stores the list data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em the\-List\-In} & List of Values. \\
+\hline
+{\em is\-Direct} & True if Direct Access List, False if Sequenctial List. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}{Read\-Input}.
+
+\hypertarget{class_seaenv_input_af0e063c0b66093ed993c79a62c8c092f}{\index{Seaenv\-Input@{Seaenv\-Input}!legal\-Keyword@{legal\-Keyword}}
+\index{legal\-Keyword@{legal\-Keyword}!SeaenvInput@{Seaenv\-Input}}
+\subsubsection[{legal\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}int Seaenv\-Input\-::legal\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string}]{string\-In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_seaenv_input_af0e063c0b66093ed993c79a62c8c092f}
+Returns int greater than 0 if the keyword is legal, the int returned specifies how to handle data in keyword\-Handler. 
+\begin{DoxyParams}{Parameters}
+{\em string\-In} & Check if a valid keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int value which tells keyword\-Handler how to handle the data. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}{Read\-Input}.
+
+\hypertarget{class_seaenv_input_af215cdefc653fb335dc68de34962201f}{\index{Seaenv\-Input@{Seaenv\-Input}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!SeaenvInput@{Seaenv\-Input}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void Seaenv\-Input\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_seaenv_input_af215cdefc653fb335dc68de34962201f}
+Print to console all data members. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/seaenvinput.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/seaenvinput.\-cpp\end{DoxyCompactItemize}

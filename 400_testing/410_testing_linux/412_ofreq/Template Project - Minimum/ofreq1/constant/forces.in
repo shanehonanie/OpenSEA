@@ -1,0 +1,50 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      dictionary;
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//                     A C T I V E   F O R C E S                             //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Defines user active forces
+
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//                   R E A C T I V E   F O R C E S                           //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Defines user reactive forces
+
+/*Definition sequence for reactive forces
+force set
+  > derivative 
+    > equation set
+      > force coefficients (list)
+        > coefficient for each variable
+*/
+
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//                 C R O S S - B O D Y   F O R C E S                         //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Defines user cross body forces
+
+// The cross-body forces are defined in the exact same format as a reactive
+// force.  What goes unsaid though is that all force coefficients in the
+// cross-body force are referring to the variables of motion from the 
+// OTHER BODY.  Which other body specifically gets assigned in the body 
+// definitions later.
+
+
+
+// ************************************************************************* //

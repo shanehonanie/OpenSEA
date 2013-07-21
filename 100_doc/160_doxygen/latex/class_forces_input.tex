@@ -1,0 +1,158 @@
+\hypertarget{class_forces_input}{\section{Forces\-Input Class Reference}
+\label{class_forces_input}\index{Forces\-Input@{Forces\-Input}}
+}
+
+
+{\ttfamily \#include $<$forcesinput.\-h$>$}
+
+Inheritance diagram for Forces\-Input\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_forces_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_forces_input_ad3da9dd7decddd74ba054f3e58a848fe}{Forces\-Input} ()
+\item 
+\hyperlink{class_forces_input_a5891d1dd81b2e4202fe023985aa0ff1b}{$\sim$\-Forces\-Input} ()
+\item 
+void \hyperlink{class_forces_input_af9ca173b1f53914ba8f118ae2cc211a3}{test\-Print} ()
+\item 
+\hyperlink{class_user_forces}{User\-Forces} \hyperlink{class_forces_input_ab5262ae1b53c658dbaab66d338e465e2}{get\-User\-Forces} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_forces_input_a8bcfe50a80d1c2fe11a742081a5e7343}{initialize\-Defaults} ()
+\item 
+int \hyperlink{class_forces_input_a5f4086acc636b54b64bcd611bdff1aa4}{legal\-Keyword} (string)
+\item 
+bool \hyperlink{class_forces_input_a3e82ee7aa3c5bd35a6bb1b06fcafafa9}{keyword\-Handler} (int, string, string)
+\item 
+bool \hyperlink{class_forces_input_a52965f2bfde734252e7f4f65bf0fde25}{keyword\-Handler} (int, vector$<$ string $>$, bool)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class parses input from file and stores the data appropriately in the \hyperlink{class_user_forces}{User\-Forces} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_forces_input_ad3da9dd7decddd74ba054f3e58a848fe}{\index{Forces\-Input@{Forces\-Input}!Forces\-Input@{Forces\-Input}}
+\index{Forces\-Input@{Forces\-Input}!ForcesInput@{Forces\-Input}}
+\subsubsection[{Forces\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Forces\-Input\-::\-Forces\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_forces_input_ad3da9dd7decddd74ba054f3e58a848fe}
+The default constructor. \hypertarget{class_forces_input_a5891d1dd81b2e4202fe023985aa0ff1b}{\index{Forces\-Input@{Forces\-Input}!$\sim$\-Forces\-Input@{$\sim$\-Forces\-Input}}
+\index{$\sim$\-Forces\-Input@{$\sim$\-Forces\-Input}!ForcesInput@{Forces\-Input}}
+\subsubsection[{$\sim$\-Forces\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Forces\-Input\-::$\sim$\-Forces\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_forces_input_a5891d1dd81b2e4202fe023985aa0ff1b}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_forces_input_ab5262ae1b53c658dbaab66d338e465e2}{\index{Forces\-Input@{Forces\-Input}!get\-User\-Forces@{get\-User\-Forces}}
+\index{get\-User\-Forces@{get\-User\-Forces}!ForcesInput@{Forces\-Input}}
+\subsubsection[{get\-User\-Forces}]{\setlength{\rightskip}{0pt plus 5cm}{\bf User\-Forces} Forces\-Input\-::get\-User\-Forces (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_forces_input_ab5262ae1b53c658dbaab66d338e465e2}
+Returns user forces. \hypertarget{class_forces_input_a8bcfe50a80d1c2fe11a742081a5e7343}{\index{Forces\-Input@{Forces\-Input}!initialize\-Defaults@{initialize\-Defaults}}
+\index{initialize\-Defaults@{initialize\-Defaults}!ForcesInput@{Forces\-Input}}
+\subsubsection[{initialize\-Defaults}]{\setlength{\rightskip}{0pt plus 5cm}void Forces\-Input\-::initialize\-Defaults (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_forces_input_a8bcfe50a80d1c2fe11a742081a5e7343}
+For future use, does nothing as of now. 
+
+Implements \hyperlink{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}{Read\-Input}.
+
+\hypertarget{class_forces_input_a3e82ee7aa3c5bd35a6bb1b06fcafafa9}{\index{Forces\-Input@{Forces\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!ForcesInput@{Forces\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Forces\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{string}]{identifier, }
+\item[{string}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_forces_input_a3e82ee7aa3c5bd35a6bb1b06fcafafa9}
+Stores the data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em identifier} & The keyword. \\
+\hline
+{\em val} & The value associated with the keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a1d8cb0ef59f265300b682de97513f48d}{Read\-Input}.
+
+\hypertarget{class_forces_input_a52965f2bfde734252e7f4f65bf0fde25}{\index{Forces\-Input@{Forces\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!ForcesInput@{Forces\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Forces\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{vector$<$ string $>$}]{the\-List\-In, }
+\item[{bool}]{is\-Direct}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_forces_input_a52965f2bfde734252e7f4f65bf0fde25}
+Stores the list data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em the\-List\-In} & List of Values. \\
+\hline
+{\em is\-Direct} & True if Direct Access List, False if Sequenctial List. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}{Read\-Input}.
+
+\hypertarget{class_forces_input_a5f4086acc636b54b64bcd611bdff1aa4}{\index{Forces\-Input@{Forces\-Input}!legal\-Keyword@{legal\-Keyword}}
+\index{legal\-Keyword@{legal\-Keyword}!ForcesInput@{Forces\-Input}}
+\subsubsection[{legal\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}int Forces\-Input\-::legal\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string}]{string\-In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_forces_input_a5f4086acc636b54b64bcd611bdff1aa4}
+Returns int greater than 0 if the keyword is legal, the int returned specifies how to handle data in keyword\-Handler. 
+\begin{DoxyParams}{Parameters}
+{\em string\-In} & Check if a valid keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int value which tells keyword\-Handler how to handle the data. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}{Read\-Input}.
+
+\hypertarget{class_forces_input_af9ca173b1f53914ba8f118ae2cc211a3}{\index{Forces\-Input@{Forces\-Input}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!ForcesInput@{Forces\-Input}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void Forces\-Input\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_forces_input_af9ca173b1f53914ba8f118ae2cc211a3}
+Print to console all data members. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/forcesinput.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/forcesinput.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,36 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      hydroenv;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//reports physical properties used for oHydro run.  
+physics {
+  //Depth of water. [m]  Relevant in some results for deep water / shallow water
+  //effects
+  depth 1000.00;
+
+  //Density of water. [kg/m^3]  Used as a coefficient for some results
+  density 1025;
+
+  //Gravity. [m/s^2]  Specified as a vector for three dimensions.
+  gravity (
+  0.00
+  0.00
+  -9.8065
+  );
+
+  //Amplitude of incident waves. [m]  Used to scale wave coefficients up or
+  //down.
+  waveamp 1.00;
+{
+
+
+// ************************************************************************* //

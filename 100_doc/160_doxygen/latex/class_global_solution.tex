@@ -1,0 +1,84 @@
+\hypertarget{class_global_solution}{\section{Global\-Solution Class Reference}
+\label{class_global_solution}\index{Global\-Solution@{Global\-Solution}}
+}
+
+
+{\ttfamily \#include $<$globalsolution.\-h$>$}
+
+Inheritance diagram for Global\-Solution\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_global_solution}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_global_solution_a27fcfb056c30fc07f8937bc71ec677e6}{Global\-Solution} ()
+\item 
+\hyperlink{class_global_solution_aea630b237ced06e04c5ea00bf1bb9398}{$\sim$\-Global\-Solution} ()
+\item 
+virtual cx\-\_\-mat \hyperlink{class_global_solution_a15634073f63559cbfd65b32b79cd7fbd}{calculate\-Output} (cx\-\_\-mat, double)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_global_solution_a026746ffb8e416eb4142a058b108148c}{order\-Derivative}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the Global Solution. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_global_solution_a27fcfb056c30fc07f8937bc71ec677e6}{\index{Global\-Solution@{Global\-Solution}!Global\-Solution@{Global\-Solution}}
+\index{Global\-Solution@{Global\-Solution}!GlobalSolution@{Global\-Solution}}
+\subsubsection[{Global\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}Global\-Solution\-::\-Global\-Solution (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_global_solution_a27fcfb056c30fc07f8937bc71ec677e6}
+This default constructor creates a Global Solution object. \hypertarget{class_global_solution_aea630b237ced06e04c5ea00bf1bb9398}{\index{Global\-Solution@{Global\-Solution}!$\sim$\-Global\-Solution@{$\sim$\-Global\-Solution}}
+\index{$\sim$\-Global\-Solution@{$\sim$\-Global\-Solution}!GlobalSolution@{Global\-Solution}}
+\subsubsection[{$\sim$\-Global\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}Global\-Solution\-::$\sim$\-Global\-Solution (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_global_solution_aea630b237ced06e04c5ea00bf1bb9398}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_global_solution_a15634073f63559cbfd65b32b79cd7fbd}{\index{Global\-Solution@{Global\-Solution}!calculate\-Output@{calculate\-Output}}
+\index{calculate\-Output@{calculate\-Output}!GlobalSolution@{Global\-Solution}}
+\subsubsection[{calculate\-Output}]{\setlength{\rightskip}{0pt plus 5cm}cx\-\_\-mat Global\-Solution\-::calculate\-Output (
+\begin{DoxyParamCaption}
+\item[{cx\-\_\-mat}]{matrix\-In, }
+\item[{double}]{cur\-Wave\-Freq}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_global_solution_a15634073f63559cbfd65b32b79cd7fbd}
+Calculates the outputs for Global Solution children classes 
+\begin{DoxyParams}{Parameters}
+{\em matrix\-In} & The original Matrix that is used for calculations. \\
+\hline
+{\em cur\-Wave\-Freq} & The current wave frequency. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new matrix with calculations on each index. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_output_derived_a1e0052dd24822806481976e42a2f5f30}{Output\-Derived}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_global_solution_a026746ffb8e416eb4142a058b108148c}{\index{Global\-Solution@{Global\-Solution}!order\-Derivative@{order\-Derivative}}
+\index{order\-Derivative@{order\-Derivative}!GlobalSolution@{Global\-Solution}}
+\subsubsection[{order\-Derivative}]{\setlength{\rightskip}{0pt plus 5cm}int Global\-Solution\-::order\-Derivative}}\label{class_global_solution_a026746ffb8e416eb4142a058b108148c}
+Set by child classes 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/globalsolution.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/globalsolution.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,136 @@
+\hypertarget{class_force_reactive}{\section{Force\-Reactive Class Reference}
+\label{class_force_reactive}\index{Force\-Reactive@{Force\-Reactive}}
+}
+
+
+{\ttfamily \#include $<$forcereactive.\-h$>$}
+
+Inheritance diagram for Force\-Reactive\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_force_reactive}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_force_reactive_a620cb084872d0d7e1c5d596fc05b00e5}{Force\-Reactive} ()
+\item 
+\hyperlink{class_force_reactive_abb3aceb796c02f9289b6b270a36d1a9d}{$\sim$\-Force\-Reactive} ()
+\item 
+void \hyperlink{class_force_reactive_adc057ed59345c6f7a8f522e80ab9be08}{test\-Print} ()
+\item 
+void \hyperlink{class_force_reactive_a2594a1dd03dd983e7eb4204148698c34}{set\-Coeff} (vector$<$ string $>$, bool)
+\item 
+void \hyperlink{class_force_reactive_a6f1969b59143d74dfd05006dcb18414d}{set\-Cur\-Derivative} (int)
+\item 
+void \hyperlink{class_force_reactive_a6e1a59348fb32dc15a6918bfc42a4cad}{set\-Cur\-Equation\-Num} (int)
+\item 
+vector$<$ \hyperlink{class_derivative}{Derivative} $>$ \hyperlink{class_force_reactive_aff4ed3ee3ba6ff0b013fb02183c01af8}{get\-Derivatives} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_derivative}{Derivative} \hyperlink{class_force_reactive_ad0da544a781cfac29d317e8c59e9f3f0}{derivative} \mbox{[}M\-A\-X\-\_\-\-O\-R\-D\-E\-R\-\_\-\-D\-E\-R\-I\-V\-A\-T\-I\-V\-E\mbox{]}
+\item 
+int \hyperlink{class_force_reactive_a6c4302050614499c9ffeda4ad21928ec}{current\-Derivative}
+\item 
+int \hyperlink{class_force_reactive_a9aa1f30d63006bc56be33830da1d8331}{current\-Equation}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds all of the data for a reactive force. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_force_reactive_a620cb084872d0d7e1c5d596fc05b00e5}{\index{Force\-Reactive@{Force\-Reactive}!Force\-Reactive@{Force\-Reactive}}
+\index{Force\-Reactive@{Force\-Reactive}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{Force\-Reactive}]{\setlength{\rightskip}{0pt plus 5cm}Force\-Reactive\-::\-Force\-Reactive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_reactive_a620cb084872d0d7e1c5d596fc05b00e5}
+This default constructor. \hypertarget{class_force_reactive_abb3aceb796c02f9289b6b270a36d1a9d}{\index{Force\-Reactive@{Force\-Reactive}!$\sim$\-Force\-Reactive@{$\sim$\-Force\-Reactive}}
+\index{$\sim$\-Force\-Reactive@{$\sim$\-Force\-Reactive}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{$\sim$\-Force\-Reactive}]{\setlength{\rightskip}{0pt plus 5cm}Force\-Reactive\-::$\sim$\-Force\-Reactive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_reactive_abb3aceb796c02f9289b6b270a36d1a9d}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_force_reactive_aff4ed3ee3ba6ff0b013fb02183c01af8}{\index{Force\-Reactive@{Force\-Reactive}!get\-Derivatives@{get\-Derivatives}}
+\index{get\-Derivatives@{get\-Derivatives}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{get\-Derivatives}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Derivative} $>$ Force\-Reactive\-::get\-Derivatives (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_reactive_aff4ed3ee3ba6ff0b013fb02183c01af8}
+Retrieve the order derivative \begin{DoxyReturn}{Returns}
+The order derivative of this object. 
+\end{DoxyReturn}
+\hypertarget{class_force_reactive_a2594a1dd03dd983e7eb4204148698c34}{\index{Force\-Reactive@{Force\-Reactive}!set\-Coeff@{set\-Coeff}}
+\index{set\-Coeff@{set\-Coeff}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{set\-Coeff}]{\setlength{\rightskip}{0pt plus 5cm}void Force\-Reactive\-::set\-Coeff (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$}]{new\-List, }
+\item[{bool}]{is\-Direct\-List}
+\end{DoxyParamCaption}
+)}}\label{class_force_reactive_a2594a1dd03dd983e7eb4204148698c34}
+Sets the list of coeffcients. 
+\begin{DoxyParams}{Parameters}
+{\em new\-List} & The list of coefficients. \\
+\hline
+{\em is\-Direct\-List} & Specifies whether the list is direct or sequential. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_force_reactive_a6f1969b59143d74dfd05006dcb18414d}{\index{Force\-Reactive@{Force\-Reactive}!set\-Cur\-Derivative@{set\-Cur\-Derivative}}
+\index{set\-Cur\-Derivative@{set\-Cur\-Derivative}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{set\-Cur\-Derivative}]{\setlength{\rightskip}{0pt plus 5cm}void Force\-Reactive\-::set\-Cur\-Derivative (
+\begin{DoxyParamCaption}
+\item[{int}]{new\-Order}
+\end{DoxyParamCaption}
+)}}\label{class_force_reactive_a6f1969b59143d74dfd05006dcb18414d}
+Sets the current derivative. 
+\begin{DoxyParams}{Parameters}
+{\em neworder} & The order of derivative. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_force_reactive_a6e1a59348fb32dc15a6918bfc42a4cad}{\index{Force\-Reactive@{Force\-Reactive}!set\-Cur\-Equation\-Num@{set\-Cur\-Equation\-Num}}
+\index{set\-Cur\-Equation\-Num@{set\-Cur\-Equation\-Num}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{set\-Cur\-Equation\-Num}]{\setlength{\rightskip}{0pt plus 5cm}void Force\-Reactive\-::set\-Cur\-Equation\-Num (
+\begin{DoxyParamCaption}
+\item[{int}]{new\-Equation\-Num}
+\end{DoxyParamCaption}
+)}}\label{class_force_reactive_a6e1a59348fb32dc15a6918bfc42a4cad}
+Sets the current number of the equation. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Equation\-Num} & The number of the equation. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_force_reactive_adc057ed59345c6f7a8f522e80ab9be08}{\index{Force\-Reactive@{Force\-Reactive}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void Force\-Reactive\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_reactive_adc057ed59345c6f7a8f522e80ab9be08}
+Test print to console the values of all data members. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_force_reactive_a6c4302050614499c9ffeda4ad21928ec}{\index{Force\-Reactive@{Force\-Reactive}!current\-Derivative@{current\-Derivative}}
+\index{current\-Derivative@{current\-Derivative}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{current\-Derivative}]{\setlength{\rightskip}{0pt plus 5cm}int Force\-Reactive\-::current\-Derivative\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_force_reactive_a6c4302050614499c9ffeda4ad21928ec}
+The current order derivative. \hypertarget{class_force_reactive_a9aa1f30d63006bc56be33830da1d8331}{\index{Force\-Reactive@{Force\-Reactive}!current\-Equation@{current\-Equation}}
+\index{current\-Equation@{current\-Equation}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{current\-Equation}]{\setlength{\rightskip}{0pt plus 5cm}int Force\-Reactive\-::current\-Equation\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_force_reactive_a9aa1f30d63006bc56be33830da1d8331}
+This current equation number. \hypertarget{class_force_reactive_ad0da544a781cfac29d317e8c59e9f3f0}{\index{Force\-Reactive@{Force\-Reactive}!derivative@{derivative}}
+\index{derivative@{derivative}!ForceReactive@{Force\-Reactive}}
+\subsubsection[{derivative}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Derivative} Force\-Reactive\-::derivative\mbox{[}M\-A\-X\-\_\-\-O\-R\-D\-E\-R\-\_\-\-D\-E\-R\-I\-V\-A\-T\-I\-V\-E\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_force_reactive_ad0da544a781cfac29d317e8c59e9f3f0}
+This list of derivatives. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/forcereactive.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/forcereactive.\-cpp\end{DoxyCompactItemize}

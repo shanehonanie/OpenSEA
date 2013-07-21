@@ -1,0 +1,147 @@
+\hypertarget{class_equation_of_motion}{\section{Equation\-Of\-Motion Class Reference}
+\label{class_equation_of_motion}\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}}
+}
+
+
+{\ttfamily \#include $<$equationofmotion.\-h$>$}
+
+Inheritance diagram for Equation\-Of\-Motion\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_equation_of_motion}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_equation_of_motion_abdb595c57202820b3c78518cb5d459e4}{Equation\-Of\-Motion} ()
+\item 
+\hyperlink{class_equation_of_motion_ac62caa9b6cdc62ff36d725637e53e62f}{$\sim$\-Equation\-Of\-Motion} ()
+\item 
+void \hyperlink{class_equation_of_motion_a2c1b3517a0f2aaef687c99fb6b4803dc}{set\-Wave\-Freq} (double)
+\item 
+virtual void \hyperlink{class_equation_of_motion_a340c67ae539fb20634e7b5bb8edf65f0}{set\-Body\-Data} (\hyperlink{class_body}{Body}, \hyperlink{class_user_forces}{User\-Forces})=0
+\item 
+\hyperlink{class_body_with_force_matrix}{Body\-With\-Force\-Matrix} \hyperlink{class_equation_of_motion_a7481a809cff3f63523885e1ac372fcc3}{get\-Body\-Force\-Data} ()
+\item 
+double \hyperlink{class_equation_of_motion_a2b16c339fe40262a4ef1f7b8b0036a01}{kronecker\-Delta} (int, int)
+\item 
+complex\-Double \hyperlink{class_equation_of_motion_a52e671f290c5a07d1187d56849c84060}{time\-Differentiation} (complex\-Double, int)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_body_with_force_matrix}{Body\-With\-Force\-Matrix} \hyperlink{class_equation_of_motion_aef744ed7692bf6186bb976e0d53f972f}{new\-Body\-Matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This abstract class holds for data for an equaion of motion. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_equation_of_motion_abdb595c57202820b3c78518cb5d459e4}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!Equation\-Of\-Motion@{Equation\-Of\-Motion}}
+\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{Equation\-Of\-Motion}]{\setlength{\rightskip}{0pt plus 5cm}Equation\-Of\-Motion\-::\-Equation\-Of\-Motion (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion_abdb595c57202820b3c78518cb5d459e4}
+The default constructor. \hypertarget{class_equation_of_motion_ac62caa9b6cdc62ff36d725637e53e62f}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!$\sim$\-Equation\-Of\-Motion@{$\sim$\-Equation\-Of\-Motion}}
+\index{$\sim$\-Equation\-Of\-Motion@{$\sim$\-Equation\-Of\-Motion}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{$\sim$\-Equation\-Of\-Motion}]{\setlength{\rightskip}{0pt plus 5cm}Equation\-Of\-Motion\-::$\sim$\-Equation\-Of\-Motion (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion_ac62caa9b6cdc62ff36d725637e53e62f}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_equation_of_motion_a7481a809cff3f63523885e1ac372fcc3}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!get\-Body\-Force\-Data@{get\-Body\-Force\-Data}}
+\index{get\-Body\-Force\-Data@{get\-Body\-Force\-Data}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{get\-Body\-Force\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Body\-With\-Force\-Matrix} Equation\-Of\-Motion\-::get\-Body\-Force\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion_a7481a809cff3f63523885e1ac372fcc3}
+Retrieve the body with force matrix object. \begin{DoxyReturn}{Returns}
+The body with force matrix object. 
+\end{DoxyReturn}
+\hypertarget{class_equation_of_motion_a2b16c339fe40262a4ef1f7b8b0036a01}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!kronecker\-Delta@{kronecker\-Delta}}
+\index{kronecker\-Delta@{kronecker\-Delta}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{kronecker\-Delta}]{\setlength{\rightskip}{0pt plus 5cm}double Equation\-Of\-Motion\-::kronecker\-Delta (
+\begin{DoxyParamCaption}
+\item[{int}]{num1, }
+\item[{int}]{num2}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion_a2b16c339fe40262a4ef1f7b8b0036a01}
+Retrieve the body with force matrix object. 
+\begin{DoxyParams}{Parameters}
+{\em num1} & An int. \\
+\hline
+{\em num2} & An int. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 if two numbers are equal or 1 if not. 
+\end{DoxyReturn}
+\hypertarget{class_equation_of_motion_a340c67ae539fb20634e7b5bb8edf65f0}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!set\-Body\-Data@{set\-Body\-Data}}
+\index{set\-Body\-Data@{set\-Body\-Data}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{set\-Body\-Data}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Equation\-Of\-Motion\-::set\-Body\-Data (
+\begin{DoxyParamCaption}
+\item[{{\bf Body}}]{, }
+\item[{{\bf User\-Forces}}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_equation_of_motion_a340c67ae539fb20634e7b5bb8edf65f0}
+This pure virtual function must be implemented by child classes. 
+\begin{DoxyParams}{Parameters}
+{\em The} & \hyperlink{class_body}{Body}. \\
+\hline
+{\em The} & User Forces. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_equation_of_motion__01_a97581ef832e495feda5c7f91a30bb8c8}{Equation\-Of\-Motion\-\_\-01}.
+
+\hypertarget{class_equation_of_motion_a2c1b3517a0f2aaef687c99fb6b4803dc}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!set\-Wave\-Freq@{set\-Wave\-Freq}}
+\index{set\-Wave\-Freq@{set\-Wave\-Freq}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{set\-Wave\-Freq}]{\setlength{\rightskip}{0pt plus 5cm}void Equation\-Of\-Motion\-::set\-Wave\-Freq (
+\begin{DoxyParamCaption}
+\item[{double}]{new\-Freq\-In}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion_a2c1b3517a0f2aaef687c99fb6b4803dc}
+Sets the current wave frequency to be used. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Freq\-In} & The current wave frequency. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_equation_of_motion_a52e671f290c5a07d1187d56849c84060}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!time\-Differentiation@{time\-Differentiation}}
+\index{time\-Differentiation@{time\-Differentiation}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{time\-Differentiation}]{\setlength{\rightskip}{0pt plus 5cm}complex\-Double Equation\-Of\-Motion\-::time\-Differentiation (
+\begin{DoxyParamCaption}
+\item[{complex\-Double}]{variable, }
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)}}\label{class_equation_of_motion_a52e671f290c5a07d1187d56849c84060}
+Computes the time differention on the values passed in. 
+\begin{DoxyParams}{Parameters}
+{\em variable} & A force coefficient. \\
+\hline
+{\em order} & The order derivative. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the computed time differentiation. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_equation_of_motion_aef744ed7692bf6186bb976e0d53f972f}{\index{Equation\-Of\-Motion@{Equation\-Of\-Motion}!new\-Body\-Matrix@{new\-Body\-Matrix}}
+\index{new\-Body\-Matrix@{new\-Body\-Matrix}!EquationOfMotion@{Equation\-Of\-Motion}}
+\subsubsection[{new\-Body\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Body\-With\-Force\-Matrix} Equation\-Of\-Motion\-::new\-Body\-Matrix}}\label{class_equation_of_motion_aef744ed7692bf6186bb976e0d53f972f}
+The \hyperlink{class_body}{Body} with force matrix object.. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/equationofmotion.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/equationofmotion.\-cpp\end{DoxyCompactItemize}

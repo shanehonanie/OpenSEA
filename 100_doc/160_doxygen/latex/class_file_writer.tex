@@ -1,0 +1,154 @@
+\hypertarget{class_file_writer}{\section{File\-Writer Class Reference}
+\label{class_file_writer}\index{File\-Writer@{File\-Writer}}
+}
+
+
+{\ttfamily \#include $<$filewriter.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_file_writer_a570c654285dedf2eed41794698488268}{File\-Writer} (string, vector$<$ double $>$, vector$<$ double $>$)
+\item 
+\hyperlink{class_file_writer_ae5490307dcaf9237f4c1b8b8df433e03}{$\sim$\-File\-Writer} ()
+\item 
+void \hyperlink{class_file_writer_a12fb8cd23937a257e4db0bfade0b2480}{set\-Outputs} (\hyperlink{class_outputs_list}{Outputs\-List})
+\item 
+bool \hyperlink{class_file_writer_ada65187529c9aceb2be0a66085b745c5}{write\-To\-File} (int)
+\item 
+bool \hyperlink{class_file_writer_a692853a3380d47586fdc186ca3e62a45}{write\-Directions\-To\-File} (vector$<$ double $>$)
+\item 
+bool \hyperlink{class_file_writer_a5dd1b1384aac1febb75c21194e43f29e}{write\-Frequencies\-To\-File} (vector$<$ double $>$)
+\item 
+void \hyperlink{class_file_writer_aeea3ca877f0c5280b22ea7ff653db233}{set\-Header} ()
+\item 
+void \hyperlink{class_file_writer_aa01e35cc83c9ddee419c2b08cf12e919}{set\-File\-Info} (string)
+\item 
+bool \hyperlink{class_file_writer_a3c651fa84b2cce465f2ec0fce8be2464}{remove\-Old\-Directories} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class write all outputs to files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_file_writer_a570c654285dedf2eed41794698488268}{\index{File\-Writer@{File\-Writer}!File\-Writer@{File\-Writer}}
+\index{File\-Writer@{File\-Writer}!FileWriter@{File\-Writer}}
+\subsubsection[{File\-Writer}]{\setlength{\rightskip}{0pt plus 5cm}File\-Writer\-::\-File\-Writer (
+\begin{DoxyParamCaption}
+\item[{string}]{file\-Dir\-In, }
+\item[{vector$<$ double $>$}]{the\-Directions\-List\-In, }
+\item[{vector$<$ double $>$}]{the\-Frequencies\-List\-In}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_a570c654285dedf2eed41794698488268}
+Constructor on creation sets header, write wave directions \& frequencies to file, and removes old directories 
+\begin{DoxyParams}{Parameters}
+{\em file\-Dir\-In} & The directory to write outputs. \\
+\hline
+{\em the\-Directions\-List\-In} & The list of wave directions. \\
+\hline
+{\em the\-Frequencies\-List\-In} & The list of wave frequncies \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_file_writer_ae5490307dcaf9237f4c1b8b8df433e03}{\index{File\-Writer@{File\-Writer}!$\sim$\-File\-Writer@{$\sim$\-File\-Writer}}
+\index{$\sim$\-File\-Writer@{$\sim$\-File\-Writer}!FileWriter@{File\-Writer}}
+\subsubsection[{$\sim$\-File\-Writer}]{\setlength{\rightskip}{0pt plus 5cm}File\-Writer\-::$\sim$\-File\-Writer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_ae5490307dcaf9237f4c1b8b8df433e03}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_file_writer_a3c651fa84b2cce465f2ec0fce8be2464}{\index{File\-Writer@{File\-Writer}!remove\-Old\-Directories@{remove\-Old\-Directories}}
+\index{remove\-Old\-Directories@{remove\-Old\-Directories}!FileWriter@{File\-Writer}}
+\subsubsection[{remove\-Old\-Directories}]{\setlength{\rightskip}{0pt plus 5cm}bool File\-Writer\-::remove\-Old\-Directories (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_a3c651fa84b2cce465f2ec0fce8be2464}
+Remove all old directiories \& files written by o\-Freq previous run. \begin{DoxyReturn}{Returns}
+Return true if all files \& directories were successfully deleted. 
+\end{DoxyReturn}
+\hypertarget{class_file_writer_aa01e35cc83c9ddee419c2b08cf12e919}{\index{File\-Writer@{File\-Writer}!set\-File\-Info@{set\-File\-Info}}
+\index{set\-File\-Info@{set\-File\-Info}!FileWriter@{File\-Writer}}
+\subsubsection[{set\-File\-Info}]{\setlength{\rightskip}{0pt plus 5cm}void File\-Writer\-::set\-File\-Info (
+\begin{DoxyParamCaption}
+\item[{string}]{object\-In}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_aa01e35cc83c9ddee419c2b08cf12e919}
+Set information about the file to be written after header and above data, included in the seafile block. 
+\begin{DoxyParams}{Parameters}
+{\em object\-In} & The name of the object. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_file_writer_aeea3ca877f0c5280b22ea7ff653db233}{\index{File\-Writer@{File\-Writer}!set\-Header@{set\-Header}}
+\index{set\-Header@{set\-Header}!FileWriter@{File\-Writer}}
+\subsubsection[{set\-Header}]{\setlength{\rightskip}{0pt plus 5cm}void File\-Writer\-::set\-Header (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_aeea3ca877f0c5280b22ea7ff653db233}
+Reads in from input file the header to be used in all files. \hypertarget{class_file_writer_a12fb8cd23937a257e4db0bfade0b2480}{\index{File\-Writer@{File\-Writer}!set\-Outputs@{set\-Outputs}}
+\index{set\-Outputs@{set\-Outputs}!FileWriter@{File\-Writer}}
+\subsubsection[{set\-Outputs}]{\setlength{\rightskip}{0pt plus 5cm}void File\-Writer\-::set\-Outputs (
+\begin{DoxyParamCaption}
+\item[{{\bf Outputs\-List}}]{the\-Outputs\-List\-In}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_a12fb8cd23937a257e4db0bfade0b2480}
+Sets the outputs that will be written to file later. 
+\begin{DoxyParams}{Parameters}
+{\em the\-Outputs\-List\-In} & The list of outputs. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_file_writer_a692853a3380d47586fdc186ca3e62a45}{\index{File\-Writer@{File\-Writer}!write\-Directions\-To\-File@{write\-Directions\-To\-File}}
+\index{write\-Directions\-To\-File@{write\-Directions\-To\-File}!FileWriter@{File\-Writer}}
+\subsubsection[{write\-Directions\-To\-File}]{\setlength{\rightskip}{0pt plus 5cm}bool File\-Writer\-::write\-Directions\-To\-File (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{direction\-List}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_a692853a3380d47586fdc186ca3e62a45}
+Writes the directions list to file. 
+\begin{DoxyParams}{Parameters}
+{\em direction\-List} & The list of directions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write successful. 
+\end{DoxyReturn}
+\hypertarget{class_file_writer_a5dd1b1384aac1febb75c21194e43f29e}{\index{File\-Writer@{File\-Writer}!write\-Frequencies\-To\-File@{write\-Frequencies\-To\-File}}
+\index{write\-Frequencies\-To\-File@{write\-Frequencies\-To\-File}!FileWriter@{File\-Writer}}
+\subsubsection[{write\-Frequencies\-To\-File}]{\setlength{\rightskip}{0pt plus 5cm}bool File\-Writer\-::write\-Frequencies\-To\-File (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{frequency\-List}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_a5dd1b1384aac1febb75c21194e43f29e}
+Writes the frequencies list to file. 
+\begin{DoxyParams}{Parameters}
+{\em frequency\-List} & The list of frequencies. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write successful. 
+\end{DoxyReturn}
+\hypertarget{class_file_writer_ada65187529c9aceb2be0a66085b745c5}{\index{File\-Writer@{File\-Writer}!write\-To\-File@{write\-To\-File}}
+\index{write\-To\-File@{write\-To\-File}!FileWriter@{File\-Writer}}
+\subsubsection[{write\-To\-File}]{\setlength{\rightskip}{0pt plus 5cm}bool File\-Writer\-::write\-To\-File (
+\begin{DoxyParamCaption}
+\item[{int}]{cur\-Wave\-Direction}
+\end{DoxyParamCaption}
+)}}\label{class_file_writer_ada65187529c9aceb2be0a66085b745c5}
+Writes the outputs list to file. 
+\begin{DoxyParams}{Parameters}
+{\em cur\-Wave\-Direction} & The current wave direction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write successful. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/filewriter.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/filewriter.\-cpp\end{DoxyCompactItemize}

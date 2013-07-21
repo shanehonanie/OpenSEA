@@ -1,0 +1,64 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      dictionary;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// Wave models define individual wave trains
+// Sea models define combinations of waves in multiple directions
+// ************************************************************************* //
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+/*Definition of the sea environment, including wave amplitude and variation
+  with wave directions. At least one wave spectrum must be defined */
+
+//Define wave spectrums.  You may define multiple spectrums
+wave_custom {
+  //Any name you want.  Used to refer to the spectrum
+  name "wavespec1";
+  
+  //Frequencies used to define the spectrum [rad/s].  Not required
+  //to be the same frequencies which govern the oFreq run.
+  frequencies (
+  0.010
+  );
+
+  //Spectrum ordinates of wave energy [m^2 s/rad].  Ordinates correlate
+  //to wave frequencies just entered.
+  waveenergy (
+  0.800
+  );
+}
+
+// ************************************************************************* //
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+/* Definition of sea models.  At least one sea model must be
+   defined */
+
+sea_custom {
+  //Any name you want.  Used to refer to the sea model
+  name "seamodel1";
+
+  spreadpoint {
+    //Angle = angle of wave travel direction [rad] with 0 = True North
+    angle 0.000;
+    //Spectrum = name of one of the previously defined wave spectrums
+    spectrum "wavespec1";
+    //Scale = Scale factor applied to the wave spectrum
+    scale 1.00;
+  }    
+}
+// ************************************************************************* //

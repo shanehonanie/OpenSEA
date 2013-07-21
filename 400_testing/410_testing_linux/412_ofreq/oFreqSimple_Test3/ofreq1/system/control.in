@@ -1,0 +1,36 @@
+/*--------------------------------*- C++ -*------------------------------------*\
+| O pen         | OpenSea:  The Open Source Seakeeping Suite                    |
+| S eakeeping   | Version:  1.0                                                 |
+| E valuation   | Web:      www.opensea.dmsonline.us                            |
+| A nalysis     |                                                               |
+\*-----------------------------------------------------------------------------*/
+seafile
+{
+    version     1.0;
+    format      ascii;
+    object      dictionary;
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//The system object controls major settings for the run of oFreq.
+system {
+  //Analysis Type:  "response" or "resonance"
+  analysis "response";
+
+  //Wave frequencies [rad/s]
+  frequency (
+  1.000
+  );
+
+  //Wave directions [rad]
+  //Angle of 0 = True North, proceeding counter-clockwise
+  direction (
+  0.0000
+  );
+
+  //Model of incident wave distribution to use
+  wavemodel "wavemodel1"
+}
+// ************************************************************************* //

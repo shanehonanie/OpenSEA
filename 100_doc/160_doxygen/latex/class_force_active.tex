@@ -1,0 +1,132 @@
+\hypertarget{class_force_active}{\section{Force\-Active Class Reference}
+\label{class_force_active}\index{Force\-Active@{Force\-Active}}
+}
+
+
+{\ttfamily \#include $<$forceactive.\-h$>$}
+
+Inheritance diagram for Force\-Active\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_force_active}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_force_active_ae006e3394f8c925c6a3218686c5cc8ae}{Force\-Active} ()
+\item 
+\hyperlink{class_force_active_aa2db4bc1fb74ecb6e0ee46c59a40dd2a}{$\sim$\-Force\-Active} ()
+\item 
+void \hyperlink{class_force_active_a8f209e7485e2086c4b7013511a96961e}{test\-Print} ()
+\item 
+complex\-Double \hyperlink{class_force_active_aebc48c0ba0f2d7a2a18059ad7ff1c3e8}{convert\-Rectangular\-Form\-To\-Complex\-Number} (string)
+\item 
+complex\-Double \hyperlink{class_force_active_a3e8d5604c7e0ecf12fbe1d1acf1a2e89}{convert\-Polar\-Form\-To\-Complex\-Number} (string)
+\item 
+void \hyperlink{class_force_active_a54690a658cdb9d7684f3063420ec6e1c}{set\-Coeff} (vector$<$ string $>$, bool)
+\item 
+vector$<$ complex\-Double $>$ \hyperlink{class_force_active_a9a4b712b31f3c40327a6bb68ff1aa565}{get\-Coefficients} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+complex\-Double \hyperlink{class_force_active_ab83eebfa9ec47878caa32da3f8885022}{coefficients} \mbox{[}M\-A\-X\-\_\-\-C\-O\-E\-F\-F\-I\-C\-I\-E\-N\-T\-S\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds data for an active force. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_force_active_ae006e3394f8c925c6a3218686c5cc8ae}{\index{Force\-Active@{Force\-Active}!Force\-Active@{Force\-Active}}
+\index{Force\-Active@{Force\-Active}!ForceActive@{Force\-Active}}
+\subsubsection[{Force\-Active}]{\setlength{\rightskip}{0pt plus 5cm}Force\-Active\-::\-Force\-Active (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_active_ae006e3394f8c925c6a3218686c5cc8ae}
+The default constructor. \hypertarget{class_force_active_aa2db4bc1fb74ecb6e0ee46c59a40dd2a}{\index{Force\-Active@{Force\-Active}!$\sim$\-Force\-Active@{$\sim$\-Force\-Active}}
+\index{$\sim$\-Force\-Active@{$\sim$\-Force\-Active}!ForceActive@{Force\-Active}}
+\subsubsection[{$\sim$\-Force\-Active}]{\setlength{\rightskip}{0pt plus 5cm}Force\-Active\-::$\sim$\-Force\-Active (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_active_aa2db4bc1fb74ecb6e0ee46c59a40dd2a}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_force_active_a3e8d5604c7e0ecf12fbe1d1acf1a2e89}{\index{Force\-Active@{Force\-Active}!convert\-Polar\-Form\-To\-Complex\-Number@{convert\-Polar\-Form\-To\-Complex\-Number}}
+\index{convert\-Polar\-Form\-To\-Complex\-Number@{convert\-Polar\-Form\-To\-Complex\-Number}!ForceActive@{Force\-Active}}
+\subsubsection[{convert\-Polar\-Form\-To\-Complex\-Number}]{\setlength{\rightskip}{0pt plus 5cm}complex\-Double Force\-Active\-::convert\-Polar\-Form\-To\-Complex\-Number (
+\begin{DoxyParamCaption}
+\item[{string}]{expression}
+\end{DoxyParamCaption}
+)}}\label{class_force_active_a3e8d5604c7e0ecf12fbe1d1acf1a2e89}
+Converts string in polar form to a complex number. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & The string in polar form. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a complex number. 
+\end{DoxyReturn}
+\hypertarget{class_force_active_aebc48c0ba0f2d7a2a18059ad7ff1c3e8}{\index{Force\-Active@{Force\-Active}!convert\-Rectangular\-Form\-To\-Complex\-Number@{convert\-Rectangular\-Form\-To\-Complex\-Number}}
+\index{convert\-Rectangular\-Form\-To\-Complex\-Number@{convert\-Rectangular\-Form\-To\-Complex\-Number}!ForceActive@{Force\-Active}}
+\subsubsection[{convert\-Rectangular\-Form\-To\-Complex\-Number}]{\setlength{\rightskip}{0pt plus 5cm}complex\-Double Force\-Active\-::convert\-Rectangular\-Form\-To\-Complex\-Number (
+\begin{DoxyParamCaption}
+\item[{string}]{expression}
+\end{DoxyParamCaption}
+)}}\label{class_force_active_aebc48c0ba0f2d7a2a18059ad7ff1c3e8}
+Converts string in rectanguluar form to a complex number. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & The string in Rectanguluar form. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a complex number. 
+\end{DoxyReturn}
+\hypertarget{class_force_active_a9a4b712b31f3c40327a6bb68ff1aa565}{\index{Force\-Active@{Force\-Active}!get\-Coefficients@{get\-Coefficients}}
+\index{get\-Coefficients@{get\-Coefficients}!ForceActive@{Force\-Active}}
+\subsubsection[{get\-Coefficients}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ complex\-Double $>$ Force\-Active\-::get\-Coefficients (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_active_a9a4b712b31f3c40327a6bb68ff1aa565}
+Retrieve the list of coefficients. \begin{DoxyReturn}{Returns}
+The list of coefficients. 
+\end{DoxyReturn}
+\hypertarget{class_force_active_a54690a658cdb9d7684f3063420ec6e1c}{\index{Force\-Active@{Force\-Active}!set\-Coeff@{set\-Coeff}}
+\index{set\-Coeff@{set\-Coeff}!ForceActive@{Force\-Active}}
+\subsubsection[{set\-Coeff}]{\setlength{\rightskip}{0pt plus 5cm}void Force\-Active\-::set\-Coeff (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$}]{the\-List\-In, }
+\item[{bool}]{is\-Direct\-List}
+\end{DoxyParamCaption}
+)}}\label{class_force_active_a54690a658cdb9d7684f3063420ec6e1c}
+Set the coefficients. 
+\begin{DoxyParams}{Parameters}
+{\em the\-List\-In} & The list of coefficients. \\
+\hline
+{\em is\-Direct\-List} & Specifies whether list of coefficients is direct list or sequential list. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_force_active_a8f209e7485e2086c4b7013511a96961e}{\index{Force\-Active@{Force\-Active}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!ForceActive@{Force\-Active}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void Force\-Active\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_force_active_a8f209e7485e2086c4b7013511a96961e}
+Test print to console the values of all data members. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_force_active_ab83eebfa9ec47878caa32da3f8885022}{\index{Force\-Active@{Force\-Active}!coefficients@{coefficients}}
+\index{coefficients@{coefficients}!ForceActive@{Force\-Active}}
+\subsubsection[{coefficients}]{\setlength{\rightskip}{0pt plus 5cm}complex\-Double Force\-Active\-::coefficients\mbox{[}M\-A\-X\-\_\-\-C\-O\-E\-F\-F\-I\-C\-I\-E\-N\-T\-S\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_force_active_ab83eebfa9ec47878caa32da3f8885022}
+The list of force coeffients. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/forceactive.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/forceactive.\-cpp\end{DoxyCompactItemize}

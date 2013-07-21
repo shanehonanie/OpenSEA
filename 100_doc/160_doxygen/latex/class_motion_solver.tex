@@ -1,0 +1,185 @@
+\hypertarget{class_motion_solver}{\section{Motion\-Solver Class Reference}
+\label{class_motion_solver}\index{Motion\-Solver@{Motion\-Solver}}
+}
+
+
+{\ttfamily \#include $<$motionsolver.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_motion_solver_ae231d7c407ef35357e519053091b6003}{Motion\-Solver} (vector$<$ \hyperlink{class_body}{Body} $>$, \hyperlink{class_user_forces}{User\-Forces}, double)
+\item 
+\hyperlink{class_motion_solver_ae1fb5f389752a21a6d65ce41599b9b91}{$\sim$\-Motion\-Solver} ()
+\item 
+void \hyperlink{class_motion_solver_ac6c03c2a45d7868b5acb76324fa29279}{set\-Matrix\-Index\-Positions} (int, int)
+\item 
+vector$<$ cx\-\_\-mat $>$ \hyperlink{class_motion_solver_a89c37a28a333474de2d0d51bada81afa}{sum\-Reactive\-Force\-Each\-Set} (vector$<$ \hyperlink{class_reactive_force_matrix}{Reactive\-Force\-Matrix} $>$)
+\item 
+cx\-\_\-mat \hyperlink{class_motion_solver_a58ec4344deda599d9b1de11aa3e6abde}{sum\-Active\-Force\-Each\-Set} (vector$<$ cx\-\_\-mat $>$)
+\item 
+cx\-\_\-mat \hyperlink{class_motion_solver_a26a41ac6907d24228de0a6ddcf9911ce}{sum\-Derivatives} (vector$<$ cx\-\_\-mat $>$)
+\item 
+vector$<$ cx\-\_\-mat $>$ \hyperlink{class_motion_solver_a2358d623842d0634576d978db98b9198}{Calculate\-Outputs} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{class_body}{Body} $>$ \hyperlink{class_motion_solver_aa706c345b20614a18e9f8f59c6174d2a}{the\-Body\-Data}
+\item 
+\hyperlink{class_user_forces}{User\-Forces} \hyperlink{class_motion_solver_a9c8dd3a151361ae664c9ff4e9958f649}{the\-Forces\-Data}
+\item 
+vector$<$ \hyperlink{class_body_with_force_matrix}{Body\-With\-Force\-Matrix} $>$ \hyperlink{class_motion_solver_ac6c73cbeb23091b0064a9a2d0cd0752c}{the\-Body\-With\-Force\-Matrix}
+\item 
+\hyperlink{class_motion_model}{Motion\-Model} \hyperlink{class_motion_solver_a19e40f754e74afd9f99a3944360165bf}{the\-Motion\-Model}
+\item 
+double \hyperlink{class_motion_solver_a01ca22785130c0612045094790e2f992}{cur\-Wave\-Frequency}
+\item 
+int \hyperlink{class_motion_solver_af209f386af69a39839061e436630906c}{max\-Matrix\-Size}
+\item 
+cx\-\_\-mat \hyperlink{class_motion_solver_a29bb1f9a2fd145b4e8fc74ad711e4351}{reactive\-Force\-Matrix\-Global}
+\item 
+cx\-\_\-mat \hyperlink{class_motion_solver_a800bc918ff0075782368046bd51eeb87}{active\-Force\-Matrix\-Global}
+\item 
+cx\-\_\-mat \hyperlink{class_motion_solver_aba617c457e3dab115693c4b3a23f9827}{solution\-Column\-Matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds data for the motion solver and performs calculations on all of the data to get the solution matrix. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_motion_solver_ae231d7c407ef35357e519053091b6003}{\index{Motion\-Solver@{Motion\-Solver}!Motion\-Solver@{Motion\-Solver}}
+\index{Motion\-Solver@{Motion\-Solver}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{Motion\-Solver}]{\setlength{\rightskip}{0pt plus 5cm}Motion\-Solver\-::\-Motion\-Solver (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Body} $>$}]{body\-Data\-In, }
+\item[{{\bf User\-Forces}}]{user\-Forces\-In, }
+\item[{double}]{new\-Wave\-Freq}
+\end{DoxyParamCaption}
+)}}\label{class_motion_solver_ae231d7c407ef35357e519053091b6003}
+The constructor. 
+\begin{DoxyParams}{Parameters}
+{\em body\-Data\-In} & The body. \\
+\hline
+{\em user\-Forces\-In} & The User Forces. \\
+\hline
+{\em new\-Wave\-Freq} & The wave frequencies. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_motion_solver_ae1fb5f389752a21a6d65ce41599b9b91}{\index{Motion\-Solver@{Motion\-Solver}!$\sim$\-Motion\-Solver@{$\sim$\-Motion\-Solver}}
+\index{$\sim$\-Motion\-Solver@{$\sim$\-Motion\-Solver}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{$\sim$\-Motion\-Solver}]{\setlength{\rightskip}{0pt plus 5cm}Motion\-Solver\-::$\sim$\-Motion\-Solver (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_motion_solver_ae1fb5f389752a21a6d65ce41599b9b91}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_motion_solver_a2358d623842d0634576d978db98b9198}{\index{Motion\-Solver@{Motion\-Solver}!Calculate\-Outputs@{Calculate\-Outputs}}
+\index{Calculate\-Outputs@{Calculate\-Outputs}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{Calculate\-Outputs}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cx\-\_\-mat $>$ Motion\-Solver\-::\-Calculate\-Outputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_motion_solver_a2358d623842d0634576d978db98b9198}
+Calculate the Solution and return the solutions for each body. \begin{DoxyReturn}{Returns}
+A list of solutions for each body. 
+\end{DoxyReturn}
+\hypertarget{class_motion_solver_ac6c03c2a45d7868b5acb76324fa29279}{\index{Motion\-Solver@{Motion\-Solver}!set\-Matrix\-Index\-Positions@{set\-Matrix\-Index\-Positions}}
+\index{set\-Matrix\-Index\-Positions@{set\-Matrix\-Index\-Positions}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{set\-Matrix\-Index\-Positions}]{\setlength{\rightskip}{0pt plus 5cm}void Motion\-Solver\-::set\-Matrix\-Index\-Positions (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-Bodies, }
+\item[{int}]{per\-Matrix\-Size}
+\end{DoxyParamCaption}
+)}}\label{class_motion_solver_ac6c03c2a45d7868b5acb76324fa29279}
+Set the matrix index positions in the reactive force matrix. 
+\begin{DoxyParams}{Parameters}
+{\em num\-Bodies} & The number of bodies. \\
+\hline
+{\em per\-Matrix\-Size} & The roww/column length of matrix. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_motion_solver_a58ec4344deda599d9b1de11aa3e6abde}{\index{Motion\-Solver@{Motion\-Solver}!sum\-Active\-Force\-Each\-Set@{sum\-Active\-Force\-Each\-Set}}
+\index{sum\-Active\-Force\-Each\-Set@{sum\-Active\-Force\-Each\-Set}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{sum\-Active\-Force\-Each\-Set}]{\setlength{\rightskip}{0pt plus 5cm}cx\-\_\-mat Motion\-Solver\-::sum\-Active\-Force\-Each\-Set (
+\begin{DoxyParamCaption}
+\item[{vector$<$ cx\-\_\-mat $>$}]{the\-Active\-Force\-Matrix}
+\end{DoxyParamCaption}
+)}}\label{class_motion_solver_a58ec4344deda599d9b1de11aa3e6abde}
+Sum active forces for each set. 
+\begin{DoxyParams}{Parameters}
+{\em the\-Active\-Force\-Matrix} & The active force matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sum of active force matrix. 
+\end{DoxyReturn}
+\hypertarget{class_motion_solver_a26a41ac6907d24228de0a6ddcf9911ce}{\index{Motion\-Solver@{Motion\-Solver}!sum\-Derivatives@{sum\-Derivatives}}
+\index{sum\-Derivatives@{sum\-Derivatives}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{sum\-Derivatives}]{\setlength{\rightskip}{0pt plus 5cm}cx\-\_\-mat Motion\-Solver\-::sum\-Derivatives (
+\begin{DoxyParamCaption}
+\item[{vector$<$ cx\-\_\-mat $>$}]{the\-Reactive\-Force\-Matrix}
+\end{DoxyParamCaption}
+)}}\label{class_motion_solver_a26a41ac6907d24228de0a6ddcf9911ce}
+Sum Derivatives for reactive force matrix. 
+\begin{DoxyParams}{Parameters}
+{\em the\-Reactive\-Force\-Matrix} & The reactive force matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\-Single matrix that is the sum of Matrices passed in. 
+\end{DoxyReturn}
+\hypertarget{class_motion_solver_a89c37a28a333474de2d0d51bada81afa}{\index{Motion\-Solver@{Motion\-Solver}!sum\-Reactive\-Force\-Each\-Set@{sum\-Reactive\-Force\-Each\-Set}}
+\index{sum\-Reactive\-Force\-Each\-Set@{sum\-Reactive\-Force\-Each\-Set}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{sum\-Reactive\-Force\-Each\-Set}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ cx\-\_\-mat $>$ Motion\-Solver\-::sum\-Reactive\-Force\-Each\-Set (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Reactive\-Force\-Matrix} $>$}]{the\-Reactive\-Force\-Matrix}
+\end{DoxyParamCaption}
+)}}\label{class_motion_solver_a89c37a28a333474de2d0d51bada81afa}
+Sum Reactive forces for each set. 
+\begin{DoxyParams}{Parameters}
+{\em the\-Reactive\-Force\-Matrix} & The Reactive force matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sum of reactive force matrices. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_motion_solver_a800bc918ff0075782368046bd51eeb87}{\index{Motion\-Solver@{Motion\-Solver}!active\-Force\-Matrix\-Global@{active\-Force\-Matrix\-Global}}
+\index{active\-Force\-Matrix\-Global@{active\-Force\-Matrix\-Global}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{active\-Force\-Matrix\-Global}]{\setlength{\rightskip}{0pt plus 5cm}cx\-\_\-mat Motion\-Solver\-::active\-Force\-Matrix\-Global}}\label{class_motion_solver_a800bc918ff0075782368046bd51eeb87}
+F Matrix (Active \hyperlink{class_force}{Force} Matirx Global) \hypertarget{class_motion_solver_a01ca22785130c0612045094790e2f992}{\index{Motion\-Solver@{Motion\-Solver}!cur\-Wave\-Frequency@{cur\-Wave\-Frequency}}
+\index{cur\-Wave\-Frequency@{cur\-Wave\-Frequency}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{cur\-Wave\-Frequency}]{\setlength{\rightskip}{0pt plus 5cm}double Motion\-Solver\-::cur\-Wave\-Frequency}}\label{class_motion_solver_a01ca22785130c0612045094790e2f992}
+The current wave frequency \hypertarget{class_motion_solver_af209f386af69a39839061e436630906c}{\index{Motion\-Solver@{Motion\-Solver}!max\-Matrix\-Size@{max\-Matrix\-Size}}
+\index{max\-Matrix\-Size@{max\-Matrix\-Size}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{max\-Matrix\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Motion\-Solver\-::max\-Matrix\-Size}}\label{class_motion_solver_af209f386af69a39839061e436630906c}
+The max row/column size of the matrix \hypertarget{class_motion_solver_a29bb1f9a2fd145b4e8fc74ad711e4351}{\index{Motion\-Solver@{Motion\-Solver}!reactive\-Force\-Matrix\-Global@{reactive\-Force\-Matrix\-Global}}
+\index{reactive\-Force\-Matrix\-Global@{reactive\-Force\-Matrix\-Global}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{reactive\-Force\-Matrix\-Global}]{\setlength{\rightskip}{0pt plus 5cm}cx\-\_\-mat Motion\-Solver\-::reactive\-Force\-Matrix\-Global}}\label{class_motion_solver_a29bb1f9a2fd145b4e8fc74ad711e4351}
+A Matrix (Reactive \hyperlink{class_force}{Force} Matrix Global) \hypertarget{class_motion_solver_aba617c457e3dab115693c4b3a23f9827}{\index{Motion\-Solver@{Motion\-Solver}!solution\-Column\-Matrix@{solution\-Column\-Matrix}}
+\index{solution\-Column\-Matrix@{solution\-Column\-Matrix}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{solution\-Column\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}cx\-\_\-mat Motion\-Solver\-::solution\-Column\-Matrix}}\label{class_motion_solver_aba617c457e3dab115693c4b3a23f9827}
+X Matrix (Solution Column Matrix) \hypertarget{class_motion_solver_aa706c345b20614a18e9f8f59c6174d2a}{\index{Motion\-Solver@{Motion\-Solver}!the\-Body\-Data@{the\-Body\-Data}}
+\index{the\-Body\-Data@{the\-Body\-Data}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{the\-Body\-Data}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Body}$>$ Motion\-Solver\-::the\-Body\-Data}}\label{class_motion_solver_aa706c345b20614a18e9f8f59c6174d2a}
+original body data from input files \hypertarget{class_motion_solver_ac6c73cbeb23091b0064a9a2d0cd0752c}{\index{Motion\-Solver@{Motion\-Solver}!the\-Body\-With\-Force\-Matrix@{the\-Body\-With\-Force\-Matrix}}
+\index{the\-Body\-With\-Force\-Matrix@{the\-Body\-With\-Force\-Matrix}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{the\-Body\-With\-Force\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Body\-With\-Force\-Matrix}$>$ Motion\-Solver\-::the\-Body\-With\-Force\-Matrix}}\label{class_motion_solver_ac6c73cbeb23091b0064a9a2d0cd0752c}
+\hyperlink{class_body}{Body} with \hyperlink{class_force}{Force} Coefficients \hypertarget{class_motion_solver_a9c8dd3a151361ae664c9ff4e9958f649}{\index{Motion\-Solver@{Motion\-Solver}!the\-Forces\-Data@{the\-Forces\-Data}}
+\index{the\-Forces\-Data@{the\-Forces\-Data}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{the\-Forces\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf User\-Forces} Motion\-Solver\-::the\-Forces\-Data}}\label{class_motion_solver_a9c8dd3a151361ae664c9ff4e9958f649}
+original force data from input files \hypertarget{class_motion_solver_a19e40f754e74afd9f99a3944360165bf}{\index{Motion\-Solver@{Motion\-Solver}!the\-Motion\-Model@{the\-Motion\-Model}}
+\index{the\-Motion\-Model@{the\-Motion\-Model}!MotionSolver@{Motion\-Solver}}
+\subsubsection[{the\-Motion\-Model}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Motion\-Model} Motion\-Solver\-::the\-Motion\-Model}}\label{class_motion_solver_a19e40f754e74afd9f99a3944360165bf}
+The motion model. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/motionsolver.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/motionsolver.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,173 @@
+\hypertarget{class_control_input}{\section{Control\-Input Class Reference}
+\label{class_control_input}\index{Control\-Input@{Control\-Input}}
+}
+
+
+{\ttfamily \#include $<$controlinput.\-h$>$}
+
+Inheritance diagram for Control\-Input\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_control_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_control_input_a50dc4cde4f6410238119971b6934c63a}{Control\-Input} ()
+\item 
+\hyperlink{class_control_input_aa35022d7c6edbfef7150eb4db594ba58}{$\sim$\-Control\-Input} ()
+\item 
+void \hyperlink{class_control_input_a2f95d64805ed477f78bf778bb786b30b}{test\-Print} ()
+\item 
+vector$<$ double $>$ \hyperlink{class_control_input_a3febc929e09306f21f484249c89dbc80}{get\-Wave\-Frequencies} ()
+\item 
+vector$<$ double $>$ \hyperlink{class_control_input_a2e80de357be6fe5112add0f5066c6328}{get\-Wave\-Directions} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_control_input_af15fe8b88a0e7f496c7fd0d4795ff900}{initialize\-Defaults} ()
+\item 
+int \hyperlink{class_control_input_af7295a9ba455debb812f0e1d4a647820}{legal\-Keyword} (string)
+\item 
+bool \hyperlink{class_control_input_acb4fb4c1d2a2453e3b8986e44e096f63}{keyword\-Handler} (int, string, string)
+\item 
+bool \hyperlink{class_control_input_a33b353c2d8f4316d1543059a319faba7}{keyword\-Handler} (int, vector$<$ string $>$, bool)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class parses input from file and stores the data appropriately in the \hyperlink{class_system}{System} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_control_input_a50dc4cde4f6410238119971b6934c63a}{\index{Control\-Input@{Control\-Input}!Control\-Input@{Control\-Input}}
+\index{Control\-Input@{Control\-Input}!ControlInput@{Control\-Input}}
+\subsubsection[{Control\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Control\-Input\-::\-Control\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_input_a50dc4cde4f6410238119971b6934c63a}
+The default constructor. \hypertarget{class_control_input_aa35022d7c6edbfef7150eb4db594ba58}{\index{Control\-Input@{Control\-Input}!$\sim$\-Control\-Input@{$\sim$\-Control\-Input}}
+\index{$\sim$\-Control\-Input@{$\sim$\-Control\-Input}!ControlInput@{Control\-Input}}
+\subsubsection[{$\sim$\-Control\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Control\-Input\-::$\sim$\-Control\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_input_aa35022d7c6edbfef7150eb4db594ba58}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_control_input_a2e80de357be6fe5112add0f5066c6328}{\index{Control\-Input@{Control\-Input}!get\-Wave\-Directions@{get\-Wave\-Directions}}
+\index{get\-Wave\-Directions@{get\-Wave\-Directions}!ControlInput@{Control\-Input}}
+\subsubsection[{get\-Wave\-Directions}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ Control\-Input\-::get\-Wave\-Directions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_input_a2e80de357be6fe5112add0f5066c6328}
+Get function to retrieve wave directions. \begin{DoxyReturn}{Returns}
+the list of wave directions. 
+\end{DoxyReturn}
+\hypertarget{class_control_input_a3febc929e09306f21f484249c89dbc80}{\index{Control\-Input@{Control\-Input}!get\-Wave\-Frequencies@{get\-Wave\-Frequencies}}
+\index{get\-Wave\-Frequencies@{get\-Wave\-Frequencies}!ControlInput@{Control\-Input}}
+\subsubsection[{get\-Wave\-Frequencies}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ Control\-Input\-::get\-Wave\-Frequencies (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_input_a3febc929e09306f21f484249c89dbc80}
+Get function to retrieve wave frequencies. \begin{DoxyReturn}{Returns}
+the list of wave frequencies. 
+\end{DoxyReturn}
+\hypertarget{class_control_input_af15fe8b88a0e7f496c7fd0d4795ff900}{\index{Control\-Input@{Control\-Input}!initialize\-Defaults@{initialize\-Defaults}}
+\index{initialize\-Defaults@{initialize\-Defaults}!ControlInput@{Control\-Input}}
+\subsubsection[{initialize\-Defaults}]{\setlength{\rightskip}{0pt plus 5cm}void Control\-Input\-::initialize\-Defaults (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_control_input_af15fe8b88a0e7f496c7fd0d4795ff900}
+For future use, does nothing as of now. 
+
+Implements \hyperlink{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}{Read\-Input}.
+
+\hypertarget{class_control_input_acb4fb4c1d2a2453e3b8986e44e096f63}{\index{Control\-Input@{Control\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!ControlInput@{Control\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Control\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{string}]{identifier, }
+\item[{string}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_control_input_acb4fb4c1d2a2453e3b8986e44e096f63}
+Stores the data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em identifier} & The keyword. \\
+\hline
+{\em val} & The value associated with the keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a1d8cb0ef59f265300b682de97513f48d}{Read\-Input}.
+
+\hypertarget{class_control_input_a33b353c2d8f4316d1543059a319faba7}{\index{Control\-Input@{Control\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!ControlInput@{Control\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}bool Control\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{key\-Control, }
+\item[{vector$<$ string $>$}]{the\-List\-In, }
+\item[{bool}]{is\-Direct}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_control_input_a33b353c2d8f4316d1543059a319faba7}
+Stores the list data if valid keyword according to the legeal\-Keyword function. 
+\begin{DoxyParams}{Parameters}
+{\em key\-Control} & Indicated which case in switch function to use. \\
+\hline
+{\em the\-List\-In} & List of Values. \\
+\hline
+{\em is\-Direct} & True if Direct Access List, False if Sequenctial List. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if not done reading data, true to move onto next keyword in parser. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}{Read\-Input}.
+
+\hypertarget{class_control_input_af7295a9ba455debb812f0e1d4a647820}{\index{Control\-Input@{Control\-Input}!legal\-Keyword@{legal\-Keyword}}
+\index{legal\-Keyword@{legal\-Keyword}!ControlInput@{Control\-Input}}
+\subsubsection[{legal\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}int Control\-Input\-::legal\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string}]{string\-In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_control_input_af7295a9ba455debb812f0e1d4a647820}
+Returns int greater than 0 if the keyword is legal, the int returned specifies how to handle data in keyword\-Handler. 
+\begin{DoxyParams}{Parameters}
+{\em string\-In} & Check if a valid keyword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int value which tells keyword\-Handler how to handle the data. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}{Read\-Input}.
+
+\hypertarget{class_control_input_a2f95d64805ed477f78bf778bb786b30b}{\index{Control\-Input@{Control\-Input}!test\-Print@{test\-Print}}
+\index{test\-Print@{test\-Print}!ControlInput@{Control\-Input}}
+\subsubsection[{test\-Print}]{\setlength{\rightskip}{0pt plus 5cm}void Control\-Input\-::test\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_input_a2f95d64805ed477f78bf778bb786b30b}
+Print to console all data members. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/controlinput.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/controlinput.\-cpp\end{DoxyCompactItemize}

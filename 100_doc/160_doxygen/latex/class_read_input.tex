@@ -1,0 +1,122 @@
+\hypertarget{class_read_input}{\section{Read\-Input Class Reference}
+\label{class_read_input}\index{Read\-Input@{Read\-Input}}
+}
+
+
+{\ttfamily \#include $<$readinputfile.\-h$>$}
+
+Inheritance diagram for Read\-Input\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.447028cm]{class_read_input}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_read_input_a181da3d718520ea9168808dde2d3e867}{Read\-Input} ()
+\item 
+\hyperlink{class_read_input_aec19e94e448ed46207c55412a61728fa}{$\sim$\-Read\-Input} ()
+\item 
+void \hyperlink{class_read_input_a0cebeb9dda7e4508fdc7a295229b8e07}{set\-Data} (istream \&)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}{initialize\-Defaults} ()=0
+\item 
+virtual int \hyperlink{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}{legal\-Keyword} (string)=0
+\item 
+virtual bool \hyperlink{class_read_input_a1d8cb0ef59f265300b682de97513f48d}{keyword\-Handler} (int, string, string)=0
+\item 
+virtual bool \hyperlink{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}{keyword\-Handler} (int, vector$<$ string $>$, bool)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This absract class parses input from file and has functions that must be implemented to handle the data. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_read_input_a181da3d718520ea9168808dde2d3e867}{\index{Read\-Input@{Read\-Input}!Read\-Input@{Read\-Input}}
+\index{Read\-Input@{Read\-Input}!ReadInput@{Read\-Input}}
+\subsubsection[{Read\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Read\-Input\-::\-Read\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_read_input_a181da3d718520ea9168808dde2d3e867}
+The default constructor. \hypertarget{class_read_input_aec19e94e448ed46207c55412a61728fa}{\index{Read\-Input@{Read\-Input}!$\sim$\-Read\-Input@{$\sim$\-Read\-Input}}
+\index{$\sim$\-Read\-Input@{$\sim$\-Read\-Input}!ReadInput@{Read\-Input}}
+\subsubsection[{$\sim$\-Read\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Read\-Input\-::$\sim$\-Read\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_read_input_aec19e94e448ed46207c55412a61728fa}
+The default destructor, nothing happens here. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}{\index{Read\-Input@{Read\-Input}!initialize\-Defaults@{initialize\-Defaults}}
+\index{initialize\-Defaults@{initialize\-Defaults}!ReadInput@{Read\-Input}}
+\subsubsection[{initialize\-Defaults}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Read\-Input\-::initialize\-Defaults (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_read_input_a4ff2727b876cfd7c01299b08bdd65646}
+Must be implemented by child class. 
+
+Implemented in \hyperlink{class_control_input_af15fe8b88a0e7f496c7fd0d4795ff900}{Control\-Input}, \hyperlink{class_bodiesinput_ae7c0a7ee2c02e1ed63658a7d06f257e5}{Bodiesinput}, \hyperlink{class_forces_input_a8bcfe50a80d1c2fe11a742081a5e7343}{Forces\-Input}, \hyperlink{class_data_input_a991d4d493aaeaff9d631565b9a49d2ce}{Data\-Input}, \hyperlink{class_seaenv_input_a47a254de1906fcbea59ed961c9a1fc0a}{Seaenv\-Input}, and \hyperlink{class_hydrodynamic_input_a311ec06f62b7929fb6712e90240a1436}{Hydrodynamic\-Input}.
+
+\hypertarget{class_read_input_a1d8cb0ef59f265300b682de97513f48d}{\index{Read\-Input@{Read\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!ReadInput@{Read\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Read\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{, }
+\item[{string}]{, }
+\item[{string}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_read_input_a1d8cb0ef59f265300b682de97513f48d}
+Must be implemented by child class, handles single key/val pairs. 
+
+Implemented in \hyperlink{class_control_input_acb4fb4c1d2a2453e3b8986e44e096f63}{Control\-Input}, \hyperlink{class_bodiesinput_a2bf5785740ebd6e397477e667af16a05}{Bodiesinput}, \hyperlink{class_forces_input_a3e82ee7aa3c5bd35a6bb1b06fcafafa9}{Forces\-Input}, \hyperlink{class_data_input_a80075c8e86436e00c89d891ce0be57a8}{Data\-Input}, and \hyperlink{class_seaenv_input_a79edff5224cca5323f679478c09b1c25}{Seaenv\-Input}.
+
+\hypertarget{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}{\index{Read\-Input@{Read\-Input}!keyword\-Handler@{keyword\-Handler}}
+\index{keyword\-Handler@{keyword\-Handler}!ReadInput@{Read\-Input}}
+\subsubsection[{keyword\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Read\-Input\-::keyword\-Handler (
+\begin{DoxyParamCaption}
+\item[{int}]{, }
+\item[{vector$<$ string $>$}]{, }
+\item[{bool}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_read_input_afb66a7ff67d0aeb10a3cfa5a4fbc31f8}
+Must be implemented by child class, handles multiple key/val pairs. 
+
+Implemented in \hyperlink{class_control_input_a33b353c2d8f4316d1543059a319faba7}{Control\-Input}, \hyperlink{class_bodiesinput_af735a952cbd5b1a0c5db67c7209ba847}{Bodiesinput}, \hyperlink{class_forces_input_a52965f2bfde734252e7f4f65bf0fde25}{Forces\-Input}, \hyperlink{class_data_input_a70d0380171a30a659a6c7868f2573c92}{Data\-Input}, and \hyperlink{class_seaenv_input_a3e8d24eadb9f83b1f0ff59cb8de1276e}{Seaenv\-Input}.
+
+\hypertarget{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}{\index{Read\-Input@{Read\-Input}!legal\-Keyword@{legal\-Keyword}}
+\index{legal\-Keyword@{legal\-Keyword}!ReadInput@{Read\-Input}}
+\subsubsection[{legal\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Read\-Input\-::legal\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_read_input_a4c67f10e813686bf635dd4c6bb2c61bc}
+Must be implemented by child class, determine if keyword is legal. 
+
+Implemented in \hyperlink{class_control_input_af7295a9ba455debb812f0e1d4a647820}{Control\-Input}, \hyperlink{class_bodiesinput_abe777be6f9181f1d0f8c5ad523eff6e3}{Bodiesinput}, \hyperlink{class_forces_input_a5f4086acc636b54b64bcd611bdff1aa4}{Forces\-Input}, \hyperlink{class_data_input_ae3ca24179103da6e38b99842b9fc1000}{Data\-Input}, \hyperlink{class_seaenv_input_af0e063c0b66093ed993c79a62c8c092f}{Seaenv\-Input}, and \hyperlink{class_hydrodynamic_input_a6cf4ad1a8407191c8e2633ca0554f641}{Hydrodynamic\-Input}.
+
+\hypertarget{class_read_input_a0cebeb9dda7e4508fdc7a295229b8e07}{\index{Read\-Input@{Read\-Input}!set\-Data@{set\-Data}}
+\index{set\-Data@{set\-Data}!ReadInput@{Read\-Input}}
+\subsubsection[{set\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::set\-Data (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{infile}
+\end{DoxyParamCaption}
+)}}\label{class_read_input_a0cebeb9dda7e4508fdc7a295229b8e07}
+Parses input files and handles the data. 
+\begin{DoxyParams}{Parameters}
+{\em infile} & The file that is currently being read in by the parser. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/readinputfile.\-h\item 
+Visual Studio 2010/\-Projects/o\-Freq Windows V\-S2010/o\-Freq/readinputfile.\-cpp\end{DoxyCompactItemize}
