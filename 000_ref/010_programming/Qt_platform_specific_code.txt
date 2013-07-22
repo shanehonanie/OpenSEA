@@ -1,0 +1,38 @@
+We have one set of source code, which compiles differently, depending on which platform gets selected.  Bear this in mind when you write new source code.  There are two methods in Qt to change source code at compile time, depending on platform.
+
+
+# Little Pieces of Code
+
+You can specify compiler options which depend on Qt system variables.
+
+For little pieces of code you can simply use the following construct.
+
+> #if defined(Q_OS_WIN32)
+> #elif defined(Q_OS_MACX)
+> #elif etc...
+> #endif
+
+The variables you need are as follows (I included other OS's just for completeness, but we only use linux and windows:
+
+1.  Q_OS_WIN32:  Any Windows OS.
+*  Q_OS_LINUX:  Any linuux OS.
+*  Q_OS_UNIX:  Unix OS.
+*  Q_OS_MAX:  Mac OS.
+
+All these macros are included as part of the <QtGlobal> header file.
+
+http://qt-project.org/doc/qt-5.0/qtcore/qtglobal.html
+
+
+# Whole files
+
+You can also specify whole individual files to be included or excluded depending on which build is selected.
+
+If you have bigger “implementation details” you can separate things in different cpp files one for each platform i.e. :
+mycoolwidget.cpp <- common implementation
+mycoolwidget_win.cpp <- windows specific stuff
+mycoolwidget_unix.cpp <- linux/os x stuff if both can use the same code
+etc…
+
+Then in your pro file, use scopes to build the correct set of files.
+If you need your own defines for a platform theres the DEFINES variable
