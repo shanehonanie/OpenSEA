@@ -34,9 +34,9 @@ win32 {
     LIBS += boost_system boost_filesystem
 }
 
-linux {
-    # Any files specific to linux go in these brackets.
-    LIBS += -lboost_system -lboost_filesystem   #Libs for linux filesystem
+unix {
+    # Any files specific to unix go in these brackets.
+    LIBS += -lboost_system -lboost_filesystem   #Libs for unix filesystem
 }
 
 

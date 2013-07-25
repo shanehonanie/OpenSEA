@@ -19,7 +19,7 @@ win32 {
 
 }
 
-linux {
-    # Any files specific to linux go in these brackets.
-    LIBS += -larmadillo #Libs for linux filesystem
+unix {
+    # Any files specific to unix go in these brackets.
+    LIBS += -larmadillo #Libs for unix filesystem
 }

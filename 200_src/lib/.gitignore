@@ -1,0 +1,10 @@
+# Reverese previous exclusions and allow libraries to live here on the repository.
+
+# Compiled source #
+###################
+!*.com
+!*.class
+!*.dll
+!*.exe
+!*.o
+!*.so

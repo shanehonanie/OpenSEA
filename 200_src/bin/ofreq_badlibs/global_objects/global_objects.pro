@@ -35,7 +35,7 @@ win32 {
 
 }
 
-linux {
-    # Any files specific to linux go in these brackets.
+unix {
+    # Any files specific to unix go in these brackets.
 
 }

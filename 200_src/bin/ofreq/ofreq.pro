@@ -121,7 +121,7 @@ win32 {
     LIBS += boost_system boost_filesystem   # Add boost and boost filesystem
 }
 
-linux {
+unix {
     # Any files specific to linux go in these brackets.
     LIBS += -larmadillo -llapack -lblas #Add armadillo and associated support
     LIBS += -lboost_system -lboost_filesystem   # Add boost and boost filesystem

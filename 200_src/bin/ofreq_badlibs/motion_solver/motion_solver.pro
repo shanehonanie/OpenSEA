@@ -51,9 +51,9 @@ win32 {
         $$PWD/../../../lib/lapack_win32_MT.lib
 }
 
-linux {
-    # Any files specific to linux go in these brackets.
-    LIBS += -larmadillo -llapack -lblas #Libs for linux filesystem
+unix {
+    # Any files specific to unix go in these brackets.
+    LIBS += -larmadillo -llapack -lblas #Libs for unix filesystem
 }
 
 # Add dependencies for all previous libs

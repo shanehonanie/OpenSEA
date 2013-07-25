@@ -1,8 +1,8 @@
 TEMPLATE = lib
 
-QT       += core
+QT += core
 
-QT       -= gui
+QT -= gui
 
 # Define library type
 CONFIG += staticlib
@@ -40,9 +40,9 @@ win32 {
         $$PWD/../../../lib/armadillo.h
 }
 
-linux {
-    # Any files specific to linux go in these brackets.
-    LIBS += -larmadillo #Libs for linux filesystem
+unix {
+    # Any files specific to unix go in these brackets.
+    LIBS += -larmadillo #Libs for unix filesystem
 }
 
 # Add in library for motion model
