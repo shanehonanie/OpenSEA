@@ -1,3 +1,29 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
 #include "bodiesinput.h"
 
 
@@ -112,33 +138,33 @@ bool Bodiesinput::keywordHandler(int keyControl, string identifier, string val)
 			theBodyList[currentBody].setMass(doubleVal);
 			return false;
 		case IXX:
-			theBodyList[currentBody].setMomentXX(doubleVal);
+            theBodyList[currentBody].setMomIxx(doubleVal);
 			return false;
 		case IYY:
-			theBodyList[currentBody].setMomentYY(doubleVal);
+            theBodyList[currentBody].setMomIyy(doubleVal);
 			return true;
 		case IZZ:
-			theBodyList[currentBody].setMomentZZ(doubleVal);
+            theBodyList[currentBody].setMomIzz(doubleVal);
 			return true;
 		case IXY:
-			theBodyList[currentBody].setCrossMomentXY(doubleVal);
+            theBodyList[currentBody].setMomIxy(doubleVal);
 			return false;
 		case IXZ:
-			theBodyList[currentBody].setCrossMomentXZ(doubleVal);
+            theBodyList[currentBody].setMomIxz(doubleVal);
 			return false;
 		case IYZ:
-			theBodyList[currentBody].setCrossMomentYZ(doubleVal);
+            theBodyList[currentBody].setMomIyz(doubleVal);
 			return false;
 		case CENTROID:
 			return false;
 		case COG_X:
-			theBodyList[currentBody].setCentroidX(doubleVal);
+            theBodyList[currentBody].setCenX(doubleVal);
 			return false;
 		case COG_Y:
-			theBodyList[currentBody].setCentroidY(doubleVal);
+            theBodyList[currentBody].setCenY(doubleVal);
 			return false;
 		case COG_Z:
-			theBodyList[currentBody].setCentroidZ(doubleVal);
+            theBodyList[currentBody].setCenZ(doubleVal);
 			return false;
 		case HEADING:
 			theBodyList[currentBody].setHeading(doubleVal);
@@ -187,7 +213,7 @@ void Bodiesinput::testPrint()
 {
 	cout << "System Test Print -- Body" << endl;
 	cout << "--------------------------------" << endl;
-	for(int i = 0; i < theBodyList.size(); i ++)
+	for(unsigned int i = 0; i < theBodyList.size(); i ++)
 	{
 		cout << "--Body Object " << (i + 1) << "--" << endl;
 		theBodyList[i].testPrint();
@@ -203,7 +229,7 @@ vector<Body>& Bodiesinput::getBodyData()
 
 //void Bodiesinput::createNewBodyForceMatrix()
 //{
-//	BodyWithForceMatrix temp;
+//	matBody temp;
 //	bfm.push_back(temp);
 //	bfm[0].setData(body[0], theUserForces);
 //}

@@ -1,3 +1,29 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
 #include "seaenviroment.h"
 
 
@@ -14,22 +40,22 @@ SeaEnviroment::~SeaEnviroment()
 		delete curSpectrum;
 	}*/
 
-	//for(int i = 0; i < specifiedSpectrum.size(); i++)
+	//for(unsigned int i = 0; i < specifiedSpectrum.size(); i++)
 	//	delete &specifiedSpectrum[i];
 
-	//for(int i = 0; i < specifiedSpreadModel.size(); i++)
+	//for(unsigned int i = 0; i < specifiedSpreadModel.size(); i++)
 	//	delete &specifiedSpreadModel[i];
 }
 
 void SeaEnviroment::testPrint()
 {
-	for(int i = 0; i < specifiedSpectrum.size(); i++)
+	for(unsigned int i = 0; i < specifiedSpectrum.size(); i++)
 	{
 		cout << "---Spectrum Object " << i+1 << " ---" << endl;
 		specifiedSpectrum[i].testPrint();
 	}
 
-	for(int i = 0; i < specifiedSpreadModel.size(); i++)
+	for(unsigned int i = 0; i < specifiedSpreadModel.size(); i++)
 	{
 		cout << "---Spread Model Object " << i << " ---" << endl;
 		specifiedSpreadModel[i].testPrint();
@@ -57,7 +83,7 @@ void SeaEnviroment::setWaveSpectrumWaveEnergy(vector<double> vecIn)
 
 //int SeaEnviroment::getCurrentIndex(string searchKey)
 //{
-//	for(int i = 0; i < specifiedSpectrum.size() ; i++)
+//	for(unsigned int i = 0; i < specifiedSpectrum.size() ; i++)
 //	{
 //		if (searchKey == specifiedSpectrum.getName();
 //			return i;

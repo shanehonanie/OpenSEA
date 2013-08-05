@@ -1,3 +1,29 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
 #include "userforces.h"
 
 
@@ -88,19 +114,19 @@ void UserForces::addNewForce(string newForceName)
 {
 	if (curForceType == ACTIVE_FORCE)
 	{
-		ForceActive newForce;
+		forceActive newForce;
 		newForce.setForceName(newForceName);
 		userActiveForces.push_back(newForce);
 	}
 	else if (curForceType == REACTIVE_FORCE)
 	{
-		ForceReactive newForce;
+		forceReact newForce;
 		newForce.setForceName(newForceName);
 		userReactiveForces.push_back(newForce);
 	}
 	else //curForceType == CROSSBODY_FORCE
 	{
-		ForceCrossBody newForce;
+		forceCross newForce;
 		newForce.setForceName(newForceName);
 		userCrossBodyForces.push_back(newForce);
 	}
@@ -108,17 +134,17 @@ void UserForces::addNewForce(string newForceName)
 
 void UserForces::testPrint()
 {
-	for(int i = 0; i < userReactiveForces.size(); i++)
+	for(unsigned int i = 0; i < userReactiveForces.size(); i++)
 	{
 		userReactiveForces[i].testPrint();
 	}
 
-	for(int i = 0; i < userCrossBodyForces.size(); i++)
+	for(unsigned int i = 0; i < userCrossBodyForces.size(); i++)
 	{
 		userCrossBodyForces[i].testPrint();
 	}
 
-	for(int i = 0; i < userActiveForces.size(); i++)
+	for(unsigned int i = 0; i < userActiveForces.size(); i++)
 	{
 		userActiveForces[i].testPrint();
 	}
@@ -129,7 +155,7 @@ vector<complexDouble> UserForces::getUserActiveForce(string activeForceName)
 {
 	vector<complexDouble> coefficientsFound;
 
-	for(int i = 0; i < userActiveForces.size(); i++)
+	for(unsigned int i = 0; i < userActiveForces.size(); i++)
 	{
 		if(activeForceName == userActiveForces[i].getForceName())
 			coefficientsFound = userActiveForces[i].getCoefficients();
@@ -142,7 +168,7 @@ vector<Derivative> UserForces::getUserReactiveForce(string reactiveForceName)
 {
 	vector<Derivative> derivativeListFound;
 
-	for(int i = 0; i < userReactiveForces.size(); i++)
+	for(unsigned int i = 0; i < userReactiveForces.size(); i++)
 	{
 		if(reactiveForceName == userReactiveForces[i].getForceName())
 			derivativeListFound = userReactiveForces[i].getDerivatives();
@@ -155,7 +181,7 @@ vector<Derivative> UserForces::getUserCrossBodyForce(string crossBodyForceName)
 {
 	vector<Derivative> derivativeListFound;
 
-	for(int i = 0; i < userCrossBodyForces.size(); i++)
+	for(unsigned int i = 0; i < userCrossBodyForces.size(); i++)
 	{
 		if(crossBodyForceName == userCrossBodyForces[i].getForceName())
 			derivativeListFound = userCrossBodyForces[i].getDerivatives();

@@ -1,260 +1,341 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
 #include "motionsolver.h"
 
-MotionSolver::MotionSolver(vector<Body> bodyDataIn, UserForces userForcesIn, double newWaveFreq) 
-	: theBodyData(bodyDataIn), theForcesData(userForcesIn), curWaveFrequency(newWaveFreq)
+//------------------------------------------Function Separator --------------------------------------------------------
+MotionSolver::MotionSolver()
 {
-	
-	theMotionModel.setWaveFrequencies(curWaveFrequency);
-	maxMatrixSize = theMotionModel.getMatrixSize(theBodyData[0].getMotionModel());
 }
 
+//------------------------------------------Function Separator --------------------------------------------------------
+MotionSolver::MotionSolver(vector<matBody> listBodIn)
+{
+    for (int i; i < listBodIn.size(); i++)
+    {
+        this->AddBody(listBodIn[i]);
+    }
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
 MotionSolver::~MotionSolver()
-{}
+{
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+void MotionSolver::AddBody(matBody bodIn)
+{
+    this->plistBody.push_back(bodIn);
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+matReactForce MotionSolver::sumReactSet(vector<matReactForce> listForces)
+{
+    //Create output object.
+    matReactForce output;
+
+    //Iterate through the list and sum the forces in each item.
+    for (int i; i < listForces.size(); i++)
+    {
+        output = output + listForces[i];
+    }
+
+    //Write output
+    return output;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+vector<matCrossForce> MotionSolver::sumCrossSet(vector<matCrossForce> listForces)
+{
+    //Create output object
+    vector<matCrossForce> output(this->plistBody.size());
+
+    //Run through the list and set the link id to the index of the cell.
+    for (int i = 0; i < output.size(); i++)
+    {
+        output[i].linkedid(i);
+    }
+
+    //Go through the list.  For each entry in the list, also run through
+    //the full forces list and add all forces to each entry.
+    //The class for matCrossForce automatically handles the filtering
+    //to ensure only the correct items are added together.
+    //(those with matching linkedid's).
+    for (int i = 0; i < output.size(); i++)
+    {
+        for (int j = 0; j < listForces.size(); j++)
+        {
+            output[i] = output[i] + listForces[j];
+        }
+    }
+
+    //Write output
+    return output;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+cx_mat MotionSolver::sumActiveSet(vector<cx_mat> listForces)
+{
+    cx_mat singleForceMarix(maxMatrixSize,1); //6x1 column matrix
+
+    for(unsigned int i = 0; i < listForces.size(); i++)
+    {
+        singleForceMarix += listForces[i];
+    }
+    return singleForceMarix;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+cx_mat MotionSolver::sumDerivative(matReactForce forceIn)
+{
+    //complex version of current wave frequency.
+    complexDouble waveFreq(this->curWaveFrequency, 0.0);
+    //Complex version of imaginary variable i.
+    complexDouble imagI(0.0, 1.0);
+    //complex scalar multiple.  Will calculate later.
+    complexDouble scalarMult;
+
+    cx_mat output;
+
+    //resize output matrix
+    output.zeros(forceIn.matSize());
+
+    //Iterate through each derivative order and add them together.
+    for (int i = 0 ; i <= forceIn.maxOrder() ; i++)
+    {
+        //Calculate scalar product.
+        scalarMult = pow(waveFreq, i) * pow(imagI, i);
+
+        //Multiply through to derivative terms and add to total.
+        for (int row = 0 ; row < forceIn.Derivative(i).n_rows ; row++)
+        {
+            for (int col = 0 ; col < forceIn.Derivative(i).n_cols ; col++)
+            {
+                output.at(row,col) += scalarMult * forceIn.Derivative(i).at(row,col);
+            }
+        }
+    }
+
+    //Write output
+    return output;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+vector<cx_mat> MotionSolver::sumDerivative(vector<matCrossForce> forceIn)
+{
+    //complex version of current wave frequency.
+    complexDouble waveFreq(this->curWaveFrequency, 0.0);
+    //Complex version of imaginary variable i.
+    complexDouble imagI(0.0, 1.0);
+    //complex scalar multiple.  Will calculate later.
+    complexDouble scalarMult;
+
+    vector<cx_mat> output;
+
+    for (int x = 0 ; x < forceIn.size() ; x++)
+    {
+        //resize output matrix
+        output[x].zeros(forceIn[x].matSize());
+
+        //Iterate through each derivative order and add them together.
+        for (int i = 0 ; i <= forceIn[x].maxOrder() ; i++)
+        {
+            //Calculate scalar product.
+            scalarMult = pow(waveFreq, i) * pow(imagI, i);
+
+            //Multiply through to derivative terms and add to total.
+            for (int row = 0 ; row < forceIn[x].Derivative(i).n_rows ; row++)
+            {
+                for (int col = 0 ; col < forceIn[x].Derivative(i).n_cols ; col++)
+                {
+                    output[x].at(row,col) += scalarMult * forceIn.Derivative(i).at(row,col);
+                }
+            }
+        }
+    }
+
+    //Write output
+    return output;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+void MotionSolver::setWaveFreq(double freqIn)
+{
+    //Input wave frequency.
+    curWaveFrequency = freqIn;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
 vector<cx_mat> MotionSolver::CalculateOutputs()
 {
-	vector<cx_mat> solutionsPerBody;
+    //create a temporary vector to hold outputs of summations - user forces
+    vector<matReactForce> tempReactList_usr(plistBody.size());
+    vector<cx_mat> ActiveList_usr(plistBody.size());
+    vector < vector<matCrossForce> > tempCrossList_usr(plistBody.size, vector<matCrossForce>(plistBody.size()));
 
-	//Convert Input Coefficients to Force Coefficients for each body, add new object to theBodyWithForceMatrix vector
-	for(int i = 0; i < theBodyData.size(); i++)
-	{
-		theBodyWithForceMatrix.push_back(theMotionModel.setBodyData(theBodyData[i], theForcesData)); 
-	}
+    //create a temporary vector to hold outputs of summations - hydro forces
+    vector<matReactForce> tempReactList_hydro(plistBody.size());
+    vector<cx_mat> ActiveList_hydro(plistBody.size());
+    vector < vector<matCrossForce> > tempCrossList_hydro(plistBody.size, vector<matCrossForce>(plistBody.size()));
 
-	vector<cx_mat> theBodyMassMatrices;
+    //Sum forces for each body in the list.
+    for (int i = 0; i< plistBody.size(); i++)
+    {
+        //Add user forces.
+        tempReactList_usr[i] = sumReactSet(plistBody[i].listReactForce_usr);
+        ActiveList_usr[i] = sumActiveSet(plistBody[i].listActiveForce_usr);
+        tempCrossList_usr[i] = sumCrossSet(plistBody[i].listCrossForce_usr);
 
-	for(int i = 0; i < theBodyWithForceMatrix.size(); i ++) //get Each Body Mass Matrix
-	{
-		theBodyMassMatrices.push_back(theBodyWithForceMatrix[i].massMatrix);
-	}
+        //Add hydro forces.
+        tempReactList_hydro[i] = sumReactSet(plistBody[i].listReactForce_hydro);
+        ActiveList_hydro[i] = sumActiveSet(plistBody[i].listActiveForce_hydro);
+        tempCrossList_hydro[i] = sumCrossSet(plistBody[i].listCrossForce_hydro);
+    }
+    //Each set now reduced to a single force object, for each body.
 
-	//Each index represents the single matrix for each body
-	vector<cx_mat> reactiveForceMatrix;
-	vector<cx_mat> crossBodyForceMatrix;
-	vector<cx_mat> activeForceMatrix;
-	
-	for(int i = 0; i < theBodyMassMatrices.size(); i++) //1 body mass matrix per body
-	{
-		//"Sum Forces for Each Set"
-		vector<cx_mat> userReactiveForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[i].userReactiveForceMatrix);
-		vector<cx_mat> userCrossBodyForceMatrix = sumReactiveForceEachSet(theBodyWithForceMatrix[i].userCrossBodyForceMatrix);
-		cx_mat userActiveForceMatrix = sumActiveForceEachSet(theBodyWithForceMatrix[i].userActiveForceMatrix);
+    //Create temporary matrices to hold outputs of derivative summation - user forces
+    vector<cx_mat> ReactList_usr;
+    // No need to sum for active forces.  Already independent of derivative.
+    vector< vector<cx_mat> > CrossList_usr;
 
-		//"Sum Derivatives"
-		cx_mat userReactiveForceSingleMatrix = sumDerivatives(userReactiveForceMatrix);
-		cx_mat userCrossBodyForceSingleMatrix = sumDerivatives(userCrossBodyForceMatrix);
+    //Create temporary matrices to hold outputs ot derivative summation - hydro forces
+    vector<cx_mat> ReactList_hydro;
+    // No need to sum for active forces.  Already independent of derivative.
+    vector< vector<cx_mat> > CrossList_hydro;
 
-		//"Sum Force Types"
-		reactiveForceMatrix.push_back(userReactiveForceSingleMatrix + theBodyMassMatrices[i]);
-		crossBodyForceMatrix.push_back(userCrossBodyForceSingleMatrix); //Hydro Matrix not supported yet
-		activeForceMatrix.push_back(userActiveForceMatrix); //Hydro Matrix not supported yet
-	}
+    //Sum derivatives within each force.
+    for (int i = 0; i < plistBody.size(); i++)
+    {
+        //Sum for user forces
+        ReactList_usr.push_back(sumDerivative(tempReactList_usr[i]));
+        CrossList_usr.push_back(sumDerivative(tempCrossList_usr[i]));
 
-	//"Assemble Global Matrix"
-	if(theBodyMassMatrices.size() == 1) //Single Body Matrix
-	{
-		//Dont include cross body forces if only 1 matrix and just use first index of vector
-		reactiveForceMatrixGlobal = reactiveForceMatrix[0]; //A Matrix
-		activeForceMatrixGlobal = activeForceMatrix[0];     //F Matrix
-	}
-	else //Multiple Bodies, must resize the matrices
-	{
-		int newMatrixSize = 0;
+        //Sum for hydro forces
+        ReactList_hydro.push_back(sumDerivative(tempReactList_hydro[i]));
+        CrossList_hydro.push_back(sumDerivative(tempCrossList_hydro[i]));
+    }
 
-		for(int j = 0; j < theBodyMassMatrices.size(); j++) //get the size of new matrix by summing all reactiveForceMatrices
-			newMatrixSize += reactiveForceMatrix[j].n_cols;
+    //Delete uneeded variables
+    delete tempReactList_usr;
+    delete tempCrossList_usr;
+    delete tempReactList_hydro;
+    delete tempCrossList_hydro;
 
-		
-		complexDouble zeroVal(0.0,0.0);
-		//A Matrix
-		reactiveForceMatrixGlobal.resize(newMatrixSize, newMatrixSize); //resize matrix to include all bodies reactiveforces & cross Body Forces, matrix must be square (ex. 6x6)
-		reactiveForceMatrixGlobal.fill(zeroVal); //Fill the newly created matrix with 0s temporarily
-		//F Matrix
-		activeForceMatrixGlobal.resize(newMatrixSize, 1); //column Matrix
-		activeForceMatrixGlobal.fill(zeroVal); //Fill the newly created matrix with 0s temporarily
+    //Create temporary variables for total of all forces.
+    vector<cx_mat> ReactList;
+    vector<cx_mat> ActiveList;
+    vector< vector<cx_mat> > CrossList;
 
-		setMatrixIndexPositions(theBodyMassMatrices.size(), maxMatrixSize); //sets the index for variables used to place the submatrixes in global matrix
+    //Add different force types for each body object.
+    for (int i = 0; i < plistBody.size(); i++)
+    {
+        ReactList.push_back(ReactList_usr[i] + ReactList_hydro[i]);
+        ActiveList.push_back(ActiveList_usr[i] + ActiveList_hydro[i]);
+        CrossList.push_back(CrossList_usr[i] + CrossList_hydro[i]);
+    }
 
-		//Calculate the Reactive Matrix & Acives Matrix depedong on number of bodies
-		switch(theBodyMassMatrices.size())
-		{
-			case 2:
-				//Body 1 Reactive & CrossBody Forces
-				reactiveForceMatrixGlobal.submat(body1ReactivePos[0],body1ReactivePos[1], body1ReactivePos[0] + (maxMatrixSize-1), body1ReactivePos[1] + (maxMatrixSize-1)) = reactiveForceMatrix[0];
-				reactiveForceMatrixGlobal.submat(body1CrossPos1[0], body1CrossPos1[1], body1CrossPos1[0] + (maxMatrixSize-1), body1CrossPos1[1] + (maxMatrixSize-1)) = crossBodyForceMatrix[0];
+    //Delete uneeded variables
+    delete ReactList_usr;
+    delete ActiveList_usr;
+    delete CrossList_usr;
+    delete ReactList_hydro;
+    delete ActiveList_hydro;
+    delete CrossList_hydro;
 
-				//Body 1 Active Forces
-				activeForceMatrixGlobal.submat(0,0, maxMatrixSize - 1, 0) = activeForceMatrix[0];
+    //"Assemble Global Matrix"
+    if(theBodyMassMatrices.size() == 1) //Single Body Matrix
+    {
+        //Dont include cross body forces if only 1 matrix and just use first index of vector
+        globReactiveMat = ReactList[0]; //A Matrix
+        globActiveMat = ActiveList[0];     //F Matrix
+    }
+    else //Multiple Bodies, must resize the matrices
+    {
+        int newMatrixSize = 0;
+        vector<int> matStart;
+        vector<int> matEnd;
 
-				//Body 2 Reactive & CrossBody Forces
-				reactiveForceMatrixGlobal.submat(body2ReactivePos[0], body2ReactivePos[1], body2ReactivePos[0] + (maxMatrixSize-1), body2ReactivePos[1] + (maxMatrixSize-1)) = reactiveForceMatrix[1];
-				reactiveForceMatrixGlobal.submat(body2CrossPos1[0], body2CrossPos1[1], body2CrossPos1[0] + (maxMatrixSize-1), body2CrossPos1[1] + (maxMatrixSize-1)) = crossBodyForceMatrix[1];
+        for(unsigned int j = 0; j < plistBody.size(); j++)
+        {
+            //get the size of new matrix by summing all reactiveForceMatrices
+            newMatrixSize += ReactList[j].n_rows;
 
-				//Body 2 Active Forces
-				activeForceMatrixGlobal.submat(maxMatrixSize,0, maxMatrixSize*2 - 1, 0) = activeForceMatrix[1];
-				break;
-			case 3:
-				//Body 1 Reactive & CrossBody Forces
-				reactiveForceMatrixGlobal.submat(body1ReactivePos[0],body1ReactivePos[1], body1ReactivePos[0] + (maxMatrixSize-1), body1ReactivePos[1] + (maxMatrixSize-1)) = reactiveForceMatrix[0];
-				reactiveForceMatrixGlobal.submat(body1CrossPos1[0], body1CrossPos1[1], body1CrossPos1[0] + (maxMatrixSize-1), body1CrossPos1[1] + (maxMatrixSize-1)) = crossBodyForceMatrix[0];
-				//reactiveForceMatrixGlobal.submat(body1CrossPos2[0], body1CrossPos2[1], body1CrossPos2[0] + (maxMatrixSize-1), body1CrossPos2[1] + (maxMatrixSize-1)) = 
+            //Add the sizes to get the starting position of each matrix
+            if (j == 0) {
+                matStart.pushback(0);
+            }
+            else
+            {
+                matStart.pushback(matStart.at(j-1) + ReactiveForceMatrix[j].n_rows + 1);
+            }
 
-				//Body 1 Active Forces
-				activeForceMatrixGlobal.submat(0,0, maxMatrixSize - 1, 0) = activeForceMatrix[0];
+            //Add the sizes to get the ending positions of each matrix.
+            matEnd.pushback(matStart.at(j) + ReactiveForceMatrix[j].n_rows);
+        }
 
-				//Body 2 Reactive & CrossBody Forces
-				reactiveForceMatrixGlobal.submat(body2ReactivePos[0], body2ReactivePos[1], body2ReactivePos[0] + (maxMatrixSize-1), body2ReactivePos[1] + (maxMatrixSize-1)) = reactiveForceMatrix[1];
-				reactiveForceMatrixGlobal.submat(body2CrossPos1[0], body2CrossPos1[1], body2CrossPos1[0] + (maxMatrixSize-1), body2CrossPos1[1] + (maxMatrixSize-1)) = crossBodyForceMatrix[1];
-				//reactiveForceMatrixGlobal.submat(body3CrossPos2[0], body3CrossPos2[1], body3CrossPos2[0] + maxMatrixSize, body3CrossPos2[1] + maxMatrixSize) = 
+        //A Matrix
+        //resize matrix to include all bodies reactiveforces & cross Body Forces, matrix must be square (ex. 6x6)
+        //At the same time, fill matrix with zero values.
+        globReactiveMat.zeros(newMatrixSize, newMatrixSize);
+        //F Matrix
+        globActiveMat.zeros(newMatrixSize, 1); //column Matrix
 
-				//Body 2 Active Forces
-				activeForceMatrixGlobal.submat(maxMatrixSize,0, maxMatrixSize*2 - 1, 0) = activeForceMatrix[1];
+        for (j = 0; j < theBodyMassMatrices.size(); j++)
+        {
+            //Iterate through and insert the reactive force matrices for each body
+            globReactiveMat.submat(matStart[j], matStart[j], matEnd[j], matEnd[j]) = ReactiveForceMatrix[j];
 
-				//Body 3 Reactive & CrossBody Forces
-				reactiveForceMatrixGlobal.submat(body3ReactivePos[0], body3ReactivePos[1], body3ReactivePos[0] + maxMatrixSize, body3ReactivePos[2] + maxMatrixSize) = reactiveForceMatrix[2];
-				reactiveForceMatrixGlobal.submat(body3CrossPos1[0], body3CrossPos1[1], body3CrossPos1[0] + maxMatrixSize, body3CrossPos1[1] + maxMatrixSize) = crossBodyForceMatrix[2];
-				//reactiveForceMatrixGlobal.submat(body3CrossPos2[0], body3CrossPos2[1], body3CrossPos2[0] + maxMatrixSize, body3CrossPos2[1] + maxMatrixSize) = 
+            //Iterate through and insert the active force matrices for each body
+            globActiveMat.submat(matStart[j], 0, matEnd[j], 0) = activeForce[j];
+        }
 
-				//Body 3 Active Forces
-				activeForceMatrixGlobal.submat(maxMatrixSize*2,0, maxMatrixSize*3 - 1, 0) = activeForceMatrix[2];
-				break;
-			default:
-				cout << "Error: Max Bodies supported is 3" << endl; //<--Temporary
-		}	
-	}
+        //Add in the cross body forces for each body.
+        //declare a pointer to bodies.  Will use it later.
+        matBody curBodyPt;
 
-	//Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
-	solutionColumnMatrix = solve(reactiveForceMatrixGlobal, activeForceMatrixGlobal, true); //true arg for more precise calculations
+        //Iterate through each body.
+        for (int i = 0; i < theBodyMassMatrices.size(); i++)
+        {
+            //Iterate through the cross-body forces listed for each body
+            for(unsigned int j = 0; j < theBodyMassMatrices.size(); j++)
+            {
+                globReactiveMat.submat(matStart[i], matStart[j], matEnd[i], matEnd[j]) = CrossList[i][j];
+            }
+        }
+    }
 
-	////Assign solutions to each bodys solutionMatrix
-	//for(int i = 0; i < theBodyData.size(); i++)
-	//{
-	//	cx_mat perBodySolution = solutionColumnMatrix.submat((i*maxMatrixSize),0, ((i+1)*maxMatrixSize-1),0);
-	//	theBodyData[i].solutionMatrix = perBodySolution;
-	//}
+    //Solve for Unknown Matrix (the X Matrix) --    A*X=B where X is the unknown
+    globSolnMat = solve(globReactiveMat, globActiveMat, true); //true arg for more precise calculations
 
-	//Split into vector of solutions, each represents per body
-	for(int i = 0; i < theBodyData.size(); i++)
-	{
-		cx_mat perBodySolution = solutionColumnMatrix.submat((i*maxMatrixSize),0, ((i+1)*maxMatrixSize-1),0);
-		solutionsPerBody.push_back(perBodySolution); //Might want to rename
-	}
+    //Split into vector of solutions, each represents per body
+    for(unsigned int i = 0; i < plistBody.size(); i++)
+    {
+        plistSolution.push_back(globSolnMat.submat(matStart[i], 0, matEnd[i], 0));
+    }
 
-	////Test print A & F Matrix
-	//cout << "-- Body " << i+1 << " --" << endl;
-	//reactiveForceMatrixGlobal.raw_print("Reactive Matrix");
-	//activeForceMatrixGlobal.raw_print("Active Matrix");
-
-	//Test print A & F & X Matrix to myfile
-	//ofstream myfile;
-	//myfile.open("motionsolverResults.txt");
-	//reactiveForceMatrixGlobal.raw_print(myfile, "Reactive Matrix"); myfile <<endl;
-	//activeForceMatrixGlobal.raw_print(myfile, "Active Matrix"); myfile <<endl;
-	//solutionColumnMatrix.raw_print(myfile, "Solution Matrix"); myfile <<endl;
-
-	//cx_mat solutionColumnMatrix2(6,1);
-	//myfile << "Column Size " << solutionColumnMatrix2.n_cols << endl;
-	//myfile << "Row Size " << solutionColumnMatrix2.n_rows << endl;
-	//solutionColumnMatrix2.raw_print(myfile, "Solution Matrix2"); myfile <<endl;
-
-	//myfile.close();
-	//return theBodyData;
-	return solutionsPerBody;
-}
-
-cx_mat MotionSolver::sumActiveForceEachSet(vector<cx_mat> theActiveForceMatrix)
-{
-	cx_mat singleForceMarix(maxMatrixSize,1); //6x1 column matrix
-
-	for(int i = 0; i < theActiveForceMatrix.size(); i++)
-	{
-		singleForceMarix += theActiveForceMatrix[i];
-	}
-	return singleForceMarix;
-}
-
-//Sum all forces in vector and return single matrix
-vector<cx_mat> MotionSolver::sumReactiveForceEachSet(vector<ReactiveForceMatrix> theReactiveForceMatrix)
-{
-	vector<cx_mat> theSingleMatrix; 
-
-	for(int i = 0; i < MAX_ORDER_DERIVATIVE; i++) //create a 6x6 matrix for each order derivative (0-2)
-	{
-		cx_mat temp(maxMatrixSize, maxMatrixSize);
-		theSingleMatrix.push_back(temp);
-	}
-
-	for(int i = 0 ; i < MAX_ORDER_DERIVATIVE; i++)
-	{
-		for(int j = 0; j < theReactiveForceMatrix.size(); j++)
-		{
-			theSingleMatrix[i] += theReactiveForceMatrix[j].derivativeMatrix[i];
-		}
-	}
-	return theSingleMatrix;
-}
-
-cx_mat MotionSolver::sumDerivatives(vector<cx_mat> theReactiveForceMatrix)
-{
-	cx_mat singleReactiveForceMatrix(maxMatrixSize, maxMatrixSize);
-
-	for(int i = 0 ; i < theReactiveForceMatrix.size(); i++) //size should be 3 for derivative order (0-2)
-	{
-		//This code below returns a 0x0 solution matrix, uncomment below and comment single line above
-		complexDouble curWaveFrequencyComplex(curWaveFrequency, 0.0); //Complex version of current wave frequency
-		complexDouble complexImaginary(0.0,1.0);
-		complexDouble scalarMultiplier = pow(curWaveFrequencyComplex, i) * pow(complexImaginary, i);
-
-		for(int col = 0; col < theReactiveForceMatrix[i].n_cols; col++)
-		{
-			for(int row = 0; row < theReactiveForceMatrix[i].n_rows; row++)
-			{
-				singleReactiveForceMatrix.at(col,row) += scalarMultiplier * theReactiveForceMatrix[i].at(col,row);
-			}
-		}
-	}
-	return singleReactiveForceMatrix;
-}
-
-void MotionSolver::setMatrixIndexPositions(int numBodies,int perMatrixSize)
-{
-	switch(numBodies)
-	{
-	case 1:
-		body1ReactivePos[0] = 0;
-		body1ReactivePos[1] = 0;
-		break;
-	case 2:
-		body1ReactivePos[0] = 0;
-		body1ReactivePos[1] = 0;
-		body1CrossPos1[0] = perMatrixSize - 1;
-		body1CrossPos1[1] = 0;
-		body2CrossPos1[0] = perMatrixSize;;
-		body2CrossPos1[1] = 0;
-		body2ReactivePos[0] = perMatrixSize;
-		body2ReactivePos[1] = perMatrixSize;
-		break;
-	case 3:
-		body1ReactivePos[0] = 0;
-		body1ReactivePos[1] = 0;
-		body1CrossPos1[0] = perMatrixSize - 1;
-		body1CrossPos1[1] = 0;
-		body2CrossPos1[0] = perMatrixSize;;
-		body2CrossPos1[1] = 0;
-		body2ReactivePos[0] = perMatrixSize;
-		body2ReactivePos[1] = perMatrixSize;
-
-		body1CrossPos2[0] = perMatrixSize*2;
-		body1CrossPos2[1] = 0;
-		body2CrossPos2[0] = perMatrixSize*2;
-		body2CrossPos2[1] = perMatrixSize;
-		body3ReactivePos[0] = perMatrixSize*2;
-		body3ReactivePos[1] = perMatrixSize*2;
-		body3CrossPos1[0] = 0;
-		body3CrossPos1[1] = perMatrixSize*2;
-		body3CrossPos2[0] = perMatrixSize;
-		body3CrossPos2[1] = perMatrixSize*2;
-		break;
-	default: //nothing
-		break;
-	}
+    //Write output
+    return plistSolution;
 }

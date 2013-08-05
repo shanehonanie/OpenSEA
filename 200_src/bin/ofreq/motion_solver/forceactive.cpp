@@ -1,20 +1,47 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
 #include "forceactive.h"
 
-
-ForceActive::ForceActive(): Force()
+//------------------------------------------Function Separator --------------------------------------------------------
+forceActive::forceActive(): Force()
 {
 }
 
-
-ForceActive::~ForceActive()
+//------------------------------------------Function Separator --------------------------------------------------------
+forceActive::~forceActive()
 {
 }
 
-void ForceActive::setCoeff(vector<string> theListIn, bool isDirectList)
+//------------------------------------------Function Separator --------------------------------------------------------
+void forceActive::setCoeff(vector<string> theListIn, bool isDirectList)
 {
 	complexDouble newComplexNumber;
 
-	for(int i = 0 ; i < MAX_COEFFICIENTS; i++)
+	for(unsigned int i = 0 ; i < MAX_COEFFICIENTS; i++)
 	{
 		if(theListIn[i].find("<") == std::string::npos) //expression in rectangular form
 			newComplexNumber = convertRectangularFormToComplexNumber(theListIn[i]);
@@ -25,18 +52,20 @@ void ForceActive::setCoeff(vector<string> theListIn, bool isDirectList)
 	}
 }
 
-void ForceActive::testPrint()
+//------------------------------------------Function Separator --------------------------------------------------------
+void forceActive::testPrint()
 {
 	cout << "#Active Forces##" << endl;
 	cout << "Name: " << forceName << endl;
-	for(int i = 0; i < MAX_COEFFICIENTS; i++)
+	for(unsigned int i = 0; i < MAX_COEFFICIENTS; i++)
 	{
 		cout << "Equation [" << i+1 << "]: " << coefficients[i] << endl;
 	}
 	cout<< endl;
 }
 
-complexDouble ForceActive::convertRectangularFormToComplexNumber(string expression)
+//------------------------------------------Function Separator --------------------------------------------------------
+complexDouble forceActive::convertRectangularFormToComplexNumber(string expression)
 {
 	char imaginaryChar = 'i';
 
@@ -60,7 +89,8 @@ complexDouble ForceActive::convertRectangularFormToComplexNumber(string expressi
 	return newComplexDouble;
 }
 
-complexDouble ForceActive::convertPolarFormToComplexNumber(string expression)
+//------------------------------------------Function Separator --------------------------------------------------------
+complexDouble forceActive::convertPolarFormToComplexNumber(string expression)
 {
 	char divider = '<';
 
@@ -77,14 +107,22 @@ complexDouble ForceActive::convertPolarFormToComplexNumber(string expression)
 	return newComplexDouble;
 }
 
-vector<complexDouble> ForceActive::getCoefficients()
+//------------------------------------------Function Separator --------------------------------------------------------
+vector<complexDouble> &forceActive::getCoefficients()
 {
-	vector<complexDouble> coefficientsVector;
-	for(int i = 0; i < MAX_COEFFICIENTS; i++)
-		coefficientsVector.push_back(coefficients[i]);
-
-	return coefficientsVector;
+    return coefficients;
 }
 
+//------------------------------------------Function Separator --------------------------------------------------------
+vector<complexDouble> &forceActive::Equations()
+{
+    return this->getCoefficients();
+}
 
+//------------------------------------------Function Separator --------------------------------------------------------
+double forceActive::getEquation(int number)
+{
+    //Return the input coefficient for the equation specified.
+    return coefficients[number];
+}
 

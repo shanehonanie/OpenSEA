@@ -37,25 +37,24 @@ SOURCES += ofreq.cpp \
     global_objects/wavefrequencies.cpp \
     global_objects/wavedirections.cpp \
     global_objects/system.cpp \
-    motion_model/motionmodel.cpp \
-    motion_model/equationofmotion_01.cpp \
-    motion_model/equationofmotion.cpp \
     motion_solver/userforces.cpp \
-    motion_solver/reactiveforcematrix.cpp \
     motion_solver/motionsolver.cpp \
-    motion_solver/forcereactive.cpp \
-    motion_solver/forceequation.cpp \
-    motion_solver/forcederivative.cpp \
-    motion_solver/forcecrossbody.cpp \
     motion_solver/forceactive.cpp \
     motion_solver/force.cpp \
-    motion_solver/bodywithsolution.cpp \
-    motion_solver/bodywithforcematrix.cpp \
     motion_solver/body.cpp \
-    motion_solver/activeforcematrix.cpp \
     wave_calcs/wavespreadmodel.cpp \
     wave_calcs/wavespectrummodel.cpp \
-    wave_calcs/seaenviroment.cpp
+    wave_calcs/seaenviroment.cpp \
+    motion_solver/matreactforce.cpp \
+    motion_solver/matbody.cpp \
+    motion_solver/matcrossforce.cpp \
+    motion_model/equationofmotion.cpp \
+    motion_model/motionmodel.cpp \
+    motion_solver/forcecross.cpp \
+    motion_solver/forcereact.cpp \
+    motion_solver/derivative.cpp \
+    motion_solver/equation.cpp \
+    motion_solver/matactiveforce.cpp
 
 HEADERS += \
     derived_outputs/outputslist.h \
@@ -79,25 +78,24 @@ HEADERS += \
     global_objects/wavefrequencies.h \
     global_objects/wavedirections.h \
     global_objects/system.h \
-    motion_model/motionmodel.h \
-    motion_model/equationofmotion_01.h \
-    motion_model/equationofmotion.h \
     motion_solver/userforces.h \
-    motion_solver/reactiveforcematrix.h \
     motion_solver/motionsolver.h \
-    motion_solver/forcereactive.h \
-    motion_solver/forceequation.h \
-    motion_solver/forcederivative.h \
-    motion_solver/forcecrossbody.h \
     motion_solver/forceactive.h \
     motion_solver/force.h \
-    motion_solver/bodywithsolution.h \
-    motion_solver/bodywithforcematrix.h \
     motion_solver/body.h \
-    motion_solver/activeforcematrix.h \
     wave_calcs/wavespreadmodel.h \
     wave_calcs/wavespectrummodel.h \
-    wave_calcs/seaenviroment.h
+    wave_calcs/seaenviroment.h \
+    motion_solver/matbody.h \
+    motion_solver/matcrossforce.h \
+    motion_solver/matreactforce.h \
+    motion_model/equationofmotion.h \
+    motion_model/motionmodel.h \
+    motion_solver/forcecross.h \
+    motion_solver/forcereact.h \
+    motion_solver/derivative.h \
+    motion_solver/equation.h \
+    motion_solver/matactiveforce.h
 
 # Include header files path for libraries
 INCLUDEPATH += \

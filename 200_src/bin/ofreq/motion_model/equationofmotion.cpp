@@ -1,40 +1,43 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Revision History
+ *---------------------------------------------------------------------------------------------------------------------
+ *Date		Author				Description
+ *---------------------------------------------------------------------------------------------------------------------
+ *Mar 09 2013	Nicholas Barczak		Initially Created
+ *
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+
+
+//######################################### Class Separator ###########################################################
 #include "equationofmotion.h"
 
-
-EquationOfMotion::EquationOfMotion()
-{}
-
-
-EquationOfMotion::~EquationOfMotion()
-{}
-
-BodyWithForceMatrix EquationOfMotion::getBodyForceData()
+EquationofMotionBase::EquationofMotionBase()
 {
-	return newBodyMatrix;
-}
-
-double EquationOfMotion::kroneckerDelta(int num1, int num2)
-{
-	if (num1 == num2)
-		return 0.0;
-	else
-		return 1.0;
-}
-
-complexDouble EquationOfMotion::timeDifferentiation(complexDouble variable, int order)
-{
-	complexDouble temp(1,0); //correct?
-	if (variable.real() == 1.0) //compare the real part to 1? or entire #?
-	{
-		return temp;
-	}
-	else
-	{
-		return variable* pow(temp, order) * pow(curWaveFreq, order); //need to verify this
-	}
-}
-
-void EquationOfMotion::setWaveFreq(double newFreqIn)
-{
-	curWaveFreq = newFreqIn;
 }

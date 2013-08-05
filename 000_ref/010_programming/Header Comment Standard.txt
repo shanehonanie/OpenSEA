@@ -1,0 +1,65 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Revision History
+ *---------------------------------------------------------------------------------------------------------------------
+ *Date		Author				Description
+ *---------------------------------------------------------------------------------------------------------------------
+ *Mar 09 2013	Nicholas Barczak		Initially Created
+ * 
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+
+ 
+//######################################### Class Separator ###########################################################
+//Put this at the beginning of each class definition, right before the Doxygen formatted explanation.
+//Start doxygen documentation like this:
+/**
+ * Doxygen documentation  Describes class definition.
+ */
+
+//==========================================Section Separator =========================================================
+//Put this at the beginnning of section separations.  Valid sections are:
+//Public:
+//Protected:
+//Private:
+//Signals:
+//Slots:
+
+//Please at least include the first three sections in your class definitions.  We are trying to achieve a uniformity
+// in the structure of the header files, so that anyone can quickly understand the structure of the code.
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    //Put this separator at the beginning of each function definition.  Any properties can also be grouped into a 
+    //single function separator.  Include doxygen documentation marks for each function definition.
+    /**
+     * Doxygen description of the function
+     * @param paramname description for parameters
+     * @param paramname2 description for second parameter.
+     * ...
+     * @return Description of the returned value from the function.
+     */

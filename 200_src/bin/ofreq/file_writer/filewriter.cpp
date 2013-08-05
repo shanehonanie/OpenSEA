@@ -1,3 +1,29 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
 #include "filewriter.h"
 
 FileWriter::FileWriter(string fileDirIn, vector<double> theDirectionsListIn, vector<double> theFrequenciesListIn) 
@@ -81,7 +107,7 @@ bool FileWriter::writeToFile(int curWaveDirection)
 	setFileInfo(GLOBAL_ACCELERATION_OBJECT);
 	myFileAcceleration << header << fileInfo << BREAK_TOP;
 
-	for(int j = 0; j < theOutputsList.theBodyList.size(); j++) //iterate through all of the bodies
+	for(unsigned int j = 0; j < theOutputsList.theBodyList.size(); j++) //iterate through all of the bodies
 	{
 		vector<cx_mat> globalMotSolutionList = theOutputsList.theOutputsBodyList[j].getOutputType(0);
 		vector<cx_mat> globalVelSolutionList = theOutputsList.theOutputsBodyList[j].getOutputType(1);
@@ -96,13 +122,13 @@ bool FileWriter::writeToFile(int curWaveDirection)
 		myFileAcceleration << BODY << " " << OBJECT_BEGIN2 
 				<< "\n  " << NAME << " " << "\"" << theOutputsList.theBodyList[j].bodyName << "\"" << END << "\n";
 			
-		for(int k = 0; k < thefrequenciesList.size(); k++) //iterate through all of the frequencies
+		for(unsigned int k = 0; k < thefrequenciesList.size(); k++) //iterate through all of the frequencies
 		{
 			//Write Global Motion Files *******************************************************************************************
 			setFileInfo(GLOBAL_MOTION_OBJECT);
 			myFileMotion << "  " << DATA << " " << OBJECT_BEGIN2 << "\n" << "    " << FREQUENCY << " " << (k+1) << "\n    "<< VALUE << " " << LIST_BEGIN2 << "\n";
 				
-			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
+			for(unsigned int a = 0; a < 6; a++) //print the 6 outputs per each frequency
 			{
 				myFileMotion.precision(15);
 				myFileMotion <<  "    " << globalMotSolutionList[k].at(a,0).real(); 
@@ -118,7 +144,7 @@ bool FileWriter::writeToFile(int curWaveDirection)
 			setFileInfo(GLOBAL_VELOCITY_OBJECT);
 			myFileVelocity << "  " << DATA << " " << OBJECT_BEGIN2 << "\n" << "    " << FREQUENCY << " " << (k+1) << "\n    "<< VALUE << " " << LIST_BEGIN2 << "\n";
 				
-			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
+			for(unsigned int a = 0; a < 6; a++) //print the 6 outputs per each frequency
 			{
 				myFileVelocity.precision(15);
 				myFileVelocity <<  "    " << globalVelSolutionList[k].at(a,0).real(); 
@@ -134,7 +160,7 @@ bool FileWriter::writeToFile(int curWaveDirection)
 			setFileInfo(GLOBAL_ACCELERATION_OBJECT);
 			myFileAcceleration << "  " << DATA << " " << OBJECT_BEGIN2 << "\n" << "    " << FREQUENCY << " " << (k+1) << "\n    "<< VALUE << " " << LIST_BEGIN2 << "\n";
 				
-			for(int a = 0; a < 6; a++) //print the 6 outputs per each frequency
+			for(unsigned int a = 0; a < 6; a++) //print the 6 outputs per each frequency
 			{
 				myFileAcceleration.precision(15);
 				myFileAcceleration <<  "    " << globalAccSolutionList[k].at(a,0).real(); 
@@ -173,7 +199,7 @@ bool FileWriter::writeDirectionsToFile(vector<double> directionList)
 
 	myFileAcceleration << header << fileInfo << BREAK_TOP << DIRECTION << " " << LIST_BEGIN2 << "\n";
 
-	for(int i = 0; i < directionList.size(); i ++)
+	for(unsigned int i = 0; i < directionList.size(); i ++)
 	{
 		myFileAcceleration  << directionList[i] << "\n";
 	}
@@ -195,7 +221,7 @@ bool FileWriter::writeFrequenciesToFile(vector<double> frequencyList)
 
 	myFileAcceleration << header << fileInfo << BREAK_TOP << FREQUENCY << " " << LIST_BEGIN2 << "\n";
 
-	for(int i = 0; i < frequencyList.size(); i ++)
+	for(unsigned int i = 0; i < frequencyList.size(); i ++)
 	{
 		myFileAcceleration << frequencyList[i] << "\n";
 	}

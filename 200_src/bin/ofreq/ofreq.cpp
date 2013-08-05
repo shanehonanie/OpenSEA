@@ -1,9 +1,42 @@
-//#ifdef _WIN32
-//#define OS_TYPE "WINDOWS"
-//#else
-//#define OS_TYPE "LINUX"
-//#endif
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
 
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Revision History
+ *---------------------------------------------------------------------------------------------------------------------
+ *Date              Author				Description
+ *---------------------------------------------------------------------------------------------------------------------
+ *May 15, 2013      Shane Honanie       Initially created.
+ *Aug 03, 2013      Nicholas Barczak    Added comments and changed behavior of motion solver.
+ *                                      Motion model now called in the main ofreq function.  Output passed to the
+ *                                      motion solver.
+ *
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//######################################### Include Statements ########################################################
 #include <QCoreApplication>
 #include "./file_reader/controlinput.h"
 #include "./file_reader/seaenvinput.h"
@@ -11,13 +44,15 @@
 #include "./file_reader/bodiesinput.h"
 #include "./file_reader/forcesinput.h"
 #include "./motion_solver/motionsolver.h"
+#include "./motion_solver/matbody.h"
 #include "./derived_outputs/outputslist.h"
 #include "./file_writer/filewriter.h"
 #include "./derived_outputs/outputsbody.h"
-#include "./motion_solver/bodywithsolution.h"
 #include <string>
 #include <iostream>
 #include <fstream>
+
+//############################################# Separator #############################################################
 using namespace std;
 
 const string CONST_DIR = "constant";
@@ -109,28 +144,28 @@ int main(int argc, char *argv[])
 	vector<Body> theBodiesList = bodiesInput.getBodyData();
 	vector<BodyWithSolution> bodyListWithSolution;
 
-	//Create BodyWithSolution Object for each Body Object
-	for(int i = 0; i < theBodiesList.size(); i++)
-	{
-		BodyWithSolution newBodySolution(theBodiesList[i].getBodyName());
-		bodyListWithSolution.push_back(newBodySolution);
-	}
+    //Create matrix bodies.
+    vector<matBody> listMatBody;
 
-	for(int i = 0; i < waveDirectionList.size(); i++)
+    for(unsigned int i = 0; i < waveDirectionList.size(); i++)
 	{
-		for(int j = 0; j < waveFrequencyList.size(); j++)
+        for(unsigned int j = 0; j < waveFrequencyList.size(); j++)
 		{
-			MotionSolver theMotionSolver(theBodiesList,forcesInput.getUserForces(), waveFrequencyList[j]);
+            //Create motion solver and feed in the body data.
+            MotionSolver theMotionSolver(listMatBody);
+            //Set the current wave frequency
+            theMotionSolver.setWaveFreq(waveFrequencyList[j]);
+            //Solve the system of equations.
 			vector<cx_mat> theSolutionsPerFrequency = theMotionSolver.CalculateOutputs();
 
 			//asign each solution per frequency to a body
-			for(int k = 0; k < theSolutionsPerFrequency.size(); k++)
+            for(unsigned int k = 0; k < theSolutionsPerFrequency.size(); k++)
 			{
-				bodyListWithSolution[k].solutionMatrix.push_back(theSolutionsPerFrequency[k]);
+                theBodiesList[k].setSolution(theSolutionsPerFrequency[k]);
 			}
 		}
 
-		OutputsList theOutputsList(bodyListWithSolution,waveDirectionList, waveFrequencyList);
+        OutputsList theOutputsList(theBodiesList,waveDirectionList, waveFrequencyList);
 		theOutputsList.calculateOutputs();
 
 		theFileWriter.setOutputs(theOutputsList);

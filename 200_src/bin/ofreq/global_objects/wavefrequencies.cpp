@@ -1,3 +1,29 @@
+/*----------------------------------------*- C++ -*------------------------------------------------------------------*\
+| O pen         | OpenSea: The Open Source Seakeeping Suite                                                           |
+| S eakeeping	| Web:     www.opensea.dmsonline.us                                                                   |
+| E valuation   |                                                                                                     |
+| A nalysis     |                                                                                                     |
+\*-------------------------------------------------------------------------------------------------------------------*/
+
+//License
+/*-------------------------------------------------------------------------------------------------------------------*\
+ *Copyright Datawave Marine Solutions, 2013.
+ *This file is part of OpenSEA.
+
+ *OpenSEA is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *OpenSEA is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
+\*-------------------------------------------------------------------------------------------------------------------*/
+
 #include "wavefrequencies.h"
 
 
@@ -12,7 +38,7 @@ WaveFrequencies::~WaveFrequencies()
 
 void WaveFrequencies::testPrint()
 {
-	for(int i = 0; i < frequencies.size(); i++)
+	for(unsigned int i = 0; i < frequencies.size(); i++)
 	{
 		cout << "frequency[" << i << "]: " << frequencies[i] << endl;
 	}
@@ -20,7 +46,7 @@ void WaveFrequencies::testPrint()
 
 void WaveFrequencies::setFrequencies(vector<double> theListIn)
 {
-	for(int i = 0; i < theListIn.size(); i++)
+	for(unsigned int i = 0; i < theListIn.size(); i++)
 	{
 		frequencies.push_back(theListIn[i]);
 	}
