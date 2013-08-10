@@ -125,13 +125,6 @@ public:
 
     //------------------------------------------Function Separator ----------------------------------------------------
 	/**
-	 * Sets the motion model.
-	 * @param newMotionModel The string passeed in sets the motionModel.
-	 */
-	void setMotionModel(string);
-
-    //------------------------------------------Function Separator ----------------------------------------------------
-	/**
 	 * Sets the user active forces.
 	 * @param newForceList The vector of strings sets userActiveForces.
 	 */
@@ -287,9 +280,9 @@ public:
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
      * @brief Gets the mass matrix for the body.
-     * @return Returns the mass matrix for the body, as a single matrix.
+     * @return Returns the mass matrix for the body, as a single matrix.  Returned by value.
      */
-    Mat<double> &getMassMatrix();
+    Mat<double> getMassMatrix();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -456,13 +449,6 @@ public:
 
     //------------------------------------------Function Separator ----------------------------------------------------
 	/**
-	 * Get the name of the Motion Model.
-	 * @return The string returned is the motionModel.
-	 */
-	string getMotionModel();
-
-    //------------------------------------------Function Separator ----------------------------------------------------
-	/**
 	 * Get the name of the body.
 	 * @return The name of the body.
 	 */    
@@ -491,6 +477,18 @@ public:
      * number of equations for body property.
      */
     cx_mat getSolution();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Get the solution matrix for the body.
+     *
+     * Gets the solution matrix for the body.  Used to store the solution from the motion solver.  This variable is
+     * initially empty on body creation.  It gets filled with the output from the motion solver.  Output is a column
+     * matrix (n by 1) of complex numbers.  Output is in units of meters.
+     * @return Reference to column matrix of complex numbers.  Value returned by reference.  Matrix size is not
+     * hard coded.  Number of rows in matrix must match number of equations for body property.
+     */
+    cx_mat &Solution();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**

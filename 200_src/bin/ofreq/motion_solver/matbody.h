@@ -66,9 +66,9 @@
     #include <armadillo>    //Armadillo library included with standard system libraries.
 #endif
 #include "body.h"
-#include "forcederivative.h"
+#include "derivative.h"
 #include "matreactforce.h"
-#include "activeforcematrix.h"
+#include "forceactive.h"
 #include "userforces.h"
 #include "matcrossforce.h"
 
@@ -92,24 +92,14 @@ public:
     cx_mat Mass; /**< The Mass Matrix. */
 
 	//User Force Coefficient Matrices
-    vector<matReactForce> listReactForce_usr; /**< List of user reactive force matrices. */
-    vector<matCrossForce> listCrossForce_usr; /**< List of user cross body force matrices. */
-    vector<cx_mat> listActiveForce_usr; /**< List of user active force matrices. */
+    vector<matReactForce> &listReactForce_user; /**< List of user reactive force matrices. */
+    vector<matCrossForce> &listCrossForce_user; /**< List of user cross body force matrices. */
+    vector<cx_mat> &listActiveForce_user; /**< List of user active force matrices. */
 
 	//Hydro Force Coefficient Matrices
-    vector<matReactForce> listReactForce_hydro; /**< List of hydro reactive force matrices. */
-    vector<matCrossForce> listCrossForce_hydro; /**< List of hydro cross body force matrices. */
-    vector<cx_mat> listActiveForce_hydro; /**< List of hydro active force matrices. */
-
-	//Hold the names of the Force Matrices which correspond to the above data structures
-    //User forces
-    vector<string> listActiveName_usr; /**< The name of the user active forces in the matrices list. */
-    vector<string> listReactName_usr; /**< The name of the user reactive forces in the matrices list. */
-    vector<string> listCrossName_usr; /**< The name of the user cross body forces in the matrices list. */
-    //Hydro forces
-    vector<string> listActiveName_hydro; /**< The name of the hydro active forces in the matrices list. */
-    vector<string> listReactName_hyro; /**< The name of the hydro reactive forces in the matrices list. */
-    vector<string> listCrossName_hydro; /**< The name of the hydro cross body forces in the matrices list. */
+    vector<matReactForce> &listReactForce_hydro; /**< List of hydro reactive force matrices. */
+    vector<matCrossForce> &listCrossForce_hydro; /**< List of hydro cross body force matrices. */
+    vector<cx_mat> &listActiveForce_hydro; /**< List of hydro active force matrices. */
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -131,6 +121,24 @@ public:
      */
     int getId();
 
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Sets the integer id of the motion model used by the matBody object.
+     *
+     * Sets the integer id of the motion model used by the matBody object.
+     * @param num Integer.  The integer id of the motion model used by the matBody object.  Variable is passed by value.
+     */
+    void setModelId(int num);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Gets the integer id of the motion model used by the matBody object.
+     *
+     * Gets the integer id of the motion model used by the matBody object.
+     * @return Returns the integer id of the motion model used by the matBody object.  Variable is passed by value.
+     */
+    int getModelId();
+
 //==========================================Section Separator =========================================================
 protected:
 
@@ -143,6 +151,11 @@ private:
      * identifier.  Normally correlates to the objects index in a vector of other objects of the same class.
      */
     int pId;
+
+    /**
+     * @brief Holds the integer id of the motion model used by the matBody object.
+     */
+    int pModelId;
 
 };
 #endif

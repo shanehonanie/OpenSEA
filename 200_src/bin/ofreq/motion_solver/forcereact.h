@@ -43,11 +43,11 @@
 #ifndef FORCEREACTIVE_H
 #define FORCEREACTIVE_H
 #include "force.h"
-#include "derivative.h"
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "derivative.h"
 using namespace std;
 
 class forceReact: public Force
@@ -87,10 +87,10 @@ public:
 
     //------------------------------------------Function Separator ----------------------------------------------------
 	/**
-	 * Retrieve the order derivative
-	 * @return The order derivative of this object.
+     * Retrieve the derivatives list.
+     * @return The order derivative of this object.  Returned object is by value.
 	 */
-    vector<Derivative> &getDerivatives();
+    vector<Derivative> getDerivatives();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -103,16 +103,36 @@ public:
     /**
      * @brief Retrieve the derivative object specified by the index number.
      *
+     * Retrieve the derivative object specified by the index number.
+     * @param num The index number of the derivative object.
+     * @return Returns the derivative object specified by integer num.  Returned value is by value.
+     */
+    Derivative getDerivative(int num);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Retrieve the derivative object specified by the index number.
+     *
      * Retrieve the derivative object specified by the index number.  Retrieves a pointer to the derivative object.
      * @param num The index number of the derivative object.
-     * @return Returns a pointer to the derivative object specified by integer num.
+     * @return Returns a pointer to the derivative object specified by integer num.  Returned value is by reference.
      */
-    Derivative &getDerivative(int num);
+    Derivative &refDerivative(int num);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns the maximum order of the derivatives included in the force object.
+     *
+     * Returns the maximum order of the derivatives included in the force object.
+     * @return Returns integer.  Returns the maximum order of the derivatives included in the force object.  Returned
+     * result passed by value.
+     */
+    int getMaxOrd();
 
 //==========================================Section Separator =========================================================
 protected:
     //------------------------------------------Function Separator ----------------------------------------------------
-    vector<Derivative> derivative; /**< This list of derivatives. */
+    vector<Derivative> pDerivative; /**< This list of derivatives. */
 	int currentDerivative; /**< The current order derivative. */
 	int currentEquation; /**< This current equation number. */
 

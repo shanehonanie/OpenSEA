@@ -54,7 +54,8 @@ SOURCES += ofreq.cpp \
     motion_solver/forcereact.cpp \
     motion_solver/derivative.cpp \
     motion_solver/equation.cpp \
-    motion_solver/matactiveforce.cpp
+    motion_solver/matactiveforce.cpp \
+    global_objects/solution.cpp
 
 HEADERS += \
     derived_outputs/outputslist.h \
@@ -95,7 +96,8 @@ HEADERS += \
     motion_solver/forcereact.h \
     motion_solver/derivative.h \
     motion_solver/equation.h \
-    motion_solver/matactiveforce.h
+    motion_solver/matactiveforce.h \
+    global_objects/solution.h
 
 # Include header files path for libraries
 INCLUDEPATH += \

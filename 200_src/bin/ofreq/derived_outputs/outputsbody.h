@@ -69,10 +69,10 @@ public:
 	 * @param bodyIn Sets BodyWithSolutionObject.
 	 * @param Sets the List of wave frequencies.
 	 */
-	OutputsBody(BodyWithSolution, vector<double>);
+    OutputsBody(Body, vector<double>);
 	~OutputsBody(); /**< The default destructor, nothing happens here. */
 
-	BodyWithSolution theBody; /**< Holds object that has body name and solutions. */
+    Body theBody; /**< Holds object that has body name and solutions. */
 	vector<double> frequencies; /**< The list of wave frequencies to be used. */
 
 	/**

@@ -43,7 +43,7 @@ void forceCross::testPrint()
 	for(unsigned int i = 0l; i < MAX_ORDER_DERIVATIVE; i++)
 	{
 		cout << "Derivative Order#: " << i << endl;
-		derivative[i].testPrint();
+		pDerivative[i].testPrint();
 	}
 	cout<< endl;
 }

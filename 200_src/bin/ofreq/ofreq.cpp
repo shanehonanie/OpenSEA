@@ -44,6 +44,7 @@
 #include "./file_reader/bodiesinput.h"
 #include "./file_reader/forcesinput.h"
 #include "./motion_solver/motionsolver.h"
+#include "./motion_model/motionmodel.h"
 #include "./motion_solver/matbody.h"
 #include "./derived_outputs/outputslist.h"
 #include "./file_writer/filewriter.h"
@@ -52,7 +53,46 @@
 #include <iostream>
 #include <fstream>
 
-//############################################# Separator #############################################################
+//########################################## Global Variables #########################################################
+//Create bodies
+vector<Body> listBody;
+
+//Create matrix bodies.
+vector<matBody> listMatBody;
+
+//Vector containing various motion models available
+vector<motionModel> listModel;
+
+//######################################### Function Prototypes #######################################################
+/**
+ * @brief Builds a matrix body object for the body specified by the integer.
+ *
+ * Builds a matrix body object for the body specified by the integer.  Uses the motion model identified by the body
+ * object.
+ * @param bod Which body to use for building the matix body.
+ * @return Returns a matBody object, fully provisioned with all necessary data.
+ */
+void buildMatBody(int bod, bool useCoeff=true);
+
+
+
+//########################################### Main Function ###########################################################
+/**
+ * @brief The main function that runs ofreq program.
+ *
+ * The main function that runs ofreq program.  It proceeds through in several stages.  This briefly outlines them.
+ * 0.  Initialize a few variables.
+ * 1.  Read in input files.
+ * 2.  Interpret / parse input files and use them to build the program objects.
+ * 3.  Use the motion model to convert input objects into matrix force objects.  The particular motion model used
+ *     changes with each Body object.
+ * 4.  Setup the motion solver.  Feed all the data in.
+ * 5.  Set the operating frequency and use the motion solver to solve equations of motion.
+ * 6.  Store results in Solution object.
+ * 7.  Repeat steps 4 through 6 for each wave direction and wave frequency.
+ * 8.  Use the results to calculate derived outputs.
+ * 9.  Write the calculated outputs to output files.
+ */
 using namespace std;
 
 const string CONST_DIR = "constant";
@@ -73,6 +113,7 @@ int main(int argc, char *argv[])
 
     //Set mypath for main inputs
     mypath = oFreq_Directory + CONST_DIR + seperator;
+
     //Set filename
     filename = mypath + "forces.in";
     ifstream forces_fileInput(filename.c_str());
@@ -82,26 +123,32 @@ int main(int argc, char *argv[])
     ifstream data_fileInput(filename.c_str());
     filename = mypath + "seaenv.in";
     ifstream seaenv_fileInput(filename.c_str());
+
     //Set mypath for system inputs
     mypath = oFreq_Directory + SYS_DIR + seperator;
     filename = mypath + "control.in";
     ifstream control_fileInput(filename.c_str());
 	
+    //Open input files
+    //---------------------------------------------------------------------------
     if (!data_fileInput)
 	{
 		cerr << "data.in file does not exist." << endl;
 		return 1;
 	}
+
 	if(!forces_fileInput)
 	{
 		cerr << "forces.in file does not exist." << endl;
 		return 1;
 	}
+
 	if(!bodies_fileInput)
 	{
 		cerr << "bodies.in file does not exist." << endl;
 		return 1;
 	}
+
 	if(!seaenv_fileInput)
 	{
 		cerr << "seaenv.in file does not exist." << endl;
@@ -114,6 +161,8 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
+    //Read input files and interpret data.
+    //---------------------------------------------------------------------------
 	ControlInput controlInput;
 	controlInput.setData(control_fileInput);
 	//controlInput.testPrint();
@@ -134,21 +183,38 @@ int main(int argc, char *argv[])
 	bodiesInput.setData(bodies_fileInput);
 	//bodiesInput.testPrint();
 
+    //Setup basic outputs
+    //---------------------------------------------------------------------------
 	vector<double> waveDirectionList = controlInput.getWaveDirections();
 	vector<double> waveFrequencyList = controlInput.getWaveFrequencies();
 	
-
+    //Setup filewriter for outputs
+    //---------------------------------------------------------------------------
 	FileWriter theFileWriter(oFreq_Directory, waveDirectionList, waveFrequencyList);
 	//vector<OutputsList> theWaveOutputList; //FIX, change name
 
-	vector<Body> theBodiesList = bodiesInput.getBodyData();
-	vector<BodyWithSolution> bodyListWithSolution;
+    //Start creating main objects
+    //---------------------------------------------------------------------------
+    //Resize matrix bodies vector.
+    listMatBody.resize(listBody.size());
 
-    //Create matrix bodies.
-    vector<matBody> listMatBody;
-
+    //Iterate through each wave direction and wave frequency to solve
+    //---------------------------------------------------------------------------
     for(unsigned int i = 0; i < waveDirectionList.size(); i++)
 	{
+        //Build the matrix bodies
+        //---------------------------------------------------------------------------
+        //Build operation stuck inside the wave iteration loop because the forces may change with
+        //wave direction.
+        bool coeffonly = true;              //Boolean to tell the motion model to only use coefficients.
+        //Iterate through each body and build.
+        for (int i = 0; i < listBody.size(); i++)
+        {
+            //Build the body.
+            //Will automatically use the correct bodies.
+            buildMatBody(i, coeffonly);
+        }
+
         for(unsigned int j = 0; j < waveFrequencyList.size(); j++)
 		{
             //Create motion solver and feed in the body data.
@@ -161,11 +227,12 @@ int main(int argc, char *argv[])
 			//asign each solution per frequency to a body
             for(unsigned int k = 0; k < theSolutionsPerFrequency.size(); k++)
 			{
-                theBodiesList[k].setSolution(theSolutionsPerFrequency[k]);
+                listBody[k].setSolution(theSolutionsPerFrequency[k]);
 			}
 		}
 
-        OutputsList theOutputsList(theBodiesList,waveDirectionList, waveFrequencyList);
+        //Write outputs
+        OutputsList theOutputsList(listBody,waveDirectionList, waveFrequencyList);
 		theOutputsList.calculateOutputs();
 
 		theFileWriter.setOutputs(theOutputsList);
@@ -177,4 +244,156 @@ int main(int argc, char *argv[])
 	}
 
     return a.exec();
+}
+
+//####################################### buildMatBody Function #######################################################
+void buildMatBody(int bod, bool useCoeff)
+{
+    //First assign the basic properties for the matbody.
+    listMatBody[bod].setId(bod);
+    int modelnum;       //Tracks which model to use
+
+    //Search through the set of motion models to find the matching name.
+    for (unsigned int i = 0; i < listModel.size(); i++)
+    {
+        if (listModel[i].getName() == listBody[bod].getMotionModel())
+        {
+            listMatBody[bod].setModelId(i);
+            modelnum = i;
+            break;
+        }
+    }
+
+    //Now know the correct motion model to use.
+    //Create initial setup.
+    listModel[modelnum].setListBodies(listBody);        //Feed the list of bodies
+    listModel[modelnum].setBody(bod);                   //Set which body to use as the current body
+    listModel[modelnum].calcCoefficient(useCoeff);      //Let it know to only calculate coefficients.
+    listModel[modelnum].Reset();                        //Give it a reset just for good measure.
+
+    //Iterate through all the active forces, user
+    //------------------------------------------
+    for (unsigned int i = 0; i < listBody[bod].listForceActive_user().size(); i++)
+    {
+        listMatBody[bod].listActiveForce_user().pushback(listModel[modelnum].getMatForceActive_user(i));
+        //Create force ID.
+        listMatBody[bod].listActiveForce_user()[i].SetId(i);
+    }
+
+    //Iterate through all the active forces, hydro
+    //------------------------------------------
+    for(unsigned int i = 0; i < listBody[bod].listForceActive_hydro().size(); i++)
+    {
+        listMatBody[bod].listActiveForce_hydro().pushback(listModel[modelnum].getMatForceActive_hydro(i));
+        //Create force ID.
+        listMatBody[bod].listActiveForce_hydro()[i].SetId(i);
+    }
+
+    //Use this pointer for referencing the forces
+    matReactForce* ptForce;
+
+    //Iterate through all the reactive forces, user
+    //------------------------------------------
+    for (unsigned int i = 0; i < listBody[bod].listForceReact_user().size(); i++)
+    {
+        listMatBody[bod].listReactForce_user().pushback(new matReactForce);
+        //Create pointer
+        ptForce = & listMatBody[bod].listReactForce_user()[i];
+
+        //Assign id for force.
+        ptForce->setId(i);
+
+        //Iterate through each derivative.
+        for (unsigned int j = 0; j <= listBody[bod].listForceReact_user()[i].getmaxOrder(); j++)
+        {
+            //Assign matrices
+            ptForce->Derivatives().push_back(listModel[modelnum].getMatForceReact_user(i,j));
+        }
+    }
+
+    //Iterate through all the reactive forces, hydro
+    //------------------------------------------
+    for (unsigned int i = 0; i < listBody[bod].listForceReact_hydro().size(); i++)
+    {
+        listMatBody[bod].listReactForce_hydro().pushback(new matReactForce);
+        //Create pointer
+        ptForce = & listMatBody[bod].listReactForce_hydro()[i];
+
+        //Assign id for force.
+        ptForce->setId(i);
+
+        //Iterate through each derivative.
+        for (unsigned int j = 0; j <= listBody[bod].listForceReact_hydro()[i].getmaxOrder(); j++)
+        {
+            //Assign matrices
+            ptForce->Derivatives().push_back(listModel[modelnum].getMatForceReact_hydro(i,j));
+        }
+    }
+
+    delete ptForce;
+    matCrossForce* ptForce;
+
+    //Iterate through all the cross body forces, user
+    //------------------------------------------
+    for (unsigned int i = 0; i < listBody[bod].listForceCross_user().size(); i++)
+    {
+        listMatBody[bod].listCrossForce_user().pushback(new matCrossForce);
+        //Create pointer
+        ptForce = & listMatBody[bod].listCrossForce_user()[i];
+
+        //Assign id for force.
+        ptForce->setId(i);
+
+        //Assign cross body
+        for (unsigned int k = 0; k < listBody.size(); k++)
+        {
+            if (&listBody[k] == &listBody[k].listCrossBody_user()[bod])
+            {
+                //Assign cross body
+                ptForce->setlinkedbody(k);
+                break;
+            }
+        }
+
+        //Iterate through each derivative.
+        for (unsigned int j = 0; j <= listBody[bod].listForceCross_user()[i].getmaxOrder(); j++)
+        {
+            //Assign matrices
+            ptForce->Derivatives().push_back(listModel[modelnum].getMatForceCross_user(i,j));
+        }
+    }
+
+    //Iterate through all the cross body forces, hydro
+    //------------------------------------------
+    for (unsigned int i = 0; i < listBody[bod].listForceCross_hydro().size(); i++)
+    {
+        listMatBody[bod].listCrossForce_hydro().pushback(new matCrossForce);
+        //Create pointer
+        ptForce = & listMatBody[bod].listCrossForce_hydro()[i];
+
+        //Assign id for force.
+        ptForce->setId(i);
+
+        //Assign cross body
+        for (unsigned int k = 0; k < listBody.size(); k++)
+        {
+            if (&listBody[k] == &listBody[k].listCrossBody_hydro()[bod])
+            {
+                //Assign cross body
+                ptForce->setlinkedbody(k);
+                break;
+            }
+        }
+
+        //Iterate through each derivative.
+        for (unsigned int j = 0; j <= listBody[bod].listForceCross_hydro()[i].getmaxOrder(); j++)
+        {
+            //Assign matrices
+            ptForce->Derivatives().push_back(listModel[modelnum].getMatForceCross_hydro(i,j));
+        }
+    }
+
+    //Get the mass matrix
+    //------------------------------------------
+    listMatBody[bod].Mass() = listModel[modelnum].getMatForceMass();
 }

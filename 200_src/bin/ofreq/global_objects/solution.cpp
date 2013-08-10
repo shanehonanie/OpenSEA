@@ -24,37 +24,8 @@
  *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
 \*-------------------------------------------------------------------------------------------------------------------*/
 
-#include "matbody.h"
+#include "solution.h"
 
-
-matBody::matBody()
+Solution::Solution()
 {
-}
-
-matBody::~matBody()
-{
-}
-
-//------------------------------------------Function Separator --------------------------------------------------------
-void matBody::setId(int num)
-{
-    pId = num;
-}
-
-//------------------------------------------Function Separator --------------------------------------------------------
-int matBody::getId()
-{
-    return pId;
-}
-
-//------------------------------------------Function Separator --------------------------------------------------------
-void matBody::setModelId(int num)
-{
-    pModelId = num;
-}
-
-//------------------------------------------Function Separator --------------------------------------------------------
-int matBody::getModelId()
-{
-    return pModelId;
 }

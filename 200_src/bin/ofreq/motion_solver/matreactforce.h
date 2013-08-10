@@ -145,6 +145,17 @@ public:
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
+     * @brief Provides direct access to the vector of derivatives.
+     *
+     * Provides direct access to the vector of derivatives.  Allows for use of vector operations on the derivatives
+     * object.
+     * @return Returns reference to the vector of complex matrices which contain the derivatives.  Variable passed by
+     * reference.
+     */
+    vector<cx_mat> &Derivatives();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
      * @brief Sets the force id number for the object.
      *
      * This is similar to the name parameter in other force objects.  It is an identifier.  In this case, a numerical

@@ -53,14 +53,14 @@ void forceReact::setCoeff(vector<string> newList, bool isDirectList)
 	{
 		for(unsigned int i = 0; i <= newList.size()/2; i+=2)
 		{
-			derivative[currentDerivative].equationList[currentEquation].
+            pDerivative[currentDerivative].equationList[currentEquation].
 			coefficients[atoi(newList[i].c_str())-1] = atof(newList[i+1].c_str());
 		}
 	}
 	else //is sequential
 	{
 		for(unsigned int i = 0; i < MAX_COEFFICIENTS; i++)
-			derivative[currentDerivative].equationList[currentEquation].
+            pDerivative[currentDerivative].equationList[currentEquation].
 			coefficients[i] = atof(newList[i].c_str());
 	}
 }
@@ -71,18 +71,18 @@ void forceReact::testPrint()
 	
 	cout << "##Reactive Forces##" << endl;
 	cout << "Name: " << forceName << endl;
-    for(unsigned int i = 0l; i < derivative.size(); i++)
+    for(unsigned int i = 0l; i < pDerivative.size(); i++)
 	{
 		cout << "Derivative Order#: " << i << endl;
-		derivative[i].testPrint();
+        pDerivative[i].testPrint();
 	}
 	cout<< endl;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-vector<Derivative> &forceReact::getDerivatives()
+vector<Derivative> forceReact::getDerivatives()
 {
-    return derivative;
+    return pDerivative;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
@@ -92,10 +92,24 @@ vector<Derivative> &forceReact::Derivatives()
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-Derivative &forceReact::getDerivative(int num)
+Derivative forceReact::getDerivative(int num)
+{
+    //Return the derivative object specified.
+
+    return pDerivative[num];
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+Derivative &forceReact::refDerivative(int num)
 {
     //Return the derivative object specified.
     //Value is a pointer to the derivative.
 
-    return derivative[num];
+    return pDerivative[num];
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+int forceReact::getMaxOrd()
+{
+    return pDerivative.size();
 }

@@ -81,6 +81,26 @@ public:
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
+     * @brief Returns the equation requested.  Only specified by the data index property of the equation object.
+     *
+     * Returns the equation requested.  Only specified by the data index property of the equation object.
+     * @param indexIn The integer describing the data index for the equation requested.
+     * @return Pointer to the Equation object specified by the DataIndex of indexIn.  Value returned is by reference.
+     */
+    Equation &IndexEquation(int indexIn);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns the equation requested.  Only specified by the data index property of the equation object.
+     *
+     * Returns the equation requested.  Only specified by the data index property of the equation object.
+     * @param indexIn The integer describing the data index for the equation requested.
+     * @return Equation object specified by the DataIndex of indexIn.  Value returned is by value.
+     */
+    Equation getIndexEquation(int indexIn);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
      * @brief Retrieve the equation specified by the number.
      *
      * Retrieves the equation specified by the number.  Value returned is a pointer to the equation object.  Allows
@@ -105,6 +125,17 @@ protected:
 private:
     //------------------------------------------Function Separator ----------------------------------------------------
     vector<Equation> pEquationList; /**< The list of equations. */
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Searches through the list of equation objects to find the one specified by the indexIn parameter.
+     *
+     * Searches through the list of equation objects to find the one specified by the indexIn parameter.  Returns the
+     * integer specifying the position of the object in the vector of equation objects.
+     * @param indexIn The data index requested.
+     * @return Returns the integer specifying the position of the object in the vector of equation objects.
+     */
+    int findIndex(int indexIn);
 
 };
 #endif

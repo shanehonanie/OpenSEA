@@ -8,9 +8,9 @@
 /*-------------------------------------------------------------------------------------------------------------------*\
  *Revision History
  *---------------------------------------------------------------------------------------------------------------------
- *Date              Author				Description
+ *Date          Author                  Description
  *---------------------------------------------------------------------------------------------------------------------
- *May 15 2013       Shane Honanie       Initially created
+ *Aug 10, 2013	Nicholas Barczak		Initially Created
  *
 \*-------------------------------------------------------------------------------------------------------------------*/
 
@@ -33,37 +33,22 @@
  *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
 \*-------------------------------------------------------------------------------------------------------------------*/
 
-
-
 //######################################### Class Separator ###########################################################
-#ifndef OUTPUTSLIST_H
-#define OUTPUTSLIST_H
-#include <vector>
-#include "outputsbody.h"
-using namespace std;
+#ifndef SOLUTION_H
+#define SOLUTION_H
 
-/**
- * This class holds the global solutions for all frequncies for all body object(s).
- */
-
-class OutputsList
+class Solution
 {
+//==========================================Section Separator =========================================================
 public:
-	OutputsList(); /**< This default constructor creates a OutputsList object. */
+    Solution();
 
-	/**
-	 * Overloaded constructor
-	 * @param theBodyListIn All bodies with calculated solutions.
-	 * @param directionIn List of all wave directions.
-	 * @param frequenciesIn List of all frequencies.
-	 */
-    OutputsList(vector<Body>, vector<double>, vector<double>);
-	~OutputsList(); /**< The default destructor, nothing happens here. */
+//==========================================Section Separator =========================================================
+protected:
 
-	vector<OutputsBody> theOutputsBodyList; /**< List of each body with computed globlal matrices */
-    vector<Body> theBodyList; /**< List of all bodies with soluions computed by motion solver */
-	vector<double> theFrequencyList; /**< List of frequencies used. */
-	vector<double> theDirectionList; /**< List of directions used. */
-	void calculateOutputs(); /**< Calculate the Global Solutions for each body */
+//==========================================Section Separator =========================================================
+private:
+
 };
-#endif
+
+#endif // SOLUTION_H

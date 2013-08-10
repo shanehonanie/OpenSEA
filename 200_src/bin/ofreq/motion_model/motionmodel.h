@@ -152,7 +152,7 @@ public:
      * @param force Integer specifying which force to use in the set of forces for the given force type.
      * @param eqn Integer specifying which equation to use in the selected force.
      */
-    void useForceAct_usr(int force, int eqn);
+    void useForceActive_user(int force, int eqn);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -167,7 +167,7 @@ public:
      * @param force Integer specifying which force to use in the set of forces for the given force type.
      * @param eqn Integer specifying which equation to use in the selected force.
      */
-    void useForceAct_hydro(int force, int ord, int eqn, int var);
+    void useForceActive_hydro(int force, int eqn);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -184,7 +184,7 @@ public:
      * @param eqn Integer specifying which equation to use in the selected force.
      * @param var Integer specifying which variable to use from the selected equation.
      */
-    void useForceReact_usr(int force, int ord, int eqn, int var);
+    void useForceReact_user(int force, int ord, int eqn, int var);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -218,7 +218,7 @@ public:
      * @param eqn Integer specifying which equation to use in the selected force.
      * @param var Integer specifying which variable to use from the selected equation.
      */
-    void useForceCross_usr(int force, int ord, int eqn, int var);
+    void useForceCross_user(int force, int ord, int eqn, int var);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -251,6 +251,103 @@ public:
      * @param var Integer specifying which variable to use from the selected equation.
      */
     void useForceMass(int eqn, int var);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Evaluates the motion model for a whole range of equations on the specified force.
+     *
+     * Evaluates the motion model for a whole range of equations on the specified force.  Returns a complex matrix
+     * that contains the results of the entire evaluation.
+     * @param force Integer specifying which force object to evaluate.
+     * @return Returns a complex matrix that contains the results of the entire evaluation.  Returned argument passed
+     * by value.
+     */
+    cx_mat getMatForceActive_user(int force);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Evaluates the motion model for a whole range of equations on the specified force.
+     *
+     * Evaluates the motion model for a whole range of equations on the specified force.  Returns a complex matrix
+     * that contains the results of the entire evaluation.
+     * @param force Integer specifying which force object to evaluate.
+     * @return Returns a complex matrix that contains the results of the entire evaluation.  Returned argument passed
+     * by value.
+     */
+    cx_mat getMatForceActive_hydro(int force);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.
+     *
+     * Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.  Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     * @param force Integer specifying the force object to use.
+     * @param ord Integer specifying which order of derivative to use on the specified force object.
+     * @return Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     */
+    cx_mat getMatForceReact_user(int force, int ord);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.
+     *
+     * Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.  Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     * @param force Integer specifying the force object to use.
+     * @param ord Integer specifying which order of derivative to use on the specified force object.
+     * @return Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     */
+    cx_mat getMatForceReact_hydro(int force, int ord);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.
+     *
+     * Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.  Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     * @param force Integer specifying the force object to use.
+     * @param ord Integer specifying which order of derivative to use on the specified force object.
+     * @return Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     */
+    cx_mat getMatForceCross_user(int force, int ord);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.
+     *
+     * Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.  Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     * @param force Integer specifying the force object to use.
+     * @param ord Integer specifying which order of derivative to use on the specified force object.
+     * @return Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     */
+    cx_mat getMatForceCross_hydro(int force, int ord);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.
+     *
+     * Evaluates the motion model for a whole range of equations and variable on the specified force and order
+     * of derivative.  Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     * @return Returns a complex matrix that contains the results of the entire evaluation.  Saves some time
+     * on computing effort.
+     */
+    cx_mat getMatForceMass();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -294,11 +391,66 @@ public:
      */
     int MaxDataIndex();
 
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Name for the motion model
+     *
+     * Name for the motion model.  Used by the user to identify the motion model.
+     * @param nameIn The name to set for the motion model.  String variable.  Variable passed by value.
+     */
+    void setName(string nameIn);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Name for the motion model
+     *
+     * Name for the motion model.  Used by the user to identify the motion model.
+     * @return The name to set for the motion model.  String variable.  Variable passed by value.
+     */
+    string getName();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Description for the motion model.
+     *
+     * Description for the motion model.  Used by the user to provide a more extensive description of the motion model.
+     * Used purely for user information.  Not used for model identification.
+     * @param DescIn String.  The description for the motion model.  Variable passed by value.
+     */
+    void setDescription(string DescIn);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Description for the motion model.
+     *
+     * Description for the motion model.  Used by the user to provide a more extensive description of the motion model.
+     * Used purely for user information.  Not used for model identification.
+     * @return String.  The description for the motion model.  Variable passed by value.
+     */
+    string getDescription();
+
 //==========================================Section Separator =========================================================
 protected:
 
 //==========================================Section Separator =========================================================
 private:
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Name for the motion model
+     *
+     * Name for the motion model.  Used by the user to identify the motion model.
+     */
+    string pName;
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Description for the motion model.
+     *
+     * Description for the motion model.  Used by the user to provide a more extensive description of the motion model.
+     * Used purely for user information.  Not used for model identification.
+     */
+    string pDesc;
+
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
      * @brief Pointer to the bodies vector.
@@ -326,7 +478,7 @@ private:
      * @brief The list of equations of motion to use in the motion model.  The sequence of equations in the list is
      * important.  Equations appear in the list as they appear in the matrix model of the body.
      */
-    vector<EquationofMotion*> listEquations;
+    vector<EquationofMotion> listEquations;
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -355,6 +507,50 @@ private:
      * on listData vector.  Adds items to the vector and assigns basic properties to those items.
      */
     void fillBodies();
+
+    //------------------------------------------Function Separator --------------------------------------------------------
+    /**
+     * @brief Records the index of the body object referenced by the cross body.
+     *
+     * Records the index of the body object referenced by the cross body.  Each body object contains a list of
+     * pointers for the cross-body objects.  Each cross-body force has a pointer associated with it.  This pointer
+     * points to another body object.  This allows comparison between memory addresses of different body objects.
+     * However, when the body objects are copied over, the pointers are now pointing to different, invalid memory
+     * addresses.  to eliminate this problem in the motion model, the model will record the position of the body object
+     * in the vector of body objects.  This forms a vector.  Each entry in the vector represents one cross-body force for
+     * the current body.  The integer entry in the vector is the integer index of the body that the cross-body force is
+     * linked to.
+     */
+    vector<int> pCompCrossBod_hydro;
+
+    //------------------------------------------Function Separator --------------------------------------------------------
+    /**
+     * @brief Records the index of the body object referenced by the cross body.
+     *
+     * Records the index of the body object referenced by the cross body.  Each body object contains a list of
+     * pointers for the cross-body objects.  Each cross-body force has a pointer associated with it.  This pointer
+     * points to another body object.  This allows comparison between memory addresses of different body objects.
+     * However, when the body objects are copied over, the pointers are now pointing to different, invalid memory
+     * addresses.  to eliminate this problem in the motion model, the model will record the position of the body object
+     * in the vector of body objects.  This forms a vector.  Each entry in the vector represents one cross-body force for
+     * the current body.  The integer entry in the vector is the integer index of the body that the cross-body force is
+     * linked to.
+     */
+    vector<int> pCompCrossBod_user;
+
+    //------------------------------------------Function Separator --------------------------------------------------------
+    /**
+     * @brief Boolean to track whether only the active forces are requested.
+     *
+     * Boolean to track whether only the active forces are requested.  The active forces are included negatively in the
+     * equation of motion.  They should be on the opposite side of the equation and included as a positive constant.
+     * The final matrix body accomplishes this.  And when only active forces are requested, they should be sent out as
+     * positive values.
+     * However, when pulling the information out, the signs must be reversed.
+     * The boolean variable triggers to determine if this should happen.  If any reactive or cross-body forces are
+     * activated as well, this variable is set false.
+     */
+    bool pActiveOnly;
 };
 
 #endif // MOTIONMODEL_H

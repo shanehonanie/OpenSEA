@@ -43,8 +43,8 @@
 #ifndef USERFORCES_H
 #define USERFORCES_H
 #include "forceactive.h"
-#include "forcereactive.h"
-#include "forcecrossbody.h"
+#include "forcereact.h"
+#include "forcecross.h"
 #include <string>
 #include <iostream>
 #include <fstream>

@@ -142,41 +142,47 @@ matReactForce matReactForce::operator-(const matReactForce& forceOther)
 //------------------------------------------Function Separator --------------------------------------------------------
 int matReactForce::getmaxOrder()
 {
-    return this->pderiv.size() - 1;
+    return pderiv.size() - 1;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
 vector<cx_mat> matReactForce::getDerivative()
 {
-    return this->pderiv;
+    return pderiv;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
 cx_mat matReactForce::getDerivative(int order)
 {
-    return this->pderiv[order];
+    return pderiv[order];
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
 void matReactForce::setDerivative(int order, cx_mat Coeff)
 {
-    this->pderiv[order] = Coeff;
+    pderiv[order] = Coeff;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+vector<cx_mat> &matReactForce::Derivatives()
+{
+    return pderiv;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
 void matReactForce::setId(int num)
 {
-    this->pId = num;
+    pId = num;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
 int matReactForce::getId()
 {
-    return this->pId;
+    return pId;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
 int matReactForce::getMatSize()
 {
-    return this->pderiv[0].n_rows;
+    return pderiv[0].n_rows;
 }

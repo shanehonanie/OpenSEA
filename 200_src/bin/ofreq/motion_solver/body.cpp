@@ -104,12 +104,6 @@ double &Body::Heading()
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-void Body::setMotionModel(string newMotionModel)
-{
-	motionModel = newMotionModel;
-}
-
-//------------------------------------------Function Separator --------------------------------------------------------
 void Body::setUserActiveForces(vector<string> newForceList)
 {
 	userActiveForces = newForceList;
@@ -256,7 +250,7 @@ void Body::getMomIyz()
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-Mat<double> &Body::getMassMatrix()
+Mat<double> Body::getMassMatrix()
 {
     return pmassMat;
 }
@@ -389,6 +383,12 @@ void Body::setSolution(cx_mat input)
 
 //------------------------------------------Function Separator --------------------------------------------------------
 cx_mat Body::getSolution()
+{
+    return pSoln;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+cx_mat &Body::Solution()
 {
     return pSoln;
 }
