@@ -167,12 +167,9 @@ public:
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Calculate the Solution and return the solutions for each body.
-     *
-     * Calculate the Solution and return the solutions for each body.
-     * @return A list of solutions for each body.
+     * @brief Calculate the Solution
      */
-    vector<cx_mat> CalculateOutputs();
+    void CalculateOutputs();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**

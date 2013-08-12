@@ -37,6 +37,74 @@ matActiveForce::~matActiveForce()
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
+matActiveForce matActiveForce::operator+(const matActiveForce &forceOther)
+{
+    //Add two force objects together.
+    matActiveForce output;
+
+    //Find max size
+    int maxsize;
+
+    if (this->getMatSize() > forceOther.getMatSize())
+        maxsize = this->getMatSize();
+    else
+        maxsize = forceOther.getMatSize();
+
+    //Resize matrix and initialize with zeros.
+    output.pCoeff.zeros(maxsize,1);
+
+    //Iterate through matrix and add the two together.
+    for (int i = 0; i < pCoeff.n_rows; i++)
+    {
+        output.pCoeff(i,1) = pCoeff(i,1) + forceOther.pCoeff(i,1);
+    }
+
+    //Write output
+    return output;
+
+    //cleanup
+    delete output;
+    delete maxsize;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+matActiveForce matActiveForce::operator-(const matActiveForce &forceOther)
+{
+    //Add two force objects together.
+    matActiveForce output;
+
+    //Find max size
+    int maxsize;
+
+    if (this->getMatSize() > forceOther.getMatSize())
+        maxsize = this->getMatSize();
+    else
+        maxsize = forceOther.getMatSize();
+
+    //Resize matrix and initialize with zeros.
+    output.pCoeff.zeros(maxsize,1);
+
+    //Iterate through matrix and add the two together.
+    for (int i = 0; i < pCoeff.n_rows; i++)
+    {
+        output.pCoeff(i,1) = pCoeff(i,1) - forceOther.pCoeff(i,1);
+    }
+
+    //Write output
+    return output;
+
+    //cleanup
+    delete output;
+    delete maxsize;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
+cx_mat &matActiveForce::Coefficients()
+{
+    return pCoeff;
+}
+
+//------------------------------------------Function Separator --------------------------------------------------------
 void matActiveForce::setId(int num)
 {
     pId = num;
@@ -51,5 +119,5 @@ int matActiveForce::getId()
 //------------------------------------------Function Separator --------------------------------------------------------
 int matActiveForce::getMatSize()
 {
-    return coefficients.n_rows;
+    return pCoeff.n_rows;
 }

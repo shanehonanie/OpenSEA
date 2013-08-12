@@ -24,79 +24,82 @@
  *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
 \*-------------------------------------------------------------------------------------------------------------------*/
 
-#include "matbody.h"
+#include "listsolution.h"
 
-
-matBody::matBody()
-{
-}
-
-matBody::~matBody()
+//------------------------------------------Function Separator --------------------------------------------------------
+listSolution::listSolution()
 {
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-void matBody::setId(int num)
+listSolution::listSolution(int dir, int freq)
 {
-    pId = num;
+    //Constructor with wave directions and frequencies specified.
+    resize(dir, freq);
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-int matBody::getId()
+listSolution::~listSolution()
 {
-    return pId;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-void matBody::setModelId(int num)
+Solution &listSolution::refSolution(int dir, int freq)
 {
-    pModelId = num;
+    //Return reference to specified solution object.
+    return plist[dir][freq];
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-int matBody::getModelId()
+void listSolution::setSolution(int dir, int freq, Solution soln)
 {
-    return pModelId;
+    //Set the Solution object with the new value.
+
+    //Check that the specified index is the correct size.  If not, resize.
+    if ((dir > n_dirs()) || (freq > n_freqs()))
+        this->resize(dir, freq);
+
+    //Set the solution
+    plist[dir][freq] = soln;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-cx_mat &matBody::Mass()
+Solution listSolution::getSolution(int dir, int freq)
 {
-    return pMass;
+    //Return the solution
+    return plist[dir][freq];
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-vector<matReactForce> &matBody::listReactForce_user()
+void listSolution::resize(int dir, int freq)
 {
-    return plistReactForce_user;
+    //Resize the vector
+    plist.resize(dir);
+    for (int i = 0; i < plist.size(); i++)
+    {
+        plist[i].reize(freq);
+    }
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-vector<matCrossForce> &matBody::listCrossForce_user()
+vector<int> listSolution::size()
 {
-    return plistCrossForce_user;
+    vector<int> output(2);
+
+    output[0] = plist.size();
+    output[1] = plist[0].size();
+
+    return output;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-vector<matActiveForce> &matBody::listActiveForce_user()
+int listSolution::n_dirs()
 {
-    return plistActiveForce_user
+    return size()[0];
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-vector<matReactForce> &matBody::listReactForce_hydro()
+int listSolution::n_dirs()
 {
-    return plistReactForce_hydro;
-}
-
-//------------------------------------------Function Separator --------------------------------------------------------
-vector<matCrossForce> &matBody::listCrossForce_hydro()
-{
-    return plistCrossForce_hydro;
-}
-
-//------------------------------------------Function Separator --------------------------------------------------------
-vector<matActiveForce> &matBody::listActiveForce_hydro()
-{
-    return plistActiveForce_hydro
+    return size()[1];
 }

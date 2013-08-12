@@ -189,7 +189,7 @@ void MotionSolver::setWaveFreq(double freqIn)
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-vector<cx_mat> MotionSolver::CalculateOutputs()
+void MotionSolver::CalculateOutputs()
 {
     //create a temporary vector to hold outputs of summations - user forces
     vector<matReactForce> tempReactList_usr(plistBody.size());
@@ -313,9 +313,6 @@ vector<cx_mat> MotionSolver::CalculateOutputs()
         }
 
         //Add in the cross body forces for each body.
-        //declare a pointer to bodies.  Will use it later.
-        matBody curBodyPt;
-
         //Iterate through each body.
         for (int i = 0; i < theBodyMassMatrices.size(); i++)
         {
@@ -335,7 +332,4 @@ vector<cx_mat> MotionSolver::CalculateOutputs()
     {
         plistSolution.push_back(globSolnMat.submat(matStart[i], 0, matEnd[i], 0));
     }
-
-    //Write output
-    return plistSolution;
 }

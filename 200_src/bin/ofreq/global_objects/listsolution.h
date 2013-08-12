@@ -10,7 +10,7 @@
  *---------------------------------------------------------------------------------------------------------------------
  *Date          Author                  Description
  *---------------------------------------------------------------------------------------------------------------------
- *Aug 10, 2013	Nicholas Barczak		Initially Created
+ *Mar 09 2013	Nicholas Barczak		Initially Created
  *
 \*-------------------------------------------------------------------------------------------------------------------*/
 
@@ -33,118 +33,111 @@
  *along with OpenSEA.  If not, see <http://www.gnu.org/licenses/>.
 \*-------------------------------------------------------------------------------------------------------------------*/
 
+
+
 //######################################### Class Separator ###########################################################
 /**
- * This class defines a solution object.  The solution object records the basic value of motion solution.  The motion
- * solution is translated back into body coordinate system.
+ * This class records the list of solutions obtained for a single Body object.  It is essentially a 2D version of the
+ * vector<object> class.  But since vector can't handle 2-d storage solutions, this class was created.
  */
-
-#ifndef SOLUTION_H
-#define SOLUTION_H
+#ifndef LISTSOLUTION_H
+#define LISTSOLUTION_H
+#include "solution.h"
+#include <new>
+#include <vector>
 #include <QtGlobal>
 #ifdef Q_OS_WIN
-    #include "armadillo.h"  //References the armadillo library in lib folder.
+    //References for windows go in here.
 #elif defined Q_OS_LINUX
-    #include <armadillo>    //Armadillo library included with standard system libraries.
+    //References for linux go in here.
 #endif
 
 using namespace std;
 
-//######################################### Class Separator ###########################################################
-//Prototype class declarations.
-class Body;
-
-
-//######################################### Class Separator ###########################################################
-class Solution
+class listSolution
 {
 //==========================================Section Separator =========================================================
 public:
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
      * @brief Default constructor.
-     *
-     * Default constructor.  Nothing done here.
      */
-    Solution();
+    listSolution();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Creates the object and sets the reference body for the object.
-     *
-     * Creates the object and sets the reference body for the object.
-     * @param bodIn The reference body.  Variabled passed by reference.
+     * @brief Constructor with number of wave directions and wave frequencies specified.  Automatically allocates
+     * dynamic memory for the specified number of wave directions and wave frequencies.
+     * @param dir The new number of wave directions to resize the array to.
+     * @param freq The new number of wave frequencies to resize the array to.
      */
-    Solution(Body &bodIn);
+    listSolution(int dir, int freq);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Default destructor.
-     *
-     * Default destructor.  Nothing done here.
+     * Default destructor.  Frees any memory dynamically assigned.
      */
-    ~Solution();
+    ~listSolution();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Returns direct access to the solution matrix.
-     *
-     * Returns direct access to the solution matrix.  Provides a pointer to the solution matrix.
-     * It gets filled with the output from the motion solver.  Output is a column
-     * matrix (n by 1) of complex numbers.  Output is in units of meters.
-     * @return Returns direct access to the solution matrix.  Provides a pointer to the solution matrix.  Returned
+     * @brief Returns a pointer to the solution object at the specified wave direction and frequency.
+     * @param dir Integer.  Index of the wave direction desired.
+     * @param freq Integer.  Index of the wave frequency desired.
+     * @return Returns a pointer to the Solution object at the specified wave direction and wave frequency.  Returned
      * variable is passed by reference.
      */
-    cx_mat &RefSolution();
+    Solution &refSolution(int dir, int freq);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Returns the solution matrix.
-     *
-     * Returns the solution matrix.  It gets filled with the output from the motion solver.  Output is a column
-     * matrix (n by 1) of complex numbers.  Output is in units of meters.
-     *
-     * Returns the solution matrix as a whole.
-     * @return Returned value is a complex number matrix.  Returned variable is passed by value.
+     * @brief Sets the solution object at the specified wave direction and frequency.
+     * @param dir Integer.  Index of the wave direction desired.
+     * @param freq Integer.  Index of the wave frequency desired.
+     * @param soln The solution object to pass in.
      */
-    cx_mat getSolution();
+    void setSolution(int dir, int freq, Solution soln);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Sets the solution matrix as a whole.
-     *
-     * Sets the solution matrix as a whole.
-     * @param matIn The input matrix to set as the solution matrix.
+     * @brief Gets the solution object at the specified wave direction and frequency.
+     * @param dir Integer.  Index of the wave direction desired.
+     * @param freq Integer.  Index of the wave frequency desired.
+     * @return Returns the Solution object at the specified wave direction and wave frequency.  Returned variable is
+     * passed by value.
      */
-    void setSolution(cx_mat matIn);
+    Solution getSolution(int dir, int freq);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Sets the pointer to the reference body.
-     *
-     * Sets the pointer to the reference body.
-     * @param bodIn The reference body.  Variabled passed by reference.
+     * @brief Resizes the 2-D array of Solution objects.  Any existing objects in the array are preserved.  If the
+     * array is sized smaller than the existing number of Solution objects, any object beyond the new index range
+     * are deleted.
+     * @param dir The new number of wave directions to resize the array to.
+     * @param freq The new number of wave frequencies to resize the array to.
      */
-    void setBody(Body &bodIn);
+    void resize(int dir, int freq);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Gets the body object used as the reference body.  Variable passed by value.
-     *
-     * Gets the body object used as the reference body.  Variable passed by value.
-     * @return Gets the body object used as the reference body.  Variable passed by value.
+     * @brief Returns the size of the matrix as a vector of two elements.
+     * @return Integer.  Returns the size of the matrix as a vector of two elements.
      */
-    Body getBody();
+    vector<int> size();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Returns reference pointer to the reference body.  Variable passed by reference.
-     *
-     * Returns reference pointer to the reference body.  Variable passed by reference.  Used for direct access to the
-     * reference body and all its member functions.
-     * @return Returns reference pointer to the reference body.  Variable passed by reference.
+     * @brief Returns the number of rows as an integer.  This is the number of wave directions.
+     * @return Integer.  Returns the number of rows as an integer.  This is the number of wave directions.
      */
-    Body &refBody();
+    int n_dirs();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns the number of columns as an integer.  This is the number of wave frequencies.
+     * @return Integer.  Returns the number of columns as an integer.  This is the number of wave frequencies.
+     */
+    int n_freqs();
 
 //==========================================Section Separator =========================================================
 protected:
@@ -153,22 +146,10 @@ protected:
 private:
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
-     * @brief Private variable for the solution matrix.
-     *
-     * Private variable for the solution matrix.  Used to store the solution from the motion solver.  This variable is
-     * initially empty on body creation.  It gets filled with the output from the motion solver.  Output is a column
-     * matrix (n by 1) of complex numbers.  Output is in units of meters.
+     * @brief Array of Solution objects.  Dynamically  allocated.  The first index is the wave direction. (The rows
+     * direction.)  The second index is the wave frequency (The columns direction.)
      */
-    cx_mat pSoln;
+    vector< vector<Solution> > plist;
 
-    //------------------------------------------Function Separator ----------------------------------------------------
-    /**
-     * @brief Pointer to the body object associated with the solution object.
-     *
-     * Pointer to the body object associated with the solution object.  Useful if you need to find information about
-     * the body associated with the solution, such as coordinate transforms.
-     */
-    Body pBod;
 };
-
-#endif // SOLUTION_H
+#endif // LISTSOLUTION_H

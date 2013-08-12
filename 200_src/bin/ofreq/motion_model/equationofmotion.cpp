@@ -32,7 +32,7 @@
 //==========================================Section Separator =========================================================
 //Public Members
 //------------------------------------------Function Separator --------------------------------------------------------
-EquationofMotion::EquationofMotion(const motionModel &modelIn)
+EquationofMotion::EquationofMotion(motionModel &modelIn)
 {
     //Default constructor.  Requires declaration
     //of the object which created the equation object.
@@ -48,7 +48,7 @@ EquationofMotion::EquationofMotion(const motionModel &modelIn)
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-EquationofMotion::EquationofMotion(const motionModel &modelIn, string NameIn)
+EquationofMotion::EquationofMotion(motionModel &modelIn, string NameIn)
 {
     //Constructor with specifying name.
 
@@ -60,7 +60,7 @@ EquationofMotion::EquationofMotion(const motionModel &modelIn, string NameIn)
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-EquationofMotion::EquationofMotion(const motionModel &modelIn, string NameIn, int IndexIn)
+EquationofMotion::EquationofMotion(motionModel &modelIn, string NameIn, int IndexIn)
 {
     //Constructor with specifying name and data index of the equation.
 

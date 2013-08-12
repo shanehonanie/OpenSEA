@@ -164,7 +164,7 @@ matCrossForce matCrossForce::operator-(const matCrossForce& forceOther)
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-void matCrossForce::setlinkedbody(int &BodIn)
+void matCrossForce::setLinkedBody(matBody &BodIn)
 {
     this->plinkbody = BodIn;
 
@@ -179,13 +179,13 @@ matReactForce matBody::getlinkedbody()
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-void matCrossForce::setlinkedId(int bodId)
+void matCrossForce::setLinkedId(int bodId)
 {
     this->plinkbody = bodId;
 }
 
 //------------------------------------------Function Separator --------------------------------------------------------
-int matCrossForce::getlinkedId()
+int matCrossForce::getLinkedId()
 {
     return this->plinkbody;
 }

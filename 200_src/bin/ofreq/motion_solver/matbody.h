@@ -68,9 +68,9 @@
 #include "body.h"
 #include "derivative.h"
 #include "matreactforce.h"
-#include "forceactive.h"
-#include "userforces.h"
+#include "matactiveforce.h"
 #include "matcrossforce.h"
+#include "userforces.h"
 
 using namespace arma;
 using namespace std;
@@ -87,20 +87,6 @@ public:
     //------------------------------------------Function Separator ----------------------------------------------------
     ~matBody(); /**< The default destructor, nothing happens here. */
 	
-    //------------------------------------------Function Separator ----------------------------------------------------
-	//Body Mass Matrix
-    cx_mat Mass; /**< The Mass Matrix. */
-
-	//User Force Coefficient Matrices
-    vector<matReactForce> &listReactForce_user; /**< List of user reactive force matrices. */
-    vector<matCrossForce> &listCrossForce_user; /**< List of user cross body force matrices. */
-    vector<cx_mat> &listActiveForce_user; /**< List of user active force matrices. */
-
-	//Hydro Force Coefficient Matrices
-    vector<matReactForce> &listReactForce_hydro; /**< List of hydro reactive force matrices. */
-    vector<matCrossForce> &listCrossForce_hydro; /**< List of hydro cross body force matrices. */
-    vector<cx_mat> &listActiveForce_hydro; /**< List of hydro active force matrices. */
-
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
      * @brief Sets the force id number for the object.
@@ -139,6 +125,83 @@ public:
      */
     int getModelId();
 
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns a reference to the mass matrix.
+     *
+     * Returns a reference to the mass matrix.
+     * @return Returns a reference to the mass matrix.  Variable passed by reference.
+     */
+    cx_mat &Mass();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns a reference to the Reactive Force, user objects.
+     *
+     * Returns a reference to the Reactive Force, user objects.  This is a vector list of the Reactive Force objects.
+     * Provides direct access to the variable and all the member functions of the vector class.
+     * @return This is a vector list of the Reactive Force objects. Provides direct access to the variable and all
+     * the member functions of the vector class.  Variable passed by reference.
+     */
+    vector<matReactForce> &listReactForce_user();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns a reference to the Cross-Body Force, user objects.
+     *
+     * Returns a reference to the Cross-Body Force, user objects.  This is a vector list of the Cross-Body Force objects.
+     * Provides direct access to the variable and all the member functions of the vector class.
+     * @return This is a vector list of the Cross-Body Force objects. Provides direct access to the variable and all
+     * the member functions of the vector class.  Variable passed by reference.
+     */
+    vector<matCrossForce> &listCrossForce_user();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns a reference to the Active Force, user objects.
+     *
+     * Returns a reference to the Active Force, user objects.  This is a vector list of the Active Force objects.
+     * Provides direct access to the variable and all the member functions of the vector class.
+     * @return This is a vector list of the Active Force objects. Provides direct access to the variable and all
+     * the member functions of the vector class.  Variable passed by reference.
+     */
+    vector<matActiveForce> &listActiveForce_user();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns a reference to the Reactive Force, hydro objects.
+     *
+     * Returns a reference to the Reactive Force, hydro objects.  This is a vector list of the Reactive Force objects.
+     * Provides direct access to the variable and all the member functions of the vector class.
+     * @return This is a vector list of the Reactive Force objects. Provides direct access to the variable and all
+     * the member functions of the vector class.  Variable passed by reference.
+     */
+    vector<matReactForce> &listReactForce_hydro();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns a reference to the Cross-Body Force, hydro objects.
+     *
+     * Returns a reference to the Cross-Body Force, hydro objects.  This is a vector list of the Cross-Body Force objects.
+     * Provides direct access to the variable and all the member functions of the vector class.
+     * @return This is a vector list of the Cross-Body Force objects. Provides direct access to the variable and all
+     * the member functions of the vector class.  Variable passed by reference.
+     */
+    vector<matCrossForce> &listCrossForce_hydro();
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns a reference to the Active Force, hydro objects.
+     *
+     * Returns a reference to the Active Force, hydro objects.  This is a vector list of the Active Force objects.
+     * Provides direct access to the variable and all the member functions of the vector class.
+     * @return This is a vector list of the Active Force objects. Provides direct access to the variable and all
+     * the member functions of the vector class.  Variable passed by reference.
+     */
+    vector<matActiveForce> &listActiveForce_hydro();
+
+
+
 //==========================================Section Separator =========================================================
 protected:
 
@@ -156,6 +219,19 @@ private:
      * @brief Holds the integer id of the motion model used by the matBody object.
      */
     int pModelId;
+
+    //Body Mass Matrix
+    cx_mat pMass; /**< The Mass Matrix. */
+
+    //User Force Coefficient Matrices
+    vector<matReactForce> plistReactForce_user; /**< List of user reactive force matrices. */
+    vector<matCrossForce> plistCrossForce_user; /**< List of user cross body force matrices. */
+    vector<matActiveForce> plistActiveForce_user; /**< List of user active force matrices. */
+
+    //Hydro Force Coefficient Matrices
+    vector<matReactForce> plistReactForce_hydro; /**< List of hydro reactive force matrices. */
+    vector<matCrossForce> plistCrossForce_hydro; /**< List of hydro cross body force matrices. */
+    vector<matActiveForce> plistActiveForce_hydro; /**< List of hydro active force matrices. */
 
 };
 #endif

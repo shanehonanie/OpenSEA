@@ -46,9 +46,14 @@
 #include "./motion_solver/motionsolver.h"
 #include "./motion_model/motionmodel.h"
 #include "./motion_solver/matbody.h"
+#include "./motion_solver/matactiveforce.h"
+#include "./motion_solver/matcrossforce.h"
+#include "./motion_solver/matreactforce.h"
 #include "./derived_outputs/outputslist.h"
 #include "./file_writer/filewriter.h"
 #include "./derived_outputs/outputsbody.h"
+#include "./global_objects/listsolution.h"
+#include "./global_objects/solution.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -63,6 +68,9 @@ vector<matBody> listMatBody;
 //Vector containing various motion models available
 vector<motionModel> listModel;
 
+//List of solutions from the motion model.  Each solution object is the list of solutions for one body.
+vector<listSolution> listSolutions;
+
 //######################################### Function Prototypes #######################################################
 /**
  * @brief Builds a matrix body object for the body specified by the integer.
@@ -73,6 +81,9 @@ vector<motionModel> listModel;
  * @return Returns a matBody object, fully provisioned with all necessary data.
  */
 void buildMatBody(int bod, bool useCoeff=true);
+
+
+//############################################ Class Prototypes #######################################################
 
 
 
@@ -197,37 +208,43 @@ int main(int argc, char *argv[])
     //---------------------------------------------------------------------------
     //Resize matrix bodies vector.
     listMatBody.resize(listBody.size());
+    //Resize the solution object.
+    for (int i = 0; i < listBody.size(); i++)
+        listSolutions.push_back(listSolution(waveDirectionList.size(), waveFrequencyList.size()));
 
     //Iterate through each wave direction and wave frequency to solve
     //---------------------------------------------------------------------------
     for(unsigned int i = 0; i < waveDirectionList.size(); i++)
 	{
-        //Build the matrix bodies
-        //---------------------------------------------------------------------------
-        //Build operation stuck inside the wave iteration loop because the forces may change with
-        //wave direction.
-        bool coeffonly = true;              //Boolean to tell the motion model to only use coefficients.
-        //Iterate through each body and build.
-        for (int i = 0; i < listBody.size(); i++)
-        {
-            //Build the body.
-            //Will automatically use the correct bodies.
-            buildMatBody(i, coeffonly);
-        }
-
         for(unsigned int j = 0; j < waveFrequencyList.size(); j++)
 		{
+            //Build the matrix bodies
+            //---------------------------------------------------------------------------
+            //Build operation stuck inside the wave iteration loop because the forces may change with
+            //wave direction.  Also inside the wave frequency loop because the forces may change
+            //with wave frequency.
+            bool coeffonly = true;              //Boolean to tell the motion model to only use coefficients.
+            //Iterate through each body and build.
+            for (unsigned int i = 0; i < listBody.size(); i++)
+            {
+                //Build the body.
+                //Will automatically use the correct bodies.
+                buildMatBody(i, coeffonly);
+            }
+
             //Create motion solver and feed in the body data.
             MotionSolver theMotionSolver(listMatBody);
             //Set the current wave frequency
             theMotionSolver.setWaveFreq(waveFrequencyList[j]);
             //Solve the system of equations.
-			vector<cx_mat> theSolutionsPerFrequency = theMotionSolver.CalculateOutputs();
+            theMotionSolver.CalculateOutputs();
 
 			//asign each solution per frequency to a body
-            for(unsigned int k = 0; k < theSolutionsPerFrequency.size(); k++)
+            for(unsigned int k = 0; k < listBody.size(); k++)
 			{
-                listBody[k].setSolution(theSolutionsPerFrequency[k]);
+                Solution soln(listBody[k]);
+                soln.setSolution(theMotionSolver.getSolution(k));
+                listSolutions[k].setSolution(i, j, soln);
 			}
 		}
 
@@ -275,36 +292,41 @@ void buildMatBody(int bod, bool useCoeff)
     //------------------------------------------
     for (unsigned int i = 0; i < listBody[bod].listForceActive_user().size(); i++)
     {
-        listMatBody[bod].listActiveForce_user().pushback(listModel[modelnum].getMatForceActive_user(i));
+        listMatBody[bod].listActiveForce_user().push_back(matActiveForce());
+        listMatBody[bod].listActiveForce_user()[i].Coefficients() = listModel[modelnum].getMatForceActive_user(i);
         //Create force ID.
-        listMatBody[bod].listActiveForce_user()[i].SetId(i);
+        listMatBody[bod].listActiveForce_user()[i].setId(i);
     }
 
     //Iterate through all the active forces, hydro
     //------------------------------------------
     for(unsigned int i = 0; i < listBody[bod].listForceActive_hydro().size(); i++)
     {
-        listMatBody[bod].listActiveForce_hydro().pushback(listModel[modelnum].getMatForceActive_hydro(i));
+        listMatBody[bod].listActiveForce_hydro().push_back(matActiveForce());
+        listMatBody[bod].listActiveForce_hydro()[i].Coefficients() = listModel[modelnum].getMatForceActive_hydro(i);
         //Create force ID.
-        listMatBody[bod].listActiveForce_hydro()[i].SetId(i);
+        listMatBody[bod].listActiveForce_hydro()[i].setId(i);
     }
 
     //Use this pointer for referencing the forces
     matReactForce* ptForce;
+    forceReact* ptReact;
 
     //Iterate through all the reactive forces, user
     //------------------------------------------
     for (unsigned int i = 0; i < listBody[bod].listForceReact_user().size(); i++)
     {
-        listMatBody[bod].listReactForce_user().pushback(new matReactForce);
+        listMatBody[bod].listReactForce_user().push_back(matReactForce());
         //Create pointer
-        ptForce = & listMatBody[bod].listReactForce_user()[i];
+        ptForce = &listMatBody[bod].listReactForce_user()[i];
 
         //Assign id for force.
         ptForce->setId(i);
 
+        ptReact = listBody[bod].listForceReact_user()[i];
+
         //Iterate through each derivative.
-        for (unsigned int j = 0; j <= listBody[bod].listForceReact_user()[i].getmaxOrder(); j++)
+        for (int j = 0; j <= ptReact->getMaxOrd(); j++)
         {
             //Assign matrices
             ptForce->Derivatives().push_back(listModel[modelnum].getMatForceReact_user(i,j));
@@ -315,15 +337,17 @@ void buildMatBody(int bod, bool useCoeff)
     //------------------------------------------
     for (unsigned int i = 0; i < listBody[bod].listForceReact_hydro().size(); i++)
     {
-        listMatBody[bod].listReactForce_hydro().pushback(new matReactForce);
+        listMatBody[bod].listReactForce_hydro().push_back(matReactForce());
         //Create pointer
         ptForce = & listMatBody[bod].listReactForce_hydro()[i];
 
         //Assign id for force.
         ptForce->setId(i);
 
+        ptReact = listBody[bod].listForceReact_user()[i];
+
         //Iterate through each derivative.
-        for (unsigned int j = 0; j <= listBody[bod].listForceReact_hydro()[i].getmaxOrder(); j++)
+        for (int j = 0; j <= ptReact->getMaxOrd(); j++)
         {
             //Assign matrices
             ptForce->Derivatives().push_back(listModel[modelnum].getMatForceReact_hydro(i,j));
@@ -331,35 +355,41 @@ void buildMatBody(int bod, bool useCoeff)
     }
 
     delete ptForce;
-    matCrossForce* ptForce;
+    delete ptReact;
+    matCrossForce* ptForce2;
+    forceCross* ptCross;
 
     //Iterate through all the cross body forces, user
     //------------------------------------------
     for (unsigned int i = 0; i < listBody[bod].listForceCross_user().size(); i++)
     {
-        listMatBody[bod].listCrossForce_user().pushback(new matCrossForce);
+        listMatBody[bod].listCrossForce_user().push_back(matCrossForce());
         //Create pointer
-        ptForce = & listMatBody[bod].listCrossForce_user()[i];
+        ptForce2 = &listMatBody[bod].listCrossForce_user()[i];
 
         //Assign id for force.
-        ptForce->setId(i);
+        ptForce2->setId(i);
 
         //Assign cross body
         for (unsigned int k = 0; k < listBody.size(); k++)
         {
-            if (&listBody[k] == &listBody[k].listCrossBody_user()[bod])
+            if (&listBody[k] == listBody[k].listCrossBody_user()[bod])
             {
                 //Assign cross body
-                ptForce->setlinkedbody(k);
+                ptForce2->setLinkedBody(listMatBody[k]);
+                //Linked ID is automatically set.
                 break;
             }
         }
 
+        //Assign pointer
+        ptCross = listBody[bod].listForceCross_user()[i];
+
         //Iterate through each derivative.
-        for (unsigned int j = 0; j <= listBody[bod].listForceCross_user()[i].getmaxOrder(); j++)
+        for (int j = 0; j <= ptCross->getMaxOrd(); j++)
         {
             //Assign matrices
-            ptForce->Derivatives().push_back(listModel[modelnum].getMatForceCross_user(i,j));
+            ptForce2->Derivatives().push_back(listModel[modelnum].getMatForceCross_user(i,j));
         }
     }
 
@@ -367,29 +397,33 @@ void buildMatBody(int bod, bool useCoeff)
     //------------------------------------------
     for (unsigned int i = 0; i < listBody[bod].listForceCross_hydro().size(); i++)
     {
-        listMatBody[bod].listCrossForce_hydro().pushback(new matCrossForce);
+        listMatBody[bod].listCrossForce_hydro().push_back(matCrossForce());
         //Create pointer
-        ptForce = & listMatBody[bod].listCrossForce_hydro()[i];
+        ptForce2 = &listMatBody[bod].listCrossForce_hydro()[i];
 
         //Assign id for force.
-        ptForce->setId(i);
+        ptForce2->setId(i);
 
         //Assign cross body
         for (unsigned int k = 0; k < listBody.size(); k++)
         {
-            if (&listBody[k] == &listBody[k].listCrossBody_hydro()[bod])
+            if (&listBody[k] == listBody[k].listCrossBody_hydro()[bod])
             {
                 //Assign cross body
-                ptForce->setlinkedbody(k);
+                ptForce2->setLinkedBody(listMatBody[k]);
+                //Linked Id is automatically set
                 break;
             }
         }
 
+        //Assign pointer
+        ptCross = listBody[bod].listForceCross_user()[i];
+
         //Iterate through each derivative.
-        for (unsigned int j = 0; j <= listBody[bod].listForceCross_hydro()[i].getmaxOrder(); j++)
+        for (int j = 0; j <= ptCross->getMaxOrd(); j++)
         {
             //Assign matrices
-            ptForce->Derivatives().push_back(listModel[modelnum].getMatForceCross_hydro(i,j));
+            ptForce2->Derivatives().push_back(listModel[modelnum].getMatForceCross_hydro(i,j));
         }
     }
 

@@ -64,7 +64,19 @@ public:
     ~matActiveForce(); /**< The default destructor, nothing happens here. */
 
     //------------------------------------------Function Separator ----------------------------------------------------
-	cx_mat coefficients; /**< Matrix of force coefficients. */
+    matActiveForce operator+(const matActiveForce &forceOther);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    matActiveForce operator-(const matActiveForce &forceOther);
+
+    //------------------------------------------Function Separator ----------------------------------------------------
+    /**
+     * @brief Returns the coefficients matrix.
+     *
+     * Returns the coefficients matrix.
+     * @return Returns the coefficients matrix.
+     */
+    cx_mat &Coefficients();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -109,6 +121,8 @@ private:
      */
     int pId;
 
+    //------------------------------------------Function Separator ----------------------------------------------------
+    cx_mat pCoeff; /**< Matrix of force coefficients. */
 };
 #endif
 

@@ -52,7 +52,6 @@
 #include <vector>
 #include <complex>
 #include <string>
-#include "motionmodel.h"
 #include <string>
 #ifdef Q_OS_WIN
     #include "armadillo.h"  //References the armadillo library in lib folder.
@@ -63,6 +62,11 @@
 using namespace std;
 using namespace arma;
 
+//######################################### Class Separator ###########################################################
+//Prototype class declarations
+class motionModel;
+
+//######################################### Class Separator ###########################################################
 class EquationofMotion
 {
 //==========================================Section Separator =========================================================
@@ -76,7 +80,7 @@ public:
      * motion model class.
      * @param modelIn A pointer to the motion model object that created the equation of motion.
      */
-    EquationofMotion(const motionModel &modelIn);
+    EquationofMotion(motionModel &modelIn);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -89,7 +93,7 @@ public:
      * @param NameIn A name for what physical property the equation solves for.  Used for user output.  Not critical
      * to program execution.
      */
-    EquationofMotion(const motionModel &modelIn, string NameIn);
+    EquationofMotion(motionModel &modelIn, string NameIn);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -103,7 +107,7 @@ public:
      * to program execution.
      * @param IndexIn
      */
-    EquationofMotion(const motionModel &modelIn, string NameIn, int IndexIn);
+    EquationofMotion(motionModel &modelIn, string NameIn, int IndexIn);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**

@@ -64,7 +64,7 @@ class matBody;
 
 
 //######################################### Class Separator ###########################################################
-class matCrossForce : matReactForce
+class matCrossForce: public matReactForce
 {
 //==========================================Section Separator =========================================================
 public:
@@ -125,14 +125,14 @@ public:
      * Set linked body for cross body object.
      * @param BodIn pointer to the matBody object that this linked force relates to.
      */
-    void setlinkedbody( int & BodIn );
+    void setLinkedBody( matBody &BodIn );
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
      * Return the linked body for the cross body object
      * @return Returns a pointer to the matBody object that this force relates to.
      */
-    matBody getlinkedbody();
+    matBody getLinkedBody();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -143,7 +143,7 @@ public:
      * @param bodId The integer of the body id.  This is normally the index of the body within the vector of other
      * bodies.
      */
-    void setlinkedId(int bodId);
+    void setLinkedId(int bodId);
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
@@ -154,7 +154,7 @@ public:
      * @return Integer value which is the body's id.  This is normally the index of the body within the vector of other
      * bodies.
      */
-    int getlinkedId();
+    int getLinkedId();
 
     //------------------------------------------Function Separator ----------------------------------------------------
     /**
